@@ -1,0 +1,2008 @@
+<quêtes>
+  <quête>
+    <Descripion>Les Esprit de la Forêt attaquent la frontière sud, perturbant les gardes et les
+      fermiers. Tuez-en 10 pour éviter qu'ils ne traversent le mur de défense.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Protection des frontières[2]</Nom>
+    <Récompenses>
+      <Or>989</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Serpent Enrhumé a saccagé un village voisin. Empêchez-les d'approcher
+      de la ville.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Défense du village voisin[2]</Nom>
+    <Récompenses>
+      <Or>934</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Colosse se cachent dans les montagnes glacées. Leur présence menace les
+      habitants des villages alentours. Tuez-en 15 pour protéger la région.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Sécurisation des montagnes glacées[3]</Nom>
+    <Récompenses>
+      <Objets>Chaussures Volantes</Objets>
+      <Or>667</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Chien Robot s'attaque à une caravane marchande. Tuez-en 25 pour
+      protéger les marchands et leur cargaison.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Protection des marchands[5]</Nom>
+    <Récompenses>
+      <Or>225</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un monstre gluant réclame votre aide. En échange, il vous donne un trône… collant.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Délivrer le roi des limaces</Nom>
+    <Récompenses>
+      <Or>455</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Slime à Poils ont été vus près de la rivière. Leur présence empêche les pêcheurs
+      locaux de travailler. Éliminez-en 10 pour leur permettre de reprendre leur activité.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Sécurisation de la rivière[2]</Nom>
+    <Récompenses>
+      <Or>736</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un dragon refuse de manger des villageois. Trouvez-lui des légumes adaptés à son
+      régime.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Le dragon végétarien</Nom>
+    <Récompenses>
+      <Objets>Arc Éthéré</Objets>
+      <Or>963</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Chien Extra-Terrestre attaquent les voyageurs qui traversent la gorge des vents.
+      Tuez-e, 15 d'entre eux pour assurer la sécurité des routes.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Protection des voyageurs[3]</Nom>
+    <Récompenses>
+      <Objets>Armure Élégante</Objets>
+      <Or>481</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Gobelin harcèlent les fermiers dans la vallée. Leur nombre grandissant menace
+      l'approvisionnement en nourriture. Tuez-en 25 pour protéger les fermes.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Sécurisation de la vallée[5]</Nom>
+    <Récompenses>
+      <Or>989</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un fermier affirme que sa vache parle, mais uniquement la nuit. Découvrez son
+      secret.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>La vache sacrée</Nom>
+    <Récompenses>
+      <Or>231</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>De nombreux Blob de Gelée ont envahi une grotte à proximité des champs. Régulez leur
+      population pour protéger les récoltes.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Régulation des grottes[3]</Nom>
+    <Récompenses>
+      <Objets>Cape de Camouflage Écologique</Objets>
+      <Objets>Bouclier en Marshmallow</Objets>
+      <Or>833</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Poisson Volant attaquent le laboratoire secret d'un alchimiste. Vous devez en
+      éliminer 15 pour éviter qu'ils ne volent des informations sensibles.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Défense du laboratoire alchimique[3]</Nom>
+    <Récompenses>
+      <Objets>Bouclier de Lumière</Objets>
+      <Objets>Chaussettes Magiques</Objets>
+      <Or>575</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Crâne Souriant s'attaque à une caravane marchande. Tuez-en 20 pour
+      protéger les marchands et leur cargaison.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Protection des marchands[4]</Nom>
+    <Récompenses>
+      <Or>941</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Monstre à Tête de Citron attaque les villages de la vallée de l'Est.
+      Tuez-en 20 pour éviter qu'ils n'envahissent d'autres villages.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Défense des villages de l'Est[4]</Nom>
+    <Récompenses>
+      <Or>176</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Dragon d'Argile attaquent les voyageurs qui traversent la gorge des vents.
+      Tuez-e, 10 d'entre eux pour assurer la sécurité des routes.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Protection des voyageurs[2]</Nom>
+    <Récompenses>
+      <Or>995</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Monstre en Feuilles a été aperçu dans la forêt. Ils doivent être
+      éliminés avant qu'ils ne s'attaquent aux villageois.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Patrouille forestière[4]</Nom>
+    <Récompenses>
+      <Objets>Potion d'Invincibilité</Objets>
+      <Or>216</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Chauve-Souris de Lait sont responsables de l'invasion des terres sacrées. Leur
+      présence perturbe les cérémonies. Tuez-en 15 pour rétablir la paix.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Protection des terres sacrées[3]</Nom>
+    <Récompenses>
+      <Objets>Épée Légendaire</Objets>
+      <Or>809</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Poisson Volant se cachent dans les montagnes glacées. Leur présence menace les
+      habitants des villages alentours. Tuez-en 10 pour protéger la région.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Sécurisation des montagnes glacées[2]</Nom>
+    <Récompenses>
+      <Or>378</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Ogre a été repérée sur les montagnes. Leur invasion pourrait détruire
+      la vallée en contrebas. Éliminez-en 25 avant qu'il ne soit trop tard.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Chasse en montagne[5]</Nom>
+    <Récompenses>
+      <Or>199</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Dragon à Rayures ont envahi les temples de la vallée. Tuez-en 20 pour rétablir
+      le calme et protéger les reliques sacrées.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Défense des temples[4]</Nom>
+    <Récompenses>
+      <Objets>Potion d'Invisibilité Totale</Objets>
+      <Or>597</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Golem d'Argile a été repérée sur les montagnes. Leur invasion pourrait
+      détruire la vallée en contrebas. Éliminez-en 20 avant qu'il ne soit trop tard.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Chasse en montagne[4]</Nom>
+    <Récompenses>
+      <Or>937</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Behemoth a été vu en train de détruire des fermes dans le secteur. Les
+      fermiers demandent de l'aide. Éliminez-en 10 pour mettre fin à cette menace.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Aide aux fermiers[2]</Nom>
+    <Récompenses>
+      <Objets>Amulette de Soin</Objets>
+      <Or>586</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Blob de Gelée ont pris position autour de la forêt sacrée. Vous devez les
+      éliminer avant qu'ils ne perturbent le sanctuaire des anciens.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Protection de la forêt sacrée[3]</Nom>
+    <Récompenses>
+      <Or>808</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un chapeau invisible se balade dans le royaume. Bonne chance pour le retrouver !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Le mage qui a perdu son chapeau invisible</Nom>
+    <Récompenses>
+      <Objets>Arc de Chasseur</Objets>
+      <Objets>Potion de Visibilité</Objets>
+      <Or>651</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Elfe Noir ont envahi les tunnels sous la montagne. Ils piègent les mineurs et
+      détruisent les infrastructures. Éliminez-en 5 pour assurer leur évacuation.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Évacuation des tunnels[1]</Nom>
+    <Récompenses>
+      <Or>734</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Ce loup ne peut parler qu’en poésie. À vous de le comprendre !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Apprivoiser un loup… qui parle en rimes</Nom>
+    <Récompenses>
+      <Or>200</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Marcheur en Gomme a été vu en train de détruire des fermes dans le
+      secteur. Les fermiers demandent de l'aide. Éliminez-en 5 pour mettre fin à cette menace.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Aide aux fermiers[1]</Nom>
+    <Récompenses>
+      <Or>558</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un mystérieux panda ninja teste vos compétences en infiltration. Mais pourquoi ?</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>L’énigme du panda ninja</Nom>
+    <Récompenses>
+      <Or>117</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Golem de Pierre rôdent près des routes commerciales. Leur présence menace les
+      caravaniers. Tuez-en 10 pour garantir leur sécurité.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Protection des caravanes[2]</Nom>
+    <Récompenses>
+      <Objets>Armure de Guerre</Objets>
+      <Objets>Arc Éthéré</Objets>
+      <Or>687</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Revenant est à l'origine des récentes disparitions. Vous devez en tuer
+      10 pour empêcher d'autres victimes.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Résolution des disparitions[2]</Nom>
+    <Récompenses>
+      <Objets>Collier d'Agilité</Objets>
+      <Or>397</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Loup ont été vus près de la rivière. Leur présence empêche les pêcheurs locaux
+      de travailler. Éliminez-en 5 pour leur permettre de reprendre leur activité.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Sécurisation de la rivière[1]</Nom>
+    <Récompenses>
+      <Objets>Armure en Mithril</Objets>
+      <Or>753</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Griffon ont envahi les temples de la vallée. Tuez-en 10 pour rétablir le calme
+      et protéger les reliques sacrées.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Défense des temples[2]</Nom>
+    <Récompenses>
+      <Objets>Épée Enflammée</Objets>
+      <Or>772</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Démon de Feu sont responsables de l'invasion des terres sacrées. Leur présence
+      perturbe les cérémonies. Tuez-en 10 pour rétablir la paix.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Protection des terres sacrées[2]</Nom>
+    <Récompenses>
+      <Objets>Épée de Lame Noire</Objets>
+      <Objets>Grimoire des Runes</Objets>
+      <Or>360</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Drake attaquent le laboratoire secret d'un alchimiste. Vous devez en éliminer 5
+      pour éviter qu'ils ne volent des informations sensibles.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Défense du laboratoire alchimique[1]</Nom>
+    <Récompenses>
+      <Or>631</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Monstre à Tête de Citron ont envahi les tunnels sous la montagne. Ils piègent
+      les mineurs et détruisent les infrastructures. Éliminez-en 20 pour assurer leur évacuation.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Évacuation des tunnels[4]</Nom>
+    <Récompenses>
+      <Or>259</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Wyvern terrorisent les villageois. Eliminez-en 5 pour ramener le calme au
+      village.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Élimination villageoise[3]</Nom>
+    <Récompenses>
+      <Objets>Collier de Protection</Objets>
+      <Objets>Capaciteurs d'Électricité</Objets>
+      <Or>479</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Kraken ont pris le contrôle d'une mine abandonnée. Les mineurs locaux sont dans
+      une situation dangereuse. Éliminez 10 d'entre eux pour rétablir la paix.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Récupération de la mine[2]</Nom>
+    <Récompenses>
+      <Objets>Épée des Profondeurs</Objets>
+      <Or>462</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Minotaure Sombre infestent les ruines de l'ancien temple. Vous devez en éliminer
+      15 pour permettre aux explorateurs de récupérer les artefacts.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Nettoyage des ruines[3]</Nom>
+    <Récompenses>
+      <Objets>Grimoire des Ombres</Objets>
+      <Objets>Cape de Camouflage Écologique</Objets>
+      <Or>736</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Dragon à Rayures attaque les villages de la vallée de l'Est. Tuez-en 5
+      pour éviter qu'ils n'envahissent d'autres villages.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Défense des villages de l'Est[1]</Nom>
+    <Récompenses>
+      <Objets>Arc Mythique</Objets>
+      <Objets>Poignard Sombre</Objets>
+      <Or>115</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Bébé Kraken bloque l'entrée d'un village important. Vous devez en tuer
+      5 pour permettre aux habitants d'y entrer.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Déblocage du village[1]</Nom>
+    <Récompenses>
+      <Or>336</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Loup envahissent les plages près du phare. Leur présence empêche les navires de
+      débarquer. Éliminez 5 pour restaurer l'ordre.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Sécurisation des plages[1]</Nom>
+    <Récompenses>
+      <Or>807</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un barde vous suit partout en attendant que vous fassiez quelque chose d’épique.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Le barde en panne d’inspiration</Nom>
+    <Récompenses>
+      <Or>305</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Singe Électrique attaquent le laboratoire secret d'un alchimiste. Vous devez en
+      éliminer 25 pour éviter qu'ils ne volent des informations sensibles.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Défense du laboratoire alchimique[5]</Nom>
+    <Récompenses>
+      <Objets>Potion de Vie</Objets>
+      <Objets>Potion de Régénération</Objets>
+      <Or>148</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Beholder occupent les ruines de l'ancienne cité. Leur présence empêche toute
+      exploration. Tuez-en 20 pour permettre une expédition sécurisée.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Nettoyage des ruines antiques[4]</Nom>
+    <Récompenses>
+      <Objets>Anneau de Confusion</Objets>
+      <Or>926</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un dieu a faim. Il veut goûter la meilleure cuisine du royaume !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Cuisiner un plat pour un dieu affamé</Nom>
+    <Récompenses>
+      <Objets>Bouclier en Marshmallow</Objets>
+      <Or>549</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Dragonnet infestent les ruines de l'ancien temple. Vous devez en éliminer 5 pour
+      permettre aux explorateurs de récupérer les artefacts.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Nettoyage des ruines[1]</Nom>
+    <Récompenses>
+      <Objets>Armure Élégante</Objets>
+      <Objets>Bracelet de Réduction de Taille</Objets>
+      <Or>972</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Cheval à Tête de Citron sont responsables de l'invasion des terres sacrées. Leur
+      présence perturbe les cérémonies. Tuez-en 5 pour rétablir la paix.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Protection des terres sacrées[1]</Nom>
+    <Récompenses>
+      <Objets>Anneau de Force</Objets>
+      <Or>980</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Serpent Enrhumé a saccagé un village voisin. Empêchez-les d'approcher
+      de la ville.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Défense du village voisin[1]</Nom>
+    <Récompenses>
+      <Objets>Potion de Vol</Objets>
+      <Objets>Cape de Camouflage Écologique</Objets>
+      <Or>375</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Tableau Vivant s'attaque à une caravane marchande. Tuez-en 15 pour
+      protéger les marchands et leur cargaison.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Protection des marchands[3]</Nom>
+    <Récompenses>
+      <Or>337</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Chaussette Vivante envahissent les plages près du phare. Leur présence empêche
+      les navires de débarquer. Éliminez 10 pour restaurer l'ordre.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Sécurisation des plages[2]</Nom>
+    <Récompenses>
+      <Objets>Chapeau de Chat Invisible</Objets>
+      <Or>118</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Marcheur en Gomme ont envahi les tunnels sous la montagne. Ils piègent les
+      mineurs et détruisent les infrastructures. Éliminez-en 25 pour assurer leur évacuation.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Évacuation des tunnels[5]</Nom>
+    <Récompenses>
+      <Objets>Poignard</Objets>
+      <Or>467</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un nombre inquiétant de Diablotin attaque le bastion des gardes. Vous devez en
+      éliminer 20 pour éviter qu'ils ne prennent le fort.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Protection du bastion[4]</Nom>
+    <Récompenses>
+      <Objets>Armure Élégante</Objets>
+      <Or>458</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Serpent Mousseux se sont installés dans les égouts de la ville. Les citoyens ont
+      besoin de votre aide pour les éliminer. Tuez-en 20 pour libérer la ville.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Purge des égouts[4]</Nom>
+    <Récompenses>
+      <Or>347</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Monstre à Tête de Citron a été repérée sur les montagnes. Leur invasion
+      pourrait détruire la vallée en contrebas. Éliminez-en 15 avant qu'il ne soit trop tard.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Chasse en montagne[3]</Nom>
+    <Récompenses>
+      <Objets>Potion de Super-Force</Objets>
+      <Or>152</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Serpent Géant se cachent dans les montagnes glacées. Leur présence menace les
+      habitants des villages alentours. Tuez-en 25 pour protéger la région.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Sécurisation des montagnes glacées[5]</Nom>
+    <Récompenses>
+      <Or>247</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une quête qui semble ridicule… jusqu’à ce que vous découvriez pourquoi.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Rassembler 1 million de plumes de pigeons</Nom>
+    <Récompenses>
+      <Or>444</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Dragon d'Argile occupent les ruines de l'ancienne cité. Leur présence empêche
+      toute exploration. Tuez-en 5 pour permettre une expédition sécurisée.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Nettoyage des ruines antiques[1]</Nom>
+    <Récompenses>
+      <Objets>Poignard</Objets>
+      <Objets>Épée Magique</Objets>
+      <Or>847</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Prouvez votre force en affrontant des adversaires venus d'autres mondes.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Le tournoi de bras de fer interdimensionnel</Nom>
+    <Récompenses>
+      <Objets>Armure en Cuir</Objets>
+      <Or>888</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Marcheur en Gomme se cachent dans les montagnes glacées. Leur présence menace
+      les habitants des villages alentours. Tuez-en 5 pour protéger la région.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Sécurisation des montagnes glacées[1]</Nom>
+    <Récompenses>
+      <Objets>Épée à Double Tranchant</Objets>
+      <Or>754</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>De nombreux Panthère Polaire en Paille ont envahi une grotte à proximité des champs.
+      Régulez leur population pour protéger les récoltes.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Régulation des grottes[2]</Nom>
+    <Récompenses>
+      <Objets>Épée à Double Tranchant</Objets>
+      <Or>911</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>La princesse s’est à nouveau fait kidnapper. Mais cette fois, elle a laissé un piège
+      derrière elle.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Sauver la princesse... encore</Nom>
+    <Récompenses>
+      <Objets>Épée de Glace</Objets>
+      <Or>338</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Dragon s'attaque à une caravane marchande. Tuez-en 5 pour protéger les
+      marchands et leur cargaison.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Protection des marchands[1]</Nom>
+    <Récompenses>
+      <Objets>Bouclier en Mousse</Objets>
+      <Objets>Chapeau à Légumes</Objets>
+      <Or>520</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Orc attaquent la frontière sud, perturbant les gardes et les fermiers. Tuez-en 5
+      pour éviter qu'ils ne traversent le mur de défense.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Protection des frontières[1]</Nom>
+    <Récompenses>
+      <Objets>Anneau de Confusion</Objets>
+      <Or>325</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Blob de Gelée ont envahi les temples de la vallée. Tuez-en 15 pour rétablir le
+      calme et protéger les reliques sacrées.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Défense des temples[3]</Nom>
+    <Récompenses>
+      <Or>845</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Crâne Souriant attaquent les navires qui arrivent au port. Tuez-en 5 pour
+      sécuriser la zone et protéger les commerçants.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Défense du port[1]</Nom>
+    <Récompenses>
+      <Or>523</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Colosse a été aperçu dans la forêt. Ils doivent être éliminés avant
+      qu'ils ne s'attaquent aux villageois.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Patrouille forestière[1]</Nom>
+    <Récompenses>
+      <Objets>Armure en Cuir Souple</Objets>
+      <Objets>Potion de Boule de Feu sans Flammes</Objets>
+      <Or>187</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un fromager prétend avoir trouvé le fromage le plus rare du monde. Retrouvez-le
+      avant qu’il ne fonde !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>La quête du fromage légendaire</Nom>
+    <Récompenses>
+      <Or>926</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Cet arbre a une histoire à raconter. Protégez-le avant qu’il ne soit abattu.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Sauver un arbre qui parle</Nom>
+    <Récompenses>
+      <Or>711</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des gobelins se plaignent du bruit des aventuriers et veulent que ça cesse. Qui a
+      raison ?</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>La revanche des gobelins</Nom>
+    <Récompenses>
+      <Objets>Grimoires de Potions Inversées</Objets>
+      <Or>753</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Monstre des Marais a saccagé un village voisin. Empêchez-les
+      d'approcher de la ville.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Défense du village voisin[3]</Nom>
+    <Récompenses>
+      <Objets>Potion de Poussière d'Étoiles</Objets>
+      <Objets>Canne à Pêche Magique</Objets>
+      <Or>588</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Escargot Turbo attaquent les navires qui arrivent au port. Tuez-en 10 pour
+      sécuriser la zone et protéger les commerçants.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Défense du port[2]</Nom>
+    <Récompenses>
+      <Or>273</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>De nombreux Dragon à Rayures ont envahi une grotte à proximité des champs. Régulez
+      leur population pour protéger les récoltes.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Régulation des grottes[4]</Nom>
+    <Récompenses>
+      <Objets>Bouclier en Fer</Objets>
+      <Or>109</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Toile d'Araignée Géante envahissent les plages près du phare. Leur présence
+      empêche les navires de débarquer. Éliminez 20 pour restaurer l'ordre.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Sécurisation des plages[4]</Nom>
+    <Récompenses>
+      <Or>199</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un nombre inquiétant de Monstre à Tête de Citron attaque le bastion des gardes. Vous
+      devez en éliminer 10 pour éviter qu'ils ne prennent le fort.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Protection du bastion[2]</Nom>
+    <Récompenses>
+      <Objets>Écharpe de Glace Éternelle</Objets>
+      <Objets>Capaciteurs d'Électricité</Objets>
+      <Or>144</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un alchimiste fou veut colorer le ciel en violet. Aidez-le ou arrêtez-le !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Créer une potion qui change la couleur du ciel</Nom>
+    <Récompenses>
+      <Or>448</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Dragon Bric-à-Brac s'attaque à une caravane marchande. Tuez-en 10 pour
+      protéger les marchands et leur cargaison.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Protection des marchands[2]</Nom>
+    <Récompenses>
+      <Or>876</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Dragon infestent les ruines de l'ancien temple. Vous devez en éliminer 10 pour
+      permettre aux explorateurs de récupérer les artefacts.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Nettoyage des ruines[2]</Nom>
+    <Récompenses>
+      <Objets>Bouclier de Lumière</Objets>
+      <Objets>Amulette d'Invisibilité</Objets>
+      <Or>617</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un nombre inquiétant de Loup attaque le bastion des gardes. Vous devez en éliminer
+      25 pour éviter qu'ils ne prennent le fort.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Protection du bastion[5]</Nom>
+    <Récompenses>
+      <Objets>Montre qui Fait Avancer le Temps</Objets>
+      <Or>652</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Gargouille attaquent les voyageurs qui traversent la gorge des vents. Tuez-e, 20
+      d'entre eux pour assurer la sécurité des routes.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Protection des voyageurs[4]</Nom>
+    <Récompenses>
+      <Objets>Bracelet de Réduction de Taille</Objets>
+      <Objets>Chaussettes Magiques</Objets>
+      <Or>471</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Elfe Noir a été repérée sur les montagnes. Leur invasion pourrait
+      détruire la vallée en contrebas. Éliminez-en 10 avant qu'il ne soit trop tard.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Chasse en montagne[2]</Nom>
+    <Récompenses>
+      <Objets>Potion de Résistance</Objets>
+      <Objets>Grimoires de Potions Inversées</Objets>
+      <Or>909</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un vieil enchanteur a perdu ses bottes magiques. Elles courent partout dans la ville
+      !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Les bottes qui courent toutes seules</Nom>
+    <Récompenses>
+      <Objets>Grimoire des Runes</Objets>
+      <Or>786</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un nombre inquiétant de Robot en Bois attaque le bastion des gardes. Vous devez en
+      éliminer 5 pour éviter qu'ils ne prennent le fort.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Protection du bastion[1]</Nom>
+    <Récompenses>
+      <Objets>Amulette du Temps</Objets>
+      <Or>695</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Le faire rire, c’est facile. Le faire arrêter, c’est un autre problème…</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Faire rire un golem de pierre</Nom>
+    <Récompenses>
+      <Or>455</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un vieux pirate a déchiré sa carte. Retrouvez tous les morceaux !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Recomposer une carte au trésor… en puzzle</Nom>
+    <Récompenses>
+      <Objets>om</Objets>
+      <Or>376</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un nombre inquiétant de Poisson Pompier attaque le bastion des gardes. Vous devez en
+      éliminer 15 pour éviter qu'ils ne prennent le fort.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Protection du bastion[3]</Nom>
+    <Récompenses>
+      <Or>662</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un gobelin veut devenir roi des humains. Aidez-le à préparer son discours !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Le gobelin qui voulait être roi</Nom>
+    <Récompenses>
+      <Objets>Potion de Régénération</Objets>
+      <Objets>Épée en Fer</Objets>
+      <Or>134</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une potion vous transforme en slime. Expérience à ne pas rater !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Une journée dans la peau d’un slime</Nom>
+    <Récompenses>
+      <Or>145</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Il peut créer des armes incroyables… mais il éternue à chaque coup de marteau.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Le forgeron allergique au métal</Nom>
+    <Récompenses>
+      <Objets>Épée de Brume</Objets>
+      <Objets>Anneau de Mana</Objets>
+      <Or>670</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Bigfoot en Pyjama bloque l'entrée d'un village important. Vous devez en
+      tuer 15 pour permettre aux habitants d'y entrer.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Déblocage du village[3]</Nom>
+    <Récompenses>
+      <Or>567</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un ours polaire possède une échoppe magique. Problème ? Il fait fondre ses propres
+      stocks.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>L’ours polaire qui vend des glaces</Nom>
+    <Récompenses>
+      <Objets>Épée Légendaire</Objets>
+      <Or>987</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Chaque fois qu’il est vaincu, il revient plus fort. Trouvez comment briser la
+      boucle.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Tuer un monstre… qui revient toujours</Nom>
+    <Récompenses>
+      <Objets>Grimoire des Ombres</Objets>
+      <Or>584</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Vampire a saccagé un village voisin. Empêchez-les d'approcher de la
+      ville.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Défense du village voisin[5]</Nom>
+    <Récompenses>
+      <Or>578</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Beholder a envahi les champs de blé. Ils sont en train de détruire les
+      récoltes. Tuez-en 15 pour sauver la production agricole.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Sauvegarde des récoltes[3]</Nom>
+    <Récompenses>
+      <Objets>Épée Baguette Magique</Objets>
+      <Objets>Gloves of Awesomeness</Objets>
+      <Or>309</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Singe Électrique attaque les villages de la vallée de l'Est. Tuez-en 25
+      pour éviter qu'ils n'envahissent d'autres villages.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Défense des villages de l'Est[5]</Nom>
+    <Récompenses>
+      <Or>743</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Golem d'Argile est à l'origine des récentes disparitions. Vous devez en
+      tuer 25 pour empêcher d'autres victimes.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Résolution des disparitions[5]</Nom>
+    <Récompenses>
+      <Or>658</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les monstres ont pris possession du donjon abandonné. Éliminez-les avant qu’ils ne
+      fassent payer un loyer.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Nettoyage de donjon</Nom>
+    <Récompenses>
+      <Or>268</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Baleine en Caoutchouc a été vu en train de détruire des fermes dans le
+      secteur. Les fermiers demandent de l'aide. Éliminez-en 25 pour mettre fin à cette menace.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Aide aux fermiers[5]</Nom>
+    <Récompenses>
+      <Or>815</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Hydre a envahi les champs de blé. Ils sont en train de détruire les
+      récoltes. Tuez-en 10 pour sauver la production agricole.</Descripion>
+    <Difficulté>10</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Sauvegarde des récoltes[2]</Nom>
+    <Récompenses>
+      <Or>994</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Ours Sauvage infestent les ruines de l'ancien temple. Vous devez en éliminer 20
+      pour permettre aux explorateurs de récupérer les artefacts.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Nettoyage des ruines[4]</Nom>
+    <Récompenses>
+      <Or>698</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Vampire a été vu en train de détruire des fermes dans le secteur. Les
+      fermiers demandent de l'aide. Éliminez-en 20 pour mettre fin à cette menace.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Aide aux fermiers[4]</Nom>
+    <Récompenses>
+      <Objets>Potion de Régénération</Objets>
+      <Or>510</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Saurien harcèlent les fermiers dans la vallée. Leur nombre grandissant menace
+      l'approvisionnement en nourriture. Tuez-en 5 pour protéger les fermes.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Sécurisation de la vallée[1]</Nom>
+    <Récompenses>
+      <Or>786</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Poisson Lanceur de Pièces envahissent les plages près du phare. Leur présence
+      empêche les navires de débarquer. Éliminez 25 pour restaurer l'ordre.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Sécurisation des plages[5]</Nom>
+    <Récompenses>
+      <Or>402</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Gargouille attaquent les voyageurs qui traversent la gorge des vents. Tuez-e, 5
+      d'entre eux pour assurer la sécurité des routes.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Protection des voyageurs[1]</Nom>
+    <Récompenses>
+      <Or>553</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Chauve-Souris de Lait a envahi les champs de blé. Ils sont en train de
+      détruire les récoltes. Tuez-en 25 pour sauver la production agricole.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Sauvegarde des récoltes[5]</Nom>
+    <Récompenses>
+      <Objets>Grimoires du Rire Interdit</Objets>
+      <Objets>Armure Spectrale</Objets>
+      <Or>204</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Tableau Vivant infestent les ruines de l'ancien temple. Vous devez en éliminer
+      25 pour permettre aux explorateurs de récupérer les artefacts.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Nettoyage des ruines[5]</Nom>
+    <Récompenses>
+      <Or>528</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Golem de Pierre est à l'origine des récentes disparitions. Vous devez
+      en tuer 20 pour empêcher d'autres victimes.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Résolution des disparitions[4]</Nom>
+    <Récompenses>
+      <Or>466</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Poisson Pompier harcèlent les fermiers dans la vallée. Leur nombre grandissant
+      menace l'approvisionnement en nourriture. Tuez-en 20 pour protéger les fermes.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Sécurisation de la vallée[4]</Nom>
+    <Récompenses>
+      <Objets>Potion de Vol</Objets>
+      <Or>467</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Monstre de Caoutchouc attaquent le laboratoire secret d'un alchimiste. Vous
+      devez en éliminer 10 pour éviter qu'ils ne volent des informations sensibles.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Défense du laboratoire alchimique[2]</Nom>
+    <Récompenses>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Serpent Géant se sont installés dans les égouts de la ville. Les citoyens ont
+      besoin de votre aide pour les éliminer. Tuez-en 5 pour libérer la ville.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Purge des égouts[1]</Nom>
+    <Récompenses>
+      <Or>661</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Chaussette Vivante ont pris position autour de la forêt sacrée. Vous devez les
+      éliminer avant qu'ils ne perturbent le sanctuaire des anciens.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Protection de la forêt sacrée[4]</Nom>
+    <Récompenses>
+      <Objets>Épée de Feu Folle</Objets>
+      <Or>723</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Ogre envahissent les plages près du phare. Leur présence empêche les navires de
+      débarquer. Éliminez 15 pour restaurer l'ordre.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Sécurisation des plages[3]</Nom>
+    <Récompenses>
+      <Or>953</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>De nombreux Harpie ont envahi une grotte à proximité des champs. Régulez leur
+      population pour protéger les récoltes.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Régulation des grottes[5]</Nom>
+    <Récompenses>
+      <Or>942</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Sphinx rôdent près des routes commerciales. Leur présence menace les
+      caravaniers. Tuez-en 15 pour garantir leur sécurité.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Protection des caravanes[3]</Nom>
+    <Récompenses>
+      <Or>800</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une légende parle d’une soupe qui confère l’invincibilité. Le problème ? Ses
+      ingrédients sont introuvables.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>La soupe qui rend invincible</Nom>
+    <Récompenses>
+      <Or>992</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Esprit de la Forêt terrorisent les villageois. Eliminez-en 25 pour ramener le
+      calme au village.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Élimination villageoise[5]</Nom>
+    <Récompenses>
+      <Objets>Cape de Vitesse Stupide</Objets>
+      <Or>897</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Le berger du village vous supplie d’aider à contenir ses moutons instables.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Des moutons… explosifs</Nom>
+    <Récompenses>
+      <Or>848</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Minotaure Sombre sont responsables de l'invasion des terres sacrées. Leur
+      présence perturbe les cérémonies. Tuez-en 20 pour rétablir la paix.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Protection des terres sacrées[1]</Nom>
+    <Récompenses>
+      <Or>252</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Le royaume organise un concours de crêpes géantes. Gagnez-le !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Participer au concours du plus gros pancake</Nom>
+    <Récompenses>
+      <Objets>Chapeau de Magicien Farfelu</Objets>
+      <Objets>Potion d'Invisibilité Totale</Objets>
+      <Or>314</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un cheval doté de la parole ne fait que se plaindre. Trouvez un moyen de le faire
+      taire !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Un cheval qui parle… trop</Nom>
+    <Récompenses>
+      <Objets>om</Objets>
+      <Objets>Épée des Anciens</Objets>
+      <Or>712</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Serpent Enrhumé bloque l'entrée d'un village important. Vous devez en
+      tuer 25 pour permettre aux habitants d'y entrer.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Déblocage du village[5]</Nom>
+    <Récompenses>
+      <Or>158</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Ogre ont envahi les tunnels sous la montagne. Ils piègent les mineurs et
+      détruisent les infrastructures. Éliminez-en 15 pour assurer leur évacuation.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Évacuation des tunnels[3]</Nom>
+  </quête>
+  <quête>
+    <Descripion>Les Monstre de Gâteau ont pris position autour de la forêt sacrée. Vous devez les
+      éliminer avant qu'ils ne perturbent le sanctuaire des anciens.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Protection de la forêt sacrée[2]</Nom>
+    <Récompenses>
+      <Objets>Anneau de Régénération</Objets>
+      <Or>355</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Elfe Noir terrorisent les villageois. Eliminez-en 10 pour ramener le calme au
+      village.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Élimination villageoise[2]</Nom>
+    <Récompenses>
+      <Or>836</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Escargot Volant est à l'origine des récentes disparitions. Vous devez
+      en tuer 15 pour empêcher d'autres victimes.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Résolution des disparitions[3]</Nom>
+    <Récompenses>
+      <Objets>Arc Éthéré</Objets>
+      <Or>223</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Griffon en Tissu attaquent la frontière sud, perturbant les gardes et les
+      fermiers. Tuez-en 25 pour éviter qu'ils ne traversent le mur de défense.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Protection des frontières[5]</Nom>
+    <Récompenses>
+      <Objets>Amulette d'Endurance</Objets>
+      <Objets>Épée Volante</Objets>
+      <Or>464</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Monstre de Gâteau rôdent près des routes commerciales. Leur présence menace les
+      caravaniers. Tuez-en 5 pour garantir leur sécurité.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Protection des caravanes[1]</Nom>
+    <Récompenses>
+      <Or>706</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des météores sucrés tombent du ciel. Pourquoi ?</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Survivre à une pluie de météores en gélatine</Nom>
+    <Récompenses>
+      <Or>991</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Crâne Souriant occupent les ruines de l'ancienne cité. Leur présence empêche
+      toute exploration. Tuez-en 15 pour permettre une expédition sécurisée.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Nettoyage des ruines antiques[3]</Nom>
+    <Récompenses>
+      <Or>353</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un mage a transformé son bâton en pain. Il a besoin d’un boulanger légendaire pour
+      l’inverser.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Une baguette magique... en pain</Nom>
+    <Récompenses>
+      <Objets>Potion de Mutation Temporisée</Objets>
+      <Objets>Amulette d'Endurance</Objets>
+      <Or>362</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Dragon Bric-à-Brac a été repérée sur les montagnes. Leur invasion
+      pourrait détruire la vallée en contrebas. Éliminez-en 5 avant qu'il ne soit trop tard.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Chasse en montagne[1]</Nom>
+    <Récompenses>
+      <Objets>Potion d'Avertissement</Objets>
+      <Or>237</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Cactus Rampant attaquent les navires qui arrivent au port. Tuez-en 25 pour
+      sécuriser la zone et protéger les commerçants.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Défense du port[5]</Nom>
+    <Récompenses>
+      <Or>872</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Il vend des potions interdites… mais est incroyablement rapide !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Course-poursuite avec un marchand louche</Nom>
+    <Récompenses>
+      <Objets>Potion d'Invincibilité</Objets>
+      <Objets>Monture Volante (Hippogriffe en Peluche)</Objets>
+      <Or>883</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Crâne de Légume a envahi les champs de blé. Ils sont en train de
+      détruire les récoltes. Tuez-en 5 pour sauver la production agricole.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Sauvegarde des récoltes[1]</Nom>
+    <Récompenses>
+      <Objets>Amulette d'Invisibilité</Objets>
+      <Or>475</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Minotaure attaquent le laboratoire secret d'un alchimiste. Vous devez en
+      éliminer 20 pour éviter qu'ils ne volent des informations sensibles.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Défense du laboratoire alchimique[4]</Nom>
+    <Récompenses>
+      <Objets>Arc de Tempête</Objets>
+      <Objets>Armure en Cuir</Objets>
+      <Or>432</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>De nombreux Chien Extra-Terrestre ont envahi une grotte à proximité des champs.
+      Régulez leur population pour protéger les récoltes.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Régulation des grottes[1]</Nom>
+    <Récompenses>
+      <Or>184</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Monstre en Carton a été aperçu dans la forêt. Ils doivent être éliminés
+      avant qu'ils ne s'attaquent aux villageois.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Patrouille forestière[5]</Nom>
+    <Récompenses>
+      <Objets>Potion de Vie</Objets>
+      <Objets>Monture de Gâteau</Objets>
+      <Or>150</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Griffon ont pris position autour de la forêt sacrée. Vous devez les éliminer
+      avant qu'ils ne perturbent le sanctuaire des anciens.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Protection de la forêt sacrée[1]</Nom>
+    <Récompenses>
+      <Or>252</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Anguille Géante a envahi les champs de blé. Ils sont en train de
+      détruire les récoltes. Tuez-en 20 pour sauver la production agricole.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Sauvegarde des récoltes[4]</Nom>
+    <Récompenses>
+      <Objets>Canne à Pêche Magique</Objets>
+      <Objets>Arc Long</Objets>
+      <Or>480</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Ce poisson n’arrête pas de parler. Mais il connaît peut-être un secret !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Pêcher un poisson… qui raconte des blagues</Nom>
+    <Récompenses>
+      <Objets>Anneau de Mana</Objets>
+      <Objets>Cape de Vitesse Stupide</Objets>
+      <Or>893</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un esprit malin ne peut être capturé qu’avec une cuillère en argent très spécifique.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Attraper un fantôme… avec une cuillère</Nom>
+    <Récompenses>
+      <Objets>Armure Légère</Objets>
+      <Or>182</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Escargot Turbo ont été vus près de la rivière. Leur présence empêche les
+      pêcheurs locaux de travailler. Éliminez-en 15 pour leur permettre de reprendre leur activité.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Sécurisation de la rivière[3]</Nom>
+    <Récompenses>
+      <Objets>Grimoire des Portails</Objets>
+      <Objets>Arc en Bois</Objets>
+      <Or>767</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Licorne attaquent les navires qui arrivent au port. Tuez-en 20 pour sécuriser la
+      zone et protéger les commerçants.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Défense du port[4]</Nom>
+    <Récompenses>
+      <Objets>Anneau de Téléportation Accidentelle</Objets>
+      <Objets>Capaciteurs d'Électricité</Objets>
+      <Or>702</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Gagnez, et vous obtenez une récompense divine. Perdez… et vous verrez bien.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Jouer une partie d’échecs contre la Mort</Nom>
+    <Récompenses>
+      <Or>764</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une créature légendaire existe, mais elle est insaisissable.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Trouver la licorne qui pète des arcs-en-ciel</Nom>
+    <Récompenses>
+      <Or>913</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Slime à Poils attaquent les navires qui arrivent au port. Tuez-en 15 pour
+      sécuriser la zone et protéger les commerçants.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Défense du port[3]</Nom>
+    <Récompenses>
+      <Objets>Chapeau de Magicien Farfelu</Objets>
+      <Objets>Amulette d'Endurance</Objets>
+      <Or>720</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Poulet Mutant ont pris position autour de la forêt sacrée. Vous devez les
+      éliminer avant qu'ils ne perturbent le sanctuaire des anciens.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Protection de la forêt sacrée[5]</Nom>
+    <Récompenses>
+      <Objets>Épée de l'Apocalypse</Objets>
+      <Or>377</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Poisson Pompier harcèlent les fermiers dans la vallée. Leur nombre grandissant
+      menace l'approvisionnement en nourriture. Tuez-en 15 pour protéger les fermes.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Sécurisation de la vallée[3]</Nom>
+    <Récompenses>
+      <Objets>Épée Volante</Objets>
+      <Objets>Grimoire de Foudre</Objets>
+      <Or>900</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un chef cuisinier vous demande de l’aider à retrouver une recette de pizza divine.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>La recette de la pizza ultime</Nom>
+    <Récompenses>
+      <Or>754</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un sorcier prétend pouvoir créer une potion ultime avec un bout de la lune.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Voler la lune pour un sorcier excentrique</Nom>
+    <Récompenses>
+      <Objets>Grimoire de Flammes</Objets>
+      <Or>793</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Baleine en Caoutchouc ont envahi les tunnels sous la montagne. Ils piègent les
+      mineurs et détruisent les infrastructures. Éliminez-en 10 pour assurer leur évacuation.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Évacuation des tunnels[2]</Nom>
+    <Récompenses>
+      <Or>463</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Vampire occupent les ruines de l'ancienne cité. Leur présence empêche toute
+      exploration. Tuez-en 25 pour permettre une expédition sécurisée.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Nettoyage des ruines antiques[5]</Nom>
+    <Récompenses>
+      <Or>450</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Toile d'Araignée Géante terrorisent les villageois. Eliminez-en 20 pour ramener
+      le calme au village.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Élimination villageoise[4]</Nom>
+    <Récompenses>
+      <Or>394</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Squelette a été vu en train de détruire des fermes dans le secteur. Les
+      fermiers demandent de l'aide. Éliminez-en 15 pour mettre fin à cette menace.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Aide aux fermiers[5]</Nom>
+    <Récompenses>
+      <Or>226</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Harpie rôdent près des routes commerciales. Leur présence menace les
+      caravaniers. Tuez-en 20 pour garantir leur sécurité.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Protection des caravanes[4]</Nom>
+    <Récompenses>
+      <Or>423</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Saurien attaquent la frontière sud, perturbant les gardes et les fermiers.
+      Tuez-en 20 pour éviter qu'ils ne traversent le mur de défense.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Protection des frontières[4]</Nom>
+    <Récompenses>
+      <Objets>Potion de Lévitations</Objets>
+      <Or>466</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Monstre de Caoutchouc se cachent dans les montagnes glacées. Leur présence
+      menace les habitants des villages alentours. Tuez-en 20 pour protéger la région.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Sécurisation des montagnes glacées[4]</Nom>
+    <Récompenses>
+      <Objets>Épée de Lame Noire</Objets>
+      <Or>494</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un jeune alchimiste teste ses potions… sur des volontaires (vous).</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>L’apprenti alchimiste explosif</Nom>
+    <Récompenses>
+      <Or>918</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Chouette de Nuit Lumineuse a été aperçu dans la forêt. Ils doivent être
+      éliminés avant qu'ils ne s'attaquent aux villageois.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Patrouille forestière[3]</Nom>
+    <Récompenses>
+      <Objets>Potion de Rire Incontrôlable</Objets>
+      <Or>542</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Monstre de Caoutchouc ont pris le contrôle d'une mine abandonnée. Les mineurs
+      locaux sont dans une situation dangereuse. Éliminez 15 d'entre eux pour rétablir la paix.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Récupération de la mine[3]</Nom>
+    <Récompenses>
+      <Or>888</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Poisson Pompier attaque les villages de la vallée de l'Est. Tuez-en 15
+      pour éviter qu'ils n'envahissent d'autres villages.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Défense des villages de l'Est[3]</Nom>
+    <Récompenses>
+      <Or>249</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Chien à 3 Têtes terrorisent les villageois. Eliminez-en 15 pour ramener le calme
+      au village.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Élimination villageoise[3]</Nom>
+    <Récompenses>
+      <Or>103</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un roi veut un escargot doré pour décorer son château. Problème : ça n’existe pas.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>La quête de l’escargot doré</Nom>
+    <Récompenses>
+      <Or>159</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Monstre de Caoutchouc ont pris le contrôle d'une mine abandonnée. Les mineurs
+      locaux sont dans une situation dangereuse. Éliminez 25 d'entre eux pour rétablir la paix.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Récupération de la mine[1]</Nom>
+    <Récompenses>
+      <Or>736</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Poisson Lanceur de Pièces est à l'origine des récentes disparitions.
+      Vous devez en tuer 5 pour empêcher d'autres victimes.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Résolution des disparitions[1]</Nom>
+    <Récompenses>
+      <Or>143</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Chimère a été aperçu dans la forêt. Ils doivent être éliminés avant
+      qu'ils ne s'attaquent aux villageois.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Patrouille forestière[2]</Nom>
+    <Récompenses>
+      <Or>588</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Suite à une bévue, vous êtes élu maire. Gérez les crises absurdes des habitants.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Devenez maire par accident</Nom>
+    <Récompenses>
+      <Objets>Bracelet de Réduction de Taille</Objets>
+      <Or>165</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un être mystérieux vole toutes les chaussettes du royaume. Récupérez-les avant que
+      l’hiver n’arrive.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Vol de chaussettes</Nom>
+    <Récompenses>
+      <Objets>Épée des Profondeurs</Objets>
+      <Objets>Bouclier de Lumière</Objets>
+      <Or>516</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des poulets mutants sèment la terreur dans le village. Qui les a rendus aussi
+      énormes ?</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>L’attaque des poulets géants</Nom>
+    <Récompenses>
+      <Objets>Gloves of Awesomeness</Objets>
+      <Objets>Potion de Soin Majeure</Objets>
+      <Or>460</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Phoenix attaquent les voyageurs qui traversent la gorge des vents. Tuez-e, 25
+      d'entre eux pour assurer la sécurité des routes.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Protection des voyageurs[5]</Nom>
+    <Récompenses>
+      <Objets>Chapeau de Licorne</Objets>
+      <Or>169</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Soleil Endormi ont envahi les temples de la vallée. Tuez-en 25 pour rétablir le
+      calme et protéger les reliques sacrées.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>0</Expérience>
+    <Nom>Défense des temples[5]</Nom>
+    <Récompenses>
+      <Objets>Bouclier de Golem</Objets>
+      <Objets>Monture Volante (Hippogriffe en Peluche)</Objets>
+      <Or>668</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Ce dragon adore le théâtre. Impressionnez-le avec votre talent !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Jouer une pièce de théâtre pour distraire un dragon</Nom>
+    <Récompenses>
+      <Or>702</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>La source d’eau sacrée est bloquée par un énorme bouchon de cheveux. Dégagez-la.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>La fontaine de jouvence… bouchée</Nom>
+    <Récompenses>
+      <Or>855</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Une horde de Poire Mutante attaque les villages de la vallée de l'Est. Tuez-en 10
+      pour éviter qu'ils n'envahissent d'autres villages.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Défense des villages de l'Est[2]</Nom>
+    <Récompenses>
+      <Or>481</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Chauve-Souris Géante ont été vus près de la rivière. Leur présence empêche les
+      pêcheurs locaux de travailler. Éliminez-en 25 pour leur permettre de reprendre leur activité.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Sécurisation de la rivière[5]</Nom>
+    <Récompenses>
+      <Objets>Anneau de Force</Objets>
+      <Objets>Grimoire des Runes</Objets>
+      <Or>309</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Elfe Noir se sont installés dans les égouts de la ville. Les citoyens ont besoin
+      de votre aide pour les éliminer. Tuez-en 25 pour libérer la ville.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Purge des égouts[5]</Nom>
+    <Récompenses>
+      <Objets>Anneau de Téléportation Accidentelle</Objets>
+      <Objets>Armure en Cuir Souple</Objets>
+      <Or>256</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Baleine en Caoutchouc a saccagé un village voisin. Empêchez-les
+      d'approcher de la ville.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>3000</Expérience>
+    <Nom>Défense du village voisin[4]</Nom>
+    <Récompenses>
+      <Objets>Arc Mythique</Objets>
+      <Objets>Épée de Lame Noire</Objets>
+      <Or>338</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Sphinx ont envahi les temples de la vallée. Tuez-en 5 pour rétablir le calme et
+      protéger les reliques sacrées.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Défense des temples[1]</Nom>
+    <Récompenses>
+      <Or>939</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Phoenix ont pris le contrôle d'une mine abandonnée. Les mineurs locaux sont dans
+      une situation dangereuse. Éliminez 5 d'entre eux pour rétablir la paix.</Descripion>
+    <Difficulté>1</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Récupération de la mine[1]</Nom>
+    <Récompenses>
+      <Objets>Chaussures d'Elasticité</Objets>
+      <Objets>Bouclier en Glace Éphémère</Objets>
+      <Or>261</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Zombie se sont installés dans les égouts de la ville. Les citoyens ont besoin de
+      votre aide pour les éliminer. Tuez-en 10 pour libérer la ville.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>1500</Expérience>
+    <Nom>Purge des égouts[2]</Nom>
+    <Récompenses>
+      <Objets>Plume du Phénix</Objets>
+      <Or>713</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Chauve-Souris en Tutu se sont installés dans les égouts de la ville. Les
+      citoyens ont besoin de votre aide pour les éliminer. Tuez-en 15 pour libérer la ville.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>5000</Expérience>
+    <Nom>Purge des égouts[3]</Nom>
+    <Récompenses>
+      <Or>233</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Dragon Bric-à-Brac ont été vus près de la rivière. Leur présence empêche les
+      pêcheurs locaux de travailler. Éliminez-en 20 pour leur permettre de reprendre leur activité.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>2500</Expérience>
+    <Nom>Sécurisation de la rivière[4]</Nom>
+    <Récompenses>
+      <Objets>Arc en Bois</Objets>
+      <Objets>Potion d'Invisibilité Totale</Objets>
+      <Or>261</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Panthère Polaire en Paille bloque l'entrée d'un village important. Vous
+      devez en tuer 10 pour permettre aux habitants d'y entrer.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>2000</Expérience>
+    <Nom>Déblocage du village[2]</Nom>
+    <Récompenses>
+      <Or>917</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Licorne de Papier harcèlent les fermiers dans la vallée. Leur nombre grandissant
+      menace l'approvisionnement en nourriture. Tuez-en 10 pour protéger les fermes.</Descripion>
+    <Difficulté>2</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Sécurisation de la vallée[2]</Nom>
+    <Récompenses>
+      <Or>920</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un lapin colosse a faim. Trouvez-lui sa carotte légendaire !</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Le lapin géant en quête de carottes dorées</Nom>
+    <Récompenses>
+      <Objets>Bouclier en Glace Éphémère</Objets>
+      <Or>603</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Dragon Bric-à-Brac ont pris le contrôle d'une mine abandonnée. Les mineurs
+      locaux sont dans une situation dangereuse. Éliminez 20 d'entre eux pour rétablir la paix.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>500</Expérience>
+    <Nom>Récupération de la mine[4]</Nom>
+    <Récompenses>
+      <Or>724</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Des Chaussette Vivante rôdent près des routes commerciales. Leur présence menace les
+      caravaniers. Tuez-en 25 pour garantir leur sécurité.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>1000</Expérience>
+    <Nom>Protection des caravanes[5]</Nom>
+    <Récompenses>
+      <Or>465</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Monstre de Caoutchouc occupent les ruines de l'ancienne cité. Leur présence
+      empêche toute exploration. Tuez-en 10 pour permettre une expédition sécurisée.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>4500</Expérience>
+    <Nom>Nettoyage des ruines antiques[2]</Nom>
+    <Récompenses>
+      <Or>677</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Golem d'Argile sont responsables de l'invasion des terres sacrées. Leur présence
+      perturbe les cérémonies. Tuez-en 25 pour rétablir la paix.</Descripion>
+    <Difficulté>5</Difficulté>
+    <Expérience>3500</Expérience>
+    <Nom>Protection des terres sacrées[5]</Nom>
+    <Récompenses>
+      <Objets>Armure de Fleurs Sauvages</Objets>
+      <Or>940</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Un groupe de Démon de Feu bloque l'entrée d'un village important. Vous devez en tuer
+      20 pour permettre aux habitants d'y entrer.</Descripion>
+    <Difficulté>4</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Déblocage du village[4]</Nom>
+    <Récompenses>
+      <Objets>Armure Élégante</Objets>
+      <Objets>Anneau de Régénération</Objets>
+      <Or>975</Or>
+    </Récompenses>
+  </quête>
+  <quête>
+    <Descripion>Les Dragon Bric-à-Brac attaquent la frontière sud, perturbant les gardes et les
+      fermiers. Tuez-en 15 pour éviter qu'ils ne traversent le mur de défense.</Descripion>
+    <Difficulté>3</Difficulté>
+    <Expérience>4000</Expérience>
+    <Nom>Protection des frontières[3]</Nom>
+    <Récompenses>
+      <Objets>Bouclier de Lumière</Objets>
+      <Or>490</Or>
+    </Récompenses>
+  </quête>
+</quêtes>

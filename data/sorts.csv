@@ -1,0 +1,101 @@
+ID,Nom,Coût en Mana,Temps de Recharge,Puissance d'Attaque
+001,Boule de Feu,30,5,50
+002,Foudre,40,6,60
+003,Guérison,20,4,0
+004,Tempête de Glace,50,8,70
+005,Explosion Magique,60,10,100
+006,Invisibilité,25,15,0
+007,Choc Sismique,45,7,80
+008,Pluie Acide,35,6,55
+009,Éclair Divin,50,12,90
+010,Sort de Protection,20,3,0
+011,Poison Corrosif,30,8,40
+012,Armure Magique,25,5,0
+013,Flamme Sacrée,40,7,75
+014,Chant de Régénération,30,9,0
+015,Rayon de Glace,25,4,45
+016,Tempête de Sable,35,6,50
+017,Explosion de Lumière,50,12,85
+018,Curse,20,5,30
+019,Invocation de Loup,40,10,0
+020,Portail Dimensional,60,15,0
+021,Poing de Terre,35,7,60
+022,Explosion de Vents,30,5,50
+023,Mirage,20,8,0
+024,Souffle de Dragon,60,15,100
+025,Colère de la Nature,45,10,75
+026,Flèches Magiques,20,4,40
+027,Séisme,50,9,80
+028,Trappe Piégée,15,3,0
+029,Souffle Glacial,40,8,70
+030,Étreinte du Fantôme,30,6,50
+031,Marche de l'Ombre,25,12,0
+032,Explosion de Cendres,45,7,65
+033,Choc Mental,35,6,55
+034,Éclat de Lune,30,5,50
+035,Fortification,20,8,0
+036,Rayon Solaire,60,10,90
+037,Appel du Vortex,50,15,85
+038,Charge Électrique,30,6,60
+039,Pluie de Comètes,80,15,150
+040,Sort de Confusion,25,4,0
+041,Carapace de Pierre,30,5,0
+042,Bouclier de Lumière,20,5,0
+043,Explosion Céleste,50,12,95
+044,Poussière d'Étoiles,15,3,0
+045,Chant de la Sirène,30,10,0
+046,Explosion Toxique,40,8,75
+047,Rayon Dévastateur,70,15,120
+048,Armure d'Argent,35,10,0
+049,Clé de la Volonté,25,7,0
+050,Vision Perçante,20,6,0
+051,Frissons Glacés,15,3,30
+052,Faux-Mouvement,20,5,0
+053,Appel d'Insectes,25,6,40
+054,Lame d'Air,30,4,35
+055,Pluie de Pétales,10,5,20
+056,Fenêtre Dimensionnelle,25,7,0
+057,Volonté du Feu,20,3,45
+058,Pierres Mouvantes,20,5,15
+059,Tempête Magique,35,6,45
+060,Clarté Mentale,10,4,25
+061,Choc d'Ombres,30,8,40
+062,Frissons Magiques,25,6,50
+063,Appel de la Lune,15,3,15
+064,Saut du Vent,10,5,0
+065,Morsure de Foudre,25,7,35
+066,Poison Paralysant,20,5,30
+067,Lumière Aveuglante,15,6,20
+068,Distorsion Temporelle,30,10,0
+069,Frappe Fantomatique,25,4,30
+070,Brise d'Été,15,3,15
+071,Invocation de Moucherons,10,3,0
+072,Main Sombre,25,5,40
+073,Larme de Lune,30,7,35
+074,Poussière Enchantée,10,4,25
+075,Éclat d'Obscurité,20,6,35
+076,Lame de Vent,15,5,30
+077,Illusion Mineure,10,4,0
+078,Régénération Lente,20,8,0
+079,Nuage Poison,25,6,20
+080,Divination Rapide,15,4,0
+081,Décharge Mentale,20,6,40
+082,Poids Lourd,30,7,0
+083,Soin Mineur,10,3,0
+084,Évasion de l'Ombre,20,5,0
+085,Fracas Psychique,25,7,50
+086,Séduction,15,3,0
+087,Exécution Rapide,35,8,45
+088,Respiration Aquatique,10,5,0
+089,Explosion Tactile,20,6,30
+090,Roulement de Pierre,30,7,40
+091,Tempête d'Éclairs,35,10,50
+092,Poing Spectral,25,4,25
+093,Brume Mystique,15,3,0
+094,Clé de l'Esprit,20,5,0
+095,Poing de Feu,25,5,40
+096,Répulsion,20,6,0
+097,Souffle du Vent,25,5,30
+098,Pluie Lourde,15,5,0
+099,Soin Céleste,40,12,0
+100,Lance de Glace,30,8,50

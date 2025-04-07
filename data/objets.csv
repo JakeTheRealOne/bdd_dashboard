@@ -1,0 +1,151 @@
+Nom,Type,Propriétés,Prix
+Épée en Fer,Arme,Puissance d'attaque: 15,50
+Arc en Bois,Arme,Puissance d'attaque: 12,40
+Arc Long,Arme,Puissance d'attaque: 18,60
+Épée Magique,Arme,Puissance d'attaque: 25,100
+Potion de Vie,Potion,Soin: 50,20
+Potion de Mana,Potion,Régénération de mana: 30,25
+Armure en Cuir,Armure,Défense: 10,35
+Armure Légère,Armure,Défense: 15,50
+Armure en Fer,Armure,Défense: 20,70
+Armure Magique,Armure,Défense: 25,90
+Anneau de Force,Artefact,Effet: Augmente la force de 5,45
+Amulette de Soin,Artefact,Effet: Soigne 20 points de vie par tour,75
+Collier d'Agilité,Artefact,Effet: Augmente l'agilité de 5,40
+Anneau de Mana,Artefact,Effet: Augmente la régénération de mana de 20%,55
+Épée Légendaire,Arme,Puissance d'attaque: 40,200
+Arc de Feu,Arme,Puissance d'attaque: 20,100
+Bouclier en Fer,Armure,Défense: 30,50
+Bouclier Magique,Armure,Défense: 35,80
+Potion de Soin Mineure,Potion,Soin: 25,15
+Potion de Soin Majeure,Potion,Soin: 75,30
+Grimoire Ancien,Artefact,Effet: Augmente l'intelligence de 5,90
+Amulette d'Endurance,Artefact,Effet: Augmente la vie maximale de 50,100
+Poignard,Arme,Puissance d'attaque: 10,25
+Épée à Double Tranchant,Arme,Puissance d'attaque: 30,85
+Arc Éthéré,Arme,Puissance d'attaque: 22,80
+Armure de Guerre,Armure,Défense: 40,120
+Casque de Protection,Armure,Défense: 5,20
+Ceinture de Force,Artefact,Effet: Augmente la force de 10,60
+Grimoire de Givre,Artefact,Effet: Lance un sort de givre (dégâts +10),110
+Anneau de Vitesse,Artefact,Effet: Augmente l'agilité de 10,50
+Potion de Résistance,Potion,Augmente la résistance aux dégâts de 30% pendant 10 min,40
+Épée Runique,Arme,Puissance d'attaque: 35,120
+Bouclier de Lumière,Armure,Défense: 25,70
+Poignard Sombre,Arme,Puissance d'attaque: 15,45
+Armure Divine,Armure,Défense: 50,150
+Potion de Vigueur,Potion,Augmente la force et l'agilité de 10%,50
+Amulette d'Invisibilité,Artefact,Effet: Rends invisible pendant 5 secondes,120
+Grimoire des Ombres,Artefact,Effet: Lance un sort d'ombre (dégâts +15),130
+Arc de Glace,Arme,Puissance d'attaque: 25,90
+Potion de Magie,Potion,Régénère 50 points de mana,30
+Bouclier de Golem,Armure,Défense: 35,95
+Armure en Mithril,Armure,Défense: 45,130
+Anneau du Mage,Artefact,Effet: Augmente l'intelligence de 10,80
+Épée de Lame Noire,Arme,Puissance d'attaque: 45,180
+Grimoire de Flammes,Artefact,Effet: Lance un sort de feu (dégâts +20),150
+Ceinture de Résistance,Artefact,Effet: Réduit les dégâts subis de 10%,70
+Arc de Tempête,Arme,Puissance d'attaque: 28,110
+Armure Spectrale,Armure,Défense: 30,100
+Anneau de Régénération,Artefact,Effet: Régénère 10 points de vie par tour,65
+Potion d'Invincibilité,Potion,Invincibilité pendant 5 secondes,120
+om,Type,Propriétés,Prix
+Marteau du Ciel,Arme,Puissance d'attaque: 50,200
+Chaussures de Glisse,Armure,Effet: Glisse sur l'eau sans s'enfoncer,75
+Potion de Super-Force,Potion,Augmente la force de 100 pendant 10 minutes,150
+Chapeau de Magicien Farfelu,Artefact,Effet: Change la couleur des objets autour de toi,50
+Épée de Bonbons,Arme,Puissance d'attaque: 10,25
+Anneau de Téléportation Accidentelle,Artefact,Effet: Téléporte le porteur à un endroit aléatoire,100
+Potion de Rire Incontrôlable,Potion,Effet: Fait rire toutes les personnes autour pendant 30 secondes,30
+Cape de Camouflage Écologique,Armure,Effet: Se fond dans le décor, 45
+Armure de Fleurs Sauvages,Armure,Défense: 5,30
+Épée en Pâte à Modeler,Arme,Puissance d'attaque: 2,10
+Anneau de Confusion,Artefact,Effet: Fait oublier aux ennemis ce qu'ils faisaient,60
+Potion d'Invisibilité Totale,Potion,Invisibilité pendant 10 secondes,75
+Écharpe de Glace Éternelle,Armure,Effet: Fait apparaître de la neige à chaque mouvement,40
+Grimoires des Blagues Magiques,Artefact,Effet: Lance des sorts comiques sur les ennemis,85
+Bouclier en Marshmallow,Armure,Défense: 2,10
+Chaussures Volantes,Artefact,Effet: Permet de flotter à 1 mètre du sol pendant 5 secondes,90
+Canne à Pêche Magique,Arme,Puissance d'attaque: 0,5 60
+Gloves of Awesomeness,Armure,Effet: Augmente le charisme du porteur de 15%,80
+Bracelet de Réduction de Taille,Artefact,Effet: Réduit la taille du porteur à 50% de sa taille normale,110
+Épée de Feu Folle,Arme,Puissance d'attaque: 25, 120
+Cape de Vitesse Stupide,Armure,Effet: Augmente la vitesse de déplacement 55
+Potion de Changement de Voix,Potion,Change la voix du buveur en celle d'un robot pendant 1 heure,40
+Clé du Temps Perdu,Artefact,Effet: Ouvre des portails vers des mondes où le temps passe différemment,150
+Épée à Lame Gourmande,Arme,Puissance d'attaque: 20, 70
+Écharpe Anti-Froid Extrême,Armure,Effet: Bloque tout effet de froid 60
+Potion de Super-Mémoire,Potion,Se souvient de tout ce qui s'est passé depuis la création de l'univers,100
+Chapeau de Chat Invisible,Artefact,Effet: Permet de rendre invisible le porteur pendant 30 secondes, 45
+Grimoires de Potions Inversées,Artefact,Effet: Inverse les effets des potions consommées,120
+Épée de Lune,Arme,Puissance d'attaque: 30, 100
+Montre qui Fait Avancer le Temps,Artefact,Effet: Avance de 5 minutes dans le temps, 80
+Potion de Danse Folle,Potion,Fait danser tout le monde autour du buveur pendant 10 minutes,35
+Bouclier en Glace Éphémère,Armure,Défense: 25, 50
+Épée à Garde Inversée,Arme,Puissance d'attaque: 35, 120
+Monture Volante (Hippogriffe en Peluche),Artefact,Effet: Permet de voler pendant 5 minutes, 150
+Chaussettes de Glissement,Armure,Effet: Permet de glisser sur n'importe quelle surface, 40
+Capaciteurs d'Électricité,Artefact,Effet: Augmente les dégâts électriques de 50%, 70
+Potion de Mutation Temporisée,Potion,Change l'apparence du buveur en une créature aléatoire pendant 1 heure,60
+Épée de Clochettes Magiques,Arme,Puissance d'attaque: 10, 50
+Chapeau de Lutin,Artefact,Effet: Joue des farces sur les ennemis, 55
+Bouclier de Paille,Armure,Défense: 1, 30
+Grimoires du Rire Interdit,Artefact,Effet: Fait éclater de rire les ennemis, 95
+Potion d'Avertissement,Arme,Émet un cri strident avant chaque attaque,50
+Épée de Brume,Arme,Puissance d'attaque: 15, 70
+Bracelet des Souhaits Non Réalisés,Artefact,Effet: Exauce un souhait, 85
+Plume du Phénix,Artefact,Effet: Relève le porteur après la mort, 200
+Bouclier de Nuages,Armure,Défense: 20, 60
+Chapeau de Licorne,Artefact,Effet: Crée un arc-en-ciel chaque fois que tu ris,45
+Potion de Boule de Feu sans Flammes,Potion,Lance une boule de feu qui ne brûle pas,50
+Épée de Cristal Magique,Arme,Puissance d'attaque: 40, 110
+Monture de Gâteau,Artefact,Effet: Permet de chevaucher une monture en forme de gâteau, 90
+om,Type,Propriétés,Prix
+Épée en Acier,Arme,Puissance d'attaque: 30,75
+Bouclier de Fer,Armure,Défense: 20,50
+Potion de Régénération,Potion,Soins: 40,35
+Potion de Vérité,Potion,Force d'attaque augmentée de 10 pour 5 minutes,70
+Grimoire des Arcanes,Artefact,Effet: Augmente l'intelligence de 10,100
+Arc de Chasseur,Arme,Puissance d'attaque: 25,80
+Armure de Cuivre,Armure,Défense: 15,40
+Potion de Rapidité,Potion,Augmente la vitesse de déplacement de 20% pendant 10 minutes,50
+Amulette d'Endurance,Artefact,Effet: Augmente la vie de 50,85
+Épée des Anciens,Arme,Puissance d'attaque: 50,120
+Arc Mythique,Arme,Puissance d'attaque: 40,100
+Armure Élégante,Armure,Défense: 10,60
+Potion de Glace,Potion,Projette un jet de glace qui gèle les ennemis pendant 5 secondes,45
+Anneau de Force,Artefact,Effet: Augmente la force de 5,60
+Épée Volante,Arme,Puissance d'attaque: 15, 70
+Chapeau de la Sorcière,Artefact,Effet: Change la couleur des cheveux du porteur,40
+Collier de Protection,Artefact,Effet: Réduit les dégâts magiques de 30%,50
+Bouclier de Lumière,Armure,Défense: 25, 60
+Potion de Visibilité,Potions,Permet de voir les objets invisibles pendant 10 minutes,35
+Épée de l'Infini,Arme,Puissance d'attaque: 70, 200
+Armure Magique,Armure,Défense: 40,90
+Grimoire de Foudre,Artefact,Effet: Lance un éclair sur un ennemi toutes les 30 secondes,110
+Chaussettes Magiques,Armure,Effet: Permet de marcher sans faire de bruit,30
+Épée en Bois,Arme,Puissance d'attaque: 5, 15
+Potion de Vol,Potion,Permet de voler pendant 15 secondes,100
+Amulette du Temps,Artefact,Effet: Ralentit le temps autour du porteur pendant 5 secondes,120
+Grimoire des Ombres,Artefact,Effet: Transforme le porteur en ombre pendant 10 secondes,85
+Bouclier en Mousse,Armure,Défense: 5, 40
+Épée Enflammée,Arme,Puissance d'attaque: 35,100
+Amulette de Chance,Artefact,Effet: Augmente la chance de réussite des attaques critiques de 10%,70
+Potion de Sourire,Potion,Effet: Rend toutes les personnes autour de toi joyeuses pendant 5 minutes,20
+Armure de Ferblanc,Armure,Défense: 18, 45
+Potion d'Antigravité,Potion,Permet de flotter dans les airs pendant 10 minutes,150
+Grimoire des Runes,Artefact,Effet: Apprend au porteur un sort aléatoire,90
+Épée des Profondeurs,Arme,Puissance d'attaque: 40, 75
+Collier d'Illusions,Artefact,Effet: Crée des illusions pour tromper les ennemis,60
+Bouclier de Golem,Armure,Défense: 35, 95
+Épée Baguette Magique,Arme,Puissance d'attaque: 10, 60
+Chapeau à Légumes,Artefact,Effet: Fait pousser des légumes autour du porteur,30
+Potion de Lévitations,Potions,Permet de léviter au-dessus du sol pendant 10 minutes,80
+Épée de Glace,Sword,Puissance d'attaque: 30, 90
+Grimoire de Métamorphose,Artefact,Effet: Transforme un objet en un autre pendant 1 minute,100
+Armure en Cuir Souple,Armure,Défense: 15, 55
+Potion de Poussière d'Étoiles,Potion,Augmente toutes les statistiques de 5% pendant 15 minutes,95
+Grimoire des Portails,Artefact,Effet: Ouvre des portails vers d'autres dimensions pendant 10 secondes,110
+Anneau du Destin,Artefact,Effet: Réécrit une petite partie de l'histoire,100
+Chaussures d'Elasticité,Armure,Effet: Permet de sauter 3 fois plus haut,50
+Épée de l'Apocalypse,Arme,Puissance d'attaque: 100,100

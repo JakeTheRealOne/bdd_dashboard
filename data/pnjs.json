@@ -1,0 +1,1174 @@
+{
+    "PNJs": [
+        {
+            "Nom": "Grand Mage Balthazar, Sorcier",
+            "Dialogue": "Bienvenue, voyageur. Avez-vous d\u00e9j\u00e0 entendu parler de la magie des chaussettes volantes ?",
+            "Qu\u00eates": [
+                "Sauvegarde des r\u00e9coltes[4]"
+            ],
+            "Inventaire": [
+                "Canne \u00e0 P\u00eache Magique",
+                "Grimoire des Runes",
+                "Potion de Vol",
+                "Potion de Soin Majeure",
+                "Amulette de Chance",
+                "Anneau de Mana",
+                "Canne \u00e0 P\u00eache Magique",
+                "Armure en Cuir Souple",
+                "Grimoires de Potions Invers\u00e9es",
+                "\u00c9p\u00e9e Runique",
+                "Grimoire des Ombres",
+                "Bracelet des Souhaits Non R\u00e9alis\u00e9s",
+                "Bracelet des Souhaits Non R\u00e9alis\u00e9s",
+                "Potion de Sourire",
+                "Potion de Poussi\u00e8re d'\u00c9toiles",
+                "Potion de Vol"
+            ]
+        },
+        {
+            "Nom": "Capitaine Crochette, Pirate",
+            "Dialogue": "Ahoy ! Tu veux un vrai tr\u00e9sor ? Apporte-moi un sandwich au fromage.",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "Potion d'Antigravit\u00e9",
+                "Chapeau de Lutin",
+                "Potion de Super-Force",
+                "Potion de Glace",
+                "Chaussures d'Elasticit\u00e9",
+                "Potion de Sourire",
+                "Chaussettes Magiques",
+                "Chaussures de Glisse",
+                "Arc Long",
+                "Arc de Chasseur",
+                "Arc de Chasseur",
+                "Grimoire Ancien",
+                "\u00c9p\u00e9e de l'Infini",
+                "Armure en Mithril",
+                "Grimoire de Givre",
+                "\u00c9p\u00e9e Enflamm\u00e9e",
+                "Arc Long",
+                "Amulette d'Endurance",
+                "Bouclier de Lumi\u00e8re",
+                "Armure de Guerre",
+                "Chapeau de Lutin",
+                "Arc Mythique",
+                "Chapeau de Chat Invisible"
+            ]
+        },
+        {
+            "Nom": "Lady Moustache, Duchesse excentrique",
+            "Dialogue": "Le secret du style r\u00e9side dans une belle moustache bien cir\u00e9e.",
+            "Qu\u00eates": [
+                "D\u00e9fense des villages de l'Est[5]",
+                "Purge des \u00e9gouts[5]",
+                "Protection de la for\u00eat sacr\u00e9e[1]",
+                "D\u00e9blocage du village[1]"
+            ],
+            "Inventaire": [
+                "Grimoire de Foudre",
+                "Canne \u00e0 P\u00eache Magique",
+                "\u00c9p\u00e9e \u00e0 Garde Invers\u00e9e",
+                "Anneau de R\u00e9g\u00e9n\u00e9ration",
+                "Grimoire des Arcanes",
+                "Potion de Rire Incontr\u00f4lable",
+                "\u00c9p\u00e9e Runique",
+                "Armure de Fleurs Sauvages",
+                "Grimoire de Foudre",
+                "Bouclier en Mousse",
+                "Armure de Ferblanc",
+                "Anneau de T\u00e9l\u00e9portation Accidentelle",
+                "Poignard Sombre",
+                "Armure en Fer",
+                "\u00c9p\u00e9e Volante",
+                "Arc Long",
+                "\u00c9p\u00e9e en Fer",
+                "\u00c9p\u00e9e de Brume",
+                "Chaussettes Magiques",
+                "Potion de Magie",
+                "Poignard",
+                "Potion de Mana",
+                "Grimoires du Rire Interdit",
+                "\u00c9p\u00e9e de Lame Noire",
+                "Cl\u00e9 du Temps Perdu"
+            ]
+        },
+        {
+            "Nom": "Bernard le Bavard, Paysan",
+            "Dialogue": "Une fois, j'ai vu un poulet faire un salto. Si si, je te jure !",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "Chaussures Volantes",
+                "Bracelet de R\u00e9duction de Taille",
+                "Chapeau de Chat Invisible",
+                "Canne \u00e0 P\u00eache Magique",
+                "Chapeau de Chat Invisible",
+                "Anneau de Force",
+                "Collier d'Agilit\u00e9",
+                "Collier de Protection",
+                "Grimoire de Foudre",
+                "\u00c9p\u00e9e des Profondeurs",
+                "Montre qui Fait Avancer le Temps",
+                "Potion d'Invincibilit\u00e9",
+                "Potion de Vol",
+                "Bouclier en Glace \u00c9ph\u00e9m\u00e8re",
+                "Grimoire des Portails",
+                "Bouclier en Marshmallow",
+                "Grimoires de Potions Invers\u00e9es",
+                "\u00c9p\u00e9e \u00e0 Garde Invers\u00e9e",
+                "Canne \u00e0 P\u00eache Magique",
+                "Potion de Soin Mineure"
+            ]
+        },
+        {
+            "Nom": "Seigneur Chaton, Monarque f\u00e9lin",
+            "Dialogue": "Respectez mon autorit\u00e9, ou je vous miaulerai dessus.",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "\u00c9charpe de Glace \u00c9ternelle",
+                "Monture Volante (Hippogriffe en Peluche)",
+                "\u00c9p\u00e9e en Fer",
+                "Casque de Protection",
+                "Grimoire de Foudre",
+                "Amulette du Temps",
+                "Amulette d'Endurance",
+                "Chapeau de Lutin",
+                "Armure Magique",
+                "Anneau de T\u00e9l\u00e9portation Accidentelle",
+                "Potion de Glace",
+                "Arc en Bois"
+            ]
+        },
+        {
+            "Nom": "Ma\u00eetre Fromage, Expert en produits laitiers",
+            "Dialogue": "Le brie est la cl\u00e9 de toute strat\u00e9gie victorieuse !",
+            "Qu\u00eates": [
+                "Le forgeron allergique au m\u00e9tal"
+            ],
+            "Inventaire": [
+                "Anneau du Mage",
+                "Amulette de Soin",
+                "Montre qui Fait Avancer le Temps",
+                "Collier de Protection",
+                "\u00c9p\u00e9e de Lame Noire",
+                "Chapeau de la Sorci\u00e8re",
+                "Potion de L\u00e9vitations",
+                "Potion de R\u00e9g\u00e9n\u00e9ration",
+                "Armure de Fleurs Sauvages",
+                "Bouclier en Marshmallow",
+                "Potion de Glace",
+                "\u00c9p\u00e9e en Fer",
+                "Potion de Boule de Feu sans Flammes"
+            ]
+        },
+        {
+            "Nom": "Jean-B\u00eal le Maladroit, Chevalier",
+            "Dialogue": "Je suis le plus grand chevalier du royaume... enfin, sauf quand je tombe.",
+            "Qu\u00eates": [
+                "Nettoyage des ruines[5]",
+                "\u00c9vacuation des tunnels[4]",
+                "Protection des terres sacr\u00e9es[1]",
+                "Protection du bastion[5]",
+                "D\u00e9blocage du village[2]"
+            ],
+            "Inventaire": [
+                "Arc Mythique",
+                "Potion de Sourire",
+                "Arc de Temp\u00eate",
+                "Bouclier en Glace \u00c9ph\u00e9m\u00e8re",
+                "Bracelet des Souhaits Non R\u00e9alis\u00e9s",
+                "Anneau du Destin",
+                "Anneau du Mage",
+                "Potion d'Antigravit\u00e9",
+                "\u00c9p\u00e9e des Profondeurs",
+                "Marteau du Ciel",
+                "Armure en Fer",
+                "\u00c9charpe Anti-Froid Extr\u00eame",
+                "Amulette d'Endurance",
+                "\u00c9p\u00e9e des Profondeurs",
+                "Amulette de Soin",
+                "Chapeau de Lutin",
+                "Bouclier en Mousse",
+                "Amulette d'Endurance",
+                "\u00c9p\u00e9e Runique",
+                "Arc de Feu",
+                "\u00c9p\u00e9e de Feu Folle",
+                "Grimoires de Potions Invers\u00e9es",
+                "\u00c9p\u00e9e de l'Infini",
+                "\u00c9p\u00e9e en Bois",
+                "\u00c9p\u00e9e de Brume"
+            ]
+        },
+        {
+            "Nom": "Olga la Furieuse, Barbare",
+            "Dialogue": "Je d\u00e9teste tout, sauf les biscuits au chocolat.",
+            "Qu\u00eates": [
+                "\u00c9vacuation des tunnels[1]",
+                "La recette de la pizza ultime",
+                "Vol de chaussettes",
+                "R\u00e9gulation des grottes[10]",
+                "Le barde en panne d\u2019inspiration"
+            ],
+            "Inventaire": [
+                "Plume du Ph\u00e9nix",
+                "Potion de Changement de Voix",
+                "Potion de Vie",
+                "Potion de Soin Majeure",
+                "Chaussettes Magiques",
+                "Potion de R\u00e9sistance",
+                "Potion de Glace",
+                "Armure Divine",
+                "\u00c9p\u00e9e Magique",
+                "\u00c9p\u00e9e en P\u00e2te \u00e0 Modeler",
+                "Arc Mythique",
+                "Grimoire des Ombres",
+                "Armure Divine",
+                "Armure en Mithril",
+                "Capaciteurs d'\u00c9lectricit\u00e9",
+                "Capaciteurs d'\u00c9lectricit\u00e9",
+                "Potion de Danse Folle",
+                "Grimoires de Potions Invers\u00e9es",
+                "\u00c9p\u00e9e \u00e0 Double Tranchant",
+                "Arc de Temp\u00eate",
+                "Grimoire de M\u00e9tamorphose",
+                "\u00c9p\u00e9e Baguette Magique",
+                "Poignard Sombre"
+            ]
+        },
+        {
+            "Nom": "Tartempion l'Inventeur, G\u00e9nie loufoque",
+            "Dialogue": "J'ai construit une machine \u00e0 faire danser les chapeaux, tu veux voir ?",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "\u00c9p\u00e9e de l'Apocalypse"
+            ]
+        },
+        {
+            "Nom": "Professeur Hurluberlus, Scientifique fou",
+            "Dialogue": "Selon mes calculs, si on court assez vite, on peut \u00e9chapper \u00e0 la gravit\u00e9.",
+            "Qu\u00eates": [
+                "Sauvegarde des r\u00e9coltes[4]",
+                "Patrouille foresti\u00e8re[1]",
+                "Nettoyage des ruines[2]"
+            ],
+            "Inventaire": [
+                "\u00c9p\u00e9e en Acier",
+                "Amulette de Soin",
+                "Potion de Mana",
+                "\u00c9p\u00e9e L\u00e9gendaire",
+                "Chapeau \u00e0 L\u00e9gumes",
+                "Amulette du Temps",
+                "Chaussures de Glisse",
+                "Casque de Protection",
+                "Anneau du Destin",
+                "Grimoire des Portails",
+                "Chapeau de Licorne",
+                "Chaussures d'Elasticit\u00e9",
+                "Amulette de Soin",
+                "Chaussettes Magiques",
+                "Chapeau \u00e0 L\u00e9gumes",
+                "Chaussettes de Glissement",
+                "Grimoire Ancien",
+                "Armure en Cuir Souple",
+                "Potion de Vigueur",
+                "Casque de Protection"
+            ]
+        },
+        {
+            "Nom": "Baron Grobidule, Aristocrate d\u00e9ch\u00fb",
+            "Qu\u00eates": [
+                "Nettoyage des ruines antiques[3]",
+                "D\u00e9fense du port[2]"
+            ],
+            "Inventaire": [
+                "Bracelet de R\u00e9duction de Taille",
+                "Potion de Vigueur",
+                "Arc de Glace",
+                "\u00c9p\u00e9e \u00e0 Double Tranchant",
+                "\u00c9p\u00e9e de Cristal Magique",
+                "Potion d'Invincibilit\u00e9",
+                "Monture de G\u00e2teau",
+                "Chapeau de Magicien Farfelu",
+                "Chapeau de Magicien Farfelu",
+                "Potion de R\u00e9g\u00e9n\u00e9ration",
+                "\u00c9p\u00e9e de Bonbons",
+                "Potion de Mana",
+                "Monture de G\u00e2teau",
+                "Grimoires de Potions Invers\u00e9es",
+                "Bouclier de Fer",
+                "\u00c9p\u00e9e de Feu Folle",
+                "Armure de Ferblanc",
+                "Armure L\u00e9g\u00e8re",
+                "\u00c9p\u00e9e en Acier"
+            ]
+        },
+        {
+            "Nom": "Papy Turbo, Ancien guerrier",
+            "Dialogue": "J'ai autrefois battu un dragon \u00e0 la course. Enfin, je crois que c'\u00e9tait un dragon.",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "Gloves of Awesomeness",
+                "Bouclier de Nuages",
+                "Potion de Super-Force",
+                "Arc Long",
+                "Cape de Vitesse Stupide"
+            ]
+        },
+        {
+            "Nom": "L\u00e9onard le Distrait, Apprenti mage",
+            "Dialogue": "Je devais faire quoi d\u00e9j\u00e0 ? Ah oui, oublier ce que je devais faire.",
+            "Qu\u00eates": [
+                "Protection des caravanes[2]",
+                "R\u00e9gulation des grottes[5]",
+                "R\u00e9solution des disparitions[4]"
+            ],
+            "Inventaire": [
+                "om",
+                "\u00c9p\u00e9e de Clochettes Magiques",
+                "Chapeau de la Sorci\u00e8re",
+                "Potion de R\u00e9sistance",
+                "\u00c9p\u00e9e de Lune"
+            ]
+        },
+        {
+            "Nom": "Brigitte la Braillarde, Aubergiste",
+            "Dialogue": "Bienvenue ! CRIE PAS COMME \u00c7A ! Ah, pardon... c'est moi.",
+            "Qu\u00eates": [
+                "D\u00e9fense du village voisin[4]"
+            ],
+            "Inventaire": [
+                "\u00c9p\u00e9e de Glace",
+                "\u00c9p\u00e9e Enflamm\u00e9e",
+                "Anneau de Vitesse",
+                "\u00c9p\u00e9e de Bonbons",
+                "Grimoire des Runes",
+                "Bouclier de Nuages",
+                "Cape de Camouflage \u00c9cologique",
+                "Cape de Camouflage \u00c9cologique",
+                "Canne \u00e0 P\u00eache Magique"
+            ]
+        },
+        {
+            "Nom": "Gr\u00e9goire la Poisse, Aventurier malchanceux",
+            "Dialogue": "D\u00e8s que je touche une potion de soin, elle explose.",
+            "Qu\u00eates": [
+                "D\u00e9fense du village voisin[3]",
+                "\u00c9limination villageoise[1]",
+                "Voler la lune pour un sorcier excentrique",
+                "Nettoyage des ruines[4]"
+            ],
+            "Inventaire": [
+                "Armure en Cuir Souple",
+                "\u00c9p\u00e9e de Feu Folle",
+                "Collier d'Illusions",
+                "Potion d'Invincibilit\u00e9",
+                "\u00c9p\u00e9e de l'Apocalypse",
+                "Grimoire des Portails",
+                "Gloves of Awesomeness",
+                "Potion de Boule de Feu sans Flammes",
+                "Bouclier Magique",
+                "Casque de Protection",
+                "Chaussures d'Elasticit\u00e9",
+                "Cape de Camouflage \u00c9cologique",
+                "\u00c9charpe de Glace \u00c9ternelle",
+                "Poignard Sombre",
+                "Cape de Camouflage \u00c9cologique",
+                "Ceinture de Force",
+                "Marteau du Ciel",
+                "Potion de Poussi\u00e8re d'\u00c9toiles",
+                "Armure en Mithril",
+                "Potion de Rire Incontr\u00f4lable",
+                "Potion de Mutation Temporis\u00e9e",
+                "Armure Magique",
+                "\u00c9p\u00e9e de Feu Folle",
+                "Potion de Vigueur"
+            ]
+        },
+        {
+            "Nom": "Rita la Racl\u00e9e, Championne de bras de fer",
+            "Dialogue": "Pr\u00eats \u00e0 perdre un bras ? Mettons-nous \u00e0 table !",
+            "Qu\u00eates": [
+                "S\u00e9curisation des montagnes glac\u00e9es[1]"
+            ],
+            "Inventaire": [
+                "Potion de Rapidit\u00e9",
+                "Arc de Temp\u00eate",
+                "Chaussures Volantes",
+                "Ceinture de R\u00e9sistance",
+                "\u00c9p\u00e9e des Anciens",
+                "\u00c9charpe de Glace \u00c9ternelle"
+            ]
+        },
+        {
+            "Nom": "Fl\u00e9o le Siffloteur, Barde",
+            "Dialogue": "Ma derni\u00e8re chanson parle d'un concombre h\u00e9ro\u00efque, tu veux l'entendre ?",
+            "Qu\u00eates": [
+                "R\u00e9cup\u00e9ration de la mine[1]",
+                "D\u00e9fense du port[4]"
+            ],
+            "Inventaire": [
+                "Arc Mythique",
+                "Armure en Mithril",
+                "Bouclier en Marshmallow",
+                "Amulette d'Invisibilit\u00e9",
+                "Potion de Rapidit\u00e9",
+                "Potion de Super-M\u00e9moire",
+                "\u00c9p\u00e9e \u00e0 Garde Invers\u00e9e",
+                "Bouclier Magique",
+                "Bouclier en Mousse",
+                "Potion de Super-M\u00e9moire"
+            ]
+        },
+        {
+            "Nom": "Hector le H\u00e9sitant, Explorateur",
+            "Dialogue": "Je suis presque s\u00fbr que ce chemin m\u00e8ne \u00e0 l'aventure... ou \u00e0 un mur.",
+            "Qu\u00eates": [
+                "Protection de la for\u00eat sacr\u00e9e[1]",
+                "S\u00e9curisation des plages[5]",
+                "Nettoyage de donjon",
+                "D\u00e9fense du village voisin[1]",
+                "L\u2019ours polaire qui vend des glaces"
+            ],
+            "Inventaire": [
+                "Potion d'Invisibilit\u00e9 Totale",
+                "\u00c9p\u00e9e \u00e0 Double Tranchant",
+                "Amulette de Chance",
+                "Amulette de Chance",
+                "Potion d'Antigravit\u00e9",
+                "Anneau de Force",
+                "Grimoires des Blagues Magiques",
+                "Cape de Vitesse Stupide",
+                "Potion de Danse Folle",
+                "Potion de Boule de Feu sans Flammes",
+                "Arc de Chasseur",
+                "Bouclier de Fer",
+                "Armure en Fer",
+                "Plume du Ph\u00e9nix",
+                "\u00c9p\u00e9e des Anciens",
+                "Bouclier de Paille",
+                "Anneau de Mana",
+                "Monture Volante (Hippogriffe en Peluche)",
+                "Chaussures de Glisse",
+                "Potion de Visibilit\u00e9",
+                "Anneau du Destin",
+                "Poignard Sombre",
+                "Amulette du Temps",
+                "Grimoire de M\u00e9tamorphose",
+                "\u00c9p\u00e9e de l'Apocalypse"
+            ]
+        },
+        {
+            "Nom": "Marguerite Poilue, Ermite",
+            "Dialogue": "Les chats sont les vrais ma\u00eetres du monde, tu savais ?",
+            "Qu\u00eates": [],
+            "Inventaire": []
+        },
+        {
+            "Nom": "Igor le Gargantuesque, Gourmand professionnel",
+            "Dialogue": "Si \u00e7a se mange, j'y ai d\u00e9j\u00e0 go\u00fbt\u00e9.",
+            "Qu\u00eates": [
+                "Protection des caravanes[2]",
+                "Aide aux fermiers[5]",
+                "Le gobelin qui voulait \u00eatre roi",
+                "R\u00e9solution des disparitions[1]"
+            ],
+            "Inventaire": [
+                "Armure L\u00e9g\u00e8re",
+                "Chaussures Volantes",
+                "Ceinture de Force",
+                "Potion de Vigueur",
+                "Potion de Visibilit\u00e9",
+                "Armure Spectrale",
+                "Arc \u00c9th\u00e9r\u00e9",
+                "Grimoire de Flammes",
+                "Bouclier en Fer",
+                "Potion de Vol",
+                "Chaussures d'Elasticit\u00e9",
+                "Grimoires du Rire Interdit",
+                "\u00c9charpe de Glace \u00c9ternelle",
+                "Monture Volante (Hippogriffe en Peluche)",
+                "Potion de Danse Folle",
+                "Anneau de Confusion",
+                "Potion de Boule de Feu sans Flammes",
+                "Arc de Temp\u00eate",
+                "Grimoire de Givre"
+            ]
+        },
+        {
+            "Nom": "Josette la Chouette, Oracle",
+            "Dialogue": "Hoo hoo... Ton avenir rime avec 'omelette'.",
+            "Qu\u00eates": [
+                "L\u2019attaque des poulets g\u00e9ants",
+                "D\u00e9blocage du village[3]",
+                "Le mage qui a perdu son chapeau invisible"
+            ],
+            "Inventaire": [
+                "Potion de Danse Folle",
+                "Potion de Boule de Feu sans Flammes",
+                "Potion de Vigueur"
+            ]
+        },
+        {
+            "Nom": "Capitaine Gobe-tout, Pirate",
+            "Dialogue": "J'ai mang\u00e9 une boussole un jour... depuis, j'ai l'impression de toujours aller au Nord.",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "Plume du Ph\u00e9nix",
+                "Canne \u00e0 P\u00eache Magique",
+                "Potion de Visibilit\u00e9",
+                "Potion de L\u00e9vitations",
+                "Bouclier en Glace \u00c9ph\u00e9m\u00e8re",
+                "Plume du Ph\u00e9nix",
+                "Poignard",
+                "Armure L\u00e9g\u00e8re",
+                "\u00c9p\u00e9e de Brume",
+                "\u00c9p\u00e9e L\u00e9gendaire",
+                "Cape de Camouflage \u00c9cologique",
+                "Arc de Feu",
+                "Ceinture de R\u00e9sistance",
+                "Potion de Mutation Temporis\u00e9e",
+                "Chapeau de Lutin",
+                "Bouclier de Paille",
+                "Chapeau \u00e0 L\u00e9gumes",
+                "Arc en Bois",
+                "Potion de R\u00e9sistance",
+                "Plume du Ph\u00e9nix",
+                "Chaussettes Magiques",
+                "Bracelet de R\u00e9duction de Taille",
+                "Potion d'Invisibilit\u00e9 Totale"
+            ]
+        },
+        {
+            "Nom": "Fr\u00e9d\u00e9rick le Farceur, Jongleur",
+            "Dialogue": "Regarde, je vais jongler avec des \u00e9p\u00e9es enflamm\u00e9es... Oups !",
+            "Qu\u00eates": [
+                "Attraper un fant\u00f4me\u2026 avec une cuill\u00e8re",
+                "Nettoyage des ruines antiques[4]",
+                "S\u00e9curisation des montagnes glac\u00e9es[3]",
+                "R\u00e9solution des disparitions[3]",
+                "Protection des voyageurs[1]"
+            ],
+            "Inventaire": [
+                "Grimoire de Flammes",
+                "Armure Magique",
+                "\u00c9p\u00e9e Enflamm\u00e9e",
+                "\u00c9p\u00e9e Enflamm\u00e9e",
+                "Grimoire de Flammes",
+                "Bouclier de Nuages",
+                "Grimoire des Ombres",
+                "\u00c9p\u00e9e Baguette Magique",
+                "\u00c9p\u00e9e en Acier",
+                "Armure de Ferblanc",
+                "Capaciteurs d'\u00c9lectricit\u00e9",
+                "Potion de Rapidit\u00e9"
+            ]
+        },
+        {
+            "Nom": "Monsieur Myst\u00e8re, Illusionniste",
+            "Dialogue": "Ou suis-je ? Qui suis-je ? Es-tu s\u00fbr que tu existes ?",
+            "Qu\u00eates": [
+                "Nettoyage des ruines[1]"
+            ],
+            "Inventaire": [
+                "Collier d'Agilit\u00e9",
+                "Grimoire des Arcanes",
+                "Potion de Danse Folle",
+                "\u00c9p\u00e9e \u00e0 Double Tranchant",
+                "Amulette du Temps",
+                "Chapeau de Magicien Farfelu",
+                "Amulette d'Endurance",
+                "Grimoire des Ombres",
+                "Grimoire de M\u00e9tamorphose"
+            ]
+        },
+        {
+            "Nom": "Zo\u00e9 la Z\u00e9nithale, Philosophe",
+            "Dialogue": "Le monde est un immense fromage. Il suffit de trouver le bon couteau.",
+            "Qu\u00eates": [
+                "Protection du bastion[3]"
+            ],
+            "Inventaire": [
+                "Chapeau de Lutin",
+                "\u00c9p\u00e9e de Feu Folle",
+                "Potion de Changement de Voix",
+                "Armure en Cuir Souple",
+                "Grimoire des Ombres",
+                "Grimoire de M\u00e9tamorphose",
+                "\u00c9p\u00e9e de Clochettes Magiques",
+                "Chaussures Volantes",
+                "Bouclier de Paille",
+                "Chapeau de Lutin",
+                "\u00c9p\u00e9e de Bonbons",
+                "\u00c9p\u00e9e \u00e0 Lame Gourmande",
+                "Ceinture de Force",
+                "Potion de Mana",
+                "Armure de Fleurs Sauvages"
+            ]
+        },
+        {
+            "Nom": "R\u00e9mi Bricole, Ing\u00e9nieur",
+            "Dialogue": "J'ai invent\u00e9 un parapluie anti-pluie ! Bon, il prend feu sous l'eau, mais c'est un d\u00e9tail.",
+            "Qu\u00eates": [
+                "S\u00e9curisation des plages[4]",
+                "Nettoyage des ruines[5]",
+                "Protection des terres sacr\u00e9es[5]"
+            ],
+            "Inventaire": []
+        },
+        {
+            "Nom": "Caporal Cacahu\u00e8te, Soldat",
+            "Dialogue": "La discipline, c'est la cl\u00e9 ! Et aussi les biscuits. Beaucoup de biscuits.",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "\u00c9p\u00e9e \u00e0 Lame Gourmande",
+                "Grimoires du Rire Interdit",
+                "Bouclier de Golem",
+                "om",
+                "Grimoire de Flammes",
+                "\u00c9p\u00e9e Runique",
+                "Potion de Soin Mineure",
+                "\u00c9p\u00e9e \u00e0 Garde Invers\u00e9e",
+                "Chaussettes de Glissement",
+                "\u00c9p\u00e9e de l'Apocalypse",
+                "Bouclier de Nuages",
+                "\u00c9p\u00e9e de Cristal Magique",
+                "Poignard Sombre",
+                "Chaussures d'Elasticit\u00e9"
+            ]
+        },
+        {
+            "Nom": "Grand-M\u00e8re Turbo, Ancienne championne de courses",
+            "Dialogue": "Tu crois pouvoir me battre en trottinette ? Essaie donc, petit scarab\u00e9e.",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "Potion de Sourire",
+                "Armure de Ferblanc",
+                "Bouclier de Fer",
+                "\u00c9p\u00e9e de Glace",
+                "Arc Mythique",
+                "\u00c9p\u00e9e Runique",
+                "\u00c9p\u00e9e Volante",
+                "\u00c9p\u00e9e \u00e0 Lame Gourmande",
+                "Canne \u00e0 P\u00eache Magique",
+                "\u00c9p\u00e9e de Glace",
+                "Gloves of Awesomeness",
+                "Chapeau de la Sorci\u00e8re",
+                "\u00c9p\u00e9e en P\u00e2te \u00e0 Modeler",
+                "Collier d'Illusions"
+            ]
+        },
+        {
+            "Nom": "Tony le Taciturne, Silencieux",
+            "Dialogue": "...",
+            "Qu\u00eates": [
+                "Aide aux fermiers[3]",
+                "S\u00e9curisation des plages[2]"
+            ],
+            "Inventaire": [
+                "Armure de Cuivre",
+                "Casque de Protection",
+                "Potion d'Invincibilit\u00e9",
+                "Potion de Super-M\u00e9moire",
+                "Potion de Rapidit\u00e9",
+                "Bouclier en Fer",
+                "Amulette d'Invisibilit\u00e9",
+                "Potion de R\u00e9sistance",
+                "Plume du Ph\u00e9nix"
+            ]
+        },
+        {
+            "Nom": "Marcel le Malin, Marchand",
+            "Dialogue": "Ce poisson magique t'apportera fortune et gloire ! Oui oui, il sent juste un peu fort.",
+            "Inventaire": [
+                "Armure (des données) Spectrale(s)",
+                "Grimoire Ancien",
+                "Potion d'Antigravit\u00e9",
+                "Anneau de Force",
+                "Potion de Super-M\u00e9moire",
+                "Potion de Mana",
+                "Potion de Soin Mineure",
+                "Grimoire des Ombres",
+                "Canne \u00e0 P\u00eache Magique",
+                "Potion de Vol",
+                "Potion de Soin Majeure",
+                "Chapeau de la Sorci\u00e8re",
+                "Chaussures Volantes",
+                "Potion de Vie",
+                "\u00c9p\u00e9e de Bonbons"
+            ]
+        },
+        {
+            "Nom": "Victor l'Exag\u00e9rateur, Conteur",
+            "Dialogue": "J'ai une fois affront\u00e9 mille dragons en jonglant avec des \u00e9p\u00e9es en feu !",
+            "Qu\u00eates": [
+                "Des moutons\u2026 explosifs",
+                "D\u00e9fense des villages de l'Est[2]",
+                "D\u00e9livrer le roi des limaces",
+                "Protection de la for\u00eat sacr\u00e9e[1]"
+            ],
+            "Inventaire": [
+                "Armure \u00c9l\u00e9gante",
+                "Potion de Changement de Voix",
+                "\u00c9p\u00e9e de Bonbons",
+                "Arc \u00c9th\u00e9r\u00e9",
+                "Potion de Visibilit\u00e9",
+                "Anneau de T\u00e9l\u00e9portation Accidentelle",
+                "Grimoires de Potions Invers\u00e9es",
+                "Cape de Camouflage \u00c9cologique",
+                "Arc Long",
+                "Chapeau de Chat Invisible",
+                "Chaussettes de Glissement",
+                "Armure en Cuir Souple",
+                "Grimoire de Flammes",
+                "Poignard Sombre"
+            ]
+        },
+        {
+            "Nom": "Betty la Bavarde, Commer\u00e7ante",
+            "Dialogue": "Ah, tu veux acheter quelque chose ? D'abord, laisse-moi te raconter l'histoire de mon chat.",
+            "Qu\u00eates": [
+                "D\u00e9blocage du village[5]",
+                "Patrouille foresti\u00e8re[3]",
+                "R\u00e9solution des disparitions[5]"
+            ],
+            "Inventaire": [
+                "Bracelet de R\u00e9duction de Taille",
+                "Grimoires du Rire Interdit",
+                "\u00c9p\u00e9e \u00e0 Lame Gourmande",
+                "Montre qui Fait Avancer le Temps",
+                "Potion d'Invincibilit\u00e9",
+                "\u00c9p\u00e9e de l'Apocalypse",
+                "Potion de Danse Folle"
+            ]
+        },
+        {
+            "Nom": "Hubert l'Hypocondriaque, Malade imaginaire",
+            "Dialogue": "Oh non, je crois que j'ai attrap\u00e9 la mal\u00e9diction du genou qui gratte !",
+            "Qu\u00eates": [
+                "D\u00e9fense du port[2]",
+                "R\u00e9solution des disparitions[5]",
+                "D\u00e9fense du laboratoire alchimique[2]",
+                "R\u00e9gulation des grottes[2]",
+                "Recomposer une carte au tr\u00e9sor\u2026 en puzzle"
+            ],
+            "Inventaire": [
+                "Potion d'Invisibilit\u00e9 Totale",
+                "Chaussures de Glisse",
+                "Arc \u00c9th\u00e9r\u00e9",
+                "Armure en Cuir",
+                "Chapeau de Licorne",
+                "Armure de Cuivre",
+                "Bouclier Magique",
+                "Marteau du Ciel",
+                "\u00c9p\u00e9e de Lune",
+                "Anneau du Mage",
+                "Cl\u00e9 du Temps Perdu",
+                "Potion de Rapidit\u00e9",
+                "\u00c9p\u00e9e de Cristal Magique",
+                "Grimoire Ancien",
+                "Monture de G\u00e2teau"
+            ]
+        },
+        {
+            "Nom": "La Comtesse Poussi\u00e8re, Aristocrate",
+            "Dialogue": "Le luxe, c'est important. M\u00eame pour les rats dans mon manoir.",
+            "Qu\u00eates": [
+                "Patrouille foresti\u00e8re[5]",
+                "Nettoyage des ruines[1]"
+            ],
+            "Inventaire": [
+                "Grimoires du Rire Interdit, celui de l'assistant qui prépare le projet",
+                "Bracelet des Souhaits Non R\u00e9alis\u00e9s",
+                "Amulette d'Invisibilit\u00e9",
+                "\u00c9p\u00e9e \u00e0 Garde Invers\u00e9e",
+                "Arc de Glace",
+                "Arc Long",
+                "Chapeau \u00e0 L\u00e9gumes",
+                "\u00c9charpe de Glace \u00c9ternelle",
+                "\u00c9p\u00e9e \u00e0 Lame Gourmande",
+                "Armure de Guerre",
+                "Chapeau de Licorne",
+                "Potion de Changement de Voix",
+                "Cl\u00e9 du Temps Perdu",
+                "Potion de Poussi\u00e8re d'\u00c9toiles",
+                "Bouclier de Golem",
+                "Grimoire Ancien",
+                "Chaussures Volantes",
+                "Potion d'Antigravit\u00e9",
+                "Ceinture de Force",
+                "om",
+                "Bracelet de R\u00e9duction de Taille",
+                "om",
+                "Potion de L\u00e9vitations",
+                "Chaussettes de Glissement",
+                "Montre qui Fait Avancer le Temps"
+            ]
+        },
+        {
+            "Nom": "Brutus le Po\u00e8te, Barbare",
+            "Dialogue": "La guerre, c'est bien. Mais un bon sonnet, c'est encore mieux !",
+            "Qu\u00eates": [
+                "D\u00e9fense du village voisin[1]",
+                "Jouer une pi\u00e8ce de th\u00e9\u00e2tre pour distraire un dragon",
+                "S\u00e9curisation des montagnes glac\u00e9es[2]"
+            ],
+            "Inventaire": [
+                "Poignard Sombre",
+                "Bouclier en Fer",
+                "Potion de Mutation Temporis\u00e9e",
+                "Poignard"
+            ]
+        },
+        {
+            "Nom": "Fernand le Fain\u00e9ant, Paresseux professionnel",
+            "Dialogue": "J'aurais bien aid\u00e9... mais j'ai la flemme.",
+            "Qu\u00eates": [
+                "S\u00e9curisation des montagnes glac\u00e9es[3]",
+                "R\u00e9gulation des grottes[3]",
+                "S\u00e9curisation des plages[3]"
+            ],
+            "Inventaire": [
+                "Gloves of Awesomeness",
+                "Potion de R\u00e9sistance",
+                "\u00c9p\u00e9e L\u00e9gendaire",
+                "\u00c9p\u00e9e L\u00e9gendaire",
+                "om",
+                "\u00c9p\u00e9e en Acier"
+            ]
+        },
+        {
+            "Nom": "Sophie Sombrevue, Devineresse",
+            "Dialogue": "Je vois... je vois... un tr\u00e9sor ! Ou un caillou, difficile \u00e0 dire.",
+            "Inventaire": [
+                "Bracelet de R\u00e9duction de Taille",
+                "Anneau de Vitesse",
+                "Potion de R\u00e9sistance",
+                "\u00c9p\u00e9e \u00e0 Garde Invers\u00e9e",
+                "Armure en Cuir Souple",
+                "Potion de V\u00e9rit\u00e9",
+                "Canne \u00e0 P\u00eache Magique",
+                "Chaussures Volantes",
+                "Bracelet de R\u00e9duction de Taille",
+                "\u00c9charpe de Glace \u00c9ternelle",
+                "Potion de Vie",
+                "Arc Long",
+                "Amulette d'Endurance",
+                "\u00c9p\u00e9e en P\u00e2te \u00e0 Modeler"
+            ]
+        },
+        {
+            "Nom": "Archibald le Cr\u00e9dule, Voyageur",
+            "Dialogue": "On m'a dit que si on souffle sur un dragon, il s'endort ! J'essaye ?",
+            "Qu\u00eates": [
+                "Aide aux fermiers[3]",
+                "Le mage qui a perdu son chapeau invisible",
+                "R\u00e9solution des disparitions[1]",
+                "Nettoyage des ruines antiques[2]",
+                "Réussir son examen de Bases de données"
+            ],
+            "Inventaire": [
+                "om",
+                "Bracelet de R\u00e9duction de Taille",
+                "\u00c9p\u00e9e de Feu Folle",
+                "Bouclier de Nuages",
+                "\u00c9p\u00e9e de Lune",
+                "Chaussettes de Glissement",
+                "Grimoires du Rire Interdit",
+                "Chaussures de Glisse",
+                "Chapeau \u00e0 L\u00e9gumes",
+                "Potion de Changement de Voix",
+                "Anneau de Confusion",
+                "Arc en Bois",
+                "Chaussures Volantes",
+                "Chapeau \u00e0 L\u00e9gumes",
+                "\u00c9p\u00e9e de l'Infini",
+                "Bouclier en Fer",
+                "Chaussures d'Elasticit\u00e9",
+                "Bouclier en Glace \u00c9ph\u00e9m\u00e8re"
+            ]
+        },
+        {
+            "Nom": "Lancelot du Quartier, Chevalier en carton",
+            "Dialogue": "J'ai trouv\u00e9 mon armure dans une poubelle, mais elle brille quand m\u00eame !",
+            "Qu\u00eates": [
+                "Une journ\u00e9e dans la peau d\u2019un slime",
+                "Le tournoi de bras de fer interdimensionnel",
+                "D\u00e9fense du laboratoire alchimique[3]",
+                "S\u00e9curisation des plages[3]",
+                "Chasse en montagne[3]"
+            ],
+            "Inventaire": [
+                "Bracelet des Souhaits Non R\u00e9alis\u00e9s",
+                "Bouclier en Glace \u00c9ph\u00e9m\u00e8re",
+                "Chaussures Volantes",
+                "Potion de Changement de Voix",
+                "Potion d'Antigravit\u00e9",
+                "\u00c9p\u00e9e de l'Apocalypse",
+                "om",
+                "\u00c9p\u00e9e de Brume",
+                "Anneau du Mage",
+                "Armure Divine",
+                "Potion de Super-Force",
+                "Potion de Changement de Voix",
+                "Bouclier en Glace \u00c9ph\u00e9m\u00e8re"
+            ]
+        },
+        {
+            "Nom": "C\u00e9cile la Cynique, Observatrice",
+            "Dialogue": "Tout finit toujours mal. Sauf les tartes aux pommes.",
+            "Qu\u00eates": [
+                "L\u2019attaque des poulets g\u00e9ants",
+                "Course-poursuite avec un marchand louche",
+                "\u00c9limination villageoise[3]"
+            ],
+            "Inventaire": [
+                "Chaussures de Glisse",
+                "Marteau du Ciel",
+                "Armure en Fer",
+                "\u00c9p\u00e9e de Brume",
+                "Grimoire Ancien",
+                "Bouclier en Marshmallow",
+                "Anneau de Force",
+                "Potion de Soin Majeure",
+                "Trouver les erreurs des les fichiers de données"
+            ]
+        },
+        {
+            "Nom": "G\u00e9rard la Gaffe, Garde",
+            "Dialogue": "Un jour, j'ai accidentellement enferm\u00e9 tout le ch\u00e2teau dehors...",
+            "Qu\u00eates": [
+                "La recette de la pizza ultime",
+                "R\u00e9solution des disparitions[2]"
+            ],
+            "Inventaire": [
+                "Armure en Fer",
+                "\u00c9p\u00e9e en Fer",
+                "\u00c9p\u00e9e des Anciens",
+                "Anneau du Mage",
+                "Potion de Vie",
+                "Potion de Poussi\u00e8re d'\u00c9toiles",
+                "Anneau de Force",
+                "Potion de Poussi\u00e8re d'\u00c9toiles",
+                "Chapeau de Licorne",
+                "\u00c9p\u00e9e \u00e0 Lame Gourmande",
+                "Bouclier Magique",
+                "Armure de Guerre",
+                "Potion de R\u00e9sistance",
+                "Potion d'Avertissement",
+                "\u00c9p\u00e9e en P\u00e2te \u00e0 Modeler",
+                "\u00c9p\u00e9e des Anciens",
+                "\u00c9p\u00e9e \u00e0 Lame Gourmande",
+                "Bouclier de Golem",
+                "\u00c9p\u00e9e Magique"
+            ]
+        },
+        {
+            "Nom": "Patapon l'Optimiste, Voyageur",
+            "Dialogue": "Peu importe le danger, tant que j'ai mon ukul\u00e9l\u00e9 !",
+            "Qu\u00eates": [
+                "Tuer un monstre\u2026 qui revient toujours",
+                "L\u2019attaque des poulets g\u00e9ants",
+                "Protection des voyageurs[5]"
+            ],
+            "Inventaire": [
+                "Armure en Cuir Souple",
+                "\u00c9p\u00e9e de l'Infini",
+                "Armure de Fleurs Sauvages",
+                "\u00c9p\u00e9e Magique",
+                "Arc Mythique",
+                "\u00c9p\u00e9e en Fer",
+                "\u00c9p\u00e9e de Brume",
+                "\u00c9p\u00e9e \u00e0 Lame Gourmande",
+                "Chaussettes de Glissement",
+                "Chaussures d'Elasticit\u00e9",
+                "Grimoire des Arcanes",
+                "Arc de Glace",
+                "Grimoires du Rire Interdit",
+                "Bouclier Magique",
+                "Armure de Fleurs Sauvages",
+                "Armure en Fer",
+                "Arc de Temp\u00eate",
+                "Cape de Camouflage \u00c9cologique"
+            ]
+        },
+        {
+            "Nom": "Marcus le M\u00e9lodramatique, Acteur",
+            "Dialogue": "Oh, quelle trag\u00e9die ! Mon chapeau s'est envol\u00e9...",
+            "Qu\u00eates": [],
+            "Inventaire": [
+                "\u00c9p\u00e9e de Cristal Magique",
+                "\u00c9p\u00e9e Baguette Magique",
+                "Anneau de T\u00e9l\u00e9portation Accidentelle",
+                "Chapeau \u00e0 L\u00e9gumes",
+                "\u00c9p\u00e9e de l'Infini",
+                "Amulette d'Endurance",
+                "\u00c9charpe de Glace \u00c9ternelle",
+                "Bouclier de Fer",
+                "Armure en Cuir",
+                "Arc en Bois",
+                "Potion d'Invisibilit\u00e9 Totale",
+                "Amulette du Temps",
+                "Potion d'Avertissement",
+                "Grimoire des Ombres"
+            ]
+        },
+        {
+            "Nom": "Val\u00e9rie la Vaillante, H\u00e9ro\u00efne locale",
+            "Dialogue": "Un monstre \u00e0 l'horizon ? Super, j'avais besoin d'exercice !",
+            "Qu\u00eates": [
+                "Protection des voyageurs[4]",
+                "Nettoyage des ruines[1]",
+                "L\u2019ours polaire qui vend des glaces",
+                "Nettoyage de donjon"
+            ],
+            "Inventaire": [
+                "Ceinture de R\u00e9sistance",
+                "Anneau de Mana",
+                "Grimoire de Flammes",
+                "Monture Volante (Hippogriffe en Peluche)",
+                "Amulette de Chance",
+                "Chapeau de Licorne",
+                "Potion de Mutation Temporis\u00e9e",
+                "Chapeau de Magicien Farfelu",
+                "Poignard Sombre",
+                "Armure L\u00e9g\u00e8re",
+                "Plume du Ph\u00e9nix",
+                "\u00c9p\u00e9e \u00e0 Double Tranchant",
+                "Potion de Sourire",
+                "Casque de Protection",
+                "Arc \u00c9th\u00e9r\u00e9"
+            ]
+        },
+        {
+            "Nom": "Bob le Botaniste, Savant fou",
+            "Dialogue": "J'ai crois\u00e9 une carotte avec une rose. Le r\u00e9sultat pique ET se mange.",
+            "Qu\u00eates": [
+                "D\u00e9fense du village voisin[4]",
+                "D\u00e9fense du village voisin[5]"
+            ],
+            "Inventaire": [
+                "Armure de Fleurs Sauvages",
+                "Arc de Temp\u00eate",
+                "Potion d'Antigravit\u00e9"
+            ]
+        },
+        {
+            "Nom": "Sylvie Silence, Assassine",
+            "Dialogue": "Je pourrais te r\u00e9pondre, mais je pr\u00e9f\u00e8re le silence.",
+            "Qu\u00eates": [
+                "Le gobelin qui voulait \u00eatre roi",
+                "D\u00e9blocage du village[5]"
+            ],
+            "Inventaire": [
+                "\u00c9p\u00e9e \u00e0 Double Tranchant",
+                "\u00c9p\u00e9e Magique",
+                "Anneau de Mana inexistant",
+                "Anneau de Confusion",
+                "Ceinture de R\u00e9sistance",
+                "\u00c9p\u00e9e de Lame Noire",
+                "Grimoire des Arcanes"
+            ]
+        },
+        {
+            "Nom": "Rodolphe le Roi du D\u00e9sordre, Bouffon",
+            "Dialogue": "Plus c'est chaotique, plus c'est dr\u00f4le !",
+            "Qu\u00eates": [
+                "S\u00e9curisation des montagnes glac\u00e9es[2]"
+            ],
+            "Inventaire": [
+                "Amulette du Temps",
+                "Armure en Cuir",
+                "Armure de Fleurs Sauvages",
+                "om",
+                "Amulette d'Invisibilit\u00e9",
+                "Potion de Vol",
+                "Bracelet de R\u00e9duction de Taille",
+                "Potion de Glace",
+                "Chapeau de Magicien Farfelu",
+                "Grimoire Ancien",
+                "Cape de Vitesse Stupide",
+                "Collier de Protection",
+                "Grimoire de M\u00e9tamorphose",
+                "Potion de R\u00e9g\u00e9n\u00e9ration",
+                "Chaussures de Glisse un peu glissantes",
+                "Potion d'Avertissement",
+                "Bouclier de Fer",
+                "Armure en Cuir",
+                "\u00c9p\u00e9e Volante",
+                "Potion d'Avertissement",
+                "\u00c9p\u00e9e en P\u00e2te \u00e0 Modeler",
+                "\u00c9p\u00e9e en Bois",
+                "\u00c9p\u00e9e de Glace"
+            ]
+        },
+        {
+            "Nom": "Nestor le N\u00e9vros\u00e9, Explorateur peureux",
+            "Dialogue": "Tout est dangereux. M\u00eame l'air. Surtout l'air.",
+            "Qu\u00eates": [
+                "D\u00e9fense du village voisin[3]",
+                "Survivre \u00e0 une pluie de m\u00e9t\u00e9ores en g\u00e9latine",
+                "Patrouille foresti\u00e8re[2]"
+            ],
+            "Inventaire": [
+                "Anneau de Mana",
+                "\u00c9p\u00e9e Magique",
+                "Ceinture de R\u00e9sistance",
+                "Anneau de R\u00e9g\u00e9n\u00e9ration",
+                "Chapeau de Licorne",
+                "Armure Magique",
+                "Potion de Glace",
+                "Potion de L\u00e9vitations",
+                "Grimoires de Potions Invers\u00e9es",
+                "Armure Divine",
+                "Anneau du Destin",
+                "Chapeau de Chat Invisible",
+                "Potion de Vigueur",
+                "Arc de Chasseur",
+                "Grimoire Ancien",
+                "Grimoires du Rire Interdit",
+                "Potion de Glace",
+                "Arc de Glace",
+                "Armure en Cuir Souple",
+                "Montre qui Fait Avancer le Temps"
+            ]
+        },
+        {
+            "Nom": "Claudine la Casse-tout, Forgeronne",
+            "Dialogue": "Je r\u00e9pare tout ! Enfin... je casse d'abord, puis je r\u00e9pare.",
+            "Qu\u00eates": [
+                "Protection du bastion[5]",
+                "Purge des \u00e9gouts[5]",
+                "R\u00e9solution des disparitions[2]"
+            ],
+            "Inventaire": [
+                "Grimoire de Givre",
+                "\u00c9p\u00e9e L\u00e9gendaire",
+                "Amulette du Temps perdu pour pas grand chose",
+                "Grimoire de M\u00e9tamorphose",
+                "Armure Divine",
+                "Potion d'Invincibilit\u00e9",
+                "\u00c9p\u00e9e en P\u00e2te \u00e0 Modeler",
+                "Amulette de Chance",
+                "Chaussettes de Glissement",
+                "Collier de Protection",
+                "Potion de Vol",
+                "Poignard Sombre",
+                "Chapeau \u00e0 L\u00e9gumes",
+                "Chaussettes Magiques",
+                "Cape de Vitesse Stupide",
+                "\u00c9p\u00e9e en Fer"
+            ]
+        },
+        {
+            "Nom": "H\u00e9l\u00e8ne la Hagarde, Voyante",
+            "Dialogue": "J'ai vu ton avenir... mais j'ai oubli\u00e9. D\u00e9sol\u00e9e.",
+            "Qu\u00eates": [
+                "Nettoyage des ruines[2]",
+                "D\u00e9fense des temples[5]",
+                "Jouer une pi\u00e8ce de th\u00e9\u00e2tre pour distraire un dragon",
+                "Protection des voyageurs[5]",
+                "Protection des caravanes[5]"
+            ],
+            "Inventaire": []
+        }
+    ]
+}
