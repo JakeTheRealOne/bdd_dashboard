@@ -1,31 +1,39 @@
 import mysql.connector
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="rootuser",
-    password="rootuser",
-)
+# Create the database and tables if they don't exist
+def createDatabaseAndTables(cursor):
+    # Create the database if it doesn't exist and use it
+    cursor.execute("CREATE DATABASE IF NOT EXISTS rpg;")
+    cursor.execute("USE rpg;")
 
-cursor = db.cursor()
+    # Create the table Players if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Players (ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR (255), Level INT, XP INT, Money INT);")
 
-# Create the database if it doesn't exist and use it
-cursor.execute("CREATE DATABASE IF NOT EXISTS rpg;")
-cursor.execute("USE rpg;")
+    # Create the table Characters if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Characters (ID INT, Name VARCHAR(255), Strenght INT, Agility INT, Intelligence INT, Health INT, Mana INT, Class INT, PRIMARY KEY (ID, Name), FOREIGN KEY (ID) REFERENCES Players(ID));")
 
-# Create the table Players if it doesn't exist
-cursor.execute("CREATE TABLE IF NOT EXISTS Players (ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR (255), Level INT, XP INT, Money INT);")
+    # Create the table Monsters if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT, MonsterHealth INT, Defence INT);")
 
-# Create the table Characters if it doesn't exist
-cursor.execute("CREATE TABLE IF NOT EXISTS Characters (ID INT, Name VARCHAR(255), Strenght INT, Agility INT, Intelligence INT, Health INT, Mana INT, Class INT, PRIMARY KEY (ID, Name), FOREIGN KEY (ID) REFERENCES Players(ID));")
+    # Create the table LootingTable if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT, DropRate INT, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
 
-# Create the table Monsters if it doesn't exist
-cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT, MonsterHealth INT, Defence INT);")
+def main():
+    db = mysql.connector.connect(
+        host="localhost",
+        user="rootuser",
+        password="rootuser",
+    )
 
-# Create the table LootingTable if it doesn't exist
-cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT, DropRate INT, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
+    cursor = db.cursor()
 
-for row in cursor.fetchall():
-    print(row)
+    createDatabaseAndTables(cursor)
 
-cursor.close()
-db.close()
+    for row in cursor.fetchall():
+        print(row)
+
+    cursor.close()
+    db.close()
+
+if __name__ == "__main__":
+    main()
