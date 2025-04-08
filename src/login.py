@@ -12,18 +12,18 @@ class Login(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.db_ = mysql.connector.connect(
+        self.db = mysql.connector.connect(
             host="localhost",
             user="rootuser",
             password="rootuser",
             database="rpg"
         )
-        self.cursor_ = self.db_.cursor()
+        self.cursor = self.db.cursor()
         self.setup()
     
     def __del__(self):
-        self.cursor_.close()
-        self.db_.close()
+        self.cursor.close()
+        self.db.close()
 
     def run(self):
         self.show()
@@ -130,14 +130,14 @@ class Login(QWidget):
         username = self.usernameInputRegister.text()
 
         # Check in db to not create 2 accounts with the same name
-        self.cursor_.execute("SELECT * FROM Players WHERE Name = ('"+ username +"');")
-        result = self.cursor_.fetchone()
+        self.cursor.execute("SELECT * FROM Players WHERE Name = ('"+ username +"');")
+        result = self.cursor.fetchone()
         if result:
             QMessageBox.warning(self, "Register failed", "Username is already taken.")
 
         else:
-            self.cursor_.execute("INSERT INTO Players (Name) VALUES ('"+ username +"');")
-            result = self.cursor_.fetchone()
+            self.cursor.execute("INSERT INTO Players (Name) VALUES ('"+ username +"');")
+            result = self.cursor.fetchone()
             if not result:
                 self.db_.commit()
                 QMessageBox.information(self, "Register successful", "You have successfully registered.")
@@ -148,13 +148,13 @@ class Login(QWidget):
     def on_sendButtonLogin_clicked(self):
         username = self.usernameInputLogin.text()
 
-        self.cursor_.execute("SELECT * FROM Players WHERE Name = ('"+ username +"');")
-        result = self.cursor_.fetchone()
+        self.cursor.execute("SELECT * FROM Players WHERE Name = ('"+ username +"');")
+        result = self.cursor.fetchone()
         if result:
-            self.db_.commit()
+            self.db.commit()
             self.clearInputs()
             QMessageBox.information(self, "Login successful", "You have successfully logged in.")
-            mainMenu = main_menu.MainMenu(self)
+            mainMenu = main_menu.MainMenu(username, self)
             self.stackedWidget.addWidget(mainMenu)
             self.stackedWidget.setCurrentWidget(mainMenu) # show the main menu
 
