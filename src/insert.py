@@ -112,6 +112,8 @@ def insertMonstersData(db, cursor):
     cursor.executemany(query, monstres_data)
 
     db.commit()
+
+    print(f"Inserted {len(monstres_data)} rows into Monsters table.")
     
 
 def main():
