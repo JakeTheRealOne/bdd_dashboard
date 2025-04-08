@@ -21,6 +21,9 @@ def createDatabaseAndTables(db, cursor):
     # Create the table LootingTable if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT, DropRate INT, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
 
+    # Create the table Spells if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Spells (Name VARCHAR (255) PRIMARY KEY, ManaCost INT, ReloadTime INT, Damage INT);")
+
     db.commit()
 
 def main():
