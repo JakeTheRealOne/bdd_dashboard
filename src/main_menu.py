@@ -12,11 +12,10 @@ class MainMenu(QWidget):
 
     def setup(self):
         self.manageAccountButton = QPushButton("Manage Account")
-        self.startButton.setFixedWidth(500)
+        self.manageAccountButton.setFixedWidth(500)
         self.exitButton = QPushButton("Exit")
         self.exitButton.setFixedWidth(500)
 
-        # main page
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         mainLayout.addWidget(self.manageAccountButton, alignment=Qt.AlignCenter)
@@ -24,6 +23,12 @@ class MainMenu(QWidget):
         
         self.setLayout(mainLayout)
 
+        # connect the buttons
+        self.exitButton.clicked.connect(self.on_exitButton_clicked)
+
         self.show()
 
-    def on_exit
+    def on_exitButton_clicked(self):
+        reply = QMessageBox.question(self, "Quit", "Are you sure you want to exit ?", QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            QApplication.quit()
