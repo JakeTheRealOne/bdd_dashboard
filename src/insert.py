@@ -1,5 +1,6 @@
 import csv
 import mysql.connector
+import xml.etree.ElementTree as ElemTree
 import os
 
 import create 
@@ -84,6 +85,35 @@ def insertSpellsData(db, cursor):
 
     print(f"Inserted {len(spellsData)} rows into Spells table.")
 
+
+def insertMonstersData(db, cursor):
+    monster_xml = ElemTree.parse('./data/monstres.xml')
+    root = monster_xml.getroot() 
+    monstres_data = []
+    for monstre in root.findall('monstre'):
+        try:
+            nom = monstre.find('nom').text
+            attaque = int(monstre.find('attaque').text)
+            defense = int(monstre.find('defense').text)
+            vie = int(monstre.find('vie').text)
+            monstres_data.append((nom, attaque, defense, vie))
+        except:
+            continue; 
+
+    query = '''
+        INSERT INTO Monsters (Name, Damage, Defence, MonsterHealth)
+        VALUES (%s, %s, %s, %s)
+        ON DUPLICATE KEY UPDATE
+            Name = VALUES(Name),
+            Damage = VALUES(Damage),
+            Defence = VALUES(Defence),
+            MonsterHealth = VALUES(MonsterHealth)
+    '''
+    cursor.executemany(query, monstres_data)
+
+    db.commit()
+    
+
 def main():
     db = mysql.connector.connect(
         host='localhost',
@@ -98,6 +128,7 @@ def main():
 
     insertPlayersData(db, cursor)
     insertSpellsData(db, cursor)
+    insertMonstersData(db, cursor)
 
     cursor.close()
     db.close()
