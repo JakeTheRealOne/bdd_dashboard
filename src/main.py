@@ -3,8 +3,10 @@ import login
 import sys
 from PyQt5.QtWidgets import QApplication
 
-# Create the database and tables if they don't exist
 def createDatabaseAndTables(db, cursor):
+    """
+    Create the database and tables if they don't exist
+    """
     # Create the database if it doesn't exist and use it
     cursor.execute("CREATE DATABASE IF NOT EXISTS rpg;")
     cursor.execute("USE rpg;")

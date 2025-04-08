@@ -4,6 +4,10 @@ import mysql.connector
 import qt_config
 
 class Login(QWidget):
+    """
+    Login class to handle the login and registration of players.
+    """
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.db_ = mysql.connector.connect(
