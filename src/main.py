@@ -1,29 +1,9 @@
 import mysql.connector
-import login
 import sys
 from PyQt5.QtWidgets import QApplication
 
-def createDatabaseAndTables(db, cursor):
-    """
-    Create the database and tables if they don't exist
-    """
-    # Create the database if it doesn't exist and use it
-    cursor.execute("CREATE DATABASE IF NOT EXISTS rpg;")
-    cursor.execute("USE rpg;")
-
-    # Create the table Players if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Players (ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR (255), Level INT, XP INT, Money INT);")
-
-    # Create the table Characters if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Characters (ID INT, Name VARCHAR(255), Strenght INT, Agility INT, Intelligence INT, Health INT, Mana INT, Class INT, PRIMARY KEY (ID, Name), FOREIGN KEY (ID) REFERENCES Players(ID));")
-
-    # Create the table Monsters if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT, MonsterHealth INT, Defence INT);")
-
-    # Create the table LootingTable if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT, DropRate INT, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
-
-    db.commit()
+import login
+import create
 
 def main():
     db = mysql.connector.connect(
@@ -34,7 +14,7 @@ def main():
 
     cursor = db.cursor()
 
-    createDatabaseAndTables(db, cursor)
+    create.createDatabaseAndTables(db, cursor)
 
     app = QApplication(sys.argv)
     loginScreen = login.Login()
