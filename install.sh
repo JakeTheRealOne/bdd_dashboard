@@ -12,11 +12,9 @@ fi
 if [ "$(uname)" == "Darwin" ] || [ "$(uname)" == "Linux" ]; then
     # For Linux/macOS
     source .venv/bin/activate
-    echo "Virtual environment activated for Linux/macOS."
 elif [ "$(uname)" == "CYGWIN"* ] || [ "$(uname)" == "MINGW"* ] || [ "$(uname)" == "MSYS"* ]; then
     # For Windows
     source .venv/Scripts/activate
-    echo "Virtual environment activated for Windows."
 else
     echo "System unrecognized. Please activate the virtual environment manually."
     exit 1

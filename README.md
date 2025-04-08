@@ -18,7 +18,19 @@ Run the `install.sh` script to install the python environment with the PyQt5 and
 ./install.sh
 ```
 
-Then
+Then run the command to activate the python environment for Linux/macOS :
+
+```sh
+source .venv/bin/activate
+```
+
+For Windows :
+
+```sh
+source .venv/Scripts/activate
+```
+
+You can now run the program :
 
 ```sh
 python3 src/main.py
