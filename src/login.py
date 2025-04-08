@@ -139,7 +139,7 @@ class Login(QWidget):
             self.cursor.execute("INSERT INTO Players (Name) VALUES ('"+ username +"');")
             result = self.cursor.fetchone()
             if not result:
-                self.db_.commit()
+                self.db.commit()
                 QMessageBox.information(self, "Register successful", "You have successfully registered.")
                 self.stackedWidget.setCurrentWidget(self.loginPage)
 
@@ -148,13 +148,13 @@ class Login(QWidget):
     def on_sendButtonLogin_clicked(self):
         username = self.usernameInputLogin.text()
 
-        self.cursor.execute("SELECT * FROM Players WHERE Name = ('"+ username +"');")
+        self.cursor.execute("SELECT p.ID FROM Players p WHERE Name = ('"+ username +"');")
         result = self.cursor.fetchone()
         if result:
             self.db.commit()
             self.clearInputs()
             QMessageBox.information(self, "Login successful", "You have successfully logged in.")
-            mainMenu = main_menu.MainMenu(username, self)
+            mainMenu = main_menu.MainMenu(result[0], self)
             self.stackedWidget.addWidget(mainMenu)
             self.stackedWidget.setCurrentWidget(mainMenu) # show the main menu
 

@@ -10,19 +10,19 @@ def createDatabaseAndTables(db, cursor):
     cursor.execute("USE rpg;")
 
     # Create the table Players if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Players (ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR (255), Level INT, XP INT, Money INT, InventorySlot INT);")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Players (ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR (255), Level INT DEFAULT 0, XP INT DEFAULT 0, Money INT DEFAULT 0, InventorySlot INT DEFAULT 0);")
 
     # Create the table Characters if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Characters (ID INT, Name VARCHAR(255), Strenght INT, Agility INT, Intelligence INT, Health INT, Mana INT, Class INT, PRIMARY KEY (ID, Name), FOREIGN KEY (ID) REFERENCES Players(ID));")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Characters (ID INT, Name VARCHAR(255), Strenght INT DEFAULT 0, Agility INT DEFAULT 0, Intelligence INT DEFAULT 0, Health INT DEFAULT 0, Mana INT DEFAULT 0, Class INT DEFAULT 0, PRIMARY KEY (ID, Name), FOREIGN KEY (ID) REFERENCES Players(ID));")
 
     # Create the table Monsters if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT, MonsterHealth INT, Defence INT);")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT DEFAULT 0, MonsterHealth INT DEFAULT 0, Defence INT DEFAULT 0);")
 
     # Create the table LootingTable if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT, DropRate INT, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
+    cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT DEFAULT 0, DropRate INT DEFAULT 0, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
 
     # Create the table Spells if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Spells (Name VARCHAR (255) PRIMARY KEY, ManaCost INT, ReloadTime INT, Damage INT);")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Spells (Name VARCHAR (255) PRIMARY KEY, ManaCost INT DEFAULT 0, ReloadTime INT DEFAULT 0, Damage INT DEFAULT 0);")
 
     db.commit()
 

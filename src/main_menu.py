@@ -9,9 +9,9 @@ class MainMenu(QWidget):
     MainMenu class to handle the main menu of the game.
     """
 
-    def __init__(self, username, parent=None):
+    def __init__(self, ID, parent=None):
         super().__init__(parent)
-        self.username = username
+        self.ID = ID
         self.setup()
 
     def setup(self):
@@ -32,7 +32,7 @@ class MainMenu(QWidget):
         self.mainPage.setLayout(mainLayout)
         self.stackedWidget.addWidget(self.mainPage)
 
-        self.manageAccount = manage_account.ManageAccount(self, self.stackedWidget, self.username)
+        self.manageAccount = manage_account.ManageAccount(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageAccount)
 
         self.stackedWidget.setCurrentWidget(self.mainPage)
