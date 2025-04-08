@@ -3,6 +3,8 @@ from PyQt5.QtCore import Qt
 import mysql.connector
 import qt_config
 
+import main_menu
+
 class Login(QWidget):
     """
     Login class to handle the login and registration of players.
@@ -22,6 +24,9 @@ class Login(QWidget):
     def __del__(self):
         self.cursor_.close()
         self.db_.close()
+
+    def run(self):
+        self.show()
 
     def setup(self):
         self.stackedWidget = QStackedWidget()
@@ -149,7 +154,13 @@ class Login(QWidget):
             self.db_.commit()
             self.clearInputs()
             QMessageBox.information(self, "Login successful", "You have successfully logged in.")
-            self.stackedWidget.setCurrentWidget(self.mainPage)
+            mainMenu = main_menu.MainMenu(self)
+            self.stackedWidget.addWidget(mainMenu)
+            self.stackedWidget.setCurrentWidget(mainMenu) # show the main menu
+
+        else:
+            self.clearInputs()
+            QMessageBox.warning(self, "Login failed", "Username does not exist.")
 
     def clearInputs(self):
         self.usernameInputRegister.clear()

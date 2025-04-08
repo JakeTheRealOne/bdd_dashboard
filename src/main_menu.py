@@ -20,6 +20,8 @@ class MainMenu(QWidget):
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         mainLayout.addWidget(self.manageAccountButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.exitButton, alignment=Qt.AlignCenter)
+        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+
         
         self.setLayout(mainLayout)
 
