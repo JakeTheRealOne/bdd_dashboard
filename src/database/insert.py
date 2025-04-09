@@ -9,85 +9,76 @@ ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 
 def insertPlayersData(db, cursor):
     csvPath = os.path.join(ROOT_DIR, 'data', 'joueurs.csv')
-
-    with open(csvPath, newline='', encoding='utf-8') as csvfile:
+    with open(csvPath, "r", encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
-
-        playersData = []
-        for row in reader:
-            try:
-                if not row['XP'].isdigit() or not row['Niveau'].isdigit() or not row['ID'].isdigit() or not row['SlotsInventaire'].isdigit() or not row['Monnaie'].isdigit():
-                    continue
-
-                ID = int(row['ID'])
-                Name = row['NomUtilisateur']
-                Level = int(row['Niveau'])
-                XP = int(row['XP'])
-                Money = int(row['Monnaie'])
-                InventorySlot = int(row['SlotsInventaire'])
-                playersData.append((ID, Name, Level, XP, Money, InventorySlot))
-
-            except:
-                continue
-
-    # Prepare the SQL query to insert data into the Players table (update the existing player if the ID already exists)
-    query = '''
-        INSERT INTO Players (ID, Name, Level, XP, Money, InventorySlot)
-        VALUES (%s, %s, %s, %s, %s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            Level = VALUES(Level),
-            XP = VALUES(XP),
-            Money = VALUES(Money),
-            InventorySlot = VALUES(InventorySlot)
-    '''
-
-    cursor.executemany(query, playersData)
-
-    db.commit()
+        data = list(reader)
     csvfile.close()
 
-    print(f"Inserted {len(playersData)} rows into Players table.")
+    count = 0
+
+    for row in data:
+        if not row['XP'].isdigit() or not row['Niveau'].isdigit() or not row['ID'].isdigit() or not row['SlotsInventaire'].isdigit() or not row['Monnaie'].isdigit():
+            continue
+
+        ID = int(row['ID'])
+        Name = row['NomUtilisateur']
+        Level = int(row['Niveau'])
+        XP = int(row['XP'])
+        Money = int(row['Monnaie'])
+        InventorySlot = int(row['SlotsInventaire'])
+
+        cursor.execute('''
+            INSERT IGNORE INTO Players (ID, Name, Level, XP, Money, InventorySlot)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            ''', (
+                ID,
+                Name,
+                Level,
+                XP,
+                Money,
+                InventorySlot
+            ))
+                       
+        if cursor.rowcount == 1:
+            count += 1
+
+    db.commit()
+    print(f"Inserted {count} rows into Players table.")
 
 
 def insertSpellsData(db, cursor):
     csvPath = os.path.join(ROOT_DIR, 'data', 'sorts.csv')
-
-    with open(csvPath, newline='', encoding='utf-8') as csvfile:
+    with open(csvPath, "r", encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
-
-        spellsData = []
-        for row in reader:
-            try:
-                if not row['Coût en Mana'].isdigit() or not row['Temps de Recharge'].isdigit() or not row["Puissance d'Attaque"].isdigit():
-                    continue
-
-                Name = row['Nom']
-                ManaCost = int(row['Coût en Mana'])
-                ReloadTime = int(row['Temps de Recharge'])
-                Damage = int(row["Puissance d'Attaque"])
-                spellsData.append((Name, ManaCost, ReloadTime, Damage))
-
-            except:
-                 continue 
-
-    # Prepare the SQL query to insert data into the Spells table (update the existing spell if the Name already exists)
-    query = '''
-        INSERT INTO Spells (Name, ManaCost, ReloadTime, Damage)
-        VALUES (%s, %s, %s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            ManaCost = VALUES(ManaCost),
-            ReloadTime = VALUES(ReloadTime),
-            Damage = VALUES(Damage)
-    '''
-
-    cursor.executemany(query, spellsData)
-
-    db.commit()
+        data = list(reader)
     csvfile.close()
 
-    print(f"Inserted {len(spellsData)} rows into Spells table.")
+    count = 0
+
+    for row in data:
+        if not row['Coût en Mana'].isdigit() or not row['Temps de Recharge'].isdigit() or not row["Puissance d'Attaque"].isdigit():
+            continue
+
+        Name = row['Nom']
+        ManaCost = int(row['Coût en Mana'])
+        ReloadTime = int(row['Temps de Recharge'])
+        Damage = int(row["Puissance d'Attaque"])
+
+        cursor.execute('''
+            INSERT IGNORE INTO Spells (Name, ManaCost, ReloadTime, Damage)
+            VALUES (%s, %s, %s, %s)
+            ''', (
+                Name,
+                ManaCost,
+                ReloadTime,
+                Damage
+            ))
+        
+        if cursor.rowcount == 1:
+                count += 1
+
+    db.commit()
+    print(f"Inserted {count} rows into Spells table.")
 
 
 def insertMonstersData(db, cursor):
@@ -149,6 +140,7 @@ def insertQuestsData(db, cursor):
     db.commit()
     print(f"Inserted {len(quests_data)} rows into Quests table.")
     
+
 def insertCharactersData(db, cursor):
     jsonPath = os.path.join(ROOT_DIR, 'data', 'personnages.json')
     with open(jsonPath, "r", encoding="utf-8") as file:
@@ -182,12 +174,12 @@ def insertCharactersData(db, cursor):
             p["utilisateur"]
         ))
 
-        # Check if the character was inserted successfully
         if cursor.rowcount == 1:
             count += 1
         
     db.commit()
     print(f"Inserted {count} rows into Characters table.")
+
 
 def main():
     db = mysql.connector.connect(
