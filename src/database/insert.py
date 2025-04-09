@@ -117,7 +117,6 @@ def insertItemsData(db, cursor):
             if cursor.rowcount == 1:
                 countItem += 1
 
-
             if Type == "Arme":
                 Property = Property.removeprefix("Puissance d'attaque: ")
                 if not Property.isdigit():
@@ -171,7 +170,7 @@ def insertItemsData(db, cursor):
             else:
                 continue         
 
-        except:
+        except Exception:
             continue
 
     db.commit()
@@ -206,7 +205,7 @@ def insertMonstersData(db, cursor):
             if cursor.rowcount == 1:
                 count += 1
 
-        except:
+        except Exception:
             continue
 
     db.commit()
@@ -238,7 +237,7 @@ def insertQuestsData(db, cursor):
             if cursor.rowcount == 1:
                 count += 1
 
-        except:
+        except Exception:
             continue
 
     db.commit()
