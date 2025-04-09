@@ -115,22 +115,27 @@ class ManageAccount(QWidget):
 
     def on_changeAccountButton_clicked(self):
         newName = self.inputName.text()
+        newLevel = self.inputLevel.value()
+        newXP = self.inputXP.value()
+        newMoney = self.inputMoney.value()
+        newInventorySlot = self.inputInventorySlot.value()
+
+        if not newName and newLevel == -1 and newXP == -1 and newMoney == -1 and newInventorySlot == -1:
+            QMessageBox.information(self, "Info", "You haven't made any changes to your account info.")
+            return
+
         if not newName:
             newName = self.name
 
-        newLevel = self.inputLevel.value()
         if newLevel == -1:
             newLevel = self.level
 
-        newXP = self.inputXP.value()
         if newXP == -1:
             newXP = self.xp
 
-        newMoney = self.inputMoney.value()
         if newMoney == -1:
             newMoney = self.money
 
-        newInventorySlot = self.inputInventorySlot.value()
         if newInventorySlot == -1:
             newInventorySlot = self.inventorySlot
 
