@@ -83,58 +83,60 @@ def insertSpellsData(db, cursor):
 
 def insertItemsData(db, cursor):
     csvPath = os.path.join(ROOT_DIR, 'data', 'objets.csv')
-
     with open(csvPath, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
-        itemData = []
-        weaponData = []
-        armorData = []
-        potionData = []
-        artefactData = []
+        data = list(reader)
+    csvfile.close()
 
-        for row in reader:
-            try:
-                Type = row['Type']
+    itemData = []
+    weaponData = []
+    armorData = []
+    potionData = []
+    artefactData = []
 
-                Name = row['Nom']
+    for row in data:
+        try:
+            Type = row['Type']
 
-                Price = row['Prix']
+            Name = row['Nom']
 
-                if not Price.isdigit():
-                    continue
-                
-                
-                Property = row['Propriétés']
-                
-                itemData.append((Name, int(Price)))
+            Price = row['Prix']
 
-
-                if(Type == "Arme"):
-                    Property = Property.removeprefix("Puissance d'attaque: ")
-                    if not Property.isdigit():
-                        continue
-                    weaponData.append((Name, int(Property)))
-
-                elif Type == "Armure":
-                    Property = Property.removeprefix("Défense: ")
-                    if not Property.isdigit():
-                        continue
-                    armorData.append((Name, int(Property)))
-
-                elif Type == "Artefact":
-                    artefactData.append((Name, Property))
-
-                elif Type == "Potion":
-                    potionData.append((Name, Property))
-                
-                else:
-                    continue
-
-                
-                
-
-            except:
+            if not Price.isdigit():
                 continue
+            
+            
+            Property = row['Propriétés']
+            
+            itemData.append((Name, int(Price)))
+
+
+            if(Type == "Arme"):
+                Property = Property.removeprefix("Puissance d'attaque: ")
+                if not Property.isdigit():
+                    continue
+                weaponData.append((Name, int(Property)))
+
+            elif Type == "Armure":
+                Property = Property.removeprefix("Défense: ")
+                if not Property.isdigit():
+                    continue
+                armorData.append((Name, int(Property)))
+
+            elif Type == "Artefact":
+                artefactData.append((Name, Property))
+
+            elif Type == "Potion":
+                potionData.append((Name, Property))
+            
+            else:
+                continue
+
+            
+            
+
+        except:
+            continue
 
 
     query = '''
