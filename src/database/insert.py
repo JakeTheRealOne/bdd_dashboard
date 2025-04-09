@@ -27,8 +27,8 @@ def insertPlayersData(db, cursor):
                 InventorySlot = int(row['SlotsInventaire'])
                 playersData.append((ID, Name, Level, XP, Money, InventorySlot))
 
-            except ValueError as e:
-                print(f"error in line {row}: {e}")
+            except:
+                continue
 
     # Prepare the SQL query to insert data into the Players table (update the existing player if the ID already exists)
     query = '''
@@ -68,8 +68,8 @@ def insertSpellsData(db, cursor):
                 Damage = int(row["Puissance d'Attaque"])
                 spellsData.append((Name, ManaCost, ReloadTime, Damage))
 
-            except ValueError as e:
-                print(f"error in line {row}: {e}")
+            except:
+                 continue 
 
     # Prepare the SQL query to insert data into the Spells table (update the existing spell if the Name already exists)
     query = '''
@@ -102,7 +102,7 @@ def insertMonstersData(db, cursor):
             vie = int(monstre.find('vie').text)
             monstres_data.append((nom, attaque, defense, vie))
         except:
-            continue; 
+            continue 
 
     query = '''
         INSERT INTO Monsters (Name, Damage, Defence, MonsterHealth)
