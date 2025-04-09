@@ -133,8 +133,8 @@ def insertItemsData(db, cursor):
                 
                 
 
-            except AttributeError as e:
-                print(f"error in line {row}: {e}")
+            except:
+                continue
 
 
     query = '''
@@ -179,12 +179,16 @@ def insertItemsData(db, cursor):
 
 
     cursor.executemany(query, itemData)
+    print(f"Inserted {len(itemData)} rows into Items table.")
     cursor.executemany(queryWeapon, weaponData)
+    print(f"Inserted {len(weaponData)} rows into Weapons table.")
     cursor.executemany(queryArmor, armorData)
+    print(f"Inserted {len(armorData)} rows into Armors table.")
     cursor.executemany(queryPotion, potionData)
+    print(f"Inserted {len(potionData)} rows into Potions table.")
     cursor.executemany(queryArtefact, artefactData)
+    print(f"Inserted {len(artefactData)} rows into Artefacts table.")
     db.commit()
-    print()
 
 
 def insertMonstersData(db, cursor):
