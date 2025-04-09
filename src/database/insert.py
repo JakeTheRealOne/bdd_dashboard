@@ -84,61 +84,64 @@ def insertSpellsData(db, cursor):
 def insertMonstersData(db, cursor):
     monster_xml = ElemTree.parse('./data/monstres.xml')
     root = monster_xml.getroot() 
-    monstres_data = []
+
+    count = 0
     for monstre in root.findall('monstre'):
         try:
             nom = monstre.find('nom').text
             attaque = int(monstre.find('attaque').text)
             defense = int(monstre.find('defense').text)
             vie = int(monstre.find('vie').text)
-            monstres_data.append((nom, attaque, defense, vie))
-        except:
-            continue 
 
-    query = '''
-        INSERT INTO Monsters (Name, Damage, Defence, MonsterHealth)
-        VALUES (%s, %s, %s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            Damage = VALUES(Damage),
-            Defence = VALUES(Defence),
-            MonsterHealth = VALUES(MonsterHealth)
-    '''
-    cursor.executemany(query, monstres_data)
+            cursor.execute('''
+                INSERT IGNORE INTO Monsters (Name, Damage, Defence, MonsterHealth)
+                VALUES (%s, %s, %s, %s)
+                ''', (
+                    nom,
+                    attaque,
+                    defense,
+                    vie
+                ))
+            if cursor.rowcount == 1:
+                count += 1
+
+        except:
+            continue
 
     db.commit()
-
-    print(f"Inserted {len(monstres_data)} rows into Monsters table.")
+    print(f"Inserted {count} rows into Monsters table.")
 
 
 def insertQuestsData(db, cursor):
     quests_xml = ElemTree.parse('./data/quetes.xml')
     root = quests_xml.getroot()
-    quests_data = []
+
+    count = 0
     for quest in root.findall('quête'):
         try:
             name = quest.find('Nom').text
             description = quest.find('Descripion').text
             description = ' '.join(description.split())
-
             difficulty = int(quest.find('Difficulté').text)
             experience = int(quest.find('Expérience').text)
-            quests_data.append((name, description, difficulty, experience))
+
+            cursor.execute('''
+                INSERT IGNORE INTO Quests (Name, Description, Difficulty, Experience)
+                VALUES (%s, %s, %s, %s)
+                ''', (
+                    name,
+                    description,
+                    difficulty,
+                    experience
+                ))
+            if cursor.rowcount == 1:
+                count += 1
+
         except:
             continue
 
-    query = '''
-        INSERT INTO Quests (Name, Description, Difficulty, Experience)
-        VALUES (%s, %s, %s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            Description = VALUES(Description),
-            Difficulty = VALUES(Difficulty),
-            Experience = VALUES(Experience)
-    '''
-    cursor.executemany(query, quests_data)
     db.commit()
-    print(f"Inserted {len(quests_data)} rows into Quests table.")
+    print(f"Inserted {count} rows into Quests table.")
     
 
 def insertCharactersData(db, cursor):
