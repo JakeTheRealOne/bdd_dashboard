@@ -1,6 +1,7 @@
 import csv
 import mysql.connector
 import xml.etree.ElementTree as ElemTree
+import json
 import os
 import create 
 
@@ -11,6 +12,7 @@ def insertPlayersData(db, cursor):
 
     with open(csvPath, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
+
         playersData = []
         for row in reader:
             try:
@@ -43,6 +45,7 @@ def insertPlayersData(db, cursor):
     cursor.executemany(query, playersData)
 
     db.commit()
+    csvfile.close()
 
     print(f"Inserted {len(playersData)} rows into Players table.")
 
@@ -52,6 +55,7 @@ def insertSpellsData(db, cursor):
 
     with open(csvPath, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
+
         spellsData = []
         for row in reader:
             try:
@@ -81,6 +85,7 @@ def insertSpellsData(db, cursor):
     cursor.executemany(query, spellsData)
 
     db.commit()
+    csvfile.close()
 
     print(f"Inserted {len(spellsData)} rows into Spells table.")
 
@@ -143,12 +148,46 @@ def insertQuestsData(db, cursor):
     cursor.executemany(query, quests_data)
     db.commit()
     print(f"Inserted {len(quests_data)} rows into Quests table.")
-
-
-    return 
-
-
     
+def insertCharactersData(db, cursor):
+    jsonPath = os.path.join(ROOT_DIR, 'data', 'personnages.json')
+    with open(jsonPath, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    file.close()
+
+    count = 0
+
+    for p in data["personnages"]:
+        if not all(isinstance(p[key], int) for key in ["Force", "Agilite", "Intelligence", "Vie", "Mana"]):
+            continue # Skip if any of the required fields are not integers
+
+
+        # Check if the player exists in the Players table before inserting the character
+        cursor.execute("SELECT COUNT(*) FROM Players WHERE Name = %s", (p["utilisateur"],))
+        if cursor.fetchone()[0] == 0:
+            continue  # Ignore the character if the player does not exist
+
+        cursor.execute('''
+        INSERT IGNORE INTO Characters (Name, Strenght, Agility, Intelligence, Health, Mana, Class, Username)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        ''', (
+            p["Nom"],
+            p["Force"],
+            p["Agilite"],
+            p["Intelligence"],
+            p["Vie"],
+            p["Mana"],
+            p["Classe"],
+            p["utilisateur"]
+        ))
+
+        # Check if the character was inserted successfully
+        if cursor.rowcount == 1:
+            count += 1
+        
+    db.commit()
+    print(f"Inserted {count} rows into Characters table.")
 
 def main():
     db = mysql.connector.connect(
@@ -166,6 +205,7 @@ def main():
     insertSpellsData(db, cursor)
     insertMonstersData(db, cursor)
     insertQuestsData(db, cursor)
+    insertCharactersData(db, cursor)
 
     cursor.close()
     db.close()

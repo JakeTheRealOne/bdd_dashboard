@@ -10,10 +10,10 @@ def createDatabaseAndTables(db, cursor):
     cursor.execute("USE rpg;")
 
     # Create the table Players if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Players (ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR (255), Level INT DEFAULT 0, XP INT DEFAULT 0, Money INT DEFAULT 0, InventorySlot INT DEFAULT 0);")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Players (ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR (255) UNIQUE, Level INT DEFAULT 0, XP INT DEFAULT 0, Money INT DEFAULT 0, InventorySlot INT DEFAULT 0);")
 
     # Create the table Characters if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Characters (ID INT, Name VARCHAR(255), Strenght INT DEFAULT 0, Agility INT DEFAULT 0, Intelligence INT DEFAULT 0, Health INT DEFAULT 0, Mana INT DEFAULT 0, Class INT DEFAULT 0, PRIMARY KEY (ID, Name), FOREIGN KEY (ID) REFERENCES Players(ID));")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Characters (Name VARCHAR(255) PRIMARY KEY, Strenght INT DEFAULT 0, Agility INT DEFAULT 0, Intelligence INT DEFAULT 0, Health INT DEFAULT 0, Mana INT DEFAULT 0, Class VARCHAR(255), Username VARCHAR(255), FOREIGN KEY (Username) REFERENCES Players(Name));")
 
     # Create the table Monsters if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT DEFAULT 0, MonsterHealth INT DEFAULT 0, Defence INT DEFAULT 0);")
