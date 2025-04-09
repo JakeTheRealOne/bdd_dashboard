@@ -113,6 +113,39 @@ def insertMonstersData(db, cursor):
     db.commit()
 
     print(f"Inserted {len(monstres_data)} rows into Monsters table.")
+
+
+def insertQuestsData(db, cursor):
+    quests_xml = ElemTree.parse('./data/quetes.xml')
+    root = quests_xml.getroot()
+    quests_data = []
+    for quest in root.findall('quête'):
+        try:
+            name = quest.find('Nom').text
+            description = quest.find('Descripion').text
+            difficulty = int(quest.find('Difficulté').text)
+            experience = int(quest.find('Expérience').text)
+            quests_data.append((name, description, difficulty, experience))
+        except:
+            continue
+
+    query = '''
+        INSERT INTO Quests (Name, Description, Difficulty, Experience)
+        VALUES (%s, %s, %s, %s)
+        ON DUPLICATE KEY UPDATE
+            Name = VALUES(Name),
+            Description = VALUES(Description),
+            Difficulty = VALUES(Difficulty),
+            Experience = VALUES(Experience)
+    '''
+    cursor.executemany(query, quests_data)
+    db.commit()
+    print(f"Inserted {len(quests_data)} rows into Quests table.")
+
+
+    return 
+
+
     
 
 def main():
@@ -130,6 +163,7 @@ def main():
     insertPlayersData(db, cursor)
     insertSpellsData(db, cursor)
     insertMonstersData(db, cursor)
+    insertQuestsData(db, cursor)
 
     cursor.close()
     db.close()

@@ -23,6 +23,9 @@ def createDatabaseAndTables(db, cursor):
 
     # Create the table Spells if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Spells (Name VARCHAR (255) PRIMARY KEY, ManaCost INT DEFAULT 0, ReloadTime INT DEFAULT 0, Damage INT DEFAULT 0);")
+    
+    # Create the table Quests if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Quests (Name VARCHAR (255) PRIMARY KEY, Description VARCHAR (255), Difficulty INT DEFAULT 0, Experience INT DEFAULT 0);")
 
     db.commit()
 
