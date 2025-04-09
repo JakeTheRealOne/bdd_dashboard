@@ -27,6 +27,21 @@ def createDatabaseAndTables(db, cursor):
     # Create the table Quests if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Quests (Name VARCHAR (255) PRIMARY KEY, Description VARCHAR (255), Difficulty INT DEFAULT 0, Experience INT DEFAULT 0);")
 
+    # Create the table Items if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Items (Name VARCHAR (225) PRIMARY KEY, Price INT DEFAULT 0) ;")
+    
+    # Create the table Weapons if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Weapons (Name VARCHAR (225) PRIMARY KEY, Power INT DEFAULT 0);")
+
+    # Create the table Armors if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Armors (Name VARCHAR (225) PRIMARY KEY, Defence INT DEFAULT 0) ;")
+ 
+    # Create the table Potions if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Potions (Name VARCHAR (225) PRIMARY KEY, Boost VARCHAR (225));")
+    
+    # Create the table Artefacts if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS Artefacts (Name VARCHAR (225) PRIMARY KEY, Effect VARCHAR (225));")
+
     db.commit()
 
 def main():

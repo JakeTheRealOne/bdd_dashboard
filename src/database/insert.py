@@ -85,6 +85,112 @@ def insertSpellsData(db, cursor):
     print(f"Inserted {len(spellsData)} rows into Spells table.")
 
 
+def insertItemsData(db, cursor):
+    csvPath = os.path.join(ROOT_DIR, 'data', 'objets.csv')
+
+    with open(csvPath, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        itemData = []
+        weaponData = []
+        armorData = []
+        potionData = []
+        artefactData = []
+
+        for row in reader:
+            try:
+                Type = row['Type']
+
+                Name = row['Nom']
+
+                Price = row['Prix']
+
+                if not Price.isdigit():
+                    continue
+                
+                
+                Property = row['Propriétés']
+                
+                itemData.append((Name, int(Price)))
+
+
+                if(Type == "Arme"):
+                    Property = Property.removeprefix("Puissance d'attaque: ")
+                    if not Property.isdigit():
+                        continue
+                    weaponData.append((Name, int(Property)))
+
+                elif Type == "Armure":
+                    Property = Property.removeprefix("Défense: ")
+                    if not Property.isdigit():
+                        continue
+                    armorData.append((Name, int(Property)))
+
+                elif Type == "Artefact":
+                    artefactData.append((Name, Property))
+
+                elif Type == "Potion":
+                    potionData.append((Name, Property))
+                
+                else:
+                    continue
+
+                
+                
+
+            except AttributeError as e:
+                print(f"error in line {row}: {e}")
+
+
+    query = '''
+        INSERT INTO Items (Name, Price)
+        VALUES (%s, %s)
+        ON DUPLICATE KEY UPDATE
+            Name = VALUES(Name),
+            Price = VALUES(Price)
+    '''
+
+    queryWeapon = '''
+        INSERT INTO Weapons (Name, Power)
+        VALUES (%s, %s)
+        ON DUPLICATE KEY UPDATE
+            Name = VALUES(Name),
+            Power = VALUES(Power)
+    '''
+    
+    queryArmor = '''
+        INSERT INTO Armors (Name, Defence)
+        VALUES (%s, %s)
+        ON DUPLICATE KEY UPDATE
+            Name = VALUES(Name),
+            Defence = VALUES(Defence)
+    '''
+
+    queryPotion = '''
+        INSERT INTO Potions (Name, Boost)
+        VALUES (%s, %s)
+        ON DUPLICATE KEY UPDATE
+            Name = VALUES(Name),
+            Boost = VALUES(Boost)
+    '''
+
+    queryArtefact = '''
+        INSERT INTO Artefacts (Name, Effect)
+        VALUES (%s, %s)
+        ON DUPLICATE KEY UPDATE
+            Name = VALUES(Name),
+            Effect = VALUES(Effect)
+    '''
+
+
+    cursor.executemany(query, itemData)
+    cursor.executemany(queryWeapon, weaponData)
+    cursor.executemany(queryArmor, armorData)
+    cursor.executemany(queryPotion, potionData)
+    cursor.executemany(queryArtefact, artefactData)
+    db.commit()
+    print()
+
+
 def insertMonstersData(db, cursor):
     monster_xml = ElemTree.parse('./data/monstres.xml')
     root = monster_xml.getroot() 
@@ -147,9 +253,6 @@ def insertQuestsData(db, cursor):
 
     return 
 
-
-    
-
 def main():
     db = mysql.connector.connect(
         host='localhost',
@@ -166,6 +269,7 @@ def main():
     insertSpellsData(db, cursor)
     insertMonstersData(db, cursor)
     insertQuestsData(db, cursor)
+    insertItemsData(db, cursor)
 
     cursor.close()
     db.close()
