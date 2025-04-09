@@ -115,7 +115,7 @@ def insertMonstersData(db, cursor):
     print(f"Inserted {len(monstres_data)} rows into Monsters table.")
 
 
-def insertQuestsData(db, cursor):  #erreur liée au nom des quetes: aide aux fermier[5] apparait 22 fois en 2 difficulté différentes 
+def insertQuestsData(db, cursor):
     quests_xml = ElemTree.parse('./data/quetes.xml')
     root = quests_xml.getroot()
     quests_data = []
@@ -123,6 +123,8 @@ def insertQuestsData(db, cursor):  #erreur liée au nom des quetes: aide aux fer
         try:
             name = quest.find('Nom').text
             description = quest.find('Descripion').text
+            description = ' '.join(description.split())
+
             difficulty = int(quest.find('Difficulté').text)
             experience = int(quest.find('Expérience').text)
             quests_data.append((name, description, difficulty, experience))
