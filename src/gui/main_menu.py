@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QPushButton, QStackedWidget, QMessageBox, QApplication, QSpacerItem, QSizePolicy)
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QStackedWidget, QMessageBox, QApplication, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import Qt
 
-import qt_config
-import manage_account
+import gui.qt_config as qt_config
+import gui.manage_account as manage_account
 
 class MainMenu(QWidget):
     """

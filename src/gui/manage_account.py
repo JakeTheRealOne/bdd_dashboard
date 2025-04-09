@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QSpinBox, QPushButton, QMessageBox, QApplication, QLabel, QSpacerItem, QSizePolicy, QLineEdit)
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QSpinBox, QPushButton, QMessageBox, QApplication, QLabel, QSpacerItem, QSizePolicy, QLineEdit
 from PyQt5.QtCore import Qt
 import mysql.connector
 
-import qt_config
+import gui.qt_config as qt_config
 
 class ManageAccount(QWidget):
     """

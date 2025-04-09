@@ -2,8 +2,8 @@ import mysql.connector
 import sys
 from PyQt5.QtWidgets import QApplication
 
-import login
-import create
+from gui import login
+from database import create
 
 def main():
     db = mysql.connector.connect(

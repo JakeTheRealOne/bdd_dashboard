@@ -1,9 +1,9 @@
-from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QPushButton, QLineEdit, QStackedWidget, QMessageBox, QApplication, QSpacerItem, QSizePolicy)
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QStackedWidget, QMessageBox, QApplication, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import Qt
 import mysql.connector
-import qt_config
 
-import main_menu
+import gui.qt_config as qt_config
+import gui.main_menu as main_menu
 
 class Login(QWidget):
     """
