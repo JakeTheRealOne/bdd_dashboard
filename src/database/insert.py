@@ -83,16 +83,16 @@ def insertSpellsData(db, cursor):
 
 def insertItemsData(db, cursor):
     csvPath = os.path.join(ROOT_DIR, 'data', 'objets.csv')
-    with open(csvPath, newline='', encoding='utf-8') as csvfile:
+    with open(csvPath, "r", encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         data = list(reader)
     csvfile.close()
 
-    itemData = []
-    weaponData = []
-    armorData = []
-    potionData = []
-    artefactData = []
+    countItem = 0
+    countWeapon = 0
+    countArmor = 0
+    countPotion = 0
+    countArtefact = 0
 
     for row in data:
         try:
@@ -105,92 +105,81 @@ def insertItemsData(db, cursor):
             if not Price.isdigit():
                 continue
             
-            
             Property = row['Propriétés']
             
-            itemData.append((Name, int(Price)))
+            cursor.execute('''
+                INSERT IGNORE INTO Items (Name, Price)
+                VALUES (%s, %s)
+                ''', (
+                    Name,
+                    Price
+                ))
+            if cursor.rowcount == 1:
+                countItem += 1
 
 
-            if(Type == "Arme"):
+            if Type == "Arme":
                 Property = Property.removeprefix("Puissance d'attaque: ")
                 if not Property.isdigit():
                     continue
-                weaponData.append((Name, int(Property)))
+                cursor.execute('''
+                    INSERT IGNORE INTO Weapons (Name, Power)
+                    VALUES (%s, %s)
+                    ''', (
+                        Name,
+                        Property
+                    ))
+                if cursor.rowcount == 1:
+                    countWeapon += 1
 
             elif Type == "Armure":
                 Property = Property.removeprefix("Défense: ")
                 if not Property.isdigit():
                     continue
-                armorData.append((Name, int(Property)))
+                cursor.execute('''
+                    INSERT IGNORE INTO Armors (Name, Defence)
+                    VALUES (%s, %s)
+                    ''', (
+                        Name,
+                        Property
+                    ))
+                if cursor.rowcount == 1:
+                    countArmor += 1
 
             elif Type == "Artefact":
-                artefactData.append((Name, Property))
+                cursor.execute('''
+                    INSERT IGNORE INTO Artefacts (Name, Effect)
+                    VALUES (%s, %s)
+                    ''', (
+                        Name,
+                        Property
+                    ))
+                if cursor.rowcount == 1:
+                    countArtefact += 1
 
             elif Type == "Potion":
-                potionData.append((Name, Property))
+                cursor.execute('''
+                    INSERT IGNORE INTO Potions (Name, Boost)
+                    VALUES (%s, %s)
+                    ''', (
+                        Name,
+                        Property
+                    ))
+                if cursor.rowcount == 1:
+                    countPotion += 1
             
             else:
-                continue
-
-            
-            
+                continue         
 
         except:
             continue
 
-
-    query = '''
-        INSERT INTO Items (Name, Price)
-        VALUES (%s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            Price = VALUES(Price)
-    '''
-
-    queryWeapon = '''
-        INSERT INTO Weapons (Name, Power)
-        VALUES (%s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            Power = VALUES(Power)
-    '''
-    
-    queryArmor = '''
-        INSERT INTO Armors (Name, Defence)
-        VALUES (%s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            Defence = VALUES(Defence)
-    '''
-
-    queryPotion = '''
-        INSERT INTO Potions (Name, Boost)
-        VALUES (%s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            Boost = VALUES(Boost)
-    '''
-
-    queryArtefact = '''
-        INSERT INTO Artefacts (Name, Effect)
-        VALUES (%s, %s)
-        ON DUPLICATE KEY UPDATE
-            Name = VALUES(Name),
-            Effect = VALUES(Effect)
-    '''
-
-
-    cursor.executemany(query, itemData)
-    print(f"Inserted {len(itemData)} rows into Items table.")
-    cursor.executemany(queryWeapon, weaponData)
-    print(f"Inserted {len(weaponData)} rows into Weapons table.")
-    cursor.executemany(queryArmor, armorData)
-    print(f"Inserted {len(armorData)} rows into Armors table.")
-    cursor.executemany(queryPotion, potionData)
-    print(f"Inserted {len(potionData)} rows into Potions table.")
-    cursor.executemany(queryArtefact, artefactData)
-    print(f"Inserted {len(artefactData)} rows into Artefacts table.")
     db.commit()
+    print(f"Inserted {countItem} rows into Items table.")
+    print(f"Inserted {countWeapon} rows into Weapons table.")
+    print(f"Inserted {countArmor} rows into Armors table.")
+    print(f"Inserted {countPotion} rows into Potions table.")
+    print(f"Inserted {countArtefact} rows into Artefacts table.")
 
 
 def insertMonstersData(db, cursor):
