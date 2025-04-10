@@ -3,6 +3,7 @@ from PyQt5.QtCore import Qt
 
 import gui.qt_config as qt_config
 import gui.manage_account as manage_account
+import gui.manage_characters as manage_characters
 
 class MainMenu(QWidget):
     """
@@ -17,16 +18,19 @@ class MainMenu(QWidget):
     def setup(self):
         self.stackedWidget = QStackedWidget()
 
-        self.manageAccountButton = QPushButton("Manage Account")
-        self.manageAccountButton.setFixedWidth(500)
-        self.exitButton = QPushButton("Exit")
-        self.exitButton.setFixedWidth(500)
+        manageAccountButton = QPushButton("Manage Account")
+        manageAccountButton.setFixedWidth(500)
+        manageCharactersButton = QPushButton("Manage Characters")
+        manageCharactersButton.setFixedWidth(500)
+        exitButton = QPushButton("Exit")
+        exitButton.setFixedWidth(500)
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         mainLayout.addWidget(qt_config.createCenterBoldTitle("Welcome to the Main Menu"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.manageAccountButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.exitButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(manageAccountButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(manageCharactersButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         self.mainPage = QWidget()
         self.mainPage.setLayout(mainLayout)
@@ -34,6 +38,9 @@ class MainMenu(QWidget):
 
         self.manageAccount = manage_account.ManageAccount(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageAccount)
+
+        self.manageCharacters = manage_characters.ManageCharacters(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageCharacters)
 
         self.stackedWidget.setCurrentWidget(self.mainPage)
 
@@ -44,8 +51,10 @@ class MainMenu(QWidget):
         self.show()
 
         # connect the buttons
-        self.exitButton.clicked.connect(self.on_exitButton_clicked)
-        self.manageAccountButton.clicked.connect(self.on_manageAccountButton_clicked)
+        exitButton.clicked.connect(self.on_exitButton_clicked)
+        manageAccountButton.clicked.connect(self.on_manageAccountButton_clicked)
+        manageCharactersButton.clicked.connect(self.on_manageCharactersButton_clicked)
+        
 
     def on_exitButton_clicked(self):
         reply = QMessageBox.question(self, "Quit", "Are you sure you want to exit ?", QMessageBox.Yes | QMessageBox.No)
@@ -54,3 +63,6 @@ class MainMenu(QWidget):
 
     def on_manageAccountButton_clicked(self):
         self.stackedWidget.setCurrentWidget(self.manageAccount)
+
+    def on_manageCharactersButton_clicked(self):
+        self.stackedWidget.setCurrentWidget(self.manageCharacters)
