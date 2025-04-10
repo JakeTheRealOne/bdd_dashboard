@@ -20,6 +20,7 @@ class ManageCharacters(QWidget):
             database="rpg"
         )
         self.cursor = self.db.cursor()
+        self.getCharactes()
         self.setup()
 
     def setup(self):
@@ -39,3 +40,9 @@ class ManageCharacters(QWidget):
     def on_backButton_clicked(self):
         self.stackedWidget.setCurrentIndex(0) # Go back to the main menu
 
+    def getCharactes(self):
+        self.cursor.execute("SELECT p.Name FROM Players p WHERE ID = %s", self.ID)
+        name = self.cursor.fetchone()
+
+        self.cursor.execute("SELECT * FROM Characters WHERE Username = %s", name)
+        self.characters = self.cursor.fetchall()
