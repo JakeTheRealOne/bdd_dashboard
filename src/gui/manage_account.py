@@ -69,8 +69,8 @@ class ManageAccount(QWidget):
         self.inputInventorySlot.setMinimum(-1)
         self.inputInventorySlot.setValue(-1)
 
-        self.nameLabel = QLabel(f"Hello {self.name} with the ID {self.ID} !")
-        self.statsLabel = QLabel(f"Your Level : {self.level}, your XP : {self.xp}, your money : {self.money} and your Inventory Slot : {self.inventorySlot}")
+        self.nameLabel = QLabel(f"Hello <u>{self.name}</u> with the ID <u>{self.ID}</u> !")
+        self.statsLabel = QLabel(f"Your Level : <u>{self.level}</u>, your XP : <u>{self.xp}</u>, your money : <u>{self.money}</u> and your Inventory Slot : <u>{self.inventorySlot}</u>")
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))

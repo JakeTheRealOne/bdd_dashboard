@@ -106,6 +106,8 @@ class Login(QWidget):
         self.backButtonRegister.clicked.connect(self.on_backButtonRegister_clicked)
         self.sendButtonRegister.clicked.connect(self.on_sendButtonRegister_clicked)
         self.sendButtonLogin.clicked.connect(self.on_sendButtonLogin_clicked)
+        self.usernameInputLogin.returnPressed.connect(self.on_sendButtonLogin_clicked)
+        self.usernameInputRegister.returnPressed.connect(self.on_sendButtonRegister_clicked)
 
     def on_exitButton_clicked(self):
         reply = QMessageBox.question(self, "Quit", "Are you sure you want to exit ?", QMessageBox.Yes | QMessageBox.No)
