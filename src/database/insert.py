@@ -264,7 +264,7 @@ def insertCharactersData(db, cursor):
             continue  # Ignore the character if the player does not exist
 
         cursor.execute('''
-        INSERT IGNORE INTO Characters (Name, Strenght, Agility, Intelligence, Health, Mana, Class, Username)
+        INSERT IGNORE INTO Characters (Name, Strength, Agility, Intelligence, Health, Mana, Class, Username)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         ''', (
             p["Nom"],
