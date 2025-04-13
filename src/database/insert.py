@@ -100,9 +100,9 @@ def insertItemsData(db, cursor):
 
             Name = row['Nom']
 
-            Price = row['Prix']
-
+            Price = row['Prix'].strip()
             if not Price.isdigit():
+                print(6)
                 continue
             
             Property = row['Propriétés']
@@ -170,7 +170,7 @@ def insertItemsData(db, cursor):
             else:
                 continue         
 
-        except Exception:
+        except Exception as e:
             continue
 
     db.commit()
@@ -284,6 +284,60 @@ def insertCharactersData(db, cursor):
     print(f"Inserted {count} rows into Characters table.")
 
 
+def insertNPCData(db, cursor):
+    jsonPath = os.path.join(ROOT_DIR, 'data', 'pnjs.json')
+    with open(jsonPath, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    file.close()
+
+    count = 0
+
+    for p in data["PNJs"]:
+        # if not all(isinstance(p[key], int) for key in ["Force", "Agilite", "Intelligence", "Vie", "Mana"]):
+        #     continue # Skip if any of the required fields are not integers
+
+
+        # cursor.execute("SELECT COUNT(*) FROM Players WHERE Name = %s", (p["utilisateur"],))
+        # if cursor.fetchone()[0] == 0:
+        #     continue  # Ignore the character if the player does not exist
+
+        cursor.execute('''
+        INSERT IGNORE INTO NPCs (Name, Dialog)
+        VALUES (%s, %s)
+        ''', (
+            p["Nom"],
+            p.get("Dialogue", "Bien le bonjour !")
+        ))
+
+        inventory = {}
+
+        for item in p["Inventaire"]:
+            if item in inventory:
+                inventory[item] += 1
+            else:
+                inventory[item] = 1
+
+        for item in inventory:
+            
+            cursor.execute('''
+            INSERT IGNORE INTO PNCItemInventories (NPCName, ItemName)
+            VALUES (%s, %s)
+            ON DUPLICATE KEY UPDATE quantity = %s
+            ''', (
+                p["Nom"],
+                item,
+                inventory.get(item)
+            ))
+
+        if cursor.rowcount == 1:
+            count += 1
+        
+    db.commit()
+
+    print(f"Inserted {count} rows into Npc table.")
+
+
 def main():
     db = mysql.connector.connect(
         host='localhost',
@@ -302,6 +356,7 @@ def main():
     insertQuestsData(db, cursor)
     insertItemsData(db, cursor)
     insertCharactersData(db, cursor)
+    insertNPCData(db, cursor)
 
     cursor.close()
     db.close()
