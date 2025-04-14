@@ -40,8 +40,8 @@ class ManageAccount(QWidget):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
 
-        changeAccountButton = QPushButton("Change Account Info")
-        changeAccountButton.setFixedWidth(500)
+        # changeAccountButton = QPushButton("Change Account Info")
+        # changeAccountButton.setFixedWidth(500)
 
         deleteAccountButton = QPushButton("Delete Account")
         deleteAccountButton.setFixedWidth(500)
@@ -53,31 +53,29 @@ class ManageAccount(QWidget):
         self.inputName.setMaxLength(255)
         
         self.inputLevel = QSpinBox()
-        self.inputLevel.setMinimum(-1)
-        self.inputLevel.setValue(-1)  
+        self.inputLevel.setMinimum(0)
+        self.inputLevel.setValue(self.level)  
 
         self.inputXP = QSpinBox()
-        self.inputXP.setMinimum(-1)
-        self.inputXP.setValue(-1)
+        self.inputXP.setMinimum(0)
+        self.inputXP.setValue(self.xp)
 
         self.inputMoney = QSpinBox()
-        self.inputMoney.setMinimum(-1)
-        self.inputMoney.setMaximum(1000000)
-        self.inputMoney.setValue(-1)
+        self.inputMoney.setMinimum(0)
+        self.inputMoney.setValue(self.money)
 
-        self.inputInventorySlot = QSpinBox()
-        self.inputInventorySlot.setMinimum(-1)
-        self.inputInventorySlot.setValue(-1)
+        # self.inputInventorySlot = QSpinBox()
+        # self.inputInventorySlot.setMinimum(-1)
+        # self.inputInventorySlot.setValue(-1)
 
         self.nameLabel = QLabel(f"Hello <u>{self.name}</u> with the ID <u>{self.ID}</u> !")
-        self.statsLabel = QLabel(f"Your Level : <u>{self.level}</u>, your XP : <u>{self.xp}</u>, your money : <u>{self.money}</u> and your Inventory Slot : <u>{self.inventorySlot}</u>")
+        self.inventoryLabel = QLabel(f"Inventory Slot : <u>{self.inventorySlot}</u>")
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         mainLayout.addWidget(qt_config.createCenterBoldTitle("Manage Account"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.nameLabel, alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Here is your account info :"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.statsLabel, alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.inputName, alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Change your level :"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.inputLevel, alignment=Qt.AlignCenter)
@@ -85,9 +83,9 @@ class ManageAccount(QWidget):
         mainLayout.addWidget(self.inputXP, alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Change your money :"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.inputMoney, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Change your Inventory Slot :"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.inputInventorySlot, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(changeAccountButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.inventoryLabel, alignment=Qt.AlignCenter)
+        # mainLayout.addWidget(self.inputInventorySlot, alignment=Qt.AlignCenter)
+        # mainLayout.addWidget(changeAccountButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(deleteAccountButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -97,7 +95,10 @@ class ManageAccount(QWidget):
         # connect the buttons
         backButton.clicked.connect(self.on_backButton_clicked)
         deleteAccountButton.clicked.connect(self.deleteAccount)
-        changeAccountButton.clicked.connect(self.on_changeAccountButton_clicked)
+        self.inputName.returnPressed.connect(self.on_changeAccountButton_clicked)
+        self.inputLevel.valueChanged.connect(self.on_changeAccountButton_clicked)
+        self.inputXP.valueChanged.connect(self.on_changeAccountButton_clicked)
+        self.inputMoney.valueChanged.connect(self.on_changeAccountButton_clicked)
 
         self.show()
 
@@ -116,34 +117,17 @@ class ManageAccount(QWidget):
         newLevel = self.inputLevel.value()
         newXP = self.inputXP.value()
         newMoney = self.inputMoney.value()
-        newInventorySlot = self.inputInventorySlot.value()
-
-        if not newName and newLevel == -1 and newXP == -1 and newMoney == -1 and newInventorySlot == -1:
-            QMessageBox.information(self, "Info", "You haven't made any changes to your account info.")
-            return
 
         if not newName:
             newName = self.name
 
-        if newLevel == -1:
-            newLevel = self.level
-
-        if newXP == -1:
-            newXP = self.xp
-
-        if newMoney == -1:
-            newMoney = self.money
-
-        if newInventorySlot == -1:
-            newInventorySlot = self.inventorySlot
+        newInventorySlot = 5 + min(27, 2 * newLevel)
+        self.inventorySlot = newInventorySlot
 
         # Update the account info in the database
         self.cursor.execute("UPDATE Players SET Name = %s, Level = %s, XP = %s, Money = %s, InventorySlot = %s WHERE ID = %s", (newName, newLevel, newXP, newMoney, newInventorySlot, self.ID))
         self.db.commit()
 
         self.getInfoPlyers()
-        self.nameLabel.setText(f"Hello {self.name} with the ID {self.ID} !")
-        self.statsLabel.setText(f"Your Level : {self.level}, your XP : {self.xp}, your money : {self.money} and your Inventory Slot : {self.inventorySlot}")
-
-        # Show a message box to confirm the changes
-        QMessageBox.information(self, "Success", "Your account info has been updated successfully.")
+        self.nameLabel.setText(f"Hello <u>{self.name}</u> with the ID <u>{self.ID}<u/> !")
+        self.inventoryLabel.setText(f"Inventory Slot : <u>{self.inventorySlot}</u>")
