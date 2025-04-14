@@ -228,7 +228,7 @@ def insertMonstersData(db, cursor):
                 ))
 
 
-            except AttributeError as e:
+            except AttributeError:
                 None
                 
 
@@ -262,9 +262,25 @@ def insertQuestsData(db, cursor):
             if cursor.rowcount == 1:
                 count += 1
 
+            for reward in quest.find('Récompenses'):
+                reward_name = ""
+                quantity = 1
+                if reward.tag == 'Or':
+                    reward_name = 'Or'
+                    quantity = int(reward.text)
+                else:
+                    reward_name = reward.text
+
+                cursor.execute('''
+                        INSERT IGNORE INTO Rewards (QuestName, ItemName, Quantity)
+                        VALUES (%s, %s, %s)
+                        ''', (
+                            name,
+                            reward_name,
+                            quantity
+                        ))
         except Exception:
             continue
-
     db.commit()
     print(f"Inserted {count} rows into Quests table.")
     
