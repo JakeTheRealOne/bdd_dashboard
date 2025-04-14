@@ -217,7 +217,6 @@ def insertMonstersData(db, cursor):
                 quantity = int(drop.find('nombre').text)
                 drop_rate = int(drop.find('probabilité').text)
 
-                print(name + " " + drop_name + " " + str(quantity))
                 cursor.execute('''
                 INSERT IGNORE INTO MonsterLoots (MonsterName, LootName, DropRate, Quantity)
                 VALUES (%s, %s, %s, %s)
@@ -230,8 +229,7 @@ def insertMonstersData(db, cursor):
 
 
             except AttributeError as e:
-                print(e, end = '')
-                print(name)
+                None
                 
 
 
