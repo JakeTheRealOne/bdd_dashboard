@@ -355,7 +355,7 @@ def insertNPCData(db, cursor):
 
         for item in inventory: 
             cursor.execute('''
-            INSERT IGNORE INTO PNCItemInventories (NPCName, ItemName)
+            INSERT IGNORE INTO NPCItemInventories (NPCName, ItemName)
             VALUES (%s, %s)
             ON DUPLICATE KEY UPDATE quantity = %s
             ''', (
