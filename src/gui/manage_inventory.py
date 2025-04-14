@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QSpinBox, QPushButton, QMessageBox, QApplication, QLabel, QSpacerItem, QSizePolicy, QLineEdit, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QShowEvent
 import mysql.connector
 
 import gui.qt_config as qt_config
@@ -19,10 +20,11 @@ class ManageInventory(QWidget):
             password="rootuser",
             database="rpg"
         )
+        self.db.start_transaction(isolation_level='READ COMMITTED')
         self.cursor = self.db.cursor()
         self.getInfoPlyers()
-        self.getInventory()
         self.setup()
+        self.getInventory()
 
     def __del__(self):
         self.cursor.close()
@@ -40,11 +42,9 @@ class ManageInventory(QWidget):
     def getInventory(self):
       # self.cursor.execute("SELECT * FROM Players")  # Remplace par le nom de ta table
       # rows = self.cursor.fetchall()
-      # column_names = [desc[0] for desc in self.cursor.description]
-      self.inventory_table = QTableWidget()
-      # self.inventory_table.setRowCount(len(rows))
-      # self.inventory_table.setColumnCount(len(column_names))
-      # self.inventory_table.setHorizontalHeaderLabels(column_names)
+      self.inventory_table.setRowCount(self.inventorySlot)
+      self.inventory_table.setColumnCount(1)
+      self.inventory_table.setHorizontalHeaderLabels(["Object IDs"])
       # for i, row in enumerate(rows):
       #     for j, value in enumerate(row):
       #         self.inventory_table.setItem(i, j, QTableWidgetItem(str(value)))
@@ -61,7 +61,8 @@ class ManageInventory(QWidget):
         clearButton.setFixedWidth(500)
 
         self.nameLabel = QLabel(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventorySlot} slots")
-    
+        self.inventory_table = QTableWidget()    
+
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         mainLayout.addWidget(qt_config.createCenterBoldTitle("Manage Inventory"), alignment=Qt.AlignCenter)
@@ -79,10 +80,23 @@ class ManageInventory(QWidget):
         backButton.clicked.connect(self.on_backButton_clicked)
         clearButton.clicked.connect(self.clearInventory)
 
-        self.show()
-
     def on_backButton_clicked(self):
         self.stackedWidget.setCurrentIndex(0) # Go back to the main menu
 
     def clearInventory(self):
         raise Exception("not yet implemented")
+
+    # def show(self):
+    #   print("show called")
+    #   self.getInfoPlyers()
+    #   self.getInventory()
+    #   self.setup()
+    #   super().show()
+
+    def showEvent(self, event: QShowEvent) -> None:
+        print("show called")
+        self.getInfoPlyers()
+        self.getInventory()
+        self.nameLabel.setText(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventorySlot} slots")
+
+        super().showEvent(event)
