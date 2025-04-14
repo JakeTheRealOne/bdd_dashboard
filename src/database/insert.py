@@ -294,14 +294,7 @@ def insertNPCData(db, cursor):
     count = 0
 
     for p in data["PNJs"]:
-        # if not all(isinstance(p[key], int) for key in ["Force", "Agilite", "Intelligence", "Vie", "Mana"]):
-        #     continue # Skip if any of the required fields are not integers
-
-
-        # cursor.execute("SELECT COUNT(*) FROM Players WHERE Name = %s", (p["utilisateur"],))
-        # if cursor.fetchone()[0] == 0:
-        #     continue  # Ignore the character if the player does not exist
-
+        # NOM ET DIALOGUE 
         cursor.execute('''
         INSERT IGNORE INTO NPCs (Name, Dialog)
         VALUES (%s, %s)
@@ -312,14 +305,14 @@ def insertNPCData(db, cursor):
 
         inventory = {}
 
+        # INVENTAIRE
         for item in p["Inventaire"]:
             if item in inventory:
                 inventory[item] += 1
             else:
                 inventory[item] = 1
 
-        for item in inventory:
-            
+        for item in inventory: 
             cursor.execute('''
             INSERT IGNORE INTO PNCItemInventories (NPCName, ItemName)
             VALUES (%s, %s)
@@ -329,6 +322,17 @@ def insertNPCData(db, cursor):
                 item,
                 inventory.get(item)
             ))
+        
+        quests_list = p.get("Qu\u00eates", [])
+
+        for quest in quests_list:
+            cursor.execute('''
+            INSERT IGNORE INTO NPCQuests (NPCName, QuestName)
+            VALUES (%s, %s)
+            ''', (
+                p["Nom"],
+                quest
+            ))
 
         if cursor.rowcount == 1:
             count += 1
@@ -336,6 +340,7 @@ def insertNPCData(db, cursor):
     db.commit()
 
     print(f"Inserted {count} rows into Npc table.")
+
 
 
 def main():

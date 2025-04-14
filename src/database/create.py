@@ -48,7 +48,11 @@ def createDatabaseAndTables(db, cursor):
     # Create the table PNCItemInventories if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS PNCItemInventories (NPCName VARCHAR (225), ItemName VARCHAR (225), Quantity INT DEFAULT 1," \
     "PRIMARY KEY (NPCName, ItemName), FOREIGN KEY (NPCName) REFERENCES NPCs(Name), FOREIGN KEY (ItemName) REFERENCES Items(Name)) ;")
-    
+
+    # Create the table NPCQuests if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS NPCQuests (NPCName VARCHAR (225), QuestName VARCHAR (225), " \
+    "PRIMARY KEY (NPCName, QuestName), FOREIGN KEY (NPCName) REFERENCES NPCs(Name), FOREIGN KEY (QuestName) REFERENCES Quests(Name));")
+
 
     db.commit()
 
