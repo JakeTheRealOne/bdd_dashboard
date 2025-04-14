@@ -18,8 +18,8 @@ def createDatabaseAndTables(db, cursor):
     # Create the table Monsters if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT DEFAULT 0, MonsterHealth INT DEFAULT 0, Defence INT DEFAULT 0);")
 
-    # Create the table LootingTable if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT DEFAULT 0, DropRate INT DEFAULT 0, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
+    # # Create the table LootingTable if it doesn't exist
+    # cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT DEFAULT 0, DropRate INT DEFAULT 0, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
 
     # Create the table Spells if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Spells (Name VARCHAR (255) PRIMARY KEY, ManaCost INT DEFAULT 0, ReloadTime INT DEFAULT 0, Damage INT DEFAULT 0);")
@@ -52,6 +52,10 @@ def createDatabaseAndTables(db, cursor):
     # Create the table NPCQuests if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS NPCQuests (NPCName VARCHAR (225), QuestName VARCHAR (225), " \
     "PRIMARY KEY (NPCName, QuestName), FOREIGN KEY (NPCName) REFERENCES NPCs(Name), FOREIGN KEY (QuestName) REFERENCES Quests(Name));")
+
+    # Create the table MonsterLoots if it doesen't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS MonsterLoots (MonsterName VARCHAR (255), LootName VARCHAR (255), DropRate INT DEFAULT 0, Quantity INT DEFAULT 0," \
+    "PRIMARY KEY (MonsterName, LootName), FOREIGN KEY (MonsterName) REFERENCES Monsters(Name), FOREIGN KEY (LootName) REFERENCES Items(Name));")
 
 
     db.commit()

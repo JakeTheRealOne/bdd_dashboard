@@ -94,6 +94,11 @@ def insertItemsData(db, cursor):
     countPotion = 0
     countArtefact = 0
 
+    cursor.execute('''
+                INSERT IGNORE INTO Items (Name, Price)
+                VALUES ('Or', 1)
+                ''')
+
     for row in data:
         try:
             Type = row['Type']
@@ -102,7 +107,6 @@ def insertItemsData(db, cursor):
 
             Price = row['Prix'].strip()
             if not Price.isdigit():
-                print(6)
                 continue
             
             Property = row['Propriétés']
@@ -172,7 +176,7 @@ def insertItemsData(db, cursor):
 
         except Exception as e:
             continue
-
+    
     db.commit()
     print(f"Inserted {countItem} rows into Items table.")
     print(f"Inserted {countWeapon} rows into Weapons table.")
@@ -188,7 +192,7 @@ def insertMonstersData(db, cursor):
     count = 0
     for monstre in root.findall('monstre'):
         try:
-            nom = monstre.find('nom').text
+            name = monstre.find('nom').text
             attaque = int(monstre.find('attaque').text)
             defense = int(monstre.find('defense').text)
             vie = int(monstre.find('vie').text)
@@ -197,16 +201,39 @@ def insertMonstersData(db, cursor):
                 INSERT IGNORE INTO Monsters (Name, Damage, Defence, MonsterHealth)
                 VALUES (%s, %s, %s, %s)
                 ''', (
-                    nom,
+                    name,
                     attaque,
                     defense,
                     vie
                 ))
             if cursor.rowcount == 1:
                 count += 1
-
         except Exception:
             continue
+
+        for drop in monstre.find('drops'):
+            try:
+                drop_name = str(drop.tag).replace('_', ' ')
+                quantity = int(drop.find('nombre').text)
+                drop_rate = int(drop.find('probabilité').text)
+
+                print(name + " " + drop_name + " " + str(quantity))
+                cursor.execute('''
+                INSERT IGNORE INTO MonsterLoots (MonsterName, LootName, DropRate, Quantity)
+                VALUES (%s, %s, %s, %s)
+                ''', (
+                    name,
+                    drop_name,
+                    drop_rate,
+                    quantity
+                ))
+
+
+            except AttributeError as e:
+                print(e, end = '')
+                print(name)
+                
+
 
     db.commit()
     print(f"Inserted {count} rows into Monsters table.")
