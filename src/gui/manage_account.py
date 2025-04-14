@@ -105,12 +105,10 @@ class ManageAccount(QWidget):
         self.stackedWidget.setCurrentIndex(0) # Go back to the main menu
 
     def deleteAccount(self):
-        self.cursor.execute("DELETE FROM Players WHERE ID = %s", (self.ID,))
-        self.db.commit()
-
-        # Close the program after deleting the account
-        reply = QMessageBox.question(self, "Quit", "Are you sure you want to exit ?", QMessageBox.Yes | QMessageBox.No)
+        reply = QMessageBox.question(self, "Quit", "Are you sure you delete your account ?", QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
+            self.cursor.execute("DELETE FROM Players WHERE ID = %s", (self.ID,))
+            self.db.commit()
             QApplication.quit()
 
     def on_changeAccountButton_clicked(self):

@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 import gui.qt_config as qt_config
 import gui.manage_account as manage_account
 import gui.manage_characters as manage_characters
+import gui.manage_inventory as manage_inventory
 
 class MainMenu(QWidget):
     """
@@ -22,6 +23,8 @@ class MainMenu(QWidget):
         manageAccountButton.setFixedWidth(500)
         manageCharactersButton = QPushButton("Manage Characters")
         manageCharactersButton.setFixedWidth(500)
+        manageInventoryButton = QPushButton("Manage inventory")
+        manageInventoryButton.setFixedWidth(500)
         exitButton = QPushButton("Exit")
         exitButton.setFixedWidth(500)
 
@@ -30,6 +33,7 @@ class MainMenu(QWidget):
         mainLayout.addWidget(qt_config.createCenterBoldTitle("Welcome to the Main Menu"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageAccountButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageCharactersButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(manageInventoryButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         self.mainPage = QWidget()
@@ -41,6 +45,9 @@ class MainMenu(QWidget):
 
         self.manageCharacters = manage_characters.ManageCharacters(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageCharacters)
+
+        self.manageInventory = manage_inventory.ManageInventory(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageInventory)
 
         self.stackedWidget.setCurrentWidget(self.mainPage)
 
@@ -54,6 +61,7 @@ class MainMenu(QWidget):
         exitButton.clicked.connect(self.on_exitButton_clicked)
         manageAccountButton.clicked.connect(self.on_manageAccountButton_clicked)
         manageCharactersButton.clicked.connect(self.on_manageCharactersButton_clicked)
+        manageInventoryButton.clicked.connect(self.on_manageInventoryButton_clicked)
         
 
     def on_exitButton_clicked(self):
@@ -66,3 +74,6 @@ class MainMenu(QWidget):
 
     def on_manageCharactersButton_clicked(self):
         self.stackedWidget.setCurrentWidget(self.manageCharacters)
+
+    def on_manageInventoryButton_clicked(self):
+        self.stackedWidget.setCurrentWidget(self.manageInventory)

@@ -131,6 +131,11 @@ class Login(QWidget):
     def on_sendButtonRegister_clicked(self):
         username = self.usernameInputRegister.text()
 
+        # Check if name lenght is valid
+        if not (0 < len(username) < 256):
+            QMessageBox.warning(self, "Register failed", "Username length is invalid.")
+            return
+
         # Check in db to not create 2 accounts with the same name
         self.cursor.execute("SELECT * FROM Players WHERE Name = ('"+ username +"');")
         result = self.cursor.fetchone()
@@ -149,6 +154,11 @@ class Login(QWidget):
 
     def on_sendButtonLogin_clicked(self):
         username = self.usernameInputLogin.text()
+
+        # Check if name lenght is valid
+        if not (0 < len(username) < 256):
+            QMessageBox.warning(self, "Register failed", "Username length is invalid.")
+            return
 
         self.cursor.execute("SELECT p.ID FROM Players p WHERE Name = ('"+ username +"');")
         result = self.cursor.fetchone()
