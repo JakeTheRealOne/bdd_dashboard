@@ -53,10 +53,14 @@ class ManageInventory(QWidget):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
 
+        addItemButton = QPushButton("Add item")
+        addItemButton.setEnabled(False)
+        addItemButton.setFixedWidth(500)
+
         clearButton = QPushButton("Clear Inventory")
         clearButton.setFixedWidth(500)
 
-        self.nameLabel = QLabel(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventorySlot}")
+        self.nameLabel = QLabel(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventorySlot} slots")
     
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -64,6 +68,7 @@ class ManageInventory(QWidget):
         mainLayout.addWidget(self.nameLabel, alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Here is your inventory:"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.inventory_table, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(addItemButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(clearButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
