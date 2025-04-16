@@ -1,13 +1,13 @@
 import mysql.connector
 
 import create
-import insert
 
 def playersMostGold(cursor):
     cursor.execute('''
     SELECT p.Name, p.Money 
     FROM Players p 
     ORDER BY p.Money DESC LIMIT 10;''')
+
 
 def playerMostCharactersSameClass(cursor):
     cursor.execute('''
@@ -18,6 +18,30 @@ def playerMostCharactersSameClass(cursor):
     ORDER BY nbCharacters DESC
     LIMIT 1;
     ''')
+
+
+def questBiggestRewardByLevel(cursor):
+    cursor.execute('''
+    WITH QuestGold AS (
+    SELECT 
+        Q.Name AS QuestName,
+        Q.Difficulty,
+        SUM(I.Price * R.Quantity) AS TotalGold
+    FROM Quests Q
+    JOIN Rewards R ON Q.Name = R.QuestName
+    JOIN Items I ON R.ItemName = I.Name
+    GROUP BY Q.Name, Q.Difficulty
+    ),
+    RankedQuests AS (
+        SELECT *,
+            ROW_NUMBER() OVER (PARTITION BY Difficulty ORDER BY TotalGold DESC) AS rank
+        FROM QuestGold
+    )
+    SELECT QuestName, Difficulty, TotalGold
+    FROM RankedQuests
+    WHERE rank = 1;
+    ''')
+
 
 def NPCMostInventoryValue(cursor):
     cursor.execute('''       
@@ -30,36 +54,47 @@ def NPCMostInventoryValue(cursor):
     LIMIT 1;
     ''')
 
+
+def print_underline(text):
+    print("\033[4m" + text + "\033[0m")
+
+
 def addAdditionalRequests(cursor):
-    playersMostGold(cursor)
-    print("Top 10 players with the most gold:\n")
-    print(f"{'Rank':<5}{'Player':<20}{'Gold':<15}")
+    print_underline("Top 10 players with the most gold:\n")
+    print(f"{'Rank':<5}{'Player':<20}{'Gold':<5}")
     print("-" * 30)
+    playersMostGold(cursor)
     for index, (playerName, gold) in enumerate(cursor.fetchall(), start=1):
-        print(f"{index:<5}{playerName:<20}{gold:<15}")
+        print(f"{index:<5}{playerName:<20}{gold:<5}")
     print("\n")
 
     playerMostCharactersSameClass(cursor)
-    print("Player with the most characters of the same class:\n")
-    print(f"{'Rank':<5}{'Player':<20}{'Class':<10}{'Nb Characters':<10}")
-    print("-" * 50)
+    print_underline("Player with the most characters of the same class:\n")
+    print(f"{'Rank':<5}{'Player':<20}{'Class':<10}{'Nb Characters':<12}")
+    print("-" * 47)
     result = cursor.fetchone()
     if result:
         playerName, classe, nbCharacters = result
-        print(f"{'1':<5}{playerName:<20}{classe:<15}{nbCharacters:<10}")
+        print(f"{'1':<5}{playerName:<20}{classe:<10}{nbCharacters:<12}")
+    print("\n")
+
+    questBiggestRewardByLevel(cursor)
+    print_underline("Quest with the biggest reward by level:\n")
+    print(f"{'Quest Name':<40}{'Level':<15}{'Gold':<5}")
+    print("-" * 60)
+    for questName, level, totalGold in cursor.fetchall():
+        print(f"{questName:<40}{level:<15}{totalGold:<5}")
     print("\n")
 
     NPCMostInventoryValue(cursor)
-    print("NPC with the most valuable inventory:\n")
-    print(f"{'Rank':<5}{'NPC':<40}{'Total Value Gold':<15}")
-    print("-" * 65)
+    print_underline("NPC with the most valuable inventory:\n")
+    print(f"{'Rank':<5}{'NPC':<40}{'Gold inventory value':<17}")
+    print("-" * 63)
     result = cursor.fetchone()
     if result:
         npcName, totalValue = result
-        print(f"{'1':<5}{npcName:<40}{totalValue:<15}")
+        print(f"{'1':<5}{npcName:<40}{totalValue:<17}")
     print("\n")
-    
-
 
 
 def main():
@@ -78,6 +113,7 @@ def main():
 
     cursor.close()
     db.close()
+
 
 if __name__ == "__main__":
     main()
