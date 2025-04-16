@@ -6,7 +6,8 @@ def playersMostGold(cursor):
     cursor.execute('''
     SELECT p.Name, p.Money 
     FROM Players p 
-    ORDER BY p.Money DESC LIMIT 10;''')
+    ORDER BY p.Money DESC LIMIT 10;
+                   ''')
 
 
 def playerMostCharactersSameClass(cursor):
@@ -23,18 +24,14 @@ def playerMostCharactersSameClass(cursor):
 def questBiggestRewardByLevel(cursor):
     cursor.execute('''
     WITH QuestGold AS (
-    SELECT 
-        Q.Name AS QuestName,
-        Q.Difficulty,
-        SUM(I.Price * R.Quantity) AS TotalGold
+    SELECT Q.Name AS QuestName, Q.Difficulty, SUM(I.Price * R.Quantity) AS TotalGold
     FROM Quests Q
     JOIN Rewards R ON Q.Name = R.QuestName
     JOIN Items I ON R.ItemName = I.Name
     GROUP BY Q.Name, Q.Difficulty
     ),
     RankedQuests AS (
-        SELECT *,
-            ROW_NUMBER() OVER (PARTITION BY Difficulty ORDER BY TotalGold DESC) AS rank
+        SELECT *, ROW_NUMBER() OVER (PARTITION BY Difficulty ORDER BY TotalGold DESC) AS rank
         FROM QuestGold
     )
     SELECT QuestName, Difficulty, TotalGold
@@ -45,10 +42,10 @@ def questBiggestRewardByLevel(cursor):
 
 def NPCMostInventoryValue(cursor):
     cursor.execute('''       
-    SELECT npc.Name, SUM(items.Price * npcItemInvento.Quantity) AS TotalValue
+    SELECT npc.Name, SUM(i.Price * npcII.Quantity) AS TotalValue
     FROM NPCs npc
-    JOIN NPCItemInventories npcItemInvento ON npc.Name = npcItemInvento.NPCName
-    JOIN Items items ON npcItemInvento.ItemName = items.Name
+    JOIN NPCItemInventories npcII ON npc.Name = npcII.NPCName
+    JOIN Items i ON npcII.ItemName = i.Name
     GROUP BY npc.Name
     ORDER BY TotalValue DESC
     LIMIT 1;
