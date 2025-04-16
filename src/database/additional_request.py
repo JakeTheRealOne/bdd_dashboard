@@ -19,6 +19,17 @@ def playerMostCharactersSameClass(cursor):
     LIMIT 1;
     ''')
 
+def NPCMostInventoryValue(cursor):
+    cursor.execute('''       
+    SELECT npc.Name, SUM(items.Price * npcItemInvento.Quantity) AS TotalValue
+    FROM NPCs npc
+    JOIN NPCItemInventories npcItemInvento ON npc.Name = npcItemInvento.NPCName
+    JOIN Items items ON npcItemInvento.ItemName = items.Name
+    GROUP BY npc.Name
+    ORDER BY TotalValue DESC
+    LIMIT 1;
+    ''')
+
 def addAdditionalRequests(cursor):
     playersMostGold(cursor)
     print("Top 10 players with the most gold:\n")
@@ -37,7 +48,19 @@ def addAdditionalRequests(cursor):
         playerName, classe, nbCharacters = result
         print(f"{'1':<5}{playerName:<20}{classe:<15}{nbCharacters:<10}")
     print("\n")
+
+    NPCMostInventoryValue(cursor)
+    print("NPC with the most valuable inventory:\n")
+    print(f"{'Rank':<5}{'NPC':<40}{'Total Value Gold':<15}")
+    print("-" * 65)
+    result = cursor.fetchone()
+    if result:
+        npcName, totalValue = result
+        print(f"{'1':<5}{npcName:<40}{totalValue:<15}")
+    print("\n")
     
+
+
 
 def main():
     db = mysql.connector.connect(
