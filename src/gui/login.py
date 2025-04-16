@@ -97,6 +97,7 @@ class Login(QWidget):
         layout = QVBoxLayout()
         layout.addWidget(self.stackedWidget)
         self.setLayout(layout)
+        self.showMaximized()
 
         # Connect buttons
         self.exitButton.clicked.connect(self.on_exitButton_clicked)

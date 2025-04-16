@@ -55,7 +55,7 @@ class MainMenu(QWidget):
         layout = QVBoxLayout()
         layout.addWidget(self.stackedWidget)
         self.setLayout(layout)
-        self.show()
+        self.showMaximized()
 
         # connect the buttons
         exitButton.clicked.connect(self.on_exitButton_clicked)

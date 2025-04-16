@@ -40,9 +40,6 @@ class ManageAccount(QWidget):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
 
-        # changeAccountButton = QPushButton("Change Account Info")
-        # changeAccountButton.setFixedWidth(500)
-
         deleteAccountButton = QPushButton("Delete Account")
         deleteAccountButton.setFixedWidth(500)
 
@@ -62,11 +59,8 @@ class ManageAccount(QWidget):
 
         self.inputMoney = QSpinBox()
         self.inputMoney.setMinimum(0)
+        self.inputMoney.setMaximum(10000)
         self.inputMoney.setValue(self.money)
-
-        # self.inputInventorySlot = QSpinBox()
-        # self.inputInventorySlot.setMinimum(-1)
-        # self.inputInventorySlot.setValue(-1)
 
         self.nameLabel = QLabel(f"Hello <u>{self.name}</u> with the ID <u>{self.ID}</u> !")
         self.inventoryLabel = QLabel(f"Inventory Slot : <u>{self.inventorySlot}</u>")
@@ -84,8 +78,6 @@ class ManageAccount(QWidget):
         mainLayout.addWidget(QLabel("Change your money :"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.inputMoney, alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.inventoryLabel, alignment=Qt.AlignCenter)
-        # mainLayout.addWidget(self.inputInventorySlot, alignment=Qt.AlignCenter)
-        # mainLayout.addWidget(changeAccountButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(deleteAccountButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
