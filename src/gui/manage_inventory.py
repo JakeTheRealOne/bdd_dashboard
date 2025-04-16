@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QSpinBox, QPushButton, QMessageBox, QApplication, QLabel, QSpacerItem, QSizePolicy, QLineEdit, QTableWidget, QTableWidgetItem, QDialog
+from PyQt5.QtWidgets import QWidget, QHeaderView, QVBoxLayout, QPushButton, QMessageBox, QLabel, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QShowEvent
 import mysql.connector
@@ -6,10 +6,6 @@ import mysql.connector
 import gui.qt_config as qt_config
 
 class ManageInventory(QWidget):
-    """
-    ManageInventory class to handle the management of player inventories.
-    """
-
     def __init__(self, parent, stackedWidget, ID):
         super().__init__(parent)
         self.stackedWidget = stackedWidget
@@ -43,18 +39,24 @@ class ManageInventory(QWidget):
       self.inventory = [None] * self.inventorySlot
       self.cursor.execute("SELECT * FROM PlayerInventories")
       rows = self.cursor.fetchall()
+      
       self.inventory_table.setRowCount(self.inventorySlot)
       self.inventory_table.setColumnCount(1)
       self.inventory_table.setHorizontalHeaderLabels(["Object Name"])
       self.occuped_slots = 0
+
       for row in rows:
-        if row[0] == self.ID:
-          self.inventory[row[2]] = row[1]
-          self.inventory_table.setItem(row[2], 0, QTableWidgetItem(row[1]))
-          self.occuped_slots += 1
-      self.inventory_table.resizeColumnsToContents()
+          if row[0] == self.ID:
+              self.inventory[row[2]] = row[1]
+              item = QTableWidgetItem(row[1])
+              item.setTextAlignment(Qt.AlignCenter)
+              self.inventory_table.setItem(row[2], 0, item)
+              self.occuped_slots += 1
+
+      self.inventory_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
       self.inventory_table.resizeRowsToContents()
       self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
+      self.clearButton.setEnabled(self.occuped_slots)
 
 
     def setup(self):
@@ -69,22 +71,27 @@ class ManageInventory(QWidget):
         self.clearButton.setEnabled(True)
         self.clearButton.setFixedWidth(500)
 
-        self.nameLabel = QLabel(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventorySlot} slots")
+        self.nameLabel = QLabel()
         self.inventory_table = QTableWidget()
         self.inventory_table.setEditTriggers(QTableWidget.NoEditTriggers)
         self.inventory_table.cellPressed.connect(self.on_select_slot) 
+        self.inventory_table.setMinimumWidth(400)
+
         self.item_table = QTableWidget()
         self.item_table.cellPressed.connect(self.on_select_item) 
         self.item_table.setEditTriggers(QTableWidget.NoEditTriggers)
+        self.item_table.setMinimumWidth(400)
 
-        self.item_dialog = QDialog()
-        self.item_dialog.setWindowTitle("Item selector")
-        dialog_layout = QVBoxLayout()
-        dialog_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        dialog_layout.addWidget(QLabel("Select an item to add to your inventory:"), alignment=Qt.AlignCenter)
-        dialog_layout.addWidget(self.item_table, alignment=Qt.AlignCenter)
-        dialog_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        self.item_dialog.setLayout(dialog_layout)
+        self.item_select_cancel_button = QPushButton("Cancel")
+        self.item_select_cancel_button.clicked.connect(self.hide_item_selector)
+
+        self.item_selector_widget = QWidget()
+        self.item_selector_layout = QVBoxLayout()
+        self.item_selector_layout.addWidget(QLabel("Select an item to add to your inventory:"), alignment=Qt.AlignCenter)
+        self.item_selector_layout.addWidget(self.item_table, alignment=Qt.AlignCenter)
+        self.item_selector_layout.addWidget(self.item_select_cancel_button, alignment=Qt.AlignCenter)
+        self.item_selector_widget.setLayout(self.item_selector_layout)
+        self.item_selector_widget.setVisible(False)
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -96,94 +103,89 @@ class ManageInventory(QWidget):
         mainLayout.addWidget(self.addItemButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.clearButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.item_selector_widget, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
         self.setLayout(mainLayout)
 
-        # connect the buttons
+        # connect buttons
         backButton.clicked.connect(self.on_backButton_clicked)
         self.addItemButton.clicked.connect(self.on_addItemButton_clicked)
         self.clearButton.clicked.connect(self.clearInventory)
 
     def on_backButton_clicked(self):
-        self.stackedWidget.setCurrentIndex(0) # Go back to the main menu
+        self.stackedWidget.setCurrentIndex(0)
 
     def on_addItemButton_clicked(self):
-        index = self._next_free_item()
-        if index is len(self.inventory):
-          QMessageBox.warning(self, "Inventory error", "The inventory is full.")
-          return
-        name = self._select_item()
-        if name is None:
-          return
+        self.show_item_selector()
 
-        self.inventory[index] = name
-        self.inventory_table.setItem(index, 0, QTableWidgetItem(name))
-        self.inventory_table.resizeColumnsToContents()
-        self.inventory_table.resizeRowsToContents()
-        self.occuped_slots += 1
-        self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
-        self.clearButton.setEnabled(self.occuped_slots)
-        self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s)", (self.ID, name, index))
-        self.db.commit()
-
-    def clearInventory(self):
-        self.inventory = [None] * self.inventorySlot
-        self.inventory_table.clearContents()
-        self.occuped_slots = 0
-        self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
-        self.clearButton.setEnabled(self.occuped_slots)
-        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s", (self.ID,))
-        self.db.commit() 
- 
-
-    def showEvent(self, event: QShowEvent):
-        self.getInfoPlyers()
-        self.getInventory()
-        self.nameLabel.setText(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventorySlot} slots")
-
-        super().showEvent(event)
-      
-    def _select_item(self) -> str:
-      # Get the name of an item from the Items table (or None if none selected)
+    def show_item_selector(self):
       self.cursor.execute("SELECT * FROM Items")
       rows = self.cursor.fetchall()
       self.item_table.setRowCount(len(rows))
       self.item_table.setColumnCount(1)
       self.item_table.setHorizontalHeaderLabels(["Object Name"])
       for index in range(len(rows)):
-        self.item_table.setItem(index, 0, QTableWidgetItem(rows[index][0]))
-      self.item_table.resizeColumnsToContents()
+          item = QTableWidgetItem(rows[index][0])
+          item.setTextAlignment(Qt.AlignCenter)
+          self.item_table.setItem(index, 0, item)
+
+      self.item_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
       self.item_table.resizeRowsToContents()
-      
-      self.selected_item = None
-      self.item_dialog.exec()
+      self.item_selector_widget.setVisible(True)
 
-      return self.selected_item # TESTING VALUE
+    def hide_item_selector(self):
+        self.item_selector_widget.setVisible(False)
 
-    def _next_free_item(self) -> int:
-      # Return the index of the next free slot in the inventory (or len(inventory) if no free space)
-      for i in range(len(self.inventory)):
-        if self.inventory[i] is None:
-          return i
-      return len(self.inventory)
+    def clearInventory(self):
+        self.inventory = [None] * self.inventorySlot
+        self.inventory_table.clearContents()
+        self.occuped_slots = 0
+        self.addItemButton.setEnabled(True)
+        self.clearButton.setEnabled(False)
+        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s", (self.ID,))
+        self.db.commit() 
 
-    def on_select_item(self, row, column) -> int:
+    def showEvent(self, event: QShowEvent):
+        self.getInfoPlyers()
+        self.getInventory()
+        self.nameLabel.setText(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventorySlot} slots")
+        super().showEvent(event)
+
+    def on_select_item(self, row, column):
         item = self.item_table.item(row, column)
         if item:
-            self.selected_item = item.text()
-            self.item_dialog.accept()
+            name = item.text()
+            index = self._next_free_item()
+            if index == len(self.inventory):
+                QMessageBox.warning(self, "Inventory error", "The inventory is full.")
+                return
 
-    def on_select_slot(self, row, column) -> int:
+            self.inventory[index] = name
+            item_widget = QTableWidgetItem(name)
+            item_widget.setTextAlignment(Qt.AlignCenter)
+            self.inventory_table.setItem(index, 0, item_widget)
+            self.occuped_slots += 1
+            self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
+            self.clearButton.setEnabled(self.occuped_slots)
+            self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s)", (self.ID, name, index))
+            self.db.commit()
+            self.hide_item_selector()
+
+    def on_select_slot(self, row, column):
         slot = self.inventory_table.item(row, column)
         if slot:
             index = row
             self.inventory[index] = None
             self.inventory_table.setItem(index, 0, QTableWidgetItem())
-            self.inventory_table.resizeColumnsToContents()
-            self.inventory_table.resizeRowsToContents()
             self.occuped_slots -= 1
             self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
             self.clearButton.setEnabled(self.occuped_slots)
             self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND SlotIDX = %s", (self.ID, index))
             self.db.commit()
+
+    def _next_free_item(self):
+        for i in range(len(self.inventory)):
+            if self.inventory[i] is None:
+                return i
+        return len(self.inventory)
