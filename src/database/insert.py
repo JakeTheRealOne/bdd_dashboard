@@ -98,10 +98,13 @@ def insertItemsData(db, cursor):
                 INSERT IGNORE INTO Items (Name, Price)
                 VALUES ('Or', 1)
                 ''')
-
+    valide_types = ["Arme", "Armure", "Artefact", "Potion"]
     for row in data:
         try:
             Type = row['Type']
+
+            if(Type not in valide_types):
+                continue
 
             Name = row['Nom']
 
@@ -112,11 +115,12 @@ def insertItemsData(db, cursor):
             Property = row['Propriétés']
             
             cursor.execute('''
-                INSERT IGNORE INTO Items (Name, Price)
-                VALUES (%s, %s)
+                INSERT IGNORE INTO Items (Name, Price, Type)
+                VALUES (%s, %s, %s)
                 ''', (
                     Name,
-                    Price
+                    Price,
+                    Type
                 ))
             if cursor.rowcount == 1:
                 countItem += 1

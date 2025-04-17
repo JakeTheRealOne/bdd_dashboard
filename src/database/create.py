@@ -28,7 +28,7 @@ def createDatabaseAndTables(db, cursor):
     cursor.execute("CREATE TABLE IF NOT EXISTS Quests (Name VARCHAR (255) PRIMARY KEY, Description VARCHAR (255), Difficulty INT DEFAULT 0, Experience INT DEFAULT 0);")
 
     # Create the table Items if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Items (Name VARCHAR (225) PRIMARY KEY, Price INT DEFAULT 0) ;")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Items (Name VARCHAR (225) PRIMARY KEY, Price INT DEFAULT 0, Type VARCHAR (255)) ;")
 
     # Create the table Weapons if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Weapons (Name VARCHAR (225) PRIMARY KEY, Power INT DEFAULT 0);")

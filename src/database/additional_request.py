@@ -31,12 +31,12 @@ def questBiggestRewardByLevel(cursor):
     GROUP BY q.Name, q.Difficulty
     ),
     RankedQuests AS (
-        SELECT *, ROW_NUMBER() OVER (PARTITION BY Difficulty ORDER BY TotalGold DESC) AS rank
+        SELECT *, ROW_NUMBER() OVER (PARTITION BY Difficulty ORDER BY TotalGold DESC) AS `rank`
         FROM QuestGold
     )
     SELECT QuestName, Difficulty, TotalGold
     FROM RankedQuests
-    WHERE rank = 1;
+    WHERE `rank` = 1;
     ''')
 
 
@@ -49,6 +49,27 @@ def NPCMostInventoryValue(cursor):
     GROUP BY npc.Name
     ORDER BY TotalValue DESC
     LIMIT 1;
+    ''')
+
+
+def mostRewardedItemType(cursor):
+    cursor.execute('''
+                   SELECT item.Type, COUNT(*) as apparitions
+                   FROM Items item
+                   WHERE item.Name in (
+
+                   SELECT reward.ItemName
+                   FROM Rewards reward
+                   WHERE reward.ItemName <> 'Or' AND
+                        reward.QuestName in (
+                        SELECT quest.Name
+                        FROM Quests quest
+                        WHERE quest.Difficulty = 5
+                   )
+                   )
+                   GROUP BY item.Type
+                   ORDER BY apparitions desc
+                   LIMIT 1;
     ''')
 
 
@@ -93,6 +114,16 @@ def addAdditionalRequests(cursor):
         print(f"{'1':<5}{npcName:<40}{totalValue:<17}")
     print("\n")
 
+    
+    mostRewardedItemType(cursor)
+    print_underline("Most Rewarded Item Type rewarded by difficulty 5 quests:\n")
+    print(f"{'Item Type':<20}{'Number of apparition'}")
+    print("-" * 40)
+    result = cursor.fetchone()
+    if result:
+        itemType, apparition_number = result
+        print(f"{itemType:<20}{apparition_number}")
+    print("\n")
 
 def main():
     db = mysql.connector.connect(
@@ -105,9 +136,8 @@ def main():
     
     create.createDatabaseAndTables(db, cursor)
     cursor.execute("USE rpg;")
-
     addAdditionalRequests(cursor)
-
+    
     cursor.close()
     db.close()
 
