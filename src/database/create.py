@@ -57,6 +57,7 @@ def createDatabaseAndTables(db, cursor):
     cursor.execute("CREATE TABLE IF NOT EXISTS MonsterLoots (MonsterName VARCHAR (255), LootName VARCHAR (255), DropRate INT DEFAULT 0, Quantity INT DEFAULT 0," \
     "PRIMARY KEY (MonsterName, LootName), FOREIGN KEY (MonsterName) REFERENCES Monsters(Name), FOREIGN KEY (LootName) REFERENCES Items(Name));")
 
+    # Create the table Rewards if it doesen't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Rewards (QuestName VARCHAR (255), ItemName VARCHAR (255), Quantity INT DEFAULT 1," \
     "PRIMARY KEY (QuestName, ItemName), FOREIGN KEY (QuestName) REFERENCES Quests(Name), FOREIGN KEY (ItemName) REFERENCES Items(Name));")
 

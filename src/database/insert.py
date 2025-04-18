@@ -403,11 +403,10 @@ def main():
     insertPlayersData(db, cursor)
     insertSpellsData(db, cursor)
     insertMonstersData(db, cursor)
-    insertQuestsData(db, cursor)
     insertItemsData(db, cursor)
+    insertQuestsData(db, cursor)
     insertCharactersData(db, cursor)
     insertNPCData(db, cursor)
-
     cursor.close()
     db.close()
 
