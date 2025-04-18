@@ -73,6 +73,35 @@ def mostRewardedItemType(cursor):
     ''')
 
 
+def mostRewardingMonster(cursor):
+    cursor.execute('''
+                   SELECT (MonsterCost/MonsterHealth) AS Ratio, Name
+                   FROM (
+                   
+
+
+                   
+                    SELECT SUM(ItemPrice * lootQuantity) as MonsterCost, MonsterName
+                    FROM
+                    (
+                        SELECT 
+                            items.Name as ItemName,
+                            items.Price as ItemPrice,
+                            loot.MonsterName as MonsterName,
+                            loot.Quantity as lootQuantity
+                        FROM Items items
+                        JOIN MonsterLoots loot ON items.Name = loot.LootName
+                    ) as subrequest
+                    GROUP BY MonsterName
+                    ) as monsterHealthAndPrice
+
+                   JOIN Monsters monsters on monsters.Name = MonsterName
+                   ORDER BY Ratio desc
+                   LIMIT 1;
+
+''')
+
+
 def print_underline(text):
     print("\033[4m" + text + "\033[0m")
 
@@ -123,6 +152,17 @@ def addAdditionalRequests(cursor):
     if result:
         itemType, apparition_number = result
         print(f"{itemType:<20}{apparition_number}")
+    print("\n")
+
+    mostRewardingMonster(cursor)
+    print_underline("Most Rewarding monster (in term of gold total price and health):\n")
+    print(f"{'Item':<20}{'Ration gold/life'}")
+    print("-" * 45)
+    result = cursor.fetchone()
+    if result:
+        itemName, ratio = result
+        print(f"{itemName:<20}{ratio}")
+
     print("\n")
 
 def main():
