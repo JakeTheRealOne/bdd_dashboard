@@ -49,18 +49,6 @@ class MainMenu(QWidget):
         self.mainPage.setLayout(mainLayout)
         self.stackedWidget.addWidget(self.mainPage)
 
-        self.manageAccount = manage_account.ManageAccount(self, self.stackedWidget, self.ID)
-        self.stackedWidget.addWidget(self.manageAccount)
-
-        self.manageCharacters = manage_characters.ManageCharacters(self, self.stackedWidget, self.ID)
-        self.stackedWidget.addWidget(self.manageCharacters)
-
-        self.manageInventory = manage_inventory.ManageInventory(self, self.stackedWidget, self.ID)
-        self.stackedWidget.addWidget(self.manageInventory)
-        
-        self.manageQuests = manage_quests.ManageQuests(self, self.stackedWidget, self.ID)
-        self.stackedWidget.addWidget(self.manageQuests)
-
         self.stackedWidget.setCurrentWidget(self.mainPage)
 
         # Main layout
@@ -83,13 +71,33 @@ class MainMenu(QWidget):
             QApplication.quit()
 
     def on_manageAccountButton_clicked(self):
+        if hasattr(self, 'manageAccount'):
+            self.manageAccount.deleteLater()
+            self.manageAccount = None
+        self.manageAccount = manage_account.ManageAccount(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageAccount)
         self.stackedWidget.setCurrentWidget(self.manageAccount)
 
     def on_manageCharactersButton_clicked(self):
+        if hasattr(self, 'manageCharacters'):
+            self.manageCharacters.deleteLater()
+            self.manageCharacters = None
+        self.manageCharacters = manage_characters.ManageCharacters(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageCharacters)
         self.stackedWidget.setCurrentWidget(self.manageCharacters)
 
     def on_manageInventoryButton_clicked(self):
+        if hasattr(self, 'manageInventory'):
+            self.manageInventory.deleteLater()
+            self.manageInventory = None
+        self.manageInventory = manage_inventory.ManageInventory(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageInventory)
         self.stackedWidget.setCurrentWidget(self.manageInventory)
 
     def on_manageQuestsButton_clicked(self):
+        if hasattr(self, 'manageQuests'):
+            self.manageQuests.deleteLater()
+            self.manageQuests = None
+        self.manageQuests = manage_quests.ManageQuests(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageQuests)
         self.stackedWidget.setCurrentWidget(self.manageQuests)
