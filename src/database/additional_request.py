@@ -156,12 +156,12 @@ def addAdditionalRequests(cursor):
 
     mostRewardingMonster(cursor)
     print_underline("Most Rewarding monster (in term of gold total price and health):\n")
-    print(f"{'Item':<20}{'Ration gold/life'}")
+    print(f"{'Item':<30}{'Ration gold/life'}")
     print("-" * 45)
     result = cursor.fetchone()
     if result:
-        itemName, ratio = result
-        print(f"{itemName:<20}{ratio}")
+        ratio, itemName = result
+        print(f"{itemName:<30}{ratio}")
 
     print("\n")
 
