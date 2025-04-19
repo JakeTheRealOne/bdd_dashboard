@@ -172,9 +172,6 @@ class ManageCharacters(QWidget):
             
         elif not all(stat.isdigit() for stat in [strength, agility, intelligence, health, mana]):
             QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be numbers!")
-            
-        elif not name.isalnum() or not classe.isalnum():
-            QMessageBox.warning(self, "Error", "Name and Class must be alphanumeric!")
 
         # Insert the new character into the database
         elif name and strength and agility and intelligence and health and mana and classe:

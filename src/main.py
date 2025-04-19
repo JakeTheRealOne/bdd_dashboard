@@ -13,15 +13,13 @@ def main():
     )
 
     cursor = db.cursor()
-
     create.createDatabaseAndTables(db, cursor)
-
+    cursor.close()  
+    db.close()
+    
     app = QApplication(sys.argv)
     loginScreen = login.Login()
     loginScreen.run()
-
-    cursor.close()
-    db.close()
     
     sys.exit(app.exec_())
 
