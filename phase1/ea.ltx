@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage[a4paper, margin=1in]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{epigraph}
+
+\title{INFOH303 - Projet de Système d’Inventaire pour un
+RPG - Partie 1}
+\author{Bilal Vandenberge}
+\date{Mars 2025}
+
+\begin{document}
+
+{\LARGE{\raggedright\textbf{INFOH303 - Projet de Système d’Inventaire pour un
+RPG}}}
+\rule{\textwidth}{1pt}
+
+
+\vspace{5pt}
+\begin{center}
+% \rowcolors{3}{green!25}{yellow!50}
+\begin{tabular}{ *3l }    \toprule
+\textbf{Prénom} & \textbf{Nom} & \textbf{Matricule} \\\bottomrule
+Bilal & Vandenberge & 000593438  \\\bottomrule
+Lucas & Verbeiren & 000591223  \\\bottomrule
+Ethan & Van Ruyskensvelde & 000589640  \\\bottomrule
+Rares & Radu-Loghin & 000590079  \\\bottomrule
+ %\hline
+\end{tabular}
+\end{center}
+\vspace{5pt}
+\textbf{\LARGE{\raggedright Diagramme Entité-Association:}}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{ea.drawio.pdf}
+    \label{fig:ea}
+\end{figure}
+
+\vspace{5pt}
+\textbf{\LARGE{\raggedright Justifications:}}\\
+
+\textbf{Héritage}\\
+
+Les armes (Weapons), armures (Armors), potions (Potions), artefacts (Artefacts) possèdent tous un prix et un nom. Nous prenons donc la décision de regrouper ceux-ci à l'aide d'un héritage de la table objets (Items).
+
+Cet héritage est total et exclusif "(t,e)" car :
+
+\begin{itemize}
+    \item Il n'existe aucun autre type d'objet que les 4 mentionnés. (total)
+    \item Aucun objet ne peut appartenir à deux catégories à la fois, e.g. Potions et Armes en même temps. (exclusif)
+\end{itemize}
+
+\newpage
+
+\textbf{Ambiguïtés de l'énoncé}\\
+
+Une lourde ambiguïté dans l'énoncé de ce projet se situe dans la phrase ci-dessous:\\
+
+
+\textit{"Gestion de l’inventaire : Les joueurs peuvent collecter, équiper ou jeter des objets. L’inventaire a une capacité limitée en fonction du niveau du personnage."}\\
+
+Il est mentionné que le nombre d'emplacement de l'inventaire est limité par rapport au niveau du personnage, or le personnage en question n'a pas de niveaux: c'est le joueur qui en a un. Nous avons donc choisi de lier Inventory à Player afin d'avoir accès au niveau du joueur ainsi qu'à Character afin que les personnages aient accès aux différents objets.\\
+
+Une ambiguïté similaire est observable dans le système de combat:\\
+
+\textit{"Les joueurs peuvent participer à des combats en utilisant des armes et des sorts."}\\
+
+Ici, le soucis est que les joueurs n'ont pas de mana, mais les personnages si. Nous avons donc à nouveau décidé que seul un personnage "Character" peut lancer un sort "Spell", et non un joueur "Player" comme indiqué dans l'énoncé.
+
+
+\end{document}
