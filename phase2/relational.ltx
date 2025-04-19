@@ -1,0 +1,243 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage[a4paper, margin=1in]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{epigraph}
+\usepackage{soul}
+
+\title{INFOH303 - Projet de Système d’Inventaire pour un
+RPG - Partie 1}
+\author{Bilal Vandenberge}
+\date{Mars 2025}
+
+\begin{document}
+
+\setuldepth{latex ca ue la merde}
+
+{\LARGE{\raggedright\textbf{INFOH303 - Projet de Système d’Inventaire pour un
+RPG}}}
+\rule{\textwidth}{1pt}
+
+
+
+\vspace{5pt}
+\begin{center}
+% \rowcolors{3}{green!25}{yellow!50}
+\begin{tabular}{ *3l }    \toprule
+\textbf{Prénom} & \textbf{Nom} & \textbf{Matricule} \\\midrule
+Bilal & Vandenberge & 000593438  \\\bottomrule
+Lucas & Verbeiren & 000591223  \\\bottomrule
+Ethan & Van Ruyskensvelde & 000589640  \\\bottomrule
+Rares & Radu-Loghin & 000590079  \\\bottomrule
+ %\hline
+\end{tabular}
+\end{center}
+\vspace{5pt}
+\textbf{\LARGE{\raggedright Modèle relationnel:}}\\
+
+% ----------------
+% Done
+
+% NOTE: added Inventory Slots
+% NOTE: should we add "State" back ?
+Players(\ul{ID}, Name, StateLevel, StateXP, StateMoney, InventorySlot)\\
+
+% ----------------
+% Done
+
+% TODO: check back the Username thing
+Characters(\ul{Name}, Strength, Agility, Intelligence, Health, Mana, Class, Username)
+
+\hspace{1cm}Username référence Players.Name\\
+
+% ----------------
+% Done
+
+Monsters(\ul{Name}, Damage, MonsterHealth, Defence)\\
+
+% ----------------
+% Done
+
+Spells(\ul{Name}, ManaCost, ReloadTime, Damage)\\
+
+% ----------------
+
+% NOTE: This isn't even in the code anymore
+
+% CharacterSpells(\ul{Character, SpellName})
+%
+% \hspace{1cm}SpellName référence Spells.Name\\
+
+% ----------------
+% Done
+
+Quests(\ul{Name}, Description, Difficutly, Experience)
+
+\hspace{1cm}NPCName référence NPCs.Name\\
+
+% ----------------
+% Done
+
+Items(\ul{Name}, Price, Type)\\
+
+% ----------------
+
+Weapons(\ul{ItemName}, Power)
+
+\hspace{1cm}ItemName référence Items.Name\\
+
+% ----------------
+
+NPCs(\ul{Name}, Dialogues, Character)
+
+\hspace{1cm}Character référence (Players.ID, Characters.Name)\\
+
+% ----------------
+
+NPCDialogues(\ul{NPC, Dialogue})
+
+\hspace{1cm}NPC référence NPCs.Name\\
+
+% ----------------
+
+Rewards(\ul{QuestName}, \ul{NPCName} Gold, XP)
+
+\hspace{1cm}NPCName référence NPCs.Name\\
+
+% ----------------
+
+RewardItems(\ul{Reward, Item})
+
+\hspace{1cm}Reward référence (Rewards.QuestName, Rewards.Item)
+
+\hspace{1cm}Item référence Items.Name\\
+
+% ----------------
+
+Armors(\ul{ItemName}, Defence)
+
+\hspace{1cm}ItemName référence Items.Name\\
+
+% ----------------
+
+Potions(\ul{ItemName}, HealthGain)
+
+\hspace{1cm}ItemName référence Items.Name\\
+
+% ----------------
+
+Artefacts(\ul{ItemName}, Effect)
+
+\hspace{1cm}ItemName référence Items.Name\\
+
+% ----------------
+\newpage
+% ----------------
+
+% NOTE: This is commented out in the code, still needed ?
+% LootingTable(\ul{MonsterName}, ItemName, Quantity, DropRate)
+%
+% \hspace{1cm}ItemName référence Items.Name
+%
+% \hspace{1cm}MonsterName référence Monsters.Name\\
+
+% ----------------
+
+MonsterLootingTables(\ul{ItemName, LootingTableName})
+
+\hspace{1cm} ItemName référence Items.Name
+
+\hspace{1cm} LootingTableName référence LootingTable.Name\\
+
+% ----------------
+
+ItemInventories(\ul{ItemName, InventoryID})
+
+\hspace{1cm} ItemName référence Items.Name 
+
+\hspace{1cm} InventoryID référence Inventories.ID\\
+
+% ----------------
+
+Inventories(\ul{ID})
+
+\hspace{1cm}ID référence Players.ID\\
+
+% ----------------
+
+\begin{itemize}
+
+    \item Le nombre maximum de tuples ayant un même InventoryID dépend de l'attribut Players.StateLevel.
+
+    % -----------
+
+    \item 0 $\le$ Characters.Intelligence $\le$ 100
+
+    % -----------
+
+    \item 0 $<$ Characters.Health $\le$ 100
+
+    \item 0 $<$ Potions.HealthGain $\le$ 100
+
+    \item 0 $<$ Monsters.MonsterHealth $\le$ 1000
+
+    % -----------
+
+    \item 0 $\le$ Weapons.Power
+
+    % -----------
+
+    \item 0 $\le$ Monsters.Damage
+
+    \item 0 $\le$ Spells.Damage
+
+    % -----------
+
+    \item 0 $\le$ Players.StateXP
+
+    \item 0 $\le$ Rewards.XP
+
+    % -----------
+
+    \item 0 $\le$ Characters.Mana
+
+    \item 0 $<$ Spells.ManaCost
+
+    % -----------
+
+    \item 0 $\le$ Armors.Defence $\le$ 100
+
+    \item 0 $\le$ Monsters.Defence $\le$ 100
+
+    % -----------
+
+    \item 0\% $<$ LootingTable.DropRate $\le$ 100\%
+
+    % -----------
+
+    \item 0 $<$ LootingTable.Quantity
+
+    % -----------
+
+    \item 0 $<$ Items.Price
+
+    % -----------
+
+    \item 0s $<$ Spells.ReloadTime
+
+    % -----------
+
+    \item 0 $\le$ Players.StateMoney
+
+    % -----------
+
+    \item 0 $\le$ Players.StateLevel
+
+\end{itemize}
+
+
+\end{document}
