@@ -1,6 +1,6 @@
 import mysql.connector
 
-import create
+import insert
 
 def playersMostGold(cursor):
     cursor.execute('''
@@ -174,7 +174,11 @@ def main():
 
     cursor = db.cursor()
     
-    create.createDatabaseAndTables(db, cursor)
+    insert.main() # Insert data into the tables before executing the additional requests
+    print()
+    print("-" * 50)
+    print()
+
     cursor.execute("USE rpg;")
     addAdditionalRequests(cursor)
     
