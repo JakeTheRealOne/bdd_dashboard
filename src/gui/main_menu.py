@@ -5,6 +5,7 @@ import gui.qt_config as qt_config
 import gui.manage_account as manage_account
 import gui.manage_characters as manage_characters
 import gui.manage_inventory as manage_inventory
+import gui.manage_quests as manage_quests
 
 class MainMenu(QWidget):
     """
@@ -28,6 +29,9 @@ class MainMenu(QWidget):
         manageInventoryButton = QPushButton("Manage inventory")
         manageInventoryButton.setFixedWidth(500)
         manageInventoryButton.setAutoDefault(True)
+        manageQuestsButton = QPushButton("Manage Quests")
+        manageQuestsButton.setFixedWidth(500)
+        manageQuestsButton.setAutoDefault(True)
         exitButton = QPushButton("Exit")
         exitButton.setFixedWidth(500)
         exitButton.setAutoDefault(True)
@@ -38,6 +42,7 @@ class MainMenu(QWidget):
         mainLayout.addWidget(manageAccountButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageCharactersButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageInventoryButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(manageQuestsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         self.mainPage = QWidget()
@@ -52,6 +57,9 @@ class MainMenu(QWidget):
 
         self.manageInventory = manage_inventory.ManageInventory(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageInventory)
+        
+        self.manageQuests = manage_quests.ManageQuests(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageQuests)
 
         self.stackedWidget.setCurrentWidget(self.mainPage)
 
@@ -66,6 +74,7 @@ class MainMenu(QWidget):
         manageAccountButton.clicked.connect(self.on_manageAccountButton_clicked)
         manageCharactersButton.clicked.connect(self.on_manageCharactersButton_clicked)
         manageInventoryButton.clicked.connect(self.on_manageInventoryButton_clicked)
+        manageQuestsButton.clicked.connect(self.on_manageQuestsButton_clicked)
         
 
     def on_exitButton_clicked(self):
@@ -81,3 +90,6 @@ class MainMenu(QWidget):
 
     def on_manageInventoryButton_clicked(self):
         self.stackedWidget.setCurrentWidget(self.manageInventory)
+
+    def on_manageQuestsButton_clicked(self):
+        self.stackedWidget.setCurrentWidget(self.manageQuests)
