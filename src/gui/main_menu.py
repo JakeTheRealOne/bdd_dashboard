@@ -21,12 +21,16 @@ class MainMenu(QWidget):
 
         manageAccountButton = QPushButton("Manage Account")
         manageAccountButton.setFixedWidth(500)
+        manageAccountButton.setAutoDefault(True)
         manageCharactersButton = QPushButton("Manage Characters")
         manageCharactersButton.setFixedWidth(500)
+        manageCharactersButton.setAutoDefault(True)
         manageInventoryButton = QPushButton("Manage inventory")
         manageInventoryButton.setFixedWidth(500)
+        manageInventoryButton.setAutoDefault(True)
         exitButton = QPushButton("Exit")
         exitButton.setFixedWidth(500)
+        exitButton.setAutoDefault(True)
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))

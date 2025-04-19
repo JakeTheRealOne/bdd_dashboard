@@ -62,13 +62,16 @@ class ManageInventory(QWidget):
     def setup(self):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
+        backButton.setAutoDefault(True)
 
         self.addItemButton = QPushButton("Add item")
         self.addItemButton.setEnabled(False)
+        self.addItemButton.setAutoDefault(True)
         self.addItemButton.setFixedWidth(500)
 
         self.clearButton = QPushButton("Clear Inventory")
         self.clearButton.setEnabled(True)
+        self.clearButton.setAutoDefault(True)
         self.clearButton.setFixedWidth(500)
 
         self.nameLabel = QLabel()

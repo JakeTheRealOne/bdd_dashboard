@@ -39,9 +39,11 @@ class ManageAccount(QWidget):
     def setup(self):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
+        backButton.setAutoDefault(True)
 
         deleteAccountButton = QPushButton("Delete Account")
         deleteAccountButton.setFixedWidth(500)
+        deleteAccountButton.setAutoDefault(True)
 
         self.inputName = QLineEdit()
         self.inputName.setFixedWidth(500)

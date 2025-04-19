@@ -36,11 +36,14 @@ class ManageCharacters(QWidget):
     def setup(self):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
+        backButton.setAutoDefault(True)
 
         addButton = QPushButton("Add Character")
         addButton.setFixedWidth(500)
+        addButton.setAutoDefault(True)
         modifyButton = QPushButton("Modify Character")
         modifyButton.setFixedWidth(500)
+        modifyButton.setAutoDefault(True)
 
         self.table = QTableWidget()
         self.table.setFixedSize(500, 250)
