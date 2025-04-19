@@ -52,6 +52,10 @@ def createDatabaseAndTables(db, cursor):
     # Create the table NPCQuests if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS NPCQuests (NPCName VARCHAR (225), QuestName VARCHAR (225), " \
     "PRIMARY KEY (NPCName, QuestName), FOREIGN KEY (NPCName) REFERENCES NPCs(Name), FOREIGN KEY (QuestName) REFERENCES Quests(Name));")
+    
+    # Create the table PlayerQuests if it doesn't exist
+    cursor.execute("CREATE TABLE IF NOT EXISTS PlayerQuests (PlayerID INT, QuestName VARCHAR(255)," \
+    "PRIMARY KEY (PlayerID, QuestName), FOREIGN KEY (PlayerID) REFERENCES Players(ID), FOREIGN KEY (QuestName) REFERENCES Quests(Name));")
 
     # Create the table MonsterLoots if it doesen't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS MonsterLoots (MonsterName VARCHAR (255), LootName VARCHAR (255), DropRate INT DEFAULT 0, Quantity INT DEFAULT 0," \
