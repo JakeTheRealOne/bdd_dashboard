@@ -149,6 +149,7 @@ class Login(QWidget):
         result = self.cursor.fetchone()
         if result:
             QMessageBox.warning(self, "Register failed", "Username is already taken.")
+            
 
         else:
             self.cursor.execute("INSERT INTO Players (Name) VALUES ('"+ username +"');")
@@ -157,6 +158,7 @@ class Login(QWidget):
                 self.db.commit()
                 QMessageBox.information(self, "Register successful", "You have successfully registered.")
                 self.stackedWidget.setCurrentWidget(self.loginPage)
+                self.usernameInputLogin.setFocus()
 
         self.clearInputs()
 
@@ -181,6 +183,7 @@ class Login(QWidget):
         else:
             self.clearInputs()
             QMessageBox.warning(self, "Login failed", "Username does not exist.")
+            self.usernameInputLogin.setFocus()
 
     def clearInputs(self):
         self.usernameInputRegister.clear()
