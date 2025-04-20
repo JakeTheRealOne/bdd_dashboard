@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QAbstractItemView, QHeaderView, QScrollArea, QAbstractScrollArea, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem, QMessageBox
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QAbstractItemView, QHeaderView, QScrollArea, QAbstractScrollArea, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem, QMessageBox
 from PyQt5.QtCore import Qt
 import mysql.connector
 
@@ -12,6 +12,7 @@ class Monsters(QWidget):
     def __init__(self, parent, stackedWidget, ID):
         super().__init__(parent)
         self.stackedWidget = stackedWidget
+        self.stackedWidget.addWidget(self)
         self.ID = ID
         self.db = mysql.connector.connect(
             host="localhost",
@@ -36,11 +37,11 @@ class Monsters(QWidget):
 
         scroll_area = QScrollArea()
         scroll_area.setWidget(self.monsters_table)
-        scroll_area.setWidgetResizable(True)  # Allow the table to resize
+        scroll_area.setWidgetResizable(True)
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.createCenterBoldTitle("Manage your Quests"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(qt_config.createCenterBoldTitle("Monsters"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(scroll_area, alignment=Qt.AlignCenter)
         mainLayout.addWidget(back_button, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -72,6 +73,75 @@ class Monsters(QWidget):
                 self.monsters_table.setItem(i, j, item)
                 
         header = self.monsters_table.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.Stretch)
-        header.setSectionResizeMode(0, QHeaderView.ResizeToContents) 
-    
+        header.setSectionResizeMode(QHeaderView.ResizeToContents)
+            
+
+        self.monsters_table.cellClicked.connect(self.show_monster_loot)
+
+
+    def show_monster_loot(self, row):
+        if hasattr(self, 'show_monster_loot_widget') and self.show_monster_loot_widget is not None:
+            self.stackedWidget.removeWidget(self.show_monster_loot_widget)
+            self.show_monster_loot_widget.deleteLater()
+            self.show_monster_loot_widget = None
+            
+        self.show_monster_loot_widget = QWidget()
+        layout = QVBoxLayout()
+        
+        backButton = QPushButton("Back")
+        backButton.setFixedWidth(500)
+        backButton.setAutoDefault(True)
+        backButton.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self))
+        
+        layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        layout.addWidget(qt_config.createCenterBoldTitle("Monster Loots"), alignment=Qt.AlignCenter)
+        
+        monster = self.monsters_table.item(row, 0)
+        
+        self.cursor.execute("SELECT * FROM MonsterLoots WHERE MonsterName = %s", (monster.text(),))
+        results = self.cursor.fetchall()
+                
+        if results:
+            table = QTableWidget()
+            table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            table.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+            table.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+            table.setRowCount(len(results))
+            table.setColumnCount(4)
+            table.setHorizontalHeaderLabels(["Monster Name", "Loot Name", "Drop Rate", "Quantity"])
+            
+            for row, (name, loot, drop, quant) in enumerate(results):                       
+                monster_name = QTableWidgetItem(name)
+                monster_name.setTextAlignment(Qt.AlignCenter)
+                table.setItem(row, 0, monster_name)
+                
+                loot_name = QTableWidgetItem(loot)
+                loot_name.setTextAlignment(Qt.AlignCenter)
+                table.setItem(row, 1, loot_name)
+                
+                drop_rate = QTableWidgetItem(str(drop) + "%")
+                drop_rate.setTextAlignment(Qt.AlignCenter)
+                table.setItem(row, 2, drop_rate)
+                
+                quantity = QTableWidgetItem(str(quant))
+                quantity.setTextAlignment(Qt.AlignCenter)
+                table.setItem(row, 3, quantity)
+                
+            header = table.horizontalHeader()
+            header.setSectionResizeMode(QHeaderView.ResizeToContents)       
+            layout.addWidget(table, alignment=Qt.AlignCenter)
+                
+        else:
+            no_loot_label = QLabel("No loot available for this monster.")
+            no_loot_label.setAlignment(Qt.AlignCenter)
+            layout.addWidget(no_loot_label, alignment=Qt.AlignCenter)
+            
+        layout.addWidget(backButton, alignment=Qt.AlignCenter)
+        layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        
+        self.show_monster_loot_widget.setLayout(layout)
+
+        self.stackedWidget.addWidget(self.show_monster_loot_widget)
+        self.stackedWidget.setCurrentWidget(self.show_monster_loot_widget)
+            
+            
