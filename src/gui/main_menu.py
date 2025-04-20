@@ -15,6 +15,7 @@ class MainMenu(QWidget):
 
     def __init__(self, ID, parent=None):
         super().__init__(parent)
+        self.showMaximized()
         self.ID = ID
         self.setup()
 
@@ -60,7 +61,6 @@ class MainMenu(QWidget):
         layout = QVBoxLayout()
         layout.addWidget(self.stackedWidget)
         self.setLayout(layout)
-        self.showMaximized()
 
         # connect the buttons
         exitButton.clicked.connect(self.on_exitButton_clicked)

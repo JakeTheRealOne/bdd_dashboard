@@ -12,6 +12,7 @@ class Login(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.showMaximized()
         self.db = mysql.connector.connect(
             host="localhost",
             user="rootuser",
@@ -104,7 +105,6 @@ class Login(QWidget):
         layout = QVBoxLayout()
         layout.addWidget(self.stacked_widget)
         self.setLayout(layout)
-        self.showMaximized()
 
         # Connect buttons
         exit_button.clicked.connect(self.on_exit_button_clicked)
