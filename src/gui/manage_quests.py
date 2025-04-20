@@ -72,9 +72,17 @@ class ManageQuests(QWidget):
         header.setSectionResizeMode(3, QHeaderView.ResizeToContents)  # Action
 
         for row, (name, description, difficulty) in enumerate(quests):
-            self.questTable.setItem(row, 0, QTableWidgetItem(name))
-            self.questTable.setItem(row, 1, QTableWidgetItem(description))
-            self.questTable.setItem(row, 2, QTableWidgetItem(str(difficulty)))
+            name_item = QTableWidgetItem(name)
+            name_item.setTextAlignment(Qt.AlignCenter)
+            self.questTable.setItem(row, 0, name_item)
+            
+            desc_item = QTableWidgetItem(description)
+            desc_item.setTextAlignment(Qt.AlignCenter)
+            self.questTable.setItem(row, 1, desc_item)
+
+            item = QTableWidgetItem(str(difficulty))
+            item.setTextAlignment(Qt.AlignCenter)
+            self.questTable.setItem(row, 2, item)
 
             acceptButton = QPushButton("Accept")
             acceptButton.clicked.connect(lambda _, quest=name: self.accept_quest(quest))

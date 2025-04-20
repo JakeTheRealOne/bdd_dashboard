@@ -6,6 +6,7 @@ import gui.manage_account as manage_account
 import gui.manage_characters as manage_characters
 import gui.manage_inventory as manage_inventory
 import gui.manage_quests as manage_quests
+import gui.monsters as monsters
 
 class MainMenu(QWidget):
     """
@@ -32,6 +33,9 @@ class MainMenu(QWidget):
         manageQuestsButton = QPushButton("Manage Quests")
         manageQuestsButton.setFixedWidth(500)
         manageQuestsButton.setAutoDefault(True)
+        manageMonstersButton = QPushButton("Check Monsters")
+        manageMonstersButton.setFixedWidth(500)
+        manageMonstersButton.setAutoDefault(True)
         exitButton = QPushButton("Exit")
         exitButton.setFixedWidth(500)
         exitButton.setAutoDefault(True)
@@ -43,6 +47,7 @@ class MainMenu(QWidget):
         mainLayout.addWidget(manageCharactersButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageInventoryButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageQuestsButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(manageMonstersButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         self.mainPage = QWidget()
@@ -63,6 +68,7 @@ class MainMenu(QWidget):
         manageCharactersButton.clicked.connect(self.on_manageCharactersButton_clicked)
         manageInventoryButton.clicked.connect(self.on_manageInventoryButton_clicked)
         manageQuestsButton.clicked.connect(self.on_manageQuestsButton_clicked)
+        manageMonstersButton.clicked.connect(self.on_manageMonstersButton_clicked)
         
 
     def on_exitButton_clicked(self):
@@ -101,3 +107,12 @@ class MainMenu(QWidget):
         self.manageQuests = manage_quests.ManageQuests(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageQuests)
         self.stackedWidget.setCurrentWidget(self.manageQuests)
+        
+    def on_manageMonstersButton_clicked(self):
+        if hasattr(self, 'manageMonsters'):
+            self.manageMonsters.deleteLater()
+            self.manageMonsters = None
+        self.manageMonsters = monsters.Monsters(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageMonsters)
+        self.stackedWidget.setCurrentWidget(self.manageMonsters)
+        
