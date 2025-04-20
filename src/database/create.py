@@ -1,6 +1,6 @@
 import mysql.connector
 
-def createDatabaseAndTables(db, cursor):
+def create_database_and_tables(db, cursor):
     """
     Create the database and tables if they don't exist
     """
@@ -79,7 +79,7 @@ def main():
     )
 
     cursor = db.cursor()
-    createDatabaseAndTables(db, cursor)
+    create_database_and_tables(db, cursor)
     print("Database and tables created successfully.")
     cursor.close()
     db.close()

@@ -13,7 +13,7 @@ def main():
     )
 
     cursor = db.cursor()
-    create.createDatabaseAndTables(db, cursor)
+    create.create_database_and_tables(db, cursor)
     cursor.close()  
     db.close()
     
