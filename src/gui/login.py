@@ -29,115 +29,115 @@ class Login(QWidget):
         self.show()
 
     def setup(self):
-        self.stackedWidget = QStackedWidget()
-        self.mainPage = QWidget()
-        self.loginPage = QWidget()
-        self.registerPage = QWidget()
+        self.stacked_widget = QStackedWidget()
+        self.main_page = QWidget()
+        self.login_page = QWidget()
+        self.register_page = QWidget()
 
-        exitButton = QPushButton("Exit")
-        exitButton.setFixedWidth(500)
-        exitButton.setAutoDefault(True)
-        loginButton = QPushButton("Login")
-        loginButton.setFixedWidth(500)
-        loginButton.setAutoDefault(True)
-        registerButton = QPushButton("Register")
-        registerButton.setFixedWidth(500)
-        registerButton.setAutoDefault(True)
-        backButtonLogin = QPushButton("Back")
-        backButtonLogin.setFixedWidth(500)
-        backButtonLogin.setAutoDefault(True)
-        backButtonRegister = QPushButton("Back")
-        backButtonRegister.setFixedWidth(500)
-        backButtonRegister.setAutoDefault(True)
+        exit_button = QPushButton("Exit")
+        exit_button.setFixedWidth(500)
+        exit_button.setAutoDefault(True)
+        login_button = QPushButton("Login")
+        login_button.setFixedWidth(500)
+        login_button.setAutoDefault(True)
+        register_button = QPushButton("Register")
+        register_button.setFixedWidth(500)
+        register_button.setAutoDefault(True)
+        back_button_login = QPushButton("Back")
+        back_button_login.setFixedWidth(500)
+        back_button_login.setAutoDefault(True)
+        back_button_register = QPushButton("Back")
+        back_button_register.setFixedWidth(500)
+        back_button_register.setAutoDefault(True)
 
-        sendButtonRegister = QPushButton("Send")
-        sendButtonRegister.setFixedWidth(500)
-        sendButtonRegister.setAutoDefault(True)
-        sendButtonLogin = QPushButton("Send")
-        sendButtonLogin.setAutoDefault(True)
-        sendButtonLogin.setFixedWidth(500)
+        send_button_register = QPushButton("Send")
+        send_button_register.setFixedWidth(500)
+        send_button_register.setAutoDefault(True)
+        send_button_login = QPushButton("Send")
+        send_button_login.setAutoDefault(True)
+        send_button_login.setFixedWidth(500)
 
-        self.usernameInputRegister = QLineEdit()
-        self.usernameInputRegister.setFixedWidth(500)
-        self.usernameInputRegister.setAlignment(Qt.AlignCenter)
-        self.usernameInputLogin = QLineEdit()
-        self.usernameInputLogin.setFixedWidth(500)
-        self.usernameInputLogin.setAlignment(Qt.AlignCenter)
+        self.username_input_register = QLineEdit()
+        self.username_input_register.setFixedWidth(500)
+        self.username_input_register.setAlignment(Qt.AlignCenter)
+        self.username_input_login = QLineEdit()
+        self.username_input_login.setFixedWidth(500)
+        self.username_input_login.setAlignment(Qt.AlignCenter)
 
 
         # main page
-        mainLayout = QVBoxLayout()
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.createCenterBoldTitle("Welcome to the RPG !"))
-        mainLayout.addWidget(registerButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(loginButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        self.mainPage.setLayout(mainLayout)
+        main_layout = QVBoxLayout()
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout.addWidget(qt_config.createCenterBoldTitle("Welcome to the RPG !"))
+        main_layout.addWidget(register_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(login_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(exit_button, alignment=Qt.AlignCenter)
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        self.main_page.setLayout(main_layout)
 
         # register page
-        registerPageLayout = QVBoxLayout()
-        registerPageLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        registerPageLayout.addWidget(qt_config.createCenterBoldTitle("Register"))
-        registerPageLayout.addWidget(self.usernameInputRegister, alignment=Qt.AlignCenter)
-        registerPageLayout.addWidget(sendButtonRegister, alignment=Qt.AlignCenter)
-        registerPageLayout.addWidget(backButtonRegister, alignment=Qt.AlignCenter)
-        registerPageLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        self.registerPage.setLayout(registerPageLayout)
+        register_page_layout = QVBoxLayout()
+        register_page_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        register_page_layout.addWidget(qt_config.createCenterBoldTitle("Register"))
+        register_page_layout.addWidget(self.username_input_register, alignment=Qt.AlignCenter)
+        register_page_layout.addWidget(send_button_register, alignment=Qt.AlignCenter)
+        register_page_layout.addWidget(back_button_register, alignment=Qt.AlignCenter)
+        register_page_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        self.register_page.setLayout(register_page_layout)
 
         # login page
-        loginPageLayout = QVBoxLayout()
-        loginPageLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        loginPageLayout.addWidget(qt_config.createCenterBoldTitle("Login"))
-        loginPageLayout.addWidget(self.usernameInputLogin, alignment=Qt.AlignCenter)
-        loginPageLayout.addWidget(sendButtonLogin, alignment=Qt.AlignCenter)
-        loginPageLayout.addWidget(backButtonLogin, alignment=Qt.AlignCenter)
-        loginPageLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        self.loginPage.setLayout(loginPageLayout)
+        login_page_layout = QVBoxLayout()
+        login_page_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        login_page_layout.addWidget(qt_config.createCenterBoldTitle("Login"))
+        login_page_layout.addWidget(self.username_input_login, alignment=Qt.AlignCenter)
+        login_page_layout.addWidget(send_button_login, alignment=Qt.AlignCenter)
+        login_page_layout.addWidget(back_button_login, alignment=Qt.AlignCenter)
+        login_page_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        self.login_page.setLayout(login_page_layout)
 
-        # Add the pages to stackedWidget
-        self.stackedWidget.addWidget(self.mainPage)
-        self.stackedWidget.addWidget(self.registerPage)
-        self.stackedWidget.addWidget(self.loginPage)
+        # Add the pages to stacked_widget
+        self.stacked_widget.addWidget(self.main_page)
+        self.stacked_widget.addWidget(self.register_page)
+        self.stacked_widget.addWidget(self.login_page)
 
         # Main layout
         layout = QVBoxLayout()
-        layout.addWidget(self.stackedWidget)
+        layout.addWidget(self.stacked_widget)
         self.setLayout(layout)
         self.showMaximized()
 
         # Connect buttons
-        exitButton.clicked.connect(self.on_exitButton_clicked)
-        loginButton.clicked.connect(self.on_loginButton_clicked)
-        registerButton.clicked.connect(self.on_registerButton_clicked)
-        backButtonLogin.clicked.connect(self.on_backButtonLogin_clicked)
-        backButtonRegister.clicked.connect(self.on_backButtonRegister_clicked)
-        sendButtonRegister.clicked.connect(self.on_sendButtonRegister_clicked)
-        sendButtonLogin.clicked.connect(self.on_sendButtonLogin_clicked)
-        self.usernameInputLogin.returnPressed.connect(self.on_sendButtonLogin_clicked)
-        self.usernameInputRegister.returnPressed.connect(self.on_sendButtonRegister_clicked)
+        exit_button.clicked.connect(self.on_exit_button_clicked)
+        login_button.clicked.connect(self.on_login_button_clicked)
+        register_button.clicked.connect(self.on_register_button_clicked)
+        back_button_login.clicked.connect(self.on_back_button_login_clicked)
+        back_button_register.clicked.connect(self.on_back_button_register_clicked)
+        send_button_register.clicked.connect(self.on_send_button_register_clicked)
+        send_button_login.clicked.connect(self.on_send_button_login_clicked)
+        self.username_input_login.returnPressed.connect(self.on_send_button_login_clicked)
+        self.username_input_register.returnPressed.connect(self.on_send_button_register_clicked)
 
-    def on_exitButton_clicked(self):
+    def on_exit_button_clicked(self):
         reply = QMessageBox.question(self, "Quit", "Are you sure you want to exit ?", QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             QApplication.quit()
 
-    def on_loginButton_clicked(self):
-        self.stackedWidget.setCurrentWidget(self.loginPage)
+    def on_login_button_clicked(self):
+        self.stacked_widget.setCurrentWidget(self.login_page)
 
-    def on_registerButton_clicked(self):
-        self.stackedWidget.setCurrentWidget(self.registerPage)
+    def on_register_button_clicked(self):
+        self.stacked_widget.setCurrentWidget(self.register_page)
 
-    def on_backButtonLogin_clicked(self):
+    def on_back_button_login_clicked(self):
         self.clearInputs()
-        self.stackedWidget.setCurrentWidget(self.mainPage)
+        self.stacked_widget.setCurrentWidget(self.main_page)
 
-    def on_backButtonRegister_clicked(self):
+    def on_back_button_register_clicked(self):
         self.clearInputs()
-        self.stackedWidget.setCurrentWidget(self.mainPage)
+        self.stacked_widget.setCurrentWidget(self.main_page)
 
-    def on_sendButtonRegister_clicked(self):
-        username = self.usernameInputRegister.text()
+    def on_send_button_register_clicked(self):
+        username = self.username_input_register.text()
 
         # Check if name lenght is valid
         if not (0 < len(username) < 256):
@@ -157,13 +157,13 @@ class Login(QWidget):
             if not result:
                 self.db.commit()
                 QMessageBox.information(self, "Register successful", "You have successfully registered.")
-                self.stackedWidget.setCurrentWidget(self.loginPage)
-                self.usernameInputLogin.setFocus()
+                self.stacked_widget.setCurrentWidget(self.login_page)
+                self.username_input_login.setFocus()
 
         self.clearInputs()
 
-    def on_sendButtonLogin_clicked(self):
-        username = self.usernameInputLogin.text()
+    def on_send_button_login_clicked(self):
+        username = self.username_input_login.text()
 
         # Check if name lenght is valid
         if not (0 < len(username) < 256):
@@ -177,14 +177,14 @@ class Login(QWidget):
             self.clearInputs()
             QMessageBox.information(self, "Login successful", "You have successfully logged in.")
             mainMenu = main_menu.MainMenu(result[0], self)
-            self.stackedWidget.addWidget(mainMenu)
-            self.stackedWidget.setCurrentWidget(mainMenu) # show the main menu
+            self.stacked_widget.addWidget(mainMenu)
+            self.stacked_widget.setCurrentWidget(mainMenu) # show the main menu
 
         else:
             self.clearInputs()
             QMessageBox.warning(self, "Login failed", "Username does not exist.")
-            self.usernameInputLogin.setFocus()
+            self.username_input_login.setFocus()
 
     def clearInputs(self):
-        self.usernameInputRegister.clear()
-        self.usernameInputLogin.clear()
+        self.username_input_register.clear()
+        self.username_input_login.clear()
