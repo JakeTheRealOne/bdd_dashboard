@@ -7,9 +7,9 @@ import create
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 
-def insertPlayersData(db, cursor):
-    csvPath = os.path.join(ROOT_DIR, 'data', 'joueurs.csv')
-    with open(csvPath, "r", encoding='utf-8') as csvfile:
+def insert_players_data(db, cursor):
+    csv_path = os.path.join(ROOT_DIR, 'data', 'joueurs.csv')
+    with open(csv_path, "r", encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         data = list(reader)
     csvfile.close()
@@ -25,7 +25,7 @@ def insertPlayersData(db, cursor):
         Level = int(row['Niveau'])
         XP = int(row['XP'])
         Money = int(row['Monnaie'])
-        InventorySlot = int(row['SlotsInventaire'])
+        Inventory_slot = int(row['SlotsInventaire'])
 
         cursor.execute('''
             INSERT IGNORE INTO Players (ID, Name, Level, XP, Money, InventorySlot)
@@ -36,7 +36,7 @@ def insertPlayersData(db, cursor):
                 Level,
                 XP,
                 Money,
-                InventorySlot
+                Inventory_slot
             ))
                        
         if cursor.rowcount == 1:
@@ -46,9 +46,9 @@ def insertPlayersData(db, cursor):
     print(f"Inserted {count} rows into Players table.")
 
 
-def insertSpellsData(db, cursor):
-    csvPath = os.path.join(ROOT_DIR, 'data', 'sorts.csv')
-    with open(csvPath, "r", encoding='utf-8') as csvfile:
+def insert_spells_data(db, cursor):
+    csv_path = os.path.join(ROOT_DIR, 'data', 'sorts.csv')
+    with open(csv_path, "r", encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         data = list(reader)
     csvfile.close()
@@ -60,8 +60,8 @@ def insertSpellsData(db, cursor):
             continue
 
         Name = row['Nom']
-        ManaCost = int(row['Coût en Mana'])
-        ReloadTime = int(row['Temps de Recharge'])
+        Mana_cost = int(row['Coût en Mana'])
+        Reload_time = int(row['Temps de Recharge'])
         Damage = int(row["Puissance d'Attaque"])
 
         cursor.execute('''
@@ -69,8 +69,8 @@ def insertSpellsData(db, cursor):
             VALUES (%s, %s, %s, %s)
             ''', (
                 Name,
-                ManaCost,
-                ReloadTime,
+                Mana_cost,
+                Reload_time,
                 Damage
             ))
         
@@ -81,9 +81,9 @@ def insertSpellsData(db, cursor):
     print(f"Inserted {count} rows into Spells table.")
 
 
-def insertItemsData(db, cursor):
-    csvPath = os.path.join(ROOT_DIR, 'data', 'objets.csv')
-    with open(csvPath, "r", encoding='utf-8') as csvfile:
+def insert_items_data(db, cursor):
+    csv_path = os.path.join(ROOT_DIR, 'data', 'objets.csv')
+    with open(csv_path, "r", encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         data = list(reader)
     csvfile.close()
@@ -189,7 +189,7 @@ def insertItemsData(db, cursor):
     print(f"Inserted {countArtefact} rows into Artefacts table.")
 
 
-def insertMonstersData(db, cursor):
+def insert_monsters_data(db, cursor):
     monster_xml = ElemTree.parse('./data/monstres.xml')
     root = monster_xml.getroot() 
 
@@ -241,7 +241,7 @@ def insertMonstersData(db, cursor):
     print(f"Inserted {count} rows into Monsters table.")
 
 
-def insertQuestsData(db, cursor):
+def insert_quests_data(db, cursor):
     quests_xml = ElemTree.parse('./data/quetes.xml')
     root = quests_xml.getroot()
 
@@ -289,9 +289,9 @@ def insertQuestsData(db, cursor):
     print(f"Inserted {count} rows into Quests table.")
     
 
-def insertCharactersData(db, cursor):
-    jsonPath = os.path.join(ROOT_DIR, 'data', 'personnages.json')
-    with open(jsonPath, "r", encoding="utf-8") as file:
+def insert_characters_data(db, cursor):
+    json_path = os.path.join(ROOT_DIR, 'data', 'personnages.json')
+    with open(json_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     file.close()
@@ -329,9 +329,9 @@ def insertCharactersData(db, cursor):
     print(f"Inserted {count} rows into Characters table.")
 
 
-def insertNPCData(db, cursor):
-    jsonPath = os.path.join(ROOT_DIR, 'data', 'pnjs.json')
-    with open(jsonPath, "r", encoding="utf-8") as file:
+def insert_NPC_data(db, cursor):
+    json_path = os.path.join(ROOT_DIR, 'data', 'pnjs.json')
+    with open(json_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     file.close()
@@ -400,14 +400,14 @@ def main():
     create.create_database_and_tables(db, cursor)
     cursor.execute("USE rpg;")
 
-    insertPlayersData(db, cursor)
-    insertSpellsData(db, cursor)
+    insert_players_data(db, cursor)
+    insert_spells_data(db, cursor)
+    insert_items_data(db, cursor)
+    insert_monsters_data(db, cursor)
+    insert_quests_data(db, cursor)
+    insert_characters_data(db, cursor)
+    insert_NPC_data(db, cursor)
     
-    insertItemsData(db, cursor)
-    insertMonstersData(db, cursor)
-    insertQuestsData(db, cursor)
-    insertCharactersData(db, cursor)
-    insertNPCData(db, cursor)
     cursor.close()
     db.close()
 
