@@ -3,7 +3,8 @@ import mysql.connector
 import xml.etree.ElementTree as ElemTree
 import json
 import os
-import create 
+
+from . import create
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 

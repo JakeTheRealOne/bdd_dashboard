@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QSpinBox, QPushButton, QMessag
 from PyQt5.QtCore import Qt
 import mysql.connector
 
-import gui.qt_config as qt_config
+from . import qt_config
 
 class ManageAccount(QWidget):
     """

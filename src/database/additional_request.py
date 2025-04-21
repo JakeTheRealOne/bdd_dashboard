@@ -1,6 +1,6 @@
 import mysql.connector
 
-import insert
+from . import insert
 
 def players_most_gold(cursor):
     cursor.execute('''
@@ -91,89 +91,80 @@ def most_rewarding_monster(cursor):
     ''')
 
 
-def print_underline(text):
-    print("\033[4m" + text + "\033[0m")
+def text_underline(text):
+    return f"<u>{text}</u>"
 
 
-def add_additional_requests(cursor):
-    print_underline("Top 10 players with the most gold:\n")
-    print(f"{'Rank':<5}{'Player':<20}{'Gold':<5}")
-    print("-" * 30)
-    players_most_gold(cursor)
-    for index, (player_name, gold) in enumerate(cursor.fetchall(), start=1):
-        print(f"{index:<5}{player_name:<20}{gold:<5}")
-    print("\n")
-
-    player_most_characters_same_class(cursor)
-    print_underline("Player with the most characters of the same class:\n")
-    print(f"{'Rank':<5}{'Player':<20}{'Class':<10}{'Nb Characters':<12}")
-    print("-" * 47)
-    result = cursor.fetchone()
-    if result:
-        player_name, classe, nb_characters = result
-        print(f"{'1':<5}{player_name:<20}{classe:<10}{nb_characters:<12}")
-    print("\n")
-
-    quest_biggest_reward_by_level(cursor)
-    print_underline("Quest with the biggest reward by level:\n")
-    print(f"{'Quest Name':<40}{'Level':<15}{'Gold':<5}")
-    print("-" * 60)
-    for quest_name, level, total_gold in cursor.fetchall():
-        print(f"{quest_name:<40}{level:<15}{total_gold:<5}")
-    print("\n")
-
-    NPC_most_inventory_value(cursor)
-    print_underline("NPC with the most valuable inventory:\n")
-    print(f"{'Rank':<5}{'NPC':<40}{'Gold inventory value':<17}")
-    print("-" * 63)
-    result = cursor.fetchone()
-    if result:
-        npc_name, total_value = result
-        print(f"{'1':<5}{npc_name:<40}{total_value:<17}")
-    print("\n")
-
-    
-    most_rewarded_item_type(cursor)
-    print_underline("Most Rewarded Item Type rewarded by difficulty 5 quests:\n")
-    print(f"{'Item Type':<20}{'Number of apparition'}")
-    print("-" * 40)
-    result = cursor.fetchone()
-    if result:
-        item_type, apparition_number = result
-        print(f"{item_type:<20}{apparition_number}")
-    print("\n")
-
-    most_rewarding_monster(cursor)
-    print_underline("Most Rewarding monster (in term of gold total price and health):\n")
-    print(f"{'Item':<30}{'Ration gold/life'}")
-    print("-" * 45)
-    result = cursor.fetchone()
-    if result:
-        ratio, item_name = result
-        print(f"{item_name:<30}{ratio}")
-
-    print("\n")
-
-def main():
+def add_additional_requests():
     db = mysql.connector.connect(
         host='localhost',
         user='rootuser',
         password='rootuser',
+        database='rpg'
     )
 
     cursor = db.cursor()
     
-    insert.main() # Insert data into the tables before executing the additional requests
-    print()
-    print("-" * 50)
-    print()
+    result_request = ""
+    
+    result_request += text_underline("Top 10 players with the most gold:\n")
+    result_request += (f"{'Rank':<5}{'Player':<20}{'Gold':<5}\n")
+    result_request += ("-" * 30 + "\n")
+    players_most_gold(cursor)
+    for index, (player_name, gold) in enumerate(cursor.fetchall(), start=1):
+        result_request += (f"{index:<5}{player_name:<20}{gold:<5}\n")
+    result_request += "\n"
 
-    cursor.execute("USE rpg;")
-    add_additional_requests(cursor)
+    player_most_characters_same_class(cursor)
+    result_request += text_underline("Player with the most characters of the same class:\n")
+    result_request += (f"{'Rank':<5}{'Player':<20}{'Class':<10}{'Nb Characters':<12}\n")
+    result_request += ("-" * 47 + "\n")
+    result = cursor.fetchone()
+    if result:
+        player_name, classe, nb_characters = result
+        result_request += (f"{'1':<5}{player_name:<20}{classe:<10}{nb_characters:<12}\n")
+    result_request += "\n"
+
+    quest_biggest_reward_by_level(cursor)
+    result_request += text_underline("Quest with the biggest reward by level:\n")
+    result_request += (f"{'Quest Name':<40}{'Level':<15}{'Gold':<5}\n")
+    result_request += ("-" * 60 + "\n")
+    for quest_name, level, total_gold in cursor.fetchall():
+        result_request += (f"{quest_name:<40}{level:<15}{total_gold:<5}\n")
+    result_request += "\n"
+
+    NPC_most_inventory_value(cursor)
+    result_request += text_underline("NPC with the most valuable inventory:\n")
+    result_request += (f"{'Rank':<5}{'NPC':<40}{'Gold inventory value':<17}\n")
+    result_request += ("-" * 63 + "\n")
+    result = cursor.fetchone()
+    if result:
+        npc_name, total_value = result
+        result_request += (f"{'1':<5}{npc_name:<40}{total_value:<17}\n")
+    result_request += "\n"
+
+    
+    most_rewarded_item_type(cursor)
+    result_request += text_underline("Most Rewarded Item Type rewarded by difficulty 5 quests:\n")
+    result_request += (f"{'Item Type':<20}{'Number of apparition'}\n")
+    result_request += ("-" * 40 + "\n")
+    result = cursor.fetchone()
+    if result:
+        item_type, apparition_number = result
+        result_request += (f"{item_type:<20}{apparition_number}\n")
+    result_request += "\n"
+
+    most_rewarding_monster(cursor)
+    result_request += text_underline("Most Rewarding monster (in term of gold total price and health):\n")
+    result_request += (f"{'Item':<30}{'Ration gold/life'}\n")
+    result_request += ("-" * 45 + "\n")
+    result = cursor.fetchone()
+    if result:
+        ratio, item_name = result
+        result_request += (f"{item_name:<30}{ratio}\n")
+    result_request += "\n"
     
     cursor.close()
     db.close()
-
-
-if __name__ == "__main__":
-    main()
+    
+    return f"<pre>{result_request}</pre>"

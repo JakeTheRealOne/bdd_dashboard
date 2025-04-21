@@ -2,8 +2,8 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QStack
 from PyQt5.QtCore import Qt
 import mysql.connector
 
-import gui.qt_config as qt_config
-import gui.main_menu as main_menu
+from . import qt_config
+from . import main_menu
 
 class Login(QWidget):
     """

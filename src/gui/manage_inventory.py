@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QShowEvent
 import mysql.connector
 
-import gui.qt_config as qt_config
+from . import qt_config
 
 class ManageInventory(QWidget):
     def __init__(self, parent, stackedWidget, ID):

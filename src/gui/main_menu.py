@@ -1,13 +1,15 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QStackedWidget, QMessageBox, QApplication, QSpacerItem, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QStackedWidget, QMessageBox, QApplication, QSpacerItem, QSizePolicy, QTextEdit, QLabel
 from PyQt5.QtCore import Qt
 
-import gui.qt_config as qt_config
-import gui.manage_account as manage_account
-import gui.manage_characters as manage_characters
-import gui.manage_inventory as manage_inventory
-import gui.manage_quests as manage_quests
-import gui.monsters as monsters
-import gui.ranking as ranking
+import src.database.additional_request as additional_request
+
+from . import qt_config
+from . import manage_account
+from . import manage_characters
+from . import manage_inventory
+from . import manage_quests
+from . import monsters
+from . import ranking
 
 class MainMenu(QWidget):
     """
@@ -41,6 +43,9 @@ class MainMenu(QWidget):
         rankingButton = QPushButton("Ranking")
         rankingButton.setFixedWidth(500)
         rankingButton.setAutoDefault(True)
+        manageAdditionalRequestsButton = QPushButton("Additional Requests")
+        manageAdditionalRequestsButton.setFixedWidth(500)
+        manageAdditionalRequestsButton.setAutoDefault(True)
         exitButton = QPushButton("Exit")
         exitButton.setFixedWidth(500)
         exitButton.setAutoDefault(True)
@@ -54,6 +59,7 @@ class MainMenu(QWidget):
         mainLayout.addWidget(manageQuestsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageMonstersButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(rankingButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(manageAdditionalRequestsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         self.mainPage = QWidget()
@@ -75,6 +81,7 @@ class MainMenu(QWidget):
         manageQuestsButton.clicked.connect(self.on_manageQuestsButton_clicked)
         manageMonstersButton.clicked.connect(self.on_manageMonstersButton_clicked)
         rankingButton.clicked.connect(self.on_rankingButton_clicked)
+        manageAdditionalRequestsButton.clicked.connect(self.on_manageAdditionalRequestsButton_clicked)
         
 
     def on_exitButton_clicked(self):
@@ -129,4 +136,32 @@ class MainMenu(QWidget):
         self.manageMonsters = monsters.Monsters(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageMonsters)
         self.stackedWidget.setCurrentWidget(self.manageMonsters)
+        
+    def on_manageAdditionalRequestsButton_clicked(self):
+        if hasattr(self, 'additionalRequestsPage'):
+            self.additionalRequestsPage.deleteLater()
+            self.additionalRequestsPage = None
+
+        backButton = QPushButton("Back")
+        backButton.setFixedWidth(500)
+        backButton.setAutoDefault(True)
+        backButton.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.mainPage))
+
+        self.additionalRequestsPage = QWidget()
+
+        layout = QVBoxLayout()
+        
+        resultsText = additional_request.add_additional_requests()
+        resultsDisplay = QTextEdit()
+        resultsDisplay.setHtml(resultsText)
+        resultsDisplay.setReadOnly(True)
+        
+        layout.addWidget(qt_config.create_center_bold_title("Additional Requests"), alignment=Qt.AlignCenter)
+        layout.addWidget(resultsDisplay)
+        layout.addWidget(backButton, alignment=Qt.AlignCenter)
+
+        self.additionalRequestsPage.setLayout(layout)
+
+        self.stackedWidget.addWidget(self.additionalRequestsPage)
+        self.stackedWidget.setCurrentWidget(self.additionalRequestsPage)
         
