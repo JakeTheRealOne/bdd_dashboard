@@ -1,37 +1,58 @@
-# Database Project
+# 📦 Database Project
 
-This project requires Python to be installed on your system. It uses PyQt5 for the graphical interface and MySQL Connector for database interaction.
+This project is written in Python and uses a graphical interface using PyQt5. It interacts with a MySQL database using the `mysql-connector-python` package.
 
-## Prerequisites
+## 👥 Members
 
-Before running the project, make sure you have Python installed.
+- Bilal Vandenberge
+- Lucas Verbeiren
+- Ethan Van Ruyskensvelde
+- Rares Radu-Loghin
+
+## ✅ Prerequisites
+
+Make sure you have Python 3 installed on your system:
 
 ```sh
 python3 --version
 ```
 
-## Installation
+## 📦 Installation
 
-Run the `install.sh` script to install the python environment with the PyQt5 and mysql-connector dependencies before running the program :
-
-```sh
-./install.sh
-```
-
-Then run the command to activate the python environment for Linux/macOS :
+Install the required dependencies using `pip`:
 
 ```sh
-source .venv/bin/activate
+pip install pyqt5 mysql-connector-python
 ```
 
-For Windows :
+## 🚀 Running the Application
+
+You can run the program with:
 
 ```sh
-source .venv/Scripts/activate
+python3 -m src.main
 ```
 
-You can now run the program :
+## 🛠️ Database Management Scripts
+
+Three utility scripts are provided to manage the database:
+
+### 📌 Create the database and its tables
 
 ```sh
-python3 src/main.py
+python3 -m src.database.create
 ```
+
+### 🗑️ Delete the database
+
+```sh
+python3 -m src.database.delete
+```
+
+### 📥 Insert data into the database
+
+```sh
+python3 -m src.database.insert
+```
+
+This script will populate the database using data from files in the `data/` folder.
