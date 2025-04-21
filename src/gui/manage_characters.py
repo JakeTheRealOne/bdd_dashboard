@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QTableWidget, QPushButton, QSpacerItem, QSizePolicy, QTableWidgetItem, QMessageBox, QLineEdit, QFormLayout, QHeaderView
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QSpinBox, QTableWidget, QLabel, QPushButton, QSpacerItem, QSizePolicy, QTableWidgetItem, QMessageBox, QLineEdit, QFormLayout, QHeaderView
 from PyQt5.QtCore import Qt
 import mysql.connector
 
@@ -53,31 +53,26 @@ class ManageCharacters(QWidget):
         self.nameInput.setFixedWidth(500)
         self.nameInput.setPlaceholderText("Name")
         self.nameInput.setAlignment(Qt.AlignCenter)
-        self.strengthInput = QLineEdit()
-        self.strengthInput.setMaxLength(255)
-        self.strengthInput.setFixedWidth(500)
+        self.strengthInput = QSpinBox()
+        self.strengthInput.setMinimum(0)
+        self.strengthInput.setMaximum(100)
         self.strengthInput.setAlignment(Qt.AlignCenter)
-        self.strengthInput.setPlaceholderText("Strength")
-        self.agilityInput = QLineEdit()
-        self.agilityInput.setMaxLength(255)
-        self.agilityInput.setFixedWidth(500)
+        self.agilityInput = QSpinBox()
+        self.agilityInput.setMinimum(0)
+        self.agilityInput.setMaximum(100)
         self.agilityInput.setAlignment(Qt.AlignCenter)
-        self.agilityInput.setPlaceholderText("Agility")
-        self.intelligenceInput = QLineEdit()
-        self.intelligenceInput.setMaxLength(255)
-        self.intelligenceInput.setFixedWidth(500)
+        self.intelligenceInput = QSpinBox()
+        self.intelligenceInput.setMinimum(0)
+        self.intelligenceInput.setMaximum(100)
         self.intelligenceInput.setAlignment(Qt.AlignCenter)
-        self.intelligenceInput.setPlaceholderText("Intelligence")
-        self.healthInput = QLineEdit()
-        self.healthInput.setMaxLength(255)
-        self.healthInput.setFixedWidth(500)
+        self.healthInput = QSpinBox()
+        self.healthInput.setMinimum(0)
+        self.healthInput.setMaximum(100)
         self.healthInput.setAlignment(Qt.AlignCenter)
-        self.healthInput.setPlaceholderText("Health")
-        self.manaInput = QLineEdit()
-        self.manaInput.setMaxLength(255)
-        self.manaInput.setFixedWidth(500)
+        self.manaInput = QSpinBox()
+        self.manaInput.setMinimum(0)
+        self.manaInput.setMaximum(100)
         self.manaInput.setAlignment(Qt.AlignCenter)
-        self.manaInput.setPlaceholderText("Mana")
         self.classInput = QLineEdit()
         self.classInput.setMaxLength(255)
         self.classInput.setFixedWidth(500)
@@ -86,11 +81,6 @@ class ManageCharacters(QWidget):
 
         characterForm = QFormLayout()
         characterForm.addRow("", self.nameInput)
-        characterForm.addRow("", self.strengthInput)
-        characterForm.addRow("", self.agilityInput)
-        characterForm.addRow("", self.intelligenceInput)
-        characterForm.addRow("", self.healthInput)
-        characterForm.addRow("", self.manaInput)
         characterForm.addRow("", self.classInput)
 
         formWidget = QWidget()
@@ -101,6 +91,16 @@ class ManageCharacters(QWidget):
         mainLayout.addWidget(qt_config.createCenterBoldTitle("Manage your Characters"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.table, alignment=Qt.AlignCenter)
         mainLayout.addWidget(formWidget, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Strength"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.strengthInput, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Agility"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.agilityInput, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Intelligence"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.intelligenceInput, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Health"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.healthInput, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Mana"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.manaInput, alignment=Qt.AlignCenter)
         mainLayout.addWidget(addButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(modifyButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
@@ -120,12 +120,12 @@ class ManageCharacters(QWidget):
 
     def clearAll(self):
         self.nameInput.clear()
-        self.strengthInput.clear()
-        self.agilityInput.clear()
-        self.intelligenceInput.clear()
-        self.healthInput.clear()
-        self.manaInput.clear()
         self.classInput.clear()
+        self.strengthInput.setValue(0)
+        self.agilityInput.setValue(0)
+        self.intelligenceInput.setValue(0)
+        self.healthInput.setValue(0)
+        self.manaInput.setValue(0)
 
 
     def getCharactes(self):
@@ -160,21 +160,18 @@ class ManageCharacters(QWidget):
 
     def on_addButton_clicked(self):
         name = self.nameInput.text()
-        strength = self.strengthInput.text()
-        agility = self.agilityInput.text()
-        intelligence = self.intelligenceInput.text()
-        health = self.healthInput.text()
-        mana = self.manaInput.text()
+        strength = self.strengthInput.value()
+        agility = self.agilityInput.value()
+        intelligence = self.intelligenceInput.value()
+        health = self.healthInput.value()
+        mana = self.manaInput.value()
         classe = self.classInput.text()
 
-        if not (name and strength and agility and intelligence and health and mana and classe):
+        if not name and not classe:
                 QMessageBox.warning(self, "Error", "Please fill in all fields!")
-            
-        elif not all(stat.isdigit() for stat in [strength, agility, intelligence, health, mana]):
-            QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be numbers!")
 
         # Insert the new character into the database
-        elif name and strength and agility and intelligence and health and mana and classe:
+        else:
             self.cursor.execute("SELECT c.Name FROM Characters c WHERE c.Username = %s AND c.Name = %s;", (self.username, name))
             result = self.cursor.fetchone()
             if result:
@@ -188,8 +185,6 @@ class ManageCharacters(QWidget):
             self.db.commit()
             QMessageBox.information(self, "Success", "Character added successfully!")
             self.getCharactes()
-        else:
-            QMessageBox.warning(self, "Input Error", "Please fill in all fields!")
 
 
     def on_modifyButton_clicked(self):
@@ -209,9 +204,6 @@ class ManageCharacters(QWidget):
             
             elif not all(stat.isdigit() for stat in [strength, agility, intelligence, health, mana]):
                 QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be numbers!")
-            
-            elif not name.isalnum() or not classe.isalnum():
-                QMessageBox.warning(self, "Error", "Name and Class must be alphanumeric!")
             
             else:
                 self.cursor.execute(
