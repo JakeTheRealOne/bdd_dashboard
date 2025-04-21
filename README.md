@@ -17,6 +17,12 @@ Make sure you have Python 3 installed on your system:
 python3 --version
 ```
 
+You also need to install MySQL (or MariaDB) to run the project. If you don't have it installed, you can do so with the following command (for Arch Linux):
+
+```sh
+sudo pacman -S mysql
+```
+
 ## 📦 Installation
 
 Install the required dependencies using `pip`:
@@ -56,3 +62,19 @@ python3 -m src.database.insert
 ```
 
 This script will populate the database using data from files in the `data/` folder.
+
+## 🗄️ Create Your Own MySQL Database to Run This Project
+
+To run the project, you'll need to set up your own MySQL (or MariaDB) database and user. Follow the steps below:
+
+1. **Install MySQL** (or MariaDB) on your system if you haven't already done so.
+
+2. **Create a new MySQL user** and grant privileges by running the following commands in your terminal:
+
+    ```sh
+    sudo mysql -e "CREATE USER 'rootuser'@'localhost' IDENTIFIED BY 'rootuser';"
+    sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'rootuser'@'localhost' WITH GRANT OPTION;"
+    sudo mysql -e "FLUSH PRIVILEGES;"
+    ```
+
+This will create a user `rootuser` with the password `rootuser` and grant it full privileges on your MySQL instance. This user (`rootuser`) will be used throughout the project for database interaction.
