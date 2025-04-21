@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QAbstractItemView, QHeaderView, QScrollArea, QAbstractScrollArea, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem, QMessageBox
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QAbstractItemView, QHeaderView, QScrollArea, QAbstractScrollArea, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
 import mysql.connector
 
@@ -11,8 +11,8 @@ class Monsters(QWidget):
 
     def __init__(self, parent, stackedWidget, ID):
         super().__init__(parent)
-        self.stackedWidget = stackedWidget
-        self.stackedWidget.addWidget(self)
+        self.stacked_widget = stackedWidget
+        self.stacked_widget.addWidget(self)
         self.ID = ID
         self.db = mysql.connector.connect(
             host="localhost",
@@ -39,22 +39,22 @@ class Monsters(QWidget):
         scroll_area.setWidget(self.monsters_table)
         scroll_area.setWidgetResizable(True)
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.create_center_bold_title("Monsters"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(scroll_area, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(back_button, alignment=Qt.AlignCenter)
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout = QVBoxLayout()
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout.addWidget(qt_config.create_center_bold_title("Monsters"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(scroll_area, alignment=Qt.AlignCenter)
+        main_layout.addWidget(back_button, alignment=Qt.AlignCenter)
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         
-        self.setLayout(mainLayout)
+        self.setLayout(main_layout)
         
-        back_button.clicked.connect(self.on_backButton_clicked)
+        back_button.clicked.connect(self.on_back_button_clicked)
         
         self.display_all_monsters()
         
         
-    def on_backButton_clicked(self):
-        self.stackedWidget.setCurrentIndex(0)
+    def on_back_button_clicked(self):
+        self.stacked_widget.setCurrentIndex(0)
         
         
     def display_all_monsters(self):
@@ -74,24 +74,23 @@ class Monsters(QWidget):
                 
         header = self.monsters_table.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeToContents)
-            
 
         self.monsters_table.cellClicked.connect(self.show_monster_loot)
 
 
     def show_monster_loot(self, row):
         if hasattr(self, 'show_monster_loot_widget') and self.show_monster_loot_widget is not None:
-            self.stackedWidget.removeWidget(self.show_monster_loot_widget)
+            self.stacked_widget.removeWidget(self.show_monster_loot_widget)
             self.show_monster_loot_widget.deleteLater()
             self.show_monster_loot_widget = None
             
         self.show_monster_loot_widget = QWidget()
         layout = QVBoxLayout()
         
-        backButton = QPushButton("Back")
-        backButton.setFixedWidth(500)
-        backButton.setAutoDefault(True)
-        backButton.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self))
+        back_button = QPushButton("Back")
+        back_button.setFixedWidth(500)
+        back_button.setAutoDefault(True)
+        back_button.clicked.connect(lambda: self.stacked_widget.setCurrentWidget(self))
         
         layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         layout.addWidget(qt_config.create_center_bold_title("Monster Loots"), alignment=Qt.AlignCenter)
@@ -136,12 +135,11 @@ class Monsters(QWidget):
             no_loot_label.setAlignment(Qt.AlignCenter)
             layout.addWidget(no_loot_label, alignment=Qt.AlignCenter)
             
-        layout.addWidget(backButton, alignment=Qt.AlignCenter)
+        layout.addWidget(back_button, alignment=Qt.AlignCenter)
         layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         
         self.show_monster_loot_widget.setLayout(layout)
 
-        self.stackedWidget.addWidget(self.show_monster_loot_widget)
-        self.stackedWidget.setCurrentWidget(self.show_monster_loot_widget)
-            
+        self.stacked_widget.addWidget(self.show_monster_loot_widget)
+        self.stacked_widget.setCurrentWidget(self.show_monster_loot_widget)
             
