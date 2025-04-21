@@ -98,7 +98,7 @@ class ManageInventory(QWidget):
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.createCenterBoldTitle("Manage Inventory"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(qt_config.create_center_bold_title("Manage Inventory"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.nameLabel, alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Here is your inventory:"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.inventory_table, alignment=Qt.AlignCenter)

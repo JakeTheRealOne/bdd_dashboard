@@ -41,7 +41,7 @@ class Monsters(QWidget):
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.createCenterBoldTitle("Monsters"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(qt_config.create_center_bold_title("Monsters"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(scroll_area, alignment=Qt.AlignCenter)
         mainLayout.addWidget(back_button, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -94,7 +94,7 @@ class Monsters(QWidget):
         backButton.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self))
         
         layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        layout.addWidget(qt_config.createCenterBoldTitle("Monster Loots"), alignment=Qt.AlignCenter)
+        layout.addWidget(qt_config.create_center_bold_title("Monster Loots"), alignment=Qt.AlignCenter)
         
         monster = self.monsters_table.item(row, 0)
         

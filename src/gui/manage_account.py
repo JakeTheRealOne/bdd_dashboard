@@ -69,7 +69,7 @@ class ManageAccount(QWidget):
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.createCenterBoldTitle("Manage Account"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(qt_config.create_center_bold_title("Manage Account"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.nameLabel, alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Here is your account info :"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.inputName, alignment=Qt.AlignCenter)

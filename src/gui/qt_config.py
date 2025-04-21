@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
-def createCenterBoldTitle(title):
+def create_center_bold_title(title):
         """
         Create a QLabel with a bold font and center alignment.
 
@@ -12,10 +12,10 @@ def createCenterBoldTitle(title):
              QLabel: A QLabel object with the specified title, bold font, and center alignment.
         """
 
-        titleLabel = QLabel(title)
-        boldFont = titleLabel.font()
-        boldFont.setBold(True)
-        boldFont.setPointSize(20)
-        titleLabel.setFont(boldFont)
-        titleLabel.setAlignment(Qt.AlignCenter)
-        return titleLabel
+        title_label = QLabel(title)
+        bold_font = title_label.font()
+        bold_font.setBold(True)
+        bold_font.setPointSize(20)
+        title_label.setFont(bold_font)
+        title_label.setAlignment(Qt.AlignCenter)
+        return title_label

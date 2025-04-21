@@ -40,7 +40,7 @@ class ManageQuests(QWidget):
 
         self.mainLayout = QVBoxLayout()
         self.mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        self.mainLayout.addWidget(qt_config.createCenterBoldTitle("Manage your Quests"), alignment=Qt.AlignCenter)
+        self.mainLayout.addWidget(qt_config.create_center_bold_title("Manage your Quests"), alignment=Qt.AlignCenter)
         self.mainLayout.addWidget(self.questTable)
         self.mainLayout.addWidget(showAcceptedQuestsButton, alignment=Qt.AlignCenter)
         self.mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
@@ -119,7 +119,7 @@ class ManageQuests(QWidget):
         backButton.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self))
 
         layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        layout.addWidget(qt_config.createCenterBoldTitle("Accepted Quests"), alignment=Qt.AlignCenter)
+        layout.addWidget(qt_config.create_center_bold_title("Accepted Quests"), alignment=Qt.AlignCenter)
         
         self.cursor.execute("SELECT QuestName FROM PlayerQuests WHERE PlayerID = %s;", (self.ID,))
         accepted_quests = self.cursor.fetchall()

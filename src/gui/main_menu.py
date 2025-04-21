@@ -43,7 +43,7 @@ class MainMenu(QWidget):
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.createCenterBoldTitle("Welcome to the Main Menu"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(qt_config.create_center_bold_title("Welcome to the Main Menu"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageAccountButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageCharactersButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageInventoryButton, alignment=Qt.AlignCenter)

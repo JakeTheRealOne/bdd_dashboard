@@ -69,7 +69,7 @@ class Login(QWidget):
         # main page
         main_layout = QVBoxLayout()
         main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        main_layout.addWidget(qt_config.createCenterBoldTitle("Welcome to the RPG !"))
+        main_layout.addWidget(qt_config.create_center_bold_title("Welcome to the RPG !"))
         main_layout.addWidget(register_button, alignment=Qt.AlignCenter)
         main_layout.addWidget(login_button, alignment=Qt.AlignCenter)
         main_layout.addWidget(exit_button, alignment=Qt.AlignCenter)
@@ -79,7 +79,7 @@ class Login(QWidget):
         # register page
         register_page_layout = QVBoxLayout()
         register_page_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        register_page_layout.addWidget(qt_config.createCenterBoldTitle("Register"))
+        register_page_layout.addWidget(qt_config.create_center_bold_title("Register"))
         register_page_layout.addWidget(self.username_input_register, alignment=Qt.AlignCenter)
         register_page_layout.addWidget(send_button_register, alignment=Qt.AlignCenter)
         register_page_layout.addWidget(back_button_register, alignment=Qt.AlignCenter)
@@ -89,7 +89,7 @@ class Login(QWidget):
         # login page
         login_page_layout = QVBoxLayout()
         login_page_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        login_page_layout.addWidget(qt_config.createCenterBoldTitle("Login"))
+        login_page_layout.addWidget(qt_config.create_center_bold_title("Login"))
         login_page_layout.addWidget(self.username_input_login, alignment=Qt.AlignCenter)
         login_page_layout.addWidget(send_button_login, alignment=Qt.AlignCenter)
         login_page_layout.addWidget(back_button_login, alignment=Qt.AlignCenter)

@@ -88,7 +88,7 @@ class ManageCharacters(QWidget):
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.createCenterBoldTitle("Manage your Characters"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(qt_config.create_center_bold_title("Manage your Characters"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.table, alignment=Qt.AlignCenter)
         mainLayout.addWidget(formWidget, alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Strength"), alignment=Qt.AlignCenter)
