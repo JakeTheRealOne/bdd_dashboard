@@ -7,6 +7,7 @@ import gui.manage_characters as manage_characters
 import gui.manage_inventory as manage_inventory
 import gui.manage_quests as manage_quests
 import gui.monsters as monsters
+import gui.ranking as ranking
 
 class MainMenu(QWidget):
     """
@@ -37,6 +38,9 @@ class MainMenu(QWidget):
         manageMonstersButton = QPushButton("Check Monsters")
         manageMonstersButton.setFixedWidth(500)
         manageMonstersButton.setAutoDefault(True)
+        rankingButton = QPushButton("Ranking")
+        rankingButton.setFixedWidth(500)
+        rankingButton.setAutoDefault(True)
         exitButton = QPushButton("Exit")
         exitButton.setFixedWidth(500)
         exitButton.setAutoDefault(True)
@@ -49,6 +53,7 @@ class MainMenu(QWidget):
         mainLayout.addWidget(manageInventoryButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageQuestsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageMonstersButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(rankingButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         self.mainPage = QWidget()
@@ -69,12 +74,21 @@ class MainMenu(QWidget):
         manageInventoryButton.clicked.connect(self.on_manageInventoryButton_clicked)
         manageQuestsButton.clicked.connect(self.on_manageQuestsButton_clicked)
         manageMonstersButton.clicked.connect(self.on_manageMonstersButton_clicked)
+        rankingButton.clicked.connect(self.on_rankingButton_clicked)
         
 
     def on_exitButton_clicked(self):
         reply = QMessageBox.question(self, "Quit", "Are you sure you want to exit ?", QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             QApplication.quit()
+            
+    def on_rankingButton_clicked(self):
+        if hasattr(self, 'ranking'):
+            self.ranking.deleteLater()
+            self.ranking = None
+        self.ranking = ranking.Ranking(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.ranking)
+        self.stackedWidget.setCurrentWidget(self.ranking)
 
     def on_manageAccountButton_clicked(self):
         if hasattr(self, 'manageAccount'):
