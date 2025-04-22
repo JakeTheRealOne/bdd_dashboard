@@ -78,11 +78,10 @@ ORDER BY p.Money DESC LIMIT 10;
 \end{verbatim}
 
 \subsubsection{Algèbre relationnelle}
-\begin{align*}
-  & \delta_{10} \left( \tau_{\text{Money desc}} \left( \pi_{\text{Name, Money}}(\text{Players}) \right) \right)
-\end{align*}
+ Cette requête ne peut pas être exprimée en algèbre relationnelle, car elle suppose une notion d'ordre décroissant sur la quantité d'or et une limitation à 10 résultats. Or, l’algèbre relationnelle ne possède pas d'opérateur de tri ou de limitation. Les résultats sont des ensembles non ordonnés.
 
 \subsubsection{Calcul tuple}
+Cette requête ne peut pas être exprimée en calcul relationnel tuple, car ce formalisme est basé sur la théorie des ensembles et n'inclut ni ordre, ni limite, ni classement.
 
 \subsection{Le joueur ayant le plus de personnages de la même classe}
 \subsubsection{SQL}
@@ -95,8 +94,10 @@ ORDER BY nbCharacters DESC LIMIT 1;
 \end{verbatim}
 
 \subsubsection{Algèbre relationnelle}
+L’algèbre relationnelle ne contient aucun opérateur d’agrégation ni de comparaison, ce qui rend cette requête impossible dans ce formalisme.
 
 \subsubsection{Calcul tuple}
+Cette requête ne peut pas être exprimée en calcul relationnel tuple, car ce formalisme est basé sur la théorie des ensembles et n'inclut ni ordre, ni limite.
 
 \subsection{La quête ayant la plus grosse récompense en or par niveau de difficulté}
 \subsubsection{SQL}
@@ -118,8 +119,10 @@ WHERE `rank` = 1;
 \end{verbatim}
 
 \subsubsection{Algèbre relationnelle}
+Cette requête nécessite d’agréger les quêtes par niveau de difficulté et de sélectionner celles ayant la récompense maximale par groupe. Cela requiert des opérateurs comme GROUP BY qui n'existent pas en algèbre relationnelle.
 
 \subsubsection{Calcul tuple}
+Cette requête ne peut pas être exprimée en calcul relationnel tuple, car ce formalisme est basé sur la théorie des ensembles et n'inclut ni ordre, ni limite.
 
 \subsection{Le PNJ possédant l'inventaire contenant les objets dont la valeur en or cumulée est la plus
 importante}
@@ -134,8 +137,10 @@ ORDER BY TotalValue DESC LIMIT 1;
 \end{verbatim}
 
 \subsubsection{Algèbre relationnelle}
+Cela repose sur une somme cumulée suivie d'une sélection du maximum, ce qui nécessite des agrégats et des comparaisons globales, qui sont absents de l'algèbre relationnelle.
 
 \subsubsection{Calcul tuple}
+Cette requête ne peut pas être exprimée en calcul relationnel tuple, car ce formalisme est basé sur la théorie des ensembles et n'inclut ni ordre, ni limite.
 
 \subsection{Le type d'objet (arme, armure, potion ou relique) le plus souvent offert en récompense de quêtes de niveau 5}
 \subsubsection{SQL}
@@ -157,8 +162,10 @@ ORDER BY apparitions desc LIMIT 1;
 \end{verbatim}
 
 \subsubsection{Algèbre relationnelle}
+Il s’agit d’un GROUP BY sur le type d’objet filtré par niveau, suivi d’un COUNT(*). Aucun de ces opérateurs n'est défini dans l’algèbre relationnelle, donc c'est impossible.
 
 \subsubsection{Calcul tuple}
+Cette requête ne peut pas être exprimée en calcul relationnel tuple, car ce formalisme est basé sur la théorie des ensembles et n'inclut ni ordre, ni limite.
 
 \subsection{Les monstres avec les meilleures récompenses en valeur en or cumulée en fonction de leurs points
 de vie}
@@ -180,16 +187,14 @@ FROM (
     GROUP BY MonsterName
 ) as monsterHealthAndPrice
 JOIN Monsters monsters on monsters.Name = MonsterName
-ORDER BY Ratio desc LIMIT 1;
+ORDER BY Ratio;
 \end{verbatim}
 
 \subsubsection{Algèbre relationnelle}
-
+Cette requête implique un groupement par points de vie, puis une comparaison. C'est impossible dans le formalisme de l'algèbre linéaire.
+ 
 \subsubsection{Calcul tuple}
-
-
-\section{Justifications}
-
+Cette requête ne peut pas être exprimée en calcul relationnel tuple, car ce formalisme est basé sur la théorie des ensembles et n'inclut ni ordre, ni classement.
 
 
 \end{document}

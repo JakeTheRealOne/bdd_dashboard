@@ -87,7 +87,7 @@ def most_rewarding_monster(cursor):
         GROUP BY MonsterName
     ) as monsterHealthAndPrice
     JOIN Monsters monsters on monsters.Name = MonsterName
-    ORDER BY Ratio desc LIMIT 1;
+    ORDER BY Ratio desc;
     ''')
 
 
@@ -155,13 +155,13 @@ def add_additional_requests():
     result_request += "\n"
 
     most_rewarding_monster(cursor)
-    result_request += text_underline("Most Rewarding monster (in term of gold total price and health):\n")
+    result_request += text_underline("Ranking of the Most Rewarding Monster (in term of gold total price and health):\n")
     result_request += (f"{'Item':<30}{'Ration gold/life'}\n")
     result_request += ("-" * 45 + "\n")
-    result = cursor.fetchone()
+    result = cursor.fetchall()
     if result:
-        ratio, item_name = result
-        result_request += (f"{item_name:<30}{ratio}\n")
+        for ratio, item_name in result:
+            result_request += (f"{item_name:<30}{ratio}\n")
     result_request += "\n"
     
     cursor.close()
