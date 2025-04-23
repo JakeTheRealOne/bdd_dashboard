@@ -214,7 +214,7 @@ class NPCInteraction(QWidget):
         player_result = self.cursor.fetchall()
         
         if not NPC_result:
-            NPC_result = [("None", "No items available", "")]
+            NPC_result = [(name, "No items available", "")]
             
         if not player_result:
             player_result = [("No items available",)]
