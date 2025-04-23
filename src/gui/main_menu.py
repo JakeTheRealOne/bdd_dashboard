@@ -8,6 +8,7 @@ from . import manage_account
 from . import manage_characters
 from . import manage_inventory
 from . import manage_quests
+from . import manage_objects
 from . import monsters
 from . import ranking
 
@@ -40,6 +41,9 @@ class MainMenu(QWidget):
         manageMonstersButton = QPushButton("Check Monsters")
         manageMonstersButton.setFixedWidth(500)
         manageMonstersButton.setAutoDefault(True)
+        manageObjectsButton = QPushButton("Manage objects")
+        manageObjectsButton.setFixedWidth(500)
+        manageObjectsButton.setAutoDefault(True)
         rankingButton = QPushButton("Ranking")
         rankingButton.setFixedWidth(500)
         rankingButton.setAutoDefault(True)
@@ -58,6 +62,7 @@ class MainMenu(QWidget):
         mainLayout.addWidget(manageInventoryButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageQuestsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageMonstersButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(manageObjectsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(rankingButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageAdditionalRequestsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
@@ -80,6 +85,7 @@ class MainMenu(QWidget):
         manageInventoryButton.clicked.connect(self.on_manageInventoryButton_clicked)
         manageQuestsButton.clicked.connect(self.on_manageQuestsButton_clicked)
         manageMonstersButton.clicked.connect(self.on_manageMonstersButton_clicked)
+        manageObjectsButton.clicked.connect(self.on_manageObjectsButton_clicked)
         rankingButton.clicked.connect(self.on_rankingButton_clicked)
         manageAdditionalRequestsButton.clicked.connect(self.on_manageAdditionalRequestsButton_clicked)
         
@@ -136,7 +142,15 @@ class MainMenu(QWidget):
         self.manageMonsters = monsters.Monsters(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageMonsters)
         self.stackedWidget.setCurrentWidget(self.manageMonsters)
-        
+
+    def on_manageObjectsButton_clicked(self):
+        if hasattr(self, 'manageObjects'):
+            self.manageObjects.deleteLater()
+            self.manageObjects = None
+        self.manageObjects = manage_objects.ManageObjects(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.manageObjects)
+        self.stackedWidget.setCurrentWidget(self.manageObjects)
+
     def on_manageAdditionalRequestsButton_clicked(self):
         if hasattr(self, 'additionalRequestsPage'):
             self.additionalRequestsPage.deleteLater()
