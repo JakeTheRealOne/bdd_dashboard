@@ -13,9 +13,6 @@ from . import ranking
 from . import npc_interaction
 
 class MainMenu(QWidget):
-    """
-    MainMenu class to handle the main menu of the game.
-    """
 
     def __init__(self, ID, parent=None):
         super().__init__(parent)

@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QMessageBox, QHeaderView, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QMessageBox, QHeaderView, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem, QLabel
 from PyQt5.QtCore import Qt
 import mysql.connector
 
@@ -34,6 +34,10 @@ class NPCInteraction(QWidget):
         quest_button.setFixedWidth(500)
         quest_button.setAutoDefault(True)
         
+        buy_sell_button = QPushButton("Buy/Sell items")
+        buy_sell_button.setFixedWidth(500)
+        buy_sell_button.setAutoDefault(True)
+        
         self.table = QTableWidget()
         self.table.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         
@@ -42,6 +46,7 @@ class NPCInteraction(QWidget):
         main_layout.addWidget(self.table)
         main_layout.addWidget(modify_button, alignment=Qt.AlignCenter)
         main_layout.addWidget(quest_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(buy_sell_button, alignment=Qt.AlignCenter)
         main_layout.addWidget(back_button, alignment=Qt.AlignCenter)
         
         self.setLayout(main_layout)
@@ -49,6 +54,7 @@ class NPCInteraction(QWidget):
         back_button.clicked.connect(self.on_back_button_clicked)
         modify_button.clicked.connect(self.on_modify_button_clicked)
         quest_button.clicked.connect(self.on_quest_button_clicked)
+        buy_sell_button.clicked.connect(self.on_buy_sell_button_clicked)
         
         self.get_NPCs()
                 
@@ -130,7 +136,7 @@ class NPCInteraction(QWidget):
         back_button.clicked.connect(lambda: self.stacked_widget.setCurrentWidget(self))
         
         layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        layout.addWidget(qt_config.create_center_bold_title("Monster Loots"), alignment=Qt.AlignCenter)
+        layout.addWidget(qt_config.create_center_bold_title("NPC Quests"), alignment=Qt.AlignCenter)
             
         self.cursor.execute("SELECT * FROM NPCQuests WHERE NPCName = %s;", (name,))
         result = self.cursor.fetchall()
@@ -186,3 +192,165 @@ class NPCInteraction(QWidget):
         
         QMessageBox.information(self, "Quest Accepted", f"You have accepted the quest: {quest_name}")
                                 
+                                
+    def on_buy_sell_button_clicked(self):
+        row_selected = self.table.currentRow()
+        name = ""
+        if row_selected != -1:
+            name = self.table.item(row_selected, 0).text()
+        else:
+            QMessageBox.warning(self, "No Selection", "Please select a NPC to view to buy or sell items.")
+            return
+        
+        if hasattr(self, 'show_buy_sell_item_widget') and self.show_buy_sell_item_widget is not None:
+            self.stacked_widget.removeWidget(self.show_buy_sell_item_widget)
+            self.show_buy_sell_item_widget.deleteLater()
+            self.show_buy_sell_item_widget = None
+        
+        self.cursor.execute("SELECT * FROM NPCItemInventories WHERE NPCName = %s;", (name,))
+        NPC_result = self.cursor.fetchall()
+        
+        self.cursor.execute("SELECT ItemName, SlotIDX FROM PlayerInventories WHERE PlayerID = %s;", (self.ID,))
+        player_result = self.cursor.fetchall()
+        
+        if not NPC_result:
+            NPC_result = [("None", "No items available", "")]
+            
+        if not player_result:
+            player_result = [("No items available",)]
+        
+        back_button = QPushButton("Back")
+        back_button.setFixedWidth(500)
+        back_button.setAutoDefault(True)
+        back_button.clicked.connect(lambda: self.stacked_widget.setCurrentWidget(self))
+        
+        NPC_table = QTableWidget()
+        NPC_table.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        NPC_table.setWordWrap(True)
+        NPC_table.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        NPC_table.setRowCount(len(NPC_result))
+        NPC_table.setColumnCount(4)
+        NPC_table.setHorizontalHeaderLabels(["NPC Name", "Item", "Quantity", "Action"])
+        
+        player_table = QTableWidget()
+        player_table.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        player_table.setWordWrap(True)
+        player_table.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        player_table.setRowCount(len(player_result))
+        player_table.setColumnCount(2)
+        player_table.setHorizontalHeaderLabels(["Item", "Action"])
+        
+        for row_idx, row_data in enumerate(NPC_result):
+            for col_idx, value in enumerate(row_data):
+                item = QTableWidgetItem(str(value))
+                item.setFlags(Qt.ItemIsEnabled)
+                item.setTextAlignment(Qt.AlignCenter)
+                
+                NPC_table.setItem(row_idx, col_idx, item)
+                
+            buy_button = QPushButton("Buy")
+            buy_button.setFixedWidth(200)
+            buy_button.setAutoDefault(True)
+            buy_button.clicked.connect(lambda _, r=row_data: self.buy_item(r[1], r[2], name))
+            NPC_table.setCellWidget(row_idx, 3, buy_button) 
+            
+        for row_idx, row_data in enumerate(player_result):
+            for col_idx, value in enumerate(row_data):
+                item = QTableWidgetItem(str(value))
+                item.setFlags(Qt.ItemIsEnabled)
+                item.setTextAlignment(Qt.AlignCenter)
+                
+                player_table.setItem(row_idx, col_idx, item)
+                
+            sell_button = QPushButton("Sell")
+            sell_button.setFixedWidth(200)
+            sell_button.setAutoDefault(True)
+            sell_button.clicked.connect(lambda _, r=row_data: self.sell_item(r[0], name, r[1]))
+            if row_data[0] == "No items available":
+                sell_button.setEnabled(False)
+            player_table.setCellWidget(row_idx, 1, sell_button)
+
+            
+        header = NPC_table.horizontalHeader()
+        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.Stretch)
+        header.setSectionResizeMode(2, QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
+        
+        header = player_table.horizontalHeader()
+        header.setSectionResizeMode(0, QHeaderView.Stretch)
+        header.setSectionResizeMode(1, QHeaderView.ResizeToContents)
+        
+        self.show_buy_sell_item_widget = QWidget()
+        layout = QVBoxLayout()
+        
+        layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        layout.addWidget(qt_config.create_center_bold_title("Buy or Sell items"), alignment=Qt.AlignCenter)
+        layout.addWidget(QLabel("NPC Items"), alignment=Qt.AlignCenter)
+        layout.addWidget(NPC_table)
+        layout.addWidget(QLabel("Player Items"), alignment=Qt.AlignCenter)
+        layout.addWidget(player_table)
+        layout.addWidget(back_button, alignment=Qt.AlignCenter)
+        layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        
+        self.show_buy_sell_item_widget.setLayout(layout)
+        self.stacked_widget.addWidget(self.show_buy_sell_item_widget)
+        self.stacked_widget.setCurrentWidget(self.show_buy_sell_item_widget)
+        
+    def buy_item(self, item_name, quantity, npc_name):
+        self.cursor.execute("DELETE FROM NPCItemInventories WHERE NPCName = %s AND ItemName = %s and Quantity = %s;", (npc_name, item_name, quantity))
+        
+        items = []
+        for i in range(int(quantity)):
+            self.getInventory()        
+            index = self._next_free_item()
+            if index == len(self.inventory):
+                QMessageBox.warning(self, "Inventory Full", "Your inventory is full. Please clear some space.")
+                self.db.commit()
+                return
+            self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s);", (self.ID, item_name, index))
+            self.inventory[index] = item_name
+            items.append(item_name)
+        
+        self.db.commit()
+        self.on_buy_sell_button_clicked()
+        QMessageBox.information(self, "Item Bought", f"You have bought the item: {item_name}")
+        
+    
+    def sell_item(self, item, npc_name, slot_idx):
+        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND ItemName = %s AND SlotIDX = %s;", (self.ID, item, slot_idx))
+        
+        self.cursor.execute("SELECT * FROM NPCItemInventories WHERE NPCName = %s AND ItemName = %s;", (npc_name, item))
+        result = self.cursor.fetchone()
+        if result:
+            new_quantity = result[2] + 1
+            self.cursor.execute("UPDATE NPCItemInventories SET Quantity = %s WHERE NPCName = %s AND ItemName = %s;", (new_quantity, npc_name, item))
+        else:    
+            self.cursor.execute("INSERT INTO NPCItemInventories (NPCName, ItemName, Quantity) VALUES (%s, %s, %s);", (npc_name, item, 1))
+            
+        self.db.commit()
+        self.on_buy_sell_button_clicked()
+        QMessageBox.information(self, "Item Sold", f"You have sold the item: {item}")
+        
+        
+    def _next_free_item(self):
+        for i in range(len(self.inventory)):
+            if self.inventory[i] is None:
+                return i
+        return len(self.inventory)
+    
+    
+    def getInventory(self):
+        self.cursor.execute("SELECT InventorySlot FROM Players WHERE ID = %s;", (self.ID,))
+        inventorySlot = self.cursor.fetchone()[0]
+        
+        self.inventory = [None] * inventorySlot
+        self.cursor.execute("SELECT * FROM PlayerInventories;")
+        rows = self.cursor.fetchall()
+              
+        self.occuped_slots = 0
+
+        for row in rows:
+            if row[0] == self.ID:
+               self.inventory[row[2]] = row[1]
+               self.occuped_slots += 1

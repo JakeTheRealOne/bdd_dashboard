@@ -6,6 +6,7 @@ import mysql.connector
 from . import qt_config
 
 class ManageInventory(QWidget):
+    
     def __init__(self, parent, stackedWidget, ID):
         super().__init__(parent)
         self.stackedWidget = stackedWidget

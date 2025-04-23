@@ -5,9 +5,6 @@ import mysql.connector
 from . import qt_config
 
 class ManageAccount(QWidget):
-    """
-    ManageAccount class to handle the management of player accounts.
-    """
 
     def __init__(self, parent, stackedWidget, ID):
         super().__init__(parent)
