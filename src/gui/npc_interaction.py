@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QMessageBox, QAbstractItemView, QHeaderView, QScrollArea, QAbstractScrollArea, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QMessageBox, QHeaderView, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
 import mysql.connector
 
