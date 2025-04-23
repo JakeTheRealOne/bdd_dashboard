@@ -24,6 +24,7 @@ class ManageObjects(QWidget):
         self.cursor = self.db.cursor()
         self.setup()
         self.getWeapons()
+        self.getArmors()
 
     def __del__(self):
         self.cursor.close()
@@ -53,16 +54,39 @@ class ManageObjects(QWidget):
       # self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
       # self.clearButton.setEnabled(self.occuped_slots)
 
+    def getArmors(self):
+      self.armors_table.cellChanged.disconnect()
+      self.cursor.execute("SELECT * FROM Armors")
+      self.armors = [list(e) for e in self.cursor.fetchall()]
+      
+      self.armors_table.setRowCount(len(self.armors))
+      self.armors_table.setColumnCount(2)
+      self.armors_table.setHorizontalHeaderLabels(["Armor Name", "Defence"])
+
+      for i in range(len(self.armors)):
+          col1 = QTableWidgetItem(self.armors[i][0])
+          col1.setFlags(col1.flags() & ~Qt.ItemIsEditable);
+          col2 = QTableWidgetItem(str(self.armors[i][1]))
+          col1.setTextAlignment(Qt.AlignCenter)
+          col2.setTextAlignment(Qt.AlignCenter)
+          self.armors_table.setItem(i, 0, col1)
+          self.armors_table.setItem(i, 1, col2)
+
+      self.armors_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+      self.armors_table.resizeRowsToContents()
+      self.armors_table.cellChanged.connect(self.on_armorProperty_changed)
 
     def setup(self):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
         backButton.setAutoDefault(True)
 
-        self.nameLabel = QLabel()
         self.weapons_table = QTableWidget()
         self.weapons_table.setMinimumWidth(400)
         self.weapons_table.cellChanged.connect(self.on_weaponProperty_changed)
+        self.armors_table = QTableWidget()
+        self.armors_table.setMinimumWidth(400)
+        self.armors_table.cellChanged.connect(self.on_armorProperty_changed)
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -70,6 +94,8 @@ class ManageObjects(QWidget):
         mainLayout.addWidget(QLabel("Click on a property to modify its value"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Here is all registered weapons:"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.weapons_table, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Here is all registered weapons:"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.armors_table, alignment=Qt.AlignCenter)
         mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
@@ -99,7 +125,25 @@ class ManageObjects(QWidget):
         self.weapons[row][1] = value
         self.cursor.execute("UPDATE Weapons SET Power = %s WHERE Name = %s", self.weapons[row][::-1])
         self.db.commit()
-        print("new value=", value)
+
+    def on_armorProperty_changed(self, row, col):
+      if col != 1:
+        return # Not a property
+      item = self.armors_table.item(row, col)
+      string = item.text()
+      try:
+        value = int(string)
+        if value < 0:
+          raise TypeError("Cannot convert to positive integer")
+      except:
+        item.setForeground(QBrush(QColor("red")))
+        font = QFont()
+        font.setBold(True)
+        item.setFont(font)
+      else:
+        self.armors[row][1] = value
+        self.cursor.execute("UPDATE Armors SET Defence = %s WHERE Name = %s", self.armors[row][::-1])
+        self.db.commit()
 
     def show_item_selector(self):
       self.cursor.execute("SELECT * FROM Items")
@@ -121,6 +165,7 @@ class ManageObjects(QWidget):
 
     def showEvent(self, event: QShowEvent):
         self.getWeapons()
+        self.getArmors()
         super().showEvent(event)
 
     def _next_free_item(self):
