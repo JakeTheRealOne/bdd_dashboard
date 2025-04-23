@@ -26,7 +26,7 @@ class NPCInteraction(QWidget):
         back_button.setFixedWidth(500)
         back_button.setAutoDefault(True)
         
-        modify_button = QPushButton("Modify")
+        modify_button = QPushButton("Modify dialog")
         modify_button.setFixedWidth(500)
         modify_button.setAutoDefault(True)
         
