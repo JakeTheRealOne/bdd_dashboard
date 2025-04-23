@@ -26,6 +26,7 @@ class ManageObjects(QWidget):
         self.getWeapons()
         self.getArmors()
         self.getPotions()
+        self.getArtefacts()
 
     def __del__(self):
         self.cursor.close()
@@ -98,6 +99,27 @@ class ManageObjects(QWidget):
       self.potions_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
       self.potions_table.resizeRowsToContents()
 
+    def getArtefacts(self):
+      self.cursor.execute("SELECT * FROM Artefacts")
+      self.artefacts = [list(e) for e in self.cursor.fetchall()]
+      
+      self.artefacts_table.setRowCount(len(self.artefacts))
+      self.artefacts_table.setColumnCount(2)
+      self.artefacts_table.setHorizontalHeaderLabels(["Artefact Name", "Effect"])
+
+      for i in range(len(self.artefacts)):
+          col1 = QTableWidgetItem(self.artefacts[i][0])
+          col1.setFlags(col1.flags() & ~Qt.ItemIsEditable);
+          col2 = QTableWidgetItem(self.artefacts[i][1])
+          col2.setFlags(col2.flags() & ~Qt.ItemIsEditable);
+          col1.setTextAlignment(Qt.AlignCenter)
+          col2.setTextAlignment(Qt.AlignCenter)
+          self.artefacts_table.setItem(i, 0, col1)
+          self.artefacts_table.setItem(i, 1, col2)
+
+      self.artefacts_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+      self.artefacts_table.resizeRowsToContents()
+
     def setup(self):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
@@ -111,6 +133,8 @@ class ManageObjects(QWidget):
         self.armors_table.cellChanged.connect(self.on_armorProperty_changed)
         self.potions_table = QTableWidget()
         self.potions_table.setMinimumWidth(400)
+        self.artefacts_table = QTableWidget()
+        self.artefacts_table.setMinimumWidth(400)
 
 
         mainLayout = QVBoxLayout()
@@ -123,6 +147,8 @@ class ManageObjects(QWidget):
         mainLayout.addWidget(self.armors_table, alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Here is all registered potions:"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.potions_table, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Here is all registered artefacts:"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.artefacts_table, alignment=Qt.AlignCenter)
         mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
@@ -194,6 +220,7 @@ class ManageObjects(QWidget):
         self.getWeapons()
         self.getArmors()
         self.getPotions()
+        self.getArtefacts()
         super().showEvent(event)
 
     def _next_free_item(self):
