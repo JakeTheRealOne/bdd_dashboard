@@ -25,6 +25,7 @@ class ManageObjects(QWidget):
         self.setup()
         self.getWeapons()
         self.getArmors()
+        self.getPotions()
 
     def __del__(self):
         self.cursor.close()
@@ -76,6 +77,27 @@ class ManageObjects(QWidget):
       self.armors_table.resizeRowsToContents()
       self.armors_table.cellChanged.connect(self.on_armorProperty_changed)
 
+    def getPotions(self):
+      self.cursor.execute("SELECT * FROM Potions")
+      self.potions = [list(e) for e in self.cursor.fetchall()]
+      
+      self.potions_table.setRowCount(len(self.potions))
+      self.potions_table.setColumnCount(2)
+      self.potions_table.setHorizontalHeaderLabels(["Potion Name", "Boost"])
+
+      for i in range(len(self.potions)):
+          col1 = QTableWidgetItem(self.potions[i][0])
+          col1.setFlags(col1.flags() & ~Qt.ItemIsEditable);
+          col2 = QTableWidgetItem(self.potions[i][1])
+          col2.setFlags(col2.flags() & ~Qt.ItemIsEditable);
+          col1.setTextAlignment(Qt.AlignCenter)
+          col2.setTextAlignment(Qt.AlignCenter)
+          self.potions_table.setItem(i, 0, col1)
+          self.potions_table.setItem(i, 1, col2)
+
+      self.potions_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+      self.potions_table.resizeRowsToContents()
+
     def setup(self):
         backButton = QPushButton("Back")
         backButton.setFixedWidth(500)
@@ -87,6 +109,9 @@ class ManageObjects(QWidget):
         self.armors_table = QTableWidget()
         self.armors_table.setMinimumWidth(400)
         self.armors_table.cellChanged.connect(self.on_armorProperty_changed)
+        self.potions_table = QTableWidget()
+        self.potions_table.setMinimumWidth(400)
+
 
         mainLayout = QVBoxLayout()
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -94,8 +119,10 @@ class ManageObjects(QWidget):
         mainLayout.addWidget(QLabel("Click on a property to modify its value"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(QLabel("Here is all registered weapons:"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.weapons_table, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Here is all registered weapons:"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Here is all registered armors:"), alignment=Qt.AlignCenter)
         mainLayout.addWidget(self.armors_table, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(QLabel("Here is all registered potions:"), alignment=Qt.AlignCenter)
+        mainLayout.addWidget(self.potions_table, alignment=Qt.AlignCenter)
         mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
         mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
@@ -166,6 +193,7 @@ class ManageObjects(QWidget):
     def showEvent(self, event: QShowEvent):
         self.getWeapons()
         self.getArmors()
+        self.getPotions()
         super().showEvent(event)
 
     def _next_free_item(self):
