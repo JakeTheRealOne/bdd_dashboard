@@ -10,6 +10,7 @@ from . import manage_inventory
 from . import manage_quests
 from . import monsters
 from . import ranking
+from . import npc_interaction
 
 class MainMenu(QWidget):
     """
@@ -21,6 +22,7 @@ class MainMenu(QWidget):
         self.showMaximized()
         self.ID = ID
         self.setup()
+        
 
     def setup(self):
         self.stackedWidget = QStackedWidget()
@@ -40,6 +42,9 @@ class MainMenu(QWidget):
         manageMonstersButton = QPushButton("Check Monsters")
         manageMonstersButton.setFixedWidth(500)
         manageMonstersButton.setAutoDefault(True)
+        interactionNPCButton = QPushButton("Interactions with NPCs")
+        interactionNPCButton.setFixedWidth(500)
+        interactionNPCButton.setAutoDefault(True)
         rankingButton = QPushButton("Ranking")
         rankingButton.setFixedWidth(500)
         rankingButton.setAutoDefault(True)
@@ -58,6 +63,7 @@ class MainMenu(QWidget):
         mainLayout.addWidget(manageInventoryButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageQuestsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageMonstersButton, alignment=Qt.AlignCenter)
+        mainLayout.addWidget(interactionNPCButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(rankingButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(manageAdditionalRequestsButton, alignment=Qt.AlignCenter)
         mainLayout.addWidget(exitButton, alignment=Qt.AlignCenter)
@@ -80,6 +86,7 @@ class MainMenu(QWidget):
         manageInventoryButton.clicked.connect(self.on_manageInventoryButton_clicked)
         manageQuestsButton.clicked.connect(self.on_manageQuestsButton_clicked)
         manageMonstersButton.clicked.connect(self.on_manageMonstersButton_clicked)
+        interactionNPCButton.clicked.connect(self.on_interactionNPCButton_clicked)
         rankingButton.clicked.connect(self.on_rankingButton_clicked)
         manageAdditionalRequestsButton.clicked.connect(self.on_manageAdditionalRequestsButton_clicked)
         
@@ -89,53 +96,66 @@ class MainMenu(QWidget):
         if reply == QMessageBox.Yes:
             QApplication.quit()
             
+            
     def on_rankingButton_clicked(self):
         if hasattr(self, 'ranking'):
             self.ranking.deleteLater()
             self.ranking = None
+            
         self.ranking = ranking.Ranking(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.ranking)
         self.stackedWidget.setCurrentWidget(self.ranking)
+
 
     def on_manageAccountButton_clicked(self):
         if hasattr(self, 'manageAccount'):
             self.manageAccount.deleteLater()
             self.manageAccount = None
+            
         self.manageAccount = manage_account.ManageAccount(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageAccount)
         self.stackedWidget.setCurrentWidget(self.manageAccount)
+
 
     def on_manageCharactersButton_clicked(self):
         if hasattr(self, 'manageCharacters'):
             self.manageCharacters.deleteLater()
             self.manageCharacters = None
+            
         self.manageCharacters = manage_characters.ManageCharacters(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageCharacters)
         self.stackedWidget.setCurrentWidget(self.manageCharacters)
+
 
     def on_manageInventoryButton_clicked(self):
         if hasattr(self, 'manageInventory'):
             self.manageInventory.deleteLater()
             self.manageInventory = None
+            
         self.manageInventory = manage_inventory.ManageInventory(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageInventory)
         self.stackedWidget.setCurrentWidget(self.manageInventory)
+
 
     def on_manageQuestsButton_clicked(self):
         if hasattr(self, 'manageQuests'):
             self.manageQuests.deleteLater()
             self.manageQuests = None
+            
         self.manageQuests = manage_quests.ManageQuests(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageQuests)
         self.stackedWidget.setCurrentWidget(self.manageQuests)
+        
         
     def on_manageMonstersButton_clicked(self):
         if hasattr(self, 'manageMonsters'):
             self.manageMonsters.deleteLater()
             self.manageMonsters = None
+            
         self.manageMonsters = monsters.Monsters(self, self.stackedWidget, self.ID)
         self.stackedWidget.addWidget(self.manageMonsters)
         self.stackedWidget.setCurrentWidget(self.manageMonsters)
+        
         
     def on_manageAdditionalRequestsButton_clicked(self):
         if hasattr(self, 'additionalRequestsPage'):
@@ -164,4 +184,14 @@ class MainMenu(QWidget):
 
         self.stackedWidget.addWidget(self.additionalRequestsPage)
         self.stackedWidget.setCurrentWidget(self.additionalRequestsPage)
+        
+        
+    def on_interactionNPCButton_clicked(self):
+        if hasattr(self, 'interactionNPC'):
+            self.interactionNPC.deleteLater()
+            self.interactionNPC = None
+            
+        self.interactionNPC = npc_interaction.NPCInteraction(self, self.stackedWidget, self.ID)
+        self.stackedWidget.addWidget(self.interactionNPC)
+        self.stackedWidget.setCurrentWidget(self.interactionNPC)
         

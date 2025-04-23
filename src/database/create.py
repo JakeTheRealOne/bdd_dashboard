@@ -43,7 +43,7 @@ def create_database_and_tables(db, cursor):
     cursor.execute("CREATE TABLE IF NOT EXISTS Artefacts (Name VARCHAR (225) PRIMARY KEY, Effect VARCHAR (225));")
 
     # Create the table NPCs if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS NPCs (Name VARCHAR (225) PRIMARY KEY, Dialog VARCHAR (225));")
+    cursor.execute("CREATE TABLE IF NOT EXISTS NPCs (Name VARCHAR (225) PRIMARY KEY, Dialog TEXT);")
 
     # Create the table NPCItemInventories if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS NPCItemInventories (NPCName VARCHAR (225), ItemName VARCHAR (225), Quantity INT DEFAULT 1," \
