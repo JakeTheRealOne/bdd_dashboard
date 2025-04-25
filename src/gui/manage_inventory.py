@@ -43,7 +43,8 @@ class ManageInventory(QWidget):
       
       self.inventory_table.setRowCount(self.inventorySlot)
       self.inventory_table.setColumnCount(3)
-      self.inventory_table.setHorizontalHeaderLabels(["Object Name", "", ""])
+      self.inventory_table.setHorizontalHeaderLabels(["Object Name", "Equip", "Delete"])
+
       self.occuped_slots = 0
 
       for row in rows:
@@ -64,7 +65,7 @@ class ManageInventory(QWidget):
               self.inventory_table.setCellWidget(row[2], 2, del_button)
               self.occuped_slots += 1
 
-      self.inventory_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+      self.inventory_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
       self.inventory_table.resizeRowsToContents()
       self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
       self.clearButton.setEnabled(self.occuped_slots)
