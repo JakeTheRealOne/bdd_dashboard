@@ -18,9 +18,6 @@ def create_database_and_tables(db, cursor):
     # Create the table Monsters if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT DEFAULT 0, MonsterHealth INT DEFAULT 0, Defence INT DEFAULT 0);")
 
-    # # Create the table LootingTable if it doesn't exist
-    # cursor.execute("CREATE TABLE IF NOT EXISTS LootingTable (Name VARCHAR (255) PRIMARY KEY, Quantity INT DEFAULT 0, DropRate INT DEFAULT 0, FOREIGN KEY (Name) REFERENCES Monsters(Name));")
-
     # Create the table Spells if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Spells (Name VARCHAR (255) PRIMARY KEY, ManaCost INT DEFAULT 0, ReloadTime INT DEFAULT 0, Damage INT DEFAULT 0);")
     

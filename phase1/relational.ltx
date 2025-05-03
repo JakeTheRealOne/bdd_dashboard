@@ -16,8 +16,6 @@ RPG - Partie 1}
 
 \begin{document}
 
-\setuldepth{latex ca ue la merde}
-
 {\LARGE{\raggedright\textbf{INFOH303 - Projet de Système d’Inventaire pour un
 RPG}}}
 \rule{\textwidth}{1pt}
@@ -41,13 +39,13 @@ Rares & Radu-Loghin & 000590079  \\\bottomrule
 
 % ----------------
 
-Players(\ul{ID}, Name, StateLevel, StateXP, StateMoney)\\
+Players(\ul{ID}, Name, Level, XP, Money, InventorySlot)\\
 
 % ----------------
 
-Characters(\ul{Name}, \ul{PlayersID}, Strength, Agility, Intelligence, Health, Mana, Class)
+Characters(\ul{Name}, Username, Strength, Agility, Intelligence, Health, Mana, Class)
 
-\hspace{1cm}PlayerID référence Players.ID\\
+\hspace{1cm}Username référence Player.Name\\
 
 % ----------------
 
@@ -55,111 +53,112 @@ Spells(\ul{Name}, ManaCost, ReloadTime, Damage)\\
 
 % ----------------
 
-CharacterSpells(\ul{Character, SpellName})
-
-\hspace{1cm}SpellName référence Spells.Name\\
+NPCs(\ul{Name}, Dialog)
 
 % ----------------
 
-NPCs(\ul{Name}, Dialogues, Character)
-
-\hspace{1cm}Character référence (Players.ID, Characters.Name)\\
-
-% ----------------
-
-NPCDialogues(\ul{NPC, Dialogue})
-
-\hspace{1cm}NPC référence NPCs.Name\\
-
-% ----------------
-
-Quests(\ul{QuestName}, \ul{NPCName}, Description, Difficutly)
+Quests(\ul{Name}, Description, Difficulty, Experience)
 
 \hspace{1cm}NPCName référence NPCs.Name\\
 
 % ----------------
 
-Rewards(\ul{QuestName}, \ul{NPCName} Gold, XP)
+Rewards(\ul{QuestName, ItemName}, Quantity)
 
-\hspace{1cm}NPCName référence NPCs.Name\\
-
-% ----------------
-
-Items(\ul{Name}, Price)\\
+\hspace{1cm}QuestName référence Quests.Name
+\hspace{1cm}ItemName référence Item.Name\\
 
 % ----------------
 
-RewardItems(\ul{Reward, Item})
-
-\hspace{1cm}Reward référence (Rewards.QuestName, Rewards.Item)
-
-\hspace{1cm}Item référence Items.Name\\
+Items(\ul{Name}, Price, Type)\\
 
 % ----------------
 
-Weapons(\ul{ItemName}, Power)
+Weapons(\ul{Name}, Power)
 
-\hspace{1cm}ItemName référence Items.Name\\
-
-% ----------------
-
-Armors(\ul{ItemName}, Defence)
-
-\hspace{1cm}ItemName référence Items.Name\\
+\hspace{1cm}Name référence Items.Name\\
 
 % ----------------
 
-Potions(\ul{ItemName}, HealthGain)
+Armors(\ul{Name}, Defence)
 
-\hspace{1cm}ItemName référence Items.Name\\
+\hspace{1cm}Name référence Items.Name\\
 
 % ----------------
 
-Artefacts(\ul{ItemName}, Effect)
+Potions(\ul{Name}, Boost)
 
-\hspace{1cm}ItemName référence Items.Name\\
+\hspace{1cm}Name référence Items.Name\\
+
+% ----------------
+
+Artefacts(\ul{Name}, Effect)
+
+\hspace{1cm}Name référence Items.Name\\
 
 % ----------------
 
 Monsters(\ul{Name}, Damage, MonsterHealth, Defence)\\
 
 % ----------------
+
+MonsterLoots(\ul{MonsterName, LootName}, DropRate, Quantity)\\
+
+\hspace{1cm}MonsterName référence Monsters.Name
+\hspace{1cm}LootName référence Items.Name\\
+
+% ----------------
+
+NPCItemInventories(\ul{NPCName, ItemName}, Quantity)
+
+\hspace{1cm}NPCName référence NPCs.Name
+\hspace{1cm}ItemName référence Items.Name\\
+
+% ----------------
+
+NPCQuests(\ul{NPCName, QuestName})
+
+\hspace{1cm}NPCName référence NPCs.Name
+\hspace{1cm}QuestName référence Quests.Name\\
+
+% ----------------
+
+PlayerArmors(\ul{PlayerID}, ArmorName)
+
+\hspace{1cm}PlayerID référence Players.ID
+\hspace{1cm}ArmorName référence Armors.Name\\
+
+% ----------------
 \newpage
 % ----------------
 
-LootingTable(\ul{MonsterName}, ItemName, Quantity, DropRate)
+PlayerInventories(\ul{PlayerID, SlotIDX}, ItemName)
 
-\hspace{1cm}ItemName référence Items.Name
-
-\hspace{1cm}MonsterName référence Monsters.Name\\
-
-% ----------------
-
-MonsterLootingTables(\ul{ItemName, LootingTableName})
-
-\hspace{1cm} ItemName référence Items.Name
-
-\hspace{1cm} LootingTableName référence LootingTable.Name\\
+\hspace{1cm}PlayerID référence Players.ID
+\hspace{1cm}ItemName référence Items.Name\\
 
 % ----------------
 
-ItemInventories(\ul{ItemName, InventoryID})
+PlayerQuests (\ul{PlayerID, QuestName})
 
-\hspace{1cm} ItemName référence Items.Name 
-
-\hspace{1cm} InventoryID référence Inventories.ID\\
-
-% ----------------
-
-Inventories(\ul{ID})
-
-\hspace{1cm}ID référence Players.ID\\
+\hspace{1cm}PlayerID référence Players.ID
+\hspace{1cm}QuestName référence Quests.Name\\
 
 % ----------------
+
+PlayerWeapons(\ul{PlayerID}, WeaponName)
+
+\hspace{1cm}PlayerID référence Players.ID
+\hspace{1cm}WeaponName référence Weapons.Name\\
+
+% ----------------
+% ----------------
+
+\section*{Contraintes}
 
 \begin{itemize}
 
-    \item Le nombre maximum de tuples ayant un même InventoryID dépend de l'attribut Players.StateLevel.
+    \item Le nombre maximum de tuples ayant un même InventoryID dépend de l'attribut Players.Level.
 
     % -----------
 
@@ -169,7 +168,7 @@ Inventories(\ul{ID})
 
     \item 0 $<$ Characters.Health $\le$ 100
 
-    \item 0 $<$ Potions.HealthGain $\le$ 100
+   \item Potions.Boost décrit un effet
 
     \item 0 $<$ Monsters.MonsterHealth $\le$ 1000
 
@@ -185,9 +184,7 @@ Inventories(\ul{ID})
 
     % -----------
 
-    \item 0 $\le$ Players.StateXP
-
-    \item 0 $\le$ Rewards.XP
+    \item 0 $\le$ Players.XP
 
     % -----------
 
@@ -203,11 +200,7 @@ Inventories(\ul{ID})
 
     % -----------
 
-    \item 0\% $<$ LootingTable.DropRate $\le$ 100\%
-
-    % -----------
-
-    \item 0 $<$ LootingTable.Quantity
+    \item 0 $\le$ MonsterLoots.Quantity
 
     % -----------
 
@@ -215,17 +208,45 @@ Inventories(\ul{ID})
 
     % -----------
 
-    \item 0s $<$ Spells.ReloadTime
+    \item 0 $<$ Spells.ReloadTime
 
     % -----------
 
-    \item 0 $\le$ Players.StateMoney
+    \item 0 $\le$ Players.Money
 
     % -----------
 
-    \item 0 $\le$ Players.StateLevel
+    \item 0 $\le$ Players.Level
+
+    % -----------
+
+    \item Players.InventorySlot = 5 par défaut
+    
+    % -----------
+
+    \item Un joueur ne peut avoir qu’une seule armure équipée à la fois
+    
+    % -----------
+
+    \item Un joueur ne peut avoir qu’une seule arme équipée à la fois
+
+    % -----------
+
+    \item 0 $\le$ NPCItemInventories.Quantity
+
+     % -----------
+
+    \item 1 $\le$ Rewards.Quantity
+
+    % -----------
+
+    \item 0 $\le$ MonsterLoots.DropRate $\le$ 100
+
+    % -----------
+    
+    \item Players.Name doit être unique
+
+    % -----------
 
 \end{itemize}
-
-
 \end{document}
