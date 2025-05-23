@@ -39,6 +39,14 @@ You can run the program with:
 python3 -m src.main
 ```
 
+### Troubleshooting
+
+On Wayland desktop environments, running the program with `QT_QPA_PLATFORM=xcb` is recommended:
+
+```sh
+QT_QPA_PLATFORM=xcb python3 -m src.main
+```
+
 ## 🛠️ Database Management Scripts
 
 Three utility scripts are provided to manage the database:

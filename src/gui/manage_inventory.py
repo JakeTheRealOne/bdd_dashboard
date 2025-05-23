@@ -43,7 +43,7 @@ class ManageInventory(QWidget):
       
       self.inventory_table.setRowCount(self.inventorySlot)
       self.inventory_table.setColumnCount(3)
-      self.inventory_table.setHorizontalHeaderLabels(["Object Name", "Equip", "Delete"])
+      self.inventory_table.setHorizontalHeaderLabels(["Object Name", "Equip", "Drop"])
 
       self.occuped_slots = 0
 
@@ -57,7 +57,7 @@ class ManageInventory(QWidget):
               use_button.setFixedWidth(200)
               use_button.setAutoDefault(True)
               use_button.clicked.connect(lambda _, r=row[2]: self.on_useItem_clicked(r))
-              del_button = QPushButton("Delete")
+              del_button = QPushButton("Drop")
               del_button.setFixedWidth(200)
               del_button.setAutoDefault(True)
               del_button.clicked.connect(lambda _, r=row[2]: self.on_delItem_clicked(r))
