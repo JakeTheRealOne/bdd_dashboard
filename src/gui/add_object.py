@@ -155,25 +155,26 @@ class AddObject(QWidget):
             is_name_valid = False
             name_error_msg = "two items can't have the same name"
 
-        if tp == "Arme" or tp == "Armure":
-            try:
+        try:
+            if tp == "Arme" or tp == "Armure":
                 property_value = int(prop)
-            except:
-                is_property_valid = False
-                property_error_msg = "invalid format"
-            if property_value < 0:
-                is_property_valid = False
-                property_error_msg = "can't be negative"
-            try:
-                price_value = int(price)
-            except:
-                is_price_valid = False
-                price_error_msg = "invalid format"
-            if price_value < 0:
-                is_price_valid = False
-                price_error_msg = "can't be negative"
-        else:
-            property_value = prop
+                if property_value < 0:
+                    is_property_valid = False
+                    property_error_msg = "can't be negative"
+            else:
+                property_value = prop
+        except:
+            is_property_valid = False
+            property_error_msg = "invalid format"
+
+        try:
+            price_value = int(price)
+        except:
+            is_price_valid = False
+            price_error_msg = "invalid format"
+        if price_value <= 0:
+            is_price_valid = False
+            price_error_msg = "can't be negative"
 
         # 3. If valid: update in db and leave, else show error message
         try:
@@ -215,7 +216,8 @@ class AddObject(QWidget):
         Insert an item in the database
         """
         self.cursor.execute(
-            "INSERT INTO Items (Name, Price, Type) VALUES (%s, %s, %s)", (name, price, tp)
+            "INSERT INTO Items (Name, Price, Type) VALUES (%s, %s, %s)",
+            (name, price, tp),
         )
         table = (
             "Weapons"

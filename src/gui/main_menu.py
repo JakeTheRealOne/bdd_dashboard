@@ -43,7 +43,7 @@ class MainMenu(QWidget):
         interactionNPCButton = QPushButton("Interactions with NPCs")
         interactionNPCButton.setFixedWidth(500)
         interactionNPCButton.setAutoDefault(True)
-        manageObjectsButton = QPushButton("Manage objects")
+        manageObjectsButton = QPushButton("Manage Objects")
         manageObjectsButton.setFixedWidth(500)
         manageObjectsButton.setAutoDefault(True)
         rankingButton = QPushButton("Ranking")
