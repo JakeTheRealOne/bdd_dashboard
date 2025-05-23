@@ -113,7 +113,6 @@ class ManageObjects(QWidget):
             col1 = QTableWidgetItem(self.potions[i][0])
             col1.setFlags(col1.flags() & ~Qt.ItemIsEditable)
             col2 = QTableWidgetItem(self.potions[i][1])
-            col2.setFlags(col2.flags() & ~Qt.ItemIsEditable)
             col1.setTextAlignment(Qt.AlignCenter)
             col2.setTextAlignment(Qt.AlignCenter)
             col3 = QTableWidgetItem(str(self._price_of(self.potions[i][0])))
@@ -139,7 +138,6 @@ class ManageObjects(QWidget):
             col1 = QTableWidgetItem(self.artefacts[i][0])
             col1.setFlags(col1.flags() & ~Qt.ItemIsEditable)
             col2 = QTableWidgetItem(self.artefacts[i][1])
-            col2.setFlags(col2.flags() & ~Qt.ItemIsEditable)
             col1.setTextAlignment(Qt.AlignCenter)
             col2.setTextAlignment(Qt.AlignCenter)
             col3 = QTableWidgetItem(str(self._price_of(self.artefacts[i][0])))
@@ -256,6 +254,9 @@ class ManageObjects(QWidget):
                 font.setBold(True)
                 item.setFont(font)
             else:
+                item.setForeground(QBrush(QColor("Black")))
+                font = QFont()
+                item.setFont(font)
                 self._update_price(name, value)
         elif col == 1:
             item = self.weapons_table.item(row, col)
@@ -270,6 +271,9 @@ class ManageObjects(QWidget):
                 font.setBold(True)
                 item.setFont(font)
             else:
+                item.setForeground(QBrush(QColor("Black")))
+                font = QFont()
+                item.setFont(font)
                 self.weapons[row][1] = value
                 self.cursor.execute(
                     "UPDATE Weapons SET Power = %s WHERE Name = %s",
@@ -291,6 +295,9 @@ class ManageObjects(QWidget):
                 font.setBold(True)
                 item.setFont(font)
             else:
+                item.setForeground(QBrush(QColor("Black")))
+                font = QFont()
+                item.setFont(font)
                 self._update_price(name, value)
         elif col == 1:
             item = self.armors_table.item(row, col)
@@ -305,6 +312,9 @@ class ManageObjects(QWidget):
                 font.setBold(True)
                 item.setFont(font)
             else:
+                item.setForeground(QBrush(QColor("Black")))
+                font = QFont()
+                item.setFont(font)
                 self.armors[row][1] = value
                 self.cursor.execute(
                     "UPDATE Armors SET Defence = %s WHERE Name = %s",
@@ -326,7 +336,20 @@ class ManageObjects(QWidget):
               font.setBold(True)
               item.setFont(font)
           else:
+            item.setForeground(QBrush(QColor("Black")))
+            font = QFont()
+            item.setFont(font)
             self._update_price(name, value)
+        elif col == 1:
+            item = self.potions_table.item(row, col)
+            string = item.text()
+            self.potions[row][1] = string
+            self.cursor.execute(
+                "UPDATE Potions SET Boost = %s WHERE Name = %s",
+                self.potions[row][::-1],
+            )
+            self.db.commit()
+
 
     def on_artefactCell_changed(self, row, col):
         if col == 2:
@@ -342,7 +365,19 @@ class ManageObjects(QWidget):
               font.setBold(True)
               item.setFont(font)
           else:
+            item.setForeground(QBrush(QColor("Black")))
+            font = QFont()
+            item.setFont(font)
             self._update_price(name, value)
+        elif col == 1:
+            item = self.artefacts_table.item(row, col)
+            string = item.text()
+            self.artefacts[row][1] = string
+            self.cursor.execute(
+                "UPDATE Artefacts SET Effect = %s WHERE Name = %s",
+                self.artefacts[row][::-1],
+            )
+            self.db.commit()
 
     def on_addArmor_clicked(self):
         self.addPage.update_type("Armure")
