@@ -1,15 +1,15 @@
-# 📦 Database Project
+# Database Project
 
 This project is written in Python and uses a graphical interface using PyQt5. It interacts with a MySQL database using the `mysql-connector-python` package.
 
-## 👥 Members
+## Members
 
 - Bilal Vandenberge
 - Lucas Verbeiren
 - Ethan Van Ruyskensvelde
 - Rares Radu-Loghin
 
-## ✅ Prerequisites
+## Prerequisites
 
 Make sure you have Python 3 installed on your system:
 
@@ -23,7 +23,7 @@ You also need to install MySQL (or MariaDB) to run the project. If you don't hav
 sudo pacman -S mysql
 ```
 
-## 📦 Installation
+## Installation
 
 Install the required dependencies using `pip`:
 
@@ -31,7 +31,7 @@ Install the required dependencies using `pip`:
 pip install pyqt5 mysql-connector-python
 ```
 
-## 🚀 Running the Application
+## Running the Application
 
 You can run the program with:
 
@@ -47,23 +47,23 @@ On Wayland desktop environments, running the program with `QT_QPA_PLATFORM=xcb` 
 QT_QPA_PLATFORM=xcb python3 -m src.main
 ```
 
-## 🛠️ Database Management Scripts
+## Database Management Scripts
 
 Three utility scripts are provided to manage the database:
 
-### 📌 Create the database and its tables
+### Create the database and its tables
 
 ```sh
 python3 -m src.database.create
 ```
 
-### 🗑️ Delete the database
+### Delete the database
 
 ```sh
 python3 -m src.database.delete
 ```
 
-### 📥 Insert data into the database
+### Insert data into the database
 
 ```sh
 python3 -m src.database.insert
@@ -71,7 +71,7 @@ python3 -m src.database.insert
 
 This script will populate the database using data from files in the `data/` folder.
 
-## 🗄️ Create Your Own MySQL Database to Run This Project
+## Create Your Own MySQL Database to Run This Project
 
 To run the project, you'll need to set up your own MySQL (or MariaDB) database and user. Follow the steps below:
 
