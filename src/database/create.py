@@ -63,16 +63,38 @@ def create_database_and_tables(db, cursor):
     "PRIMARY KEY (QuestName, ItemName), FOREIGN KEY (QuestName) REFERENCES Quests(Name), FOREIGN KEY (ItemName) REFERENCES Items(Name));")
 
     # Create the table PlayerInventories if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS PlayerInventories (PlayerID INT, ItemName VARCHAR (225), SlotIDX INT," \
-    "PRIMARY KEY (PlayerID, SlotIDX), FOREIGN KEY (PlayerID) REFERENCES Players(ID), FOREIGN KEY (ItemName) REFERENCES Items(Name));")
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS PlayerInventories (
+            PlayerID INT,
+            ItemName VARCHAR(225),
+            SlotIDX INT,
+            PRIMARY KEY (PlayerID, SlotIDX),
+            FOREIGN KEY (PlayerID) REFERENCES Players(ID) ON DELETE CASCADE,
+            FOREIGN KEY (ItemName) REFERENCES Items(Name)
+        );
+    """)
 
     # Create the table PlayerArmors if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS PlayerArmors (PlayerID INT, ArmorName VARCHAR (255), PRIMARY KEY (PlayerID),\
-    FOREIGN KEY (PlayerID) REFERENCES Players(ID), FOREIGN KEY (ArmorName) REFERENCES Armors(Name));")
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS PlayerArmors (
+            PlayerID INT,
+            ArmorName VARCHAR(255),
+            PRIMARY KEY (PlayerID),
+            FOREIGN KEY (PlayerID) REFERENCES Players(ID) ON DELETE CASCADE,
+            FOREIGN KEY (ArmorName) REFERENCES Armors(Name)
+        );
+    """)
 
     # Create the table PlayerWeapons if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS PlayerWeapons (PlayerID INT, WeaponName VARCHAR (255), PRIMARY KEY (PlayerID),\
-    FOREIGN KEY (PlayerID) REFERENCES Players(ID), FOREIGN KEY (WeaponName) REFERENCES Weapons(Name));")
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS PlayerWeapons (
+            PlayerID INT,
+            WeaponName VARCHAR(255),
+            PRIMARY KEY (PlayerID),
+            FOREIGN KEY (PlayerID) REFERENCES Players(ID) ON DELETE CASCADE,
+            FOREIGN KEY (WeaponName) REFERENCES Weapons(Name)
+        );
+    """)
 
     db.commit()
 

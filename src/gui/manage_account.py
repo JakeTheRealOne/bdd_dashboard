@@ -44,7 +44,7 @@ class ManageAccount(QWidget):
 
         self.inputName = QLineEdit()
         self.inputName.setFixedWidth(500)
-        self.inputName.setPlaceholderText("Enter a new name")
+        self.inputName.setPlaceholderText("A new name")
         self.inputName.setAlignment(Qt.AlignCenter)
         self.inputName.setMaxLength(255)
         
@@ -91,6 +91,8 @@ class ManageAccount(QWidget):
         self.inputXP.valueChanged.connect(self.on_changeAccountButton_clicked)
         self.inputMoney.valueChanged.connect(self.on_changeAccountButton_clicked)
 
+        backButton.setFocus()
+
     def on_backButton_clicked(self):
         self.stackedWidget.setCurrentIndex(0) # Go back to the main menu
 
@@ -115,8 +117,14 @@ class ManageAccount(QWidget):
         self.inventorySlot = newInventorySlot
 
         # Update the account info in the database
-        self.cursor.execute("UPDATE Players SET Name = %s, Level = %s, XP = %s, Money = %s, InventorySlot = %s WHERE ID = %s", (newName, newLevel, newXP, newMoney, newInventorySlot, self.ID))
-        self.db.commit()
+        try:
+          self.cursor.execute("UPDATE Players SET Name = %s, Level = %s, XP = %s, Money = %s, InventorySlot = %s WHERE ID = %s", (newName, newLevel, newXP, newMoney, newInventorySlot, self.ID))
+          self.db.commit()
+        except mysql.connector.errors.IntegrityError:
+          reply = QMessageBox.critical(self, "Error", "One or more entries are invalid.")
+        except: 
+          pass
+
 
         self.getInfoPlyers()
         self.nameLabel.setText(f"Hello <u>{self.name}</u> with the ID <u>{self.ID}<u/> !")
