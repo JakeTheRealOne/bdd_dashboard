@@ -6,10 +6,10 @@ from . import qt_config
 
 class ManageAccount(QWidget):
 
-    def __init__(self, parent, stackedWidget, ID):
+    def __init__(self, parent, stacked_widget, id):
         super().__init__(parent)
-        self.stackedWidget = stackedWidget
-        self.ID = ID
+        self.stacked_widget = stacked_widget
+        self.id = id
         self.db = mysql.connector.connect(
             host="localhost",
             user="rootuser",
@@ -25,102 +25,102 @@ class ManageAccount(QWidget):
         self.db.close()
     
     def getInfoPlyers(self):
-        self.cursor.execute("SELECT * FROM Players WHERE ID = %s", (self.ID,))
+        self.cursor.execute("SELECT * FROM Players WHERE ID = %s", (self.id,))
         result = self.cursor.fetchone()
         self.name = result[1]
         self.level = result[2]
         self.xp = result[3]
         self.money = result[4]
-        self.inventorySlot = result[5]
+        self.inventory_slot = result[5]
 
     def setup(self):
-        backButton = QPushButton("Back")
-        backButton.setFixedWidth(500)
-        backButton.setAutoDefault(True)
+        back_button = QPushButton("Back")
+        back_button.setFixedWidth(500)
+        back_button.setAutoDefault(True)
 
-        deleteAccountButton = QPushButton("Delete Account")
-        deleteAccountButton.setFixedWidth(500)
-        deleteAccountButton.setAutoDefault(True)
+        delete_account_button = QPushButton("Delete Account")
+        delete_account_button.setFixedWidth(500)
+        delete_account_button.setAutoDefault(True)
 
-        self.inputName = QLineEdit()
-        self.inputName.setFixedWidth(500)
-        self.inputName.setPlaceholderText("A new name")
-        self.inputName.setAlignment(Qt.AlignCenter)
-        self.inputName.setMaxLength(255)
+        self.input_name = QLineEdit()
+        self.input_name.setFixedWidth(500)
+        self.input_name.setPlaceholderText("A new name")
+        self.input_name.setAlignment(Qt.AlignCenter)
+        self.input_name.setMaxLength(255)
         
-        self.inputLevel = QSpinBox()
-        self.inputLevel.setMinimum(0)
-        self.inputLevel.setMaximum(100000000)
-        self.inputLevel.setValue(self.level)  
+        self.input_level = QSpinBox()
+        self.input_level.setMinimum(0)
+        self.input_level.setMaximum(100000000)
+        self.input_level.setValue(self.level)
 
-        self.inputXP = QSpinBox()
-        self.inputXP.setMinimum(0)
-        self.inputXP.setMaximum(100000000)
-        self.inputXP.setValue(self.xp)
+        self.input_xp = QSpinBox()
+        self.input_xp.setMinimum(0)
+        self.input_xp.setMaximum(100000000)
+        self.input_xp.setValue(self.xp)
 
-        self.inputMoney = QSpinBox()
-        self.inputMoney.setMinimum(0)
+        self.input_money = QSpinBox()
+        self.input_money.setMinimum(0)
         self.inputMoney.setMaximum(100000000)
-        self.inputMoney.setValue(self.money)
+        self.input_money.setValue(self.money)
 
-        self.nameLabel = QLabel(f"Hello <u>{self.name}</u> with the ID <u>{self.ID}</u> !")
-        self.inventoryLabel = QLabel(f"Inventory Slot : <u>{self.inventorySlot}</u>")
+        self.name_label = QLabel(f"Hello <u>{self.name}</u> with the ID <u>{self.id}</u> !")
+        self.inventory_label = QLabel(f"Inventory Slot : <u>{self.inventory_slot}</u>")
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.create_center_bold_title("Manage Account"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.nameLabel, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Here is your account info :"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.inputName, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Change your level :"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.inputLevel, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Change your XP :"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.inputXP, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Change your money :"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.inputMoney, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.inventoryLabel, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(deleteAccountButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout = QVBoxLayout()
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout.addWidget(qt_config.create_center_bold_title("Manage Account"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.name_label, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Here is your account info :"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.input_name, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Change your level :"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.input_level, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Change your XP :"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.input_xp, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Change your money :"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.input_money, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.inventory_label, alignment=Qt.AlignCenter)
+        main_layout.addWidget(delete_account_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(back_button, alignment=Qt.AlignCenter)
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        self.setLayout(mainLayout)
+        self.setLayout(main_layout)
 
         # connect the buttons
-        backButton.clicked.connect(self.on_backButton_clicked)
-        deleteAccountButton.clicked.connect(self.deleteAccount)
-        self.inputName.returnPressed.connect(self.on_changeAccountButton_clicked)
-        self.inputLevel.valueChanged.connect(self.on_changeAccountButton_clicked)
-        self.inputXP.valueChanged.connect(self.on_changeAccountButton_clicked)
-        self.inputMoney.valueChanged.connect(self.on_changeAccountButton_clicked)
+        back_button.clicked.connect(self.on_back_button_clicked)
+        delete_account_button.clicked.connect(self.delete_account)
+        self.input_name.returnPressed.connect(self.on_change_account_button_clicked)
+        self.input_level.valueChanged.connect(self.on_change_account_button_clicked)
+        self.input_xp.valueChanged.connect(self.on_change_account_button_clicked)
+        self.input_money.valueChanged.connect(self.on_change_account_button_clicked)
 
-        backButton.setFocus()
+        back_button.setFocus()
 
-    def on_backButton_clicked(self):
-        self.stackedWidget.setCurrentIndex(0) # Go back to the main menu
+    def on_back_button_clicked(self):
+        self.stacked_widget.setCurrentIndex(0) # Go back to the main menu
 
-    def deleteAccount(self):
+    def delete_account(self):
         reply = QMessageBox.question(self, "Quit", "Are you sure you delete your account ?", QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             self.cursor.execute("DELETE FROM Characters WHERE Username = %s", (self.name,))
-            self.cursor.execute("DELETE FROM Players WHERE ID = %s", (self.ID,))
+            self.cursor.execute("DELETE FROM Players WHERE ID = %s", (self.id,))
             self.db.commit()
             QApplication.quit()
 
-    def on_changeAccountButton_clicked(self):
-        newName = self.inputName.text()
-        newLevel = self.inputLevel.value()
-        newXP = self.inputXP.value()
-        newMoney = self.inputMoney.value()
+    def on_change_account_button_clicked(self):
+        new_name = self.input_name.text()
+        new_level = self.input_level.value()
+        new_xp = self.input_xp.value()
+        new_money = self.input_money.value()
 
-        if not newName:
-            newName = self.name
+        if not new_name:
+            new_name = self.name
 
-        newInventorySlot = 5 + min(27, 2 * newLevel)
-        self.inventorySlot = newInventorySlot
+        new_inventory_slot = 5 + min(27, 2 * new_level)
+        self.inventory_slot = new_inventory_slot
 
         # Update the account info in the database
         try:
-          self.cursor.execute("UPDATE Players SET Name = %s, Level = %s, XP = %s, Money = %s, InventorySlot = %s WHERE ID = %s", (newName, newLevel, newXP, newMoney, newInventorySlot, self.ID))
+          self.cursor.execute("UPDATE Players SET Name = %s, Level = %s, XP = %s, Money = %s, InventorySlot = %s WHERE ID = %s", (new_name, new_level, new_xp, new_money, new_inventory_slot, self.id))
           self.db.commit()
         except mysql.connector.errors.IntegrityError:
           reply = QMessageBox.critical(self, "Error", "One or more entries are invalid.")
@@ -132,5 +132,5 @@ class ManageAccount(QWidget):
         self.db.commit()
 
         self.getInfoPlyers()
-        self.nameLabel.setText(f"Hello <u>{self.name}</u> with the ID <u>{self.ID}<u/> !")
-        self.inventoryLabel.setText(f"Inventory Slot : <u>{self.inventorySlot}</u>")
+        self.name_label.setText(f"Hello <u>{self.name}</u> with the ID <u>{self.id}<u/> !")
+        self.inventory_label.setText(f"Inventory Slot : <u>{self.inventory_slot}</u>")

@@ -18,8 +18,8 @@ def main():
     db.close()
     
     app = QApplication(sys.argv)
-    loginScreen = login.Login()
-    loginScreen.run()
+    login_screen = login.Login()
+    login_screen.run()
     
     sys.exit(app.exec_())
 

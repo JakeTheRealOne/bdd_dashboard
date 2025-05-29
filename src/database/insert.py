@@ -21,23 +21,23 @@ def insert_players_data(db, cursor):
         if not row['XP'].isdigit() or not row['Niveau'].isdigit() or not row['ID'].isdigit() or not row['SlotsInventaire'].isdigit() or not row['Monnaie'].isdigit():
             continue
 
-        ID = int(row['ID'])
-        Name = row['NomUtilisateur']
-        Level = int(row['Niveau'])
-        XP = int(row['XP'])
-        Money = int(row['Monnaie'])
-        Inventory_slot = int(row['SlotsInventaire'])
+        id = int(row['ID'])
+        name = row['NomUtilisateur']
+        level = int(row['Niveau'])
+        xp = int(row['XP'])
+        money = int(row['Monnaie'])
+        inventory_slot = int(row['SlotsInventaire'])
 
         cursor.execute('''
             INSERT IGNORE INTO Players (ID, Name, Level, XP, Money, InventorySlot)
             VALUES (%s, %s, %s, %s, %s, %s)
             ''', (
-                ID,
-                Name,
-                Level,
-                XP,
-                Money,
-                Inventory_slot
+                id,
+                name,
+                level,
+                xp,
+                money,
+                inventory_slot
             ))
                        
         if cursor.rowcount == 1:
@@ -60,19 +60,19 @@ def insert_spells_data(db, cursor):
         if not row['Coût en Mana'].isdigit() or not row['Temps de Recharge'].isdigit() or not row["Puissance d'Attaque"].isdigit():
             continue
 
-        Name = row['Nom']
-        Mana_cost = int(row['Coût en Mana'])
-        Reload_time = int(row['Temps de Recharge'])
-        Damage = int(row["Puissance d'Attaque"])
+        name = row['Nom']
+        mana_cost = int(row['Coût en Mana'])
+        reload_time = int(row['Temps de Recharge'])
+        damage = int(row["Puissance d'Attaque"])
 
         cursor.execute('''
             INSERT IGNORE INTO Spells (Name, ManaCost, ReloadTime, Damage)
             VALUES (%s, %s, %s, %s)
             ''', (
-                Name,
-                Mana_cost,
-                Reload_time,
-                Damage
+                name,
+                mana_cost,
+                reload_time,
+                damage
             ))
         
         if cursor.rowcount == 1:
@@ -89,11 +89,11 @@ def insert_items_data(db, cursor):
         data = list(reader)
     csvfile.close()
 
-    countItem = 0
-    countWeapon = 0
-    countArmor = 0
-    countPotion = 0
-    countArtefact = 0
+    count_item = 0
+    count_weapon = 0
+    count_armor = 0
+    count_potion = 0
+    count_artefact = 0
 
     cursor.execute('''
                 INSERT IGNORE INTO Items (Name, Price)
@@ -102,79 +102,79 @@ def insert_items_data(db, cursor):
     valide_types = ["Arme", "Armure", "Artefact", "Potion"]
     for row in data:
         try:
-            Type = row['Type']
+            type = row['Type']
 
-            if(Type not in valide_types):
+            if(type not in valide_types):
                 continue
 
-            Name = row['Nom']
+            name = row['Nom']
 
-            Price = row['Prix'].strip()
-            if not Price.isdigit():
+            price = row['Prix'].strip()
+            if not price.isdigit():
                 continue
             
-            Property = row['Propriétés']
+            property = row['Propriétés']
             
             cursor.execute('''
                 INSERT IGNORE INTO Items (Name, Price, Type)
                 VALUES (%s, %s, %s)
                 ''', (
-                    Name,
-                    Price,
-                    Type
+                    name,
+                    price,
+                    type
                 ))
             if cursor.rowcount == 1:
-                countItem += 1
+                count_item += 1
 
-            if Type == "Arme":
-                Property = Property.removeprefix("Puissance d'attaque: ")
-                if not Property.isdigit():
+            if type == "Arme":
+                property = property.removeprefix("Puissance d'attaque: ")
+                if not property.isdigit():
                     continue
                 cursor.execute('''
                     INSERT IGNORE INTO Weapons (Name, Power)
                     VALUES (%s, %s)
                     ''', (
-                        Name,
-                        Property
+                        name,
+                        property
                     ))
                 if cursor.rowcount == 1:
-                    countWeapon += 1
+                    count_weapon += 1
 
-            elif Type == "Armure":
-                Property = Property.removeprefix("Défense: ")
-                if not Property.isdigit():
+            elif type == "Armure":
+                property = property.removeprefix("Défense: ")
+                if not property.isdigit():
                     continue
                 cursor.execute('''
                     INSERT IGNORE INTO Armors (Name, Defence)
                     VALUES (%s, %s)
                     ''', (
-                        Name,
-                        Property
+                        name,
+                        property
                     ))
                 if cursor.rowcount == 1:
-                    countArmor += 1
+                    count_armor += 1
 
-            elif Type == "Artefact":
+            elif type == "Artefact":
                 cursor.execute('''
                     INSERT IGNORE INTO Artefacts (Name, Effect)
                     VALUES (%s, %s)
                     ''', (
-                        Name,
-                        Property
+                        name,
+                        property
                     ))
                 if cursor.rowcount == 1:
-                    countArtefact += 1
+                    count_artefact += 1
 
-            elif Type == "Potion":
+            elif type == "Potion":
                 cursor.execute('''
                     INSERT IGNORE INTO Potions (Name, Boost)
                     VALUES (%s, %s)
                     ''', (
-                        Name,
-                        Property
+                        name,
+                        property
                     ))
                 if cursor.rowcount == 1:
-                    countPotion += 1
+                    count_potion += 1
             
             else:
                 continue         
@@ -183,11 +183,11 @@ def insert_items_data(db, cursor):
             continue
     
     db.commit()
-    print(f"Inserted {countItem} rows into Items table.")
-    print(f"Inserted {countWeapon} rows into Weapons table.")
-    print(f"Inserted {countArmor} rows into Armors table.")
-    print(f"Inserted {countPotion} rows into Potions table.")
-    print(f"Inserted {countArtefact} rows into Artefacts table.")
+    print(f"Inserted {count_item} rows into Items table.")
+    print(f"Inserted {count_weapon} rows into Weapons table.")
+    print(f"Inserted {count_armor} rows into Armors table.")
+    print(f"Inserted {count_potion} rows into Potions table.")
+    print(f"Inserted {count_artefact} rows into Artefacts table.")
 
 
 def insert_monsters_data(db, cursor):

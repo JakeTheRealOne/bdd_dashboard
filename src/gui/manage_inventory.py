@@ -7,10 +7,10 @@ from . import qt_config
 
 class ManageInventory(QWidget):
     
-    def __init__(self, parent, stackedWidget, ID):
+    def __init__(self, parent, stacked_widget, id):
         super().__init__(parent)
-        self.stackedWidget = stackedWidget
-        self.ID = ID
+        self.stacked_widget = stacked_widget
+        self.id = id
         self.db = mysql.connector.connect(
             host="localhost",
             user="rootuser",
@@ -28,27 +28,27 @@ class ManageInventory(QWidget):
         self.db.close()
     
     def getInfoPlyers(self):
-        self.cursor.execute("SELECT * FROM Players WHERE ID = %s", (self.ID,))
+        self.cursor.execute("SELECT * FROM Players WHERE ID = %s", (self.id,))
         result = self.cursor.fetchone()
         self.name = result[1]
         self.level = result[2]
         self.xp = result[3]
         self.money = result[4]
-        self.inventorySlot = result[5]
+        self.inventory_slot = result[5]
 
     def getInventory(self):
-      self.inventory = [None] * self.inventorySlot
+      self.inventory = [None] * self.inventory_slot
       self.cursor.execute("SELECT * FROM PlayerInventories")
       rows = self.cursor.fetchall()
       
-      self.inventory_table.setRowCount(self.inventorySlot)
+      self.inventory_table.setRowCount(self.inventory_slot)
       self.inventory_table.setColumnCount(3)
       self.inventory_table.setHorizontalHeaderLabels(["Object Name", "Equip", "Drop"])
 
       self.occuped_slots = 0
 
       for row in rows:
-          if row[0] == self.ID:
+          if row[0] == self.id:
               self.inventory[row[2]] = row[1]
               item = QTableWidgetItem(row[1])
               item.setTextAlignment(Qt.AlignCenter)
@@ -67,11 +67,11 @@ class ManageInventory(QWidget):
 
       self.inventory_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
       self.inventory_table.resizeRowsToContents()
-      self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
-      self.clearButton.setEnabled(self.occuped_slots)
+      self.add_item_button.setEnabled(self.occuped_slots != self.inventory_slot)
+      self.clear_button.setEnabled(self.occuped_slots)
 
       self.equip = [None, None]
-      self.cursor.execute("SELECT ArmorName FROM PlayerArmors WHERE PlayerArmors.PlayerID = %s", (self.ID,))
+      self.cursor.execute("SELECT ArmorName FROM PlayerArmors WHERE PlayerArmors.PlayerID = %s", (self.id,))
       result = self.cursor.fetchall()
       if result and result[0]:
         self.equip[0] = result[0][0]
@@ -79,7 +79,7 @@ class ManageInventory(QWidget):
         item.setTextAlignment(Qt.AlignCenter)
         self.equip_table.setItem(0, 0, item)
 
-      self.cursor.execute("SELECT WeaponName FROM PlayerWeapons WHERE PlayerWeapons.PlayerID = %s", (self.ID,))
+      self.cursor.execute("SELECT WeaponName FROM PlayerWeapons WHERE PlayerWeapons.PlayerID = %s", (self.id,))
       result = self.cursor.fetchall()
       if result and result[0]:
         self.equip[1] = result[0][0]
@@ -89,21 +89,21 @@ class ManageInventory(QWidget):
       self.equip_table.resizeRowsToContents()
 
     def setup(self):
-        backButton = QPushButton("Back")
-        backButton.setFixedWidth(500)
-        backButton.setAutoDefault(True)
+        back_button = QPushButton("Back")
+        back_button.setFixedWidth(500)
+        back_button.setAutoDefault(True)
 
-        self.addItemButton = QPushButton("Collect item")
-        self.addItemButton.setEnabled(False)
-        self.addItemButton.setAutoDefault(True)
-        self.addItemButton.setFixedWidth(500)
+        self.add_item_button = QPushButton("Collect item")
+        self.add_item_button.setEnabled(False)
+        self.add_item_button.setAutoDefault(True)
+        self.add_item_button.setFixedWidth(500)
 
-        self.clearButton = QPushButton("Clear Inventory")
-        self.clearButton.setEnabled(True)
-        self.clearButton.setAutoDefault(True)
-        self.clearButton.setFixedWidth(500)
+        self.clear_button = QPushButton("Clear Inventory")
+        self.clear_button.setEnabled(True)
+        self.clear_button.setAutoDefault(True)
+        self.clear_button.setFixedWidth(500)
 
-        self.nameLabel = QLabel()
+        self.name_label = QLabel()
 
         self.equip_table = QTableWidget()
         self.equip_table.setEditTriggers(QTableWidget.NoEditTriggers)
@@ -115,7 +115,6 @@ class ManageInventory(QWidget):
 
         self.inventory_table = QTableWidget()
         self.inventory_table.setEditTriggers(QTableWidget.NoEditTriggers)
-        # self.inventory_table.cellPressed.connect(self.on_select_slot) 
         self.inventory_table.setMinimumWidth(400)
 
         self.item_table = QTableWidget()
@@ -134,31 +133,31 @@ class ManageInventory(QWidget):
         self.item_selector_widget.setLayout(self.item_selector_layout)
         self.item_selector_widget.setVisible(False)
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.create_center_bold_title("Manage Inventory"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.nameLabel, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Here is your equipements:"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.equip_table, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Here is your inventory:"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.inventory_table, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.addItemButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.clearButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.item_selector_widget, alignment=Qt.AlignCenter)
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout = QVBoxLayout()
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout.addWidget(qt_config.create_center_bold_title("Manage Inventory"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.name_label, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Here is your equipements:"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.equip_table, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Here is your inventory:"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.inventory_table, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.add_item_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.clear_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(back_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.item_selector_widget, alignment=Qt.AlignCenter)
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        self.setLayout(mainLayout)
+        self.setLayout(main_layout)
 
         # connect buttons
-        backButton.clicked.connect(self.on_backButton_clicked)
-        self.addItemButton.clicked.connect(self.on_addItemButton_clicked)
-        self.clearButton.clicked.connect(self.clearInventory)
+        back_button.clicked.connect(self.on_back_button_clicked)
+        self.add_item_button.clicked.connect(self.on_add_item_button_clicked)
+        self.clear_button.clicked.connect(self.clear_inventory)
 
-    def on_backButton_clicked(self):
-        self.stackedWidget.setCurrentIndex(0)
+    def on_back_button_clicked(self):
+        self.stacked_widget.setCurrentIndex(0)
 
-    def on_addItemButton_clicked(self):
+    def on_add_item_button_clicked(self):
         self.show_item_selector()
 
     def show_item_selector(self):
@@ -179,19 +178,19 @@ class ManageInventory(QWidget):
     def hide_item_selector(self):
         self.item_selector_widget.setVisible(False)
 
-    def clearInventory(self):
-        self.inventory = [None] * self.inventorySlot
+    def clear_inventory(self):
+        self.inventory = [None] * self.inventory_slot
         self.inventory_table.clearContents()
         self.occuped_slots = 0
-        self.addItemButton.setEnabled(True)
-        self.clearButton.setEnabled(False)
-        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s", (self.ID,))
+        self.add_item_button.setEnabled(True)
+        self.clear_button.setEnabled(False)
+        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s", (self.id,))
         self.db.commit() 
 
     def showEvent(self, event: QShowEvent):
         self.getInfoPlyers()
         self.getInventory()
-        self.nameLabel.setText(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventorySlot} slots")
+        self.name_label.setText(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventory_slot} slots")
         super().showEvent(event)
 
     def on_select_item(self, row):
@@ -218,9 +217,9 @@ class ManageInventory(QWidget):
             self.inventory_table.setCellWidget(index, 1, use_button)
             self.inventory_table.setCellWidget(index, 2, del_button)
             self.occuped_slots += 1
-            self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
-            self.clearButton.setEnabled(self.occuped_slots)
-            self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s)", (self.ID, name, index))
+            self.add_item_button.setEnabled(self.occuped_slots != self.inventory_slot)
+            self.clear_button.setEnabled(self.occuped_slots)
+            self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s)", (self.id, name, index))
             self.db.commit()
             self.hide_item_selector()
 
@@ -233,9 +232,9 @@ class ManageInventory(QWidget):
             self.inventory_table.setCellWidget(index, 1, None)
             self.inventory_table.setCellWidget(index, 2, None)
             self.occuped_slots -= 1
-            self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
-            self.clearButton.setEnabled(self.occuped_slots)
-            self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND SlotIDX = %s", (self.ID, index))
+            self.add_item_button.setEnabled(self.occuped_slots != self.inventory_slot)
+            self.clear_button.setEnabled(self.occuped_slots)
+            self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND SlotIDX = %s", (self.id, index))
             self.db.commit()
 
     def on_useItem_clicked(self, row):
@@ -260,18 +259,18 @@ class ManageInventory(QWidget):
               self.cursor.execute("""
                   DELETE FROM PlayerInventories
                   WHERE PlayerID = %s AND SlotIDX = %s
-              """, (self.ID, index))
+              """, (self.id, index))
             else:
               self.cursor.execute("""
                   INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX)
                   VALUES (%s, %s, %s)
                   ON DUPLICATE KEY UPDATE ItemName = VALUES(ItemName)
-              """, (self.ID, old, index))
+              """, (self.id, old, index))
             self.cursor.execute("""
                 INSERT INTO PlayerArmors (PlayerID, ArmorName)
                 VALUES (%s, %s)
                 ON DUPLICATE KEY UPDATE ArmorName = VALUES(ArmorName)
-            """, (self.ID, name))
+            """, (self.id, name))
             self.db.commit()
         elif self._is_weapon(name):
             old = self.equip[1]
@@ -289,18 +288,18 @@ class ManageInventory(QWidget):
               self.cursor.execute("""
                   DELETE FROM PlayerInventories
                   WHERE PlayerID = %s AND SlotIDX = %s
-              """, (self.ID, index))
+              """, (self.id, index))
             else:
               self.cursor.execute("""
                   INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX)
                   VALUES (%s, %s, %s)
                   ON DUPLICATE KEY UPDATE ItemName = VALUES(ItemName)
-              """, (self.ID, old, index))
+              """, (self.id, old, index))
             self.cursor.execute("""
                 INSERT INTO PlayerWeapons (PlayerID, WeaponName)
                 VALUES (%s, %s)
                 ON DUPLICATE KEY UPDATE WeaponName = VALUES(WeaponName)
-            """, (self.ID, name))
+            """, (self.id, name))
             self.db.commit()
 
 

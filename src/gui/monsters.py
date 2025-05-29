@@ -6,11 +6,11 @@ from . import qt_config
 
 class Monsters(QWidget):
 
-    def __init__(self, parent, stackedWidget, ID):
+    def __init__(self, parent, stacked_widget, id):
         super().__init__(parent)
-        self.stacked_widget = stackedWidget
+        self.stacked_widget = stacked_widget
         self.stacked_widget.addWidget(self)
-        self.ID = ID
+        self.id = id
         self.db = mysql.connector.connect(
             host="localhost",
             user="rootuser",

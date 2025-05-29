@@ -24,10 +24,10 @@ class AddObject(QWidget):
     Allows user to set name and property for a new object in the database
     """
 
-    def __init__(self, parent, stackedWidget, ID):
+    def __init__(self, parent, stackedWidget, id):
         super().__init__(parent)
-        self.stackedWidget = stackedWidget
-        self.ID = ID
+        self.stacked_widget = stackedWidget
+        self.id = id
         self.db = mysql.connector.connect(
             host="localhost", user="rootuser", password="rootuser", database="rpg"
         )
@@ -40,13 +40,13 @@ class AddObject(QWidget):
         self.db.close()
 
     def setup(self):
-        backButton = QPushButton("Back")
-        backButton.setFixedWidth(300)
-        backButton.setAutoDefault(True)
+        back_button = QPushButton("Back")
+        back_button.setFixedWidth(300)
+        back_button.setAutoDefault(True)
 
-        confirmButton = QPushButton("Confirm")
-        confirmButton.setFixedWidth(300)
-        confirmButton.setAutoDefault(True)
+        confirm_button = QPushButton("Confirm")
+        confirm_button.setFixedWidth(300)
+        confirm_button.setAutoDefault(True)
 
         self.type_combo = QComboBox()
         self.type_combo.setFixedWidth(300)
@@ -64,40 +64,40 @@ class AddObject(QWidget):
         self.name_label = QLabel("name")
         self.name_field.setFixedWidth(300)
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addItem(
+        main_layout = QVBoxLayout()
+        main_layout.addItem(
             QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         )
-        mainLayout.addWidget(
+        main_layout.addWidget(
             qt_config.create_center_bold_title("Add an object"),
             alignment=Qt.AlignCenter,
         )
-        mainLayout.addWidget(
+        main_layout.addWidget(
             QLabel("Be careful: adding an object is permanent"),
             alignment=Qt.AlignCenter,
         )
-        mainLayout.addWidget(self.type_combo, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.name_label, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.name_field, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.property_label, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.property_field, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.price_label, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.price_field, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(confirmButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
-        mainLayout.addItem(
+        main_layout.addWidget(self.type_combo, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.name_label, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.name_field, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.property_label, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.property_field, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.price_label, alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.price_field, alignment=Qt.AlignCenter)
+        main_layout.addWidget(confirm_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(back_button, alignment=Qt.AlignCenter)
+        main_layout.addItem(
             QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         )
 
-        self.setLayout(mainLayout)
+        self.setLayout(main_layout)
 
         # connect buttons
         self.type_combo.currentTextChanged.connect(self.update_type)
         self.name_field.textChanged.connect(self.reset_name_error)
         self.property_field.textChanged.connect(self.reset_property_error)
         self.price_field.textChanged.connect(self.reset_price_error)
-        backButton.clicked.connect(self.on_backButton_clicked)
-        confirmButton.clicked.connect(self.on_confirmButton_clicked)
+        back_button.clicked.connect(self.on_back_button_clicked)
+        confirm_button.clicked.connect(self.on_confirm_button_clicked)
 
     def update_type(self, new_type: str):
         self.reset_name_error()
@@ -125,10 +125,10 @@ class AddObject(QWidget):
         self.price_label.setStyleSheet("color: black;")
         self.price_label.setText("price")
 
-    def on_backButton_clicked(self):
-        self.stackedWidget.setCurrentIndex(self.stackedWidget.count() - 1)
+    def on_back_button_clicked(self):
+        self.stacked_widget.setCurrentIndex(self.stacked_widget.count() - 1)
 
-    def on_confirmButton_clicked(self):
+    def on_confirm_button_clicked(self):
         # 1. retrieve datas
 
         name = self.name_field.text()
@@ -181,7 +181,7 @@ class AddObject(QWidget):
             if is_name_valid and is_property_valid and is_price_valid:
                 valide_types = ["Arme", "Armure", "Artefact", "Potion"]
                 self._insert(name, property_value, price_value, tp)
-                self.on_backButton_clicked()
+                self.on_back_button_clicked()
         except:
             is_db_passed = False
             raise

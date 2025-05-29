@@ -6,11 +6,11 @@ from . import qt_config
 
 class NPCInteraction(QWidget):
 
-    def __init__(self, parent, stackedWidget, ID):
+    def __init__(self, parent, stacked_widget, id):
         super().__init__(parent)
-        self.stacked_widget = stackedWidget
+        self.stacked_widget = stacked_widget
         self.stacked_widget.addWidget(self)
-        self.ID = ID
+        self.id = id
         self.db = mysql.connector.connect(
             host="localhost",
             user="rootuser",
@@ -181,13 +181,13 @@ class NPCInteraction(QWidget):
         
         
     def accept_quest(self, quest_name):
-        self.cursor.execute("SELECT * FROM PlayerQuests p WHERE p.QuestName = %s AND p.PlayerID=%s;", (quest_name, self.ID))
+        self.cursor.execute("SELECT * FROM PlayerQuests p WHERE p.QuestName = %s AND p.PlayerID=%s;", (quest_name, self.id))
         quest = self.cursor.fetchone()
         if quest:
             QMessageBox.warning(self, "Quest Already Accepted", f"You have already accepted the quest: {quest_name}")
             return        
         
-        self.cursor.execute("INSERT INTO PlayerQuests (PlayerID, QuestName) VALUES (%s, %s);", (self.ID, quest_name))
+        self.cursor.execute("INSERT INTO PlayerQuests (PlayerID, QuestName) VALUES (%s, %s);", (self.id, quest_name))
         self.db.commit()
         
         QMessageBox.information(self, "Quest Accepted", f"You have accepted the quest: {quest_name}")
@@ -341,7 +341,7 @@ class NPCInteraction(QWidget):
                 QMessageBox.warning(self, "Inventory Full", "Your inventory is full. Please clear some space.")
                 self.db.commit()
                 return
-            self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s);", (self.ID, item_name, index))
+            self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s);", (self.id, item_name, index))
             self.inventory[index] = item_name
             items.append(item_name)
 
@@ -353,7 +353,7 @@ class NPCInteraction(QWidget):
         
     
     def sell_item(self, item, npc_name, slot_idx):
-        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND ItemName = %s AND SlotIDX = %s;", (self.ID, item, slot_idx))
+        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND ItemName = %s AND SlotIDX = %s;", (self.id, item, slot_idx))
         
         self.cursor.execute("SELECT * FROM NPCItemInventories WHERE NPCName = %s AND ItemName = %s;", (npc_name, item))
         result = self.cursor.fetchone()
@@ -385,7 +385,7 @@ class NPCInteraction(QWidget):
     
     
     def getInventory(self):
-        self.cursor.execute("SELECT InventorySlot FROM Players WHERE ID = %s;", (self.ID,))
+        self.cursor.execute("SELECT InventorySlot FROM Players WHERE ID = %s;", (self.id,))
         inventorySlot = self.cursor.fetchone()[0]
         
         self.inventory = [None] * inventorySlot
@@ -395,6 +395,6 @@ class NPCInteraction(QWidget):
         self.occuped_slots = 0
 
         for row in rows:
-            if row[0] == self.ID:
+            if row[0] == self.id:
                self.inventory[row[2]] = row[1]
                self.occuped_slots += 1

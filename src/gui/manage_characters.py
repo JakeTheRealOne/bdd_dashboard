@@ -6,11 +6,11 @@ from . import qt_config
 
 class ManageCharacters(QWidget):
 
-    def __init__(self, parent, stackedWidget, ID):
+    def __init__(self, parent, stacked_widget, id):
         super().__init__(parent)
-        self.stacked_widget = stackedWidget
+        self.stacked_widget = stacked_widget
         self.stacked_widget.addWidget(self)
-        self.ID = ID
+        self.id = id
         self.db = mysql.connector.connect(
             host="localhost",
             user="rootuser",
@@ -19,7 +19,7 @@ class ManageCharacters(QWidget):
         )
         self.cursor = self.db.cursor()
 
-        self.cursor.execute("SELECT p.Name FROM Players p WHERE ID = %s;", (self.ID,))
+        self.cursor.execute("SELECT p.Name FROM Players p WHERE ID = %s;", (self.id,))
         result = self.cursor.fetchone()
         self.username = result[0]
 
@@ -28,20 +28,20 @@ class ManageCharacters(QWidget):
 
     def showEvent(self, event):
         super().showEvent(event)
-        self.getCharactes()
+        self.get_characters()
 
 
     def setup(self):
-        backButton = QPushButton("Back")
-        backButton.setFixedWidth(500)
-        backButton.setAutoDefault(True)
+        back_button = QPushButton("Back")
+        back_button.setFixedWidth(500)
+        back_button.setAutoDefault(True)
 
-        addButton = QPushButton("Add Character")
-        addButton.setFixedWidth(500)
-        addButton.setAutoDefault(True)
-        modifyButton = QPushButton("Modify Character")
-        modifyButton.setFixedWidth(500)
-        modifyButton.setAutoDefault(True)
+        add_button = QPushButton("Add Character")
+        add_button.setFixedWidth(500)
+        add_button.setAutoDefault(True)
+        modify_button = QPushButton("Modify Character")
+        modify_button.setFixedWidth(500)
+        modify_button.setAutoDefault(True)
         
         show_all_characters_button = QPushButton("Show All Characters")
         show_all_characters_button.setFixedWidth(500)
@@ -50,90 +50,90 @@ class ManageCharacters(QWidget):
         self.table = QTableWidget()
         self.table.setFixedSize(500, 250)
 
-        self.nameInput = QLineEdit()
-        self.nameInput.setMaxLength(255)
-        self.nameInput.setFixedWidth(500)
-        self.nameInput.setPlaceholderText("Name")
-        self.nameInput.setAlignment(Qt.AlignCenter)
-        self.strengthInput = QSpinBox()
-        self.strengthInput.setMinimum(0)
-        self.strengthInput.setMaximum(100)
-        self.strengthInput.setAlignment(Qt.AlignCenter)
-        self.agilityInput = QSpinBox()
-        self.agilityInput.setMinimum(0)
-        self.agilityInput.setMaximum(100)
-        self.agilityInput.setAlignment(Qt.AlignCenter)
-        self.intelligenceInput = QSpinBox()
-        self.intelligenceInput.setMinimum(0)
-        self.intelligenceInput.setMaximum(100)
-        self.intelligenceInput.setAlignment(Qt.AlignCenter)
-        self.healthInput = QSpinBox()
-        self.healthInput.setMinimum(0)
-        self.healthInput.setMaximum(100)
-        self.healthInput.setAlignment(Qt.AlignCenter)
-        self.manaInput = QSpinBox()
-        self.manaInput.setMinimum(0)
-        self.manaInput.setMaximum(100)
-        self.manaInput.setAlignment(Qt.AlignCenter)
-        self.classInput = QLineEdit()
-        self.classInput.setMaxLength(255)
-        self.classInput.setFixedWidth(500)
-        self.classInput.setAlignment(Qt.AlignCenter)
-        self.classInput.setPlaceholderText("Class")
+        self.name_input = QLineEdit()
+        self.name_input.setMaxLength(255)
+        self.name_input.setFixedWidth(500)
+        self.name_input.setPlaceholderText("Name")
+        self.name_input.setAlignment(Qt.AlignCenter)
+        self.strength_input = QSpinBox()
+        self.strength_input.setMinimum(0)
+        self.strength_input.setMaximum(100)
+        self.strength_input.setAlignment(Qt.AlignCenter)
+        self.agility_input = QSpinBox()
+        self.agility_input.setMinimum(0)
+        self.agility_input.setMaximum(100)
+        self.agility_input.setAlignment(Qt.AlignCenter)
+        self.intelligence_input = QSpinBox()
+        self.intelligence_input.setMinimum(0)
+        self.intelligence_input.setMaximum(100)
+        self.intelligence_input.setAlignment(Qt.AlignCenter)
+        self.health_input = QSpinBox()
+        self.health_input.setMinimum(0)
+        self.health_input.setMaximum(100)
+        self.health_input.setAlignment(Qt.AlignCenter)
+        self.mana_input = QSpinBox()
+        self.mana_input.setMinimum(0)
+        self.mana_input.setMaximum(100)
+        self.mana_input.setAlignment(Qt.AlignCenter)
+        self.class_input = QLineEdit()
+        self.class_input.setMaxLength(255)
+        self.class_input.setFixedWidth(500)
+        self.class_input.setAlignment(Qt.AlignCenter)
+        self.class_input.setPlaceholderText("Class")
 
-        characterForm = QFormLayout()
-        characterForm.addRow("", self.nameInput)
-        characterForm.addRow("", self.classInput)
+        character_form = QFormLayout()
+        character_form.addRow("", self.name_input)
+        character_form.addRow("", self.class_input)
 
-        formWidget = QWidget()
-        formWidget.setLayout(characterForm)
+        form_widget = QWidget()
+        form_widget.setLayout(character_form)
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        mainLayout.addWidget(qt_config.create_center_bold_title("Manage your Characters"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.table, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(formWidget, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Strength"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.strengthInput, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Agility"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.agilityInput, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Intelligence"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.intelligenceInput, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Health"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.healthInput, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(QLabel("Mana"), alignment=Qt.AlignCenter)
-        mainLayout.addWidget(self.manaInput, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(addButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(modifyButton, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(show_all_characters_button, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
-        mainLayout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout = QVBoxLayout()
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        main_layout.addWidget(qt_config.create_center_bold_title("Manage your Characters"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.table, alignment=Qt.AlignCenter)
+        main_layout.addWidget(form_widget, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Strength"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.strength_input, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Agility"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.agility_input, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Intelligence"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.intelligence_input, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Health"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.health_input, alignment=Qt.AlignCenter)
+        main_layout.addWidget(QLabel("Mana"), alignment=Qt.AlignCenter)
+        main_layout.addWidget(self.mana_input, alignment=Qt.AlignCenter)
+        main_layout.addWidget(add_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(modify_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(show_all_characters_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(back_button, alignment=Qt.AlignCenter)
+        main_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        self.setLayout(mainLayout)
+        self.setLayout(main_layout)
 
-        backButton.clicked.connect(self.on_backButton_clicked)
-        addButton.clicked.connect(self.on_addButton_clicked)
-        modifyButton.clicked.connect(self.on_modifyButton_clicked)
+        back_button.clicked.connect(self.on_back_button_clicked)
+        add_button.clicked.connect(self.on_add_button_clicked)
+        modify_button.clicked.connect(self.on_modify_button_clicked)
         show_all_characters_button.clicked.connect(self.show_all_characters)
 
 
-    def on_backButton_clicked(self):
-        self.clearAll()
+    def on_back_button_clicked(self):
+        self.clear_all()
         self.stacked_widget.setCurrentIndex(0) # Go back to the main menu
 
 
-    def clearAll(self):
-        self.nameInput.clear()
-        self.classInput.clear()
-        self.strengthInput.setValue(0)
-        self.agilityInput.setValue(0)
-        self.intelligenceInput.setValue(0)
-        self.healthInput.setValue(0)
-        self.manaInput.setValue(0)
+    def clear_all(self):
+        self.name_input.clear()
+        self.class_input.clear()
+        self.strength_input.setValue(0)
+        self.agility_input.setValue(0)
+        self.intelligence_input.setValue(0)
+        self.health_input.setValue(0)
+        self.mana_input.setValue(0)
 
 
-    def getCharactes(self):
-        self.cursor.execute("SELECT * FROM Characters WHERE PlayerID = %s;", (self.ID,))
+    def get_characters(self):
+        self.cursor.execute("SELECT * FROM Characters WHERE PlayerID = %s;", (self.id,))
         result = self.cursor.fetchall()
 
         if not result:
@@ -145,17 +145,17 @@ class ManageCharacters(QWidget):
         self.table.setColumnCount(7)
         self.table.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class"])
 
-        for rowIdx, rowData in enumerate(result):
-            for colIdx, value in enumerate(rowData):
-                if colIdx >= 7:
+        for row_idx, row_data in enumerate(result):
+            for col_idx, value in enumerate(row_data):
+                if col_idx >= 7:
                   continue
 
                 item = QTableWidgetItem(str(value))
 
-                if colIdx == 0:
+                if col_idx == 0:
                     item.setFlags(item.flags() & ~Qt.ItemIsEditable)
-                
-                self.table.setItem(rowIdx, colIdx, item)
+
+                self.table.setItem(row_idx, col_idx, item)
 
         self.table.resizeColumnsToContents()
         self.table.resizeRowsToContents()
@@ -164,14 +164,14 @@ class ManageCharacters(QWidget):
         header.setSectionResizeMode(QHeaderView.Fixed)
 
 
-    def on_addButton_clicked(self):
-        name = self.nameInput.text()
-        strength = self.strengthInput.value()
-        agility = self.agilityInput.value()
-        intelligence = self.intelligenceInput.value()
-        health = self.healthInput.value()
-        mana = self.manaInput.value()
-        classe = self.classInput.text()
+    def on_add_button_clicked(self):
+        name = self.name_input.text()
+        strength = self.strength_input.value()
+        agility = self.agility_input.value()
+        intelligence = self.intelligence_input.value()
+        health = self.health_input.value()
+        mana = self.mana_input.value()
+        classe = self.class_input.text()
 
         if not name and not classe:
                 QMessageBox.warning(self, "Error", "Please fill in all fields!")
@@ -190,20 +190,20 @@ class ManageCharacters(QWidget):
             )
             self.db.commit()
             QMessageBox.information(self, "Success", "Character added successfully!")
-            self.getCharactes()
+            self.get_characters()
 
 
-    def on_modifyButton_clicked(self):
-        selectedRow = self.table.currentRow()
+    def on_modify_button_clicked(self):
+        selected_row = self.table.currentRow()
 
-        if selectedRow != -1:  # Ensure a character is selected
-            name = self.table.item(selectedRow, 0).text()
-            strength = self.table.item(selectedRow, 1).text()
-            agility = self.table.item(selectedRow, 2).text()
-            intelligence = self.table.item(selectedRow, 3).text()
-            health = self.table.item(selectedRow, 4).text()
-            mana = self.table.item(selectedRow, 5).text()
-            classe = self.table.item(selectedRow, 6).text()
+        if selected_row != -1:  # Ensure a character is selected
+            name = self.table.item(selected_row, 0).text()
+            strength = self.table.item(selected_row, 1).text()
+            agility = self.table.item(selected_row, 2).text()
+            intelligence = self.table.item(selected_row, 3).text()
+            health = self.table.item(selected_row, 4).text()
+            mana = self.table.item(selected_row, 5).text()
+            classe = self.table.item(selected_row, 6).text()
 
             if not (name and strength and agility and intelligence and health and mana and classe):
                 QMessageBox.warning(self, "Error", "Please fill in all fields!")
@@ -220,7 +220,7 @@ class ManageCharacters(QWidget):
                 )
                 self.db.commit()
                 QMessageBox.information(self, "Success", "Character updated successfully!")
-                self.getCharactes()
+                self.get_characters()
 
         else:
             QMessageBox.warning(self, "No Selection", "Please select a character to modify.")
@@ -246,9 +246,11 @@ class ManageCharacters(QWidget):
         self.table_characters.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class"])
         self.table_characters.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-        for rowIdx, rowData in enumerate(result):
-            for colIdx, value in enumerate(rowData):
-                if colIdx >= 7:
+        self.table_characters.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        for row_idx, row_data in enumerate(result):
+            for col_idx, value in enumerate(row_data):
+                if col_idx >= 7:
                   continue
 
                 item = QTableWidgetItem(str(value))
@@ -256,10 +258,10 @@ class ManageCharacters(QWidget):
 
 
                 # Username and name column is non-editable
-                if colIdx == 0:
+                if col_idx == 0:
                     item.setFlags(item.flags() & ~Qt.ItemIsEditable)
-                
-                self.table_characters.setItem(rowIdx, colIdx, item)
+
+                self.table_characters.setItem(row_idx, col_idx, item)
 
         header = self.table_characters.horizontalHeader()
         header.setSectionResizeMode(0, QHeaderView.Stretch)
@@ -302,14 +304,14 @@ class ManageCharacters(QWidget):
         intelligence = self.table_characters.item(row, 3).text()
         health = self.table_characters.item(row, 4).text()
         mana = self.table_characters.item(row, 5).text()
-        classe = self.table_characters.item(row, 6).text()
+        role = self.table_characters.item(row, 6).text()
+        username = self.table_characters.item(row, 7).text()
 
-        if not (name and strength and agility and intelligence and health and mana and classe):
+        if not (name and strength and agility and intelligence and health and mana and role):
             QMessageBox.warning(self, "Error", "Please fill in all fields!")
         elif not all(stat.isdigit() for stat in [strength, agility, intelligence, health, mana]):
             QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be numbers!")
         else:
-            self.cursor.execute("UPDATE Characters SET Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s WHERE PlayerID = %s AND Name = %s;", (strength, agility, intelligence, health, mana, classe, self.ID, name))
+            self.cursor.execute("UPDATE Characters SET Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s WHERE PlayerID = %s AND Name = %s;", (strength, agility, intelligence, health, mana, role, self.id, name))
             self.db.commit()
             QMessageBox.information(self, "Success", "Character updated successfully!")
-        

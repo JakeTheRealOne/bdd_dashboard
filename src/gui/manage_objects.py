@@ -23,10 +23,10 @@ class ManageObjects(QWidget):
     Allows user to modify item properties
     """
 
-    def __init__(self, parent, stackedWidget, ID):
+    def __init__(self, parent, stacked_widget, id):
         super().__init__(parent)
-        self.stackedWidget = stackedWidget
-        self.ID = ID
+        self.stacked_widget = stacked_widget
+        self.id = id
         self.db = mysql.connector.connect(
             host="localhost", user="rootuser", password="rootuser", database="rpg"
         )
@@ -72,9 +72,7 @@ class ManageObjects(QWidget):
 
         self.weapons_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.weapons_table.resizeRowsToContents()
-        self.weapons_table.cellChanged.connect(self.on_weaponCell_changed)
-        # self.addItemButton.setEnabled(self.occuped_slots != self.inventorySlot)
-        # self.clearButton.setEnabled(self.occuped_slots)
+        self.weapons_table.cellChanged.connect(self.on_weapon_cell_changed)
 
     def getArmors(self):
         self.armors_table.cellChanged.disconnect()
@@ -99,7 +97,7 @@ class ManageObjects(QWidget):
 
         self.armors_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.armors_table.resizeRowsToContents()
-        self.armors_table.cellChanged.connect(self.on_armorCell_changed)
+        self.armors_table.cellChanged.connect(self.on_armor_cell_changed)
 
     def getPotions(self):
         self.cursor.execute("SELECT * FROM Potions")
@@ -152,12 +150,12 @@ class ManageObjects(QWidget):
         self.artefacts_table.resizeRowsToContents()
 
     def setup(self):
-        self.addPage = add_object.AddObject(self, self.stackedWidget, self.ID)
-        self.stackedWidget.addWidget(self.addPage)
+        self.add_page = add_object.AddObject(self, self.stacked_widget, self.id)
+        self.stacked_widget.addWidget(self.add_page)
 
-        backButton = QPushButton("Back")
-        backButton.setFixedWidth(400)
-        backButton.setAutoDefault(True)
+        back_button = QPushButton("Back")
+        back_button.setFixedWidth(400)
+        back_button.setAutoDefault(True)
 
         add_weapon_button = QPushButton("Add")
         add_weapon_button.setFixedWidth(300)
@@ -178,11 +176,11 @@ class ManageObjects(QWidget):
         self.weapons_table = QTableWidget()
         self.weapons_table.horizontalHeader().setStretchLastSection(False)
         self.weapons_table.setMinimumWidth(400)
-        self.weapons_table.cellChanged.connect(self.on_weaponCell_changed)
+        self.weapons_table.cellChanged.connect(self.on_weapon_cell_changed)
         self.armors_table = QTableWidget()
         self.armors_table.horizontalHeader().setStretchLastSection(False)
         self.armors_table.setMinimumWidth(400)
-        self.armors_table.cellChanged.connect(self.on_armorCell_changed)
+        self.armors_table.cellChanged.connect(self.on_armor_cell_changed)
         self.potions_table = QTableWidget()
         self.potions_table.horizontalHeader().setStretchLastSection(False)
         self.potions_table.setMinimumWidth(400)
@@ -192,55 +190,55 @@ class ManageObjects(QWidget):
         self.artefacts_table.setMinimumWidth(400)
         self.artefacts_table.cellChanged.connect(self.on_artefactCell_changed)
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addItem(
+        main_layout = QVBoxLayout()
+        main_layout.addItem(
             QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         )
-        mainLayout.addWidget(
+        main_layout.addWidget(
             qt_config.create_center_bold_title("Manage objects"),
             alignment=Qt.AlignCenter,
         )
-        mainLayout.addWidget(
+        main_layout.addWidget(
             QLabel("Click on a property to modify its value"), alignment=Qt.AlignCenter
         )
-        mainLayout.addWidget(
+        main_layout.addWidget(
             QLabel("Here is all registered weapons:"), alignment=Qt.AlignCenter
         )
-        mainLayout.addWidget(self.weapons_table, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(add_weapon_button, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(
+        main_layout.addWidget(self.weapons_table, alignment=Qt.AlignCenter)
+        main_layout.addWidget(add_weapon_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(
             QLabel("Here is all registered armors:"), alignment=Qt.AlignCenter
         )
-        mainLayout.addWidget(self.armors_table, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(add_armor_button, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(
+        main_layout.addWidget(self.armors_table, alignment=Qt.AlignCenter)
+        main_layout.addWidget(add_armor_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(
             QLabel("Here is all registered potions:"), alignment=Qt.AlignCenter
         )
-        mainLayout.addWidget(self.potions_table, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(add_potion_button, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(
+        main_layout.addWidget(self.potions_table, alignment=Qt.AlignCenter)
+        main_layout.addWidget(add_potion_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(
             QLabel("Here is all registered artefacts:"), alignment=Qt.AlignCenter
         )
-        mainLayout.addWidget(self.artefacts_table, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(add_artefact_button, alignment=Qt.AlignCenter)
-        mainLayout.addWidget(backButton, alignment=Qt.AlignCenter)
-        mainLayout.addItem(
+        main_layout.addWidget(self.artefacts_table, alignment=Qt.AlignCenter)
+        main_layout.addWidget(add_artefact_button, alignment=Qt.AlignCenter)
+        main_layout.addWidget(back_button, alignment=Qt.AlignCenter)
+        main_layout.addItem(
             QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         )
 
-        self.setLayout(mainLayout)
+        self.setLayout(main_layout)
 
         # connect buttons
-        backButton.clicked.connect(self.on_backButton_clicked)
-        add_weapon_button.clicked.connect(self.on_addWeapon_clicked)
-        add_armor_button.clicked.connect(self.on_addArmor_clicked)
-        add_potion_button.clicked.connect(self.on_addPotion_clicked)
-        add_artefact_button.clicked.connect(self.on_addArtefact_clicked)
+        back_button.clicked.connect(self.on_back_button_clicked)
+        add_weapon_button.clicked.connect(self.on_add_weapon_clicked)
+        add_armor_button.clicked.connect(self.on_add_armor_clicked)
+        add_potion_button.clicked.connect(self.on_add_potion_clicked)
+        add_artefact_button.clicked.connect(self.on_add_artefact_clicked)
 
-    def on_backButton_clicked(self):
-        self.stackedWidget.setCurrentIndex(0)
+    def on_back_button_clicked(self):
+        self.stacked_widget.setCurrentIndex(0)
 
-    def on_weaponCell_changed(self, row, col):
+    def on_weapon_cell_changed(self, row, col):
         if col == 2:
             name = self.weapons[row][0]
             item = self.weapons_table.item(row, col)
@@ -281,7 +279,7 @@ class ManageObjects(QWidget):
                 )
                 self.db.commit()
 
-    def on_armorCell_changed(self, row, col):
+    def on_armor_cell_changed(self, row, col):
         if col == 2:
             name = self.armors[row][0]
             item = self.armors_table.item(row, col)
@@ -379,21 +377,21 @@ class ManageObjects(QWidget):
             )
             self.db.commit()
 
-    def on_addArmor_clicked(self):
-        self.addPage.update_type("Armure")
-        self.stackedWidget.setCurrentWidget(self.addPage)
+    def on_add_armor_clicked(self):
+        self.add_page.update_type("Armure")
+        self.stacked_widget.setCurrentWidget(self.add_page)
 
-    def on_addWeapon_clicked(self):
-        self.addPage.update_type("Arme")
-        self.stackedWidget.setCurrentWidget(self.addPage)
+    def on_add_weapon_clicked(self):
+        self.add_page.update_type("Arme")
+        self.stacked_widget.setCurrentWidget(self.add_page)
 
-    def on_addPotion_clicked(self):
-        self.addPage.update_type("Potion")
-        self.stackedWidget.setCurrentWidget(self.addPage)
+    def on_add_potion_clicked(self):
+        self.add_page.update_type("Potion")
+        self.stacked_widget.setCurrentWidget(self.add_page)
 
-    def on_addArtefact_clicked(self):
-        self.addPage.update_type("Artefact")
-        self.stackedWidget.setCurrentWidget(self.addPage)
+    def on_add_artefact_clicked(self):
+        self.add_page.update_type("Artefact")
+        self.stacked_widget.setCurrentWidget(self.add_page)
 
     def show_item_selector(self):
         self.cursor.execute("SELECT * FROM Items")
