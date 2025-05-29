@@ -24,9 +24,9 @@ class AddObject(QWidget):
     Allows user to set name and property for a new object in the database
     """
 
-    def __init__(self, parent, stackedWidget, id):
+    def __init__(self, parent, stacked_widget, id):
         super().__init__(parent)
-        self.stacked_widget = stackedWidget
+        self.stacked_widget = stacked_widget
         self.id = id
         self.db = mysql.connector.connect(
             host="localhost", user="rootuser", password="rootuser", database="rpg"

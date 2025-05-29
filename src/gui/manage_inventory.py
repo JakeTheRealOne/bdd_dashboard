@@ -45,7 +45,7 @@ class ManageInventory(QWidget):
       self.inventory_table.setColumnCount(3)
       self.inventory_table.setHorizontalHeaderLabels(["Object Name", "Equip", "Drop"])
 
-      self.occuped_slots = 0
+      self.occupied_slots = 0
 
       for row in rows:
           if row[0] == self.id:
@@ -63,12 +63,12 @@ class ManageInventory(QWidget):
               del_button.clicked.connect(lambda _, r=row[2]: self.on_delItem_clicked(r))
               self.inventory_table.setCellWidget(row[2], 1, use_button)
               self.inventory_table.setCellWidget(row[2], 2, del_button)
-              self.occuped_slots += 1
+              self.occupied_slots += 1
 
       self.inventory_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
       self.inventory_table.resizeRowsToContents()
-      self.add_item_button.setEnabled(self.occuped_slots != self.inventory_slot)
-      self.clear_button.setEnabled(self.occuped_slots)
+      self.add_item_button.setEnabled(self.occupied_slots != self.inventory_slot)
+      self.clear_button.setEnabled(self.occupied_slots)
 
       self.equip = [None, None]
       self.cursor.execute("SELECT ArmorName FROM PlayerArmors WHERE PlayerArmors.PlayerID = %s", (self.id,))
@@ -181,7 +181,7 @@ class ManageInventory(QWidget):
     def clear_inventory(self):
         self.inventory = [None] * self.inventory_slot
         self.inventory_table.clearContents()
-        self.occuped_slots = 0
+        self.occupied_slots = 0
         self.add_item_button.setEnabled(True)
         self.clear_button.setEnabled(False)
         self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s", (self.id,))
@@ -216,9 +216,9 @@ class ManageInventory(QWidget):
             del_button.clicked.connect(lambda _, r=index: self.on_delItem_clicked(r))
             self.inventory_table.setCellWidget(index, 1, use_button)
             self.inventory_table.setCellWidget(index, 2, del_button)
-            self.occuped_slots += 1
-            self.add_item_button.setEnabled(self.occuped_slots != self.inventory_slot)
-            self.clear_button.setEnabled(self.occuped_slots)
+            self.occupied_slots += 1
+            self.add_item_button.setEnabled(self.occupied_slots != self.inventory_slot)
+            self.clear_button.setEnabled(self.occupied_slots)
             self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s)", (self.id, name, index))
             self.db.commit()
             self.hide_item_selector()
@@ -231,9 +231,9 @@ class ManageInventory(QWidget):
             self.inventory_table.setItem(index, 0, QTableWidgetItem())
             self.inventory_table.setCellWidget(index, 1, None)
             self.inventory_table.setCellWidget(index, 2, None)
-            self.occuped_slots -= 1
-            self.add_item_button.setEnabled(self.occuped_slots != self.inventory_slot)
-            self.clear_button.setEnabled(self.occuped_slots)
+            self.occupied_slots -= 1
+            self.add_item_button.setEnabled(self.occupied_slots != self.inventory_slot)
+            self.clear_button.setEnabled(self.occupied_slots)
             self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND SlotIDX = %s", (self.id, index))
             self.db.commit()
 

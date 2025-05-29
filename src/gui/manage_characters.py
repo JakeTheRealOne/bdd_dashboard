@@ -246,8 +246,6 @@ class ManageCharacters(QWidget):
         self.table_characters.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class"])
         self.table_characters.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-        self.table_characters.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
         for row_idx, row_data in enumerate(result):
             for col_idx, value in enumerate(row_data):
                 if col_idx >= 7:
@@ -255,7 +253,6 @@ class ManageCharacters(QWidget):
 
                 item = QTableWidgetItem(str(value))
                 item.setTextAlignment(Qt.AlignCenter)
-
 
                 # Username and name column is non-editable
                 if col_idx == 0:

@@ -392,9 +392,9 @@ class NPCInteraction(QWidget):
         self.cursor.execute("SELECT * FROM PlayerInventories;")
         rows = self.cursor.fetchall()
               
-        self.occuped_slots = 0
+        self.occupied_slots = 0
 
         for row in rows:
             if row[0] == self.id:
                self.inventory[row[2]] = row[1]
-               self.occuped_slots += 1
+               self.occupied_slots += 1
