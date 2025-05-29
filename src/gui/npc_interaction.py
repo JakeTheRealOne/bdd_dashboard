@@ -298,6 +298,8 @@ class NPCInteraction(QWidget):
         self.stacked_widget.setCurrentWidget(self.show_buy_sell_item_widget)
         
     def buy_item(self, item_name, quantity, npc_name):
+        
+
         self.cursor.execute("DELETE FROM NPCItemInventories WHERE NPCName = %s AND ItemName = %s and Quantity = %s;", (npc_name, item_name, quantity))
         
         items = []
@@ -318,6 +320,7 @@ class NPCInteraction(QWidget):
         
     
     def sell_item(self, item, npc_name, slot_idx):
+
         self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND ItemName = %s AND SlotIDX = %s;", (self.ID, item, slot_idx))
         
         self.cursor.execute("SELECT * FROM NPCItemInventories WHERE NPCName = %s AND ItemName = %s;", (npc_name, item))
