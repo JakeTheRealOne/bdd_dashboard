@@ -133,7 +133,7 @@ class ManageCharacters(QWidget):
 
 
     def getCharactes(self):
-        self.cursor.execute("SELECT * FROM Characters WHERE Username = %s;", (self.username,))
+        self.cursor.execute("SELECT * FROM Characters WHERE PlayerID = %s;", (self.ID,))
         result = self.cursor.fetchall()
 
         if not result:
@@ -142,15 +142,17 @@ class ManageCharacters(QWidget):
             return
 
         self.table.setRowCount(len(result))
-        self.table.setColumnCount(8)
-        self.table.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class", "Username"])
+        self.table.setColumnCount(7)
+        self.table.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class"])
 
         for rowIdx, rowData in enumerate(result):
             for colIdx, value in enumerate(rowData):
+                if colIdx >= 7:
+                  continue
+
                 item = QTableWidgetItem(str(value))
 
-                # Username column is non-editable
-                if colIdx == 7 or colIdx == 0:
+                if colIdx == 0:
                     item.setFlags(item.flags() & ~Qt.ItemIsEditable)
                 
                 self.table.setItem(rowIdx, colIdx, item)
@@ -176,15 +178,15 @@ class ManageCharacters(QWidget):
 
         # Insert the new character into the database
         else:
-            self.cursor.execute("SELECT c.Name FROM Characters c WHERE c.Username = %s AND c.Name = %s;", (self.username, name))
+            self.cursor.execute("SELECT c.Name FROM Characters c WHERE c.PlayerID = %s AND c.Name = %s;", (self.ID, name))
             result = self.cursor.fetchone()
             if result:
                 QMessageBox.warning(self, "Error", "You have already a Character with this name !")
                 return
 
             self.cursor.execute(
-                "INSERT INTO Characters (Name, Strength, Agility, Intelligence, Health, Mana, Class, Username) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);",
-                (name, strength, agility, intelligence, health, mana, classe, self.username)
+                "INSERT INTO Characters (Name, Strength, Agility, Intelligence, Health, Mana, Class, PlayerID) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);",
+                (name, strength, agility, intelligence, health, mana, classe, self.ID)
             )
             self.db.commit()
             QMessageBox.information(self, "Success", "Character added successfully!")
@@ -213,8 +215,8 @@ class ManageCharacters(QWidget):
                 self.cursor.execute(
                     """UPDATE Characters SET 
                         Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s 
-                        WHERE Username = %s AND Name = %s;""",
-                    (strength, agility, intelligence, health, mana, classe, self.username, name)
+                        WHERE PlayerID = %s AND Name = %s;""",
+                    (strength, agility, intelligence, health, mana, classe, self.ID, name)
                 )
                 self.db.commit()
                 QMessageBox.information(self, "Success", "Character updated successfully!")
@@ -240,18 +242,21 @@ class ManageCharacters(QWidget):
 
         self.table_characters = QTableWidget()
         self.table_characters.setRowCount(len(result))
-        self.table_characters.setColumnCount(8)
-        self.table_characters.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class", "Username"])
+        self.table_characters.setColumnCount(7)
+        self.table_characters.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class"])
         self.table_characters.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         for rowIdx, rowData in enumerate(result):
             for colIdx, value in enumerate(rowData):
+                if colIdx >= 7:
+                  continue
+
                 item = QTableWidgetItem(str(value))
                 item.setTextAlignment(Qt.AlignCenter)
 
 
                 # Username and name column is non-editable
-                if colIdx == 7 or colIdx == 0:
+                if colIdx == 0:
                     item.setFlags(item.flags() & ~Qt.ItemIsEditable)
                 
                 self.table_characters.setItem(rowIdx, colIdx, item)
@@ -299,14 +304,13 @@ class ManageCharacters(QWidget):
         health = self.table_characters.item(row, 4).text()
         mana = self.table_characters.item(row, 5).text()
         classe = self.table_characters.item(row, 6).text()
-        username = self.table_characters.item(row, 7).text()
 
         if not (name and strength and agility and intelligence and health and mana and classe):
             QMessageBox.warning(self, "Error", "Please fill in all fields!")
         elif not all(stat.isdigit() for stat in [strength, agility, intelligence, health, mana]):
             QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be numbers!")
         else:
-            self.cursor.execute("UPDATE Characters SET Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s WHERE Username = %s AND Name = %s;", (strength, agility, intelligence, health, mana, classe, username, name))
+            self.cursor.execute("UPDATE Characters SET Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s WHERE PlayerID = %s AND Name = %s;", (strength, agility, intelligence, health, mana, classe, self.ID, name))
             self.db.commit()
             QMessageBox.information(self, "Success", "Character updated successfully!")
         

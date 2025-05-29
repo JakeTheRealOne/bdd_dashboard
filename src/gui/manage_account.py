@@ -50,15 +50,17 @@ class ManageAccount(QWidget):
         
         self.inputLevel = QSpinBox()
         self.inputLevel.setMinimum(0)
+        self.inputLevel.setMaximum(100000000)
         self.inputLevel.setValue(self.level)  
 
         self.inputXP = QSpinBox()
         self.inputXP.setMinimum(0)
+        self.inputXP.setMaximum(100000000)
         self.inputXP.setValue(self.xp)
 
         self.inputMoney = QSpinBox()
         self.inputMoney.setMinimum(0)
-        self.inputMoney.setMaximum(10000)
+        self.inputMoney.setMaximum(100000000)
         self.inputMoney.setValue(self.money)
 
         self.nameLabel = QLabel(f"Hello <u>{self.name}</u> with the ID <u>{self.ID}</u> !")
@@ -122,6 +124,7 @@ class ManageAccount(QWidget):
           self.db.commit()
         except mysql.connector.errors.IntegrityError:
           reply = QMessageBox.critical(self, "Error", "One or more entries are invalid.")
+          raise
         except: 
           pass
 

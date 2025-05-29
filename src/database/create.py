@@ -13,7 +13,7 @@ def create_database_and_tables(db, cursor):
     cursor.execute("CREATE TABLE IF NOT EXISTS Players (ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR (255) UNIQUE, Level INT DEFAULT 0, XP INT DEFAULT 0, Money INT DEFAULT 0, InventorySlot INT DEFAULT 5);")
 
     # Create the table Characters if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Characters (Name VARCHAR(255) PRIMARY KEY, Strength INT DEFAULT 0, Agility INT DEFAULT 0, Intelligence INT DEFAULT 0, Health INT DEFAULT 0, Mana INT DEFAULT 0, Class VARCHAR(255), Username VARCHAR(255), FOREIGN KEY (Username) REFERENCES Players(Name));")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Characters (Name VARCHAR(255) PRIMARY KEY, Strength INT DEFAULT 0, Agility INT DEFAULT 0, Intelligence INT DEFAULT 0, Health INT DEFAULT 0, Mana INT DEFAULT 0, Class VARCHAR(255), PlayerID INT, FOREIGN KEY (PlayerID) REFERENCES Players(ID));")
 
     # Create the table Monsters if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT DEFAULT 0, MonsterHealth INT DEFAULT 0, Defence INT DEFAULT 0);")

@@ -305,12 +305,14 @@ def insert_characters_data(db, cursor):
 
 
         # Check if the player exists in the Players table before inserting the character
-        cursor.execute("SELECT COUNT(*) FROM Players WHERE Name = %s", (p["utilisateur"],))
-        if cursor.fetchone()[0] == 0:
-            continue  # Ignore the character if the player does not exist
+        cursor.execute("SELECT ID FROM Players WHERE Name = %s", (p["utilisateur"],))
+        result = cursor.fetchone()
+        if result is None:
+            continue
+        my_id = result[0]
 
         cursor.execute('''
-        INSERT IGNORE INTO Characters (Name, Strength, Agility, Intelligence, Health, Mana, Class, Username)
+        INSERT IGNORE INTO Characters (Name, Strength, Agility, Intelligence, Health, Mana, Class, PlayerID)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         ''', (
             p["Nom"],
@@ -320,7 +322,7 @@ def insert_characters_data(db, cursor):
             p["Vie"],
             p["Mana"],
             p["Classe"],
-            p["utilisateur"]
+            my_id
         ))
 
         if cursor.rowcount == 1:
