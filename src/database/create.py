@@ -14,7 +14,7 @@ def create_database_and_tables(db, cursor):
 
     # Create the table Characters if it doesn't exist
     cursor.execute("""CREATE TABLE IF NOT EXISTS Characters (
-        Name VARCHAR(255) PRIMARY KEY,
+        Name VARCHAR(255),
         Strength INT DEFAULT 0 CHECK (Strength BETWEEN 0 AND 100),
         Agility INT DEFAULT 0 CHECK (Agility BETWEEN 0 AND 100),
         Intelligence INT DEFAULT 0 CHECK (Intelligence BETWEEN 0 AND 100),
@@ -22,6 +22,7 @@ def create_database_and_tables(db, cursor):
         Mana INT DEFAULT 0 CHECK (Mana BETWEEN 0 AND 100),
         Class VARCHAR(255),
         PlayerID INT,
+        PRIMARY KEY (PlayerID, Name),
         FOREIGN KEY (PlayerID) REFERENCES Players(ID));
     """)
 
@@ -65,7 +66,7 @@ def create_database_and_tables(db, cursor):
     "PRIMARY KEY (PlayerID, QuestName), FOREIGN KEY (PlayerID) REFERENCES Players(ID), FOREIGN KEY (QuestName) REFERENCES Quests(Name));")
 
     # Create the table MonsterLoots if it doesen't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS MonsterLoots (MonsterName VARCHAR (255), LootName VARCHAR (255), DropRate INT DEFAULT 0 CHECK (DropRate BETWEEN 0 AND 100), Quantity INT DEFAULT 0 CHECK (Quantity >= 0)," \
+    cursor.execute("CREATE TABLE IF NOT EXISTS MonsterLoots (MonsterName VARCHAR (255), LootName VARCHAR (255), DropRate INT DEFAULT 100 CHECK (DropRate BETWEEN 0 AND 100), Quantity INT DEFAULT 1 CHECK (Quantity > 0)," \
     "PRIMARY KEY (MonsterName, LootName), FOREIGN KEY (MonsterName) REFERENCES Monsters(Name), FOREIGN KEY (LootName) REFERENCES Items(Name));")
 
     # Create the table Rewards if it doesen't exist
@@ -77,7 +78,7 @@ def create_database_and_tables(db, cursor):
         CREATE TABLE IF NOT EXISTS PlayerInventories (
             PlayerID INT,
             ItemName VARCHAR(225),
-            SlotIDX INT,
+            SlotIDX INT CHECK (SlotIDX BETWEEN 5 AND 32),
             PRIMARY KEY (PlayerID, SlotIDX),
             FOREIGN KEY (PlayerID) REFERENCES Players(ID) ON DELETE CASCADE,
             FOREIGN KEY (ItemName) REFERENCES Items(Name)
