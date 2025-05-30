@@ -211,6 +211,12 @@ class ManageCharacters(QWidget):
             elif not all(stat.isdigit() for stat in [strength, agility, intelligence, health, mana]):
                 QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be numbers!")
             
+            elif int(strength) < 0 or int(agility) < 0 or int(intelligence) < 0 or int(health) < 0 or int(mana) < 0:
+                QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be greater than or equal to 0!")
+
+            elif int(strength) > 100 or int(agility) > 100 or int(intelligence) > 100 or int(health) > 100 or int(mana) > 100:
+                QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be less than or equal to 100!")
+
             else:
                 self.cursor.execute(
                     """UPDATE Characters SET 
@@ -302,12 +308,18 @@ class ManageCharacters(QWidget):
         health = self.table_characters.item(row, 4).text()
         mana = self.table_characters.item(row, 5).text()
         role = self.table_characters.item(row, 6).text()
-        username = self.table_characters.item(row, 7).text()
 
         if not (name and strength and agility and intelligence and health and mana and role):
             QMessageBox.warning(self, "Error", "Please fill in all fields!")
         elif not all(stat.isdigit() for stat in [strength, agility, intelligence, health, mana]):
             QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be numbers!")
+
+        elif int(strength) < 0 or int(agility) < 0 or int(intelligence) < 0 or int(health) < 0 or int(mana) < 0:
+            QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be greater than or equal to 0!")
+
+        elif int(strength) > 100 or int(agility) > 100 or int(intelligence) > 100 or int(health) > 100 or int(mana) > 100:
+            QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be less than or equal to 100!")
+
         else:
             self.cursor.execute("UPDATE Characters SET Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s WHERE PlayerID = %s AND Name = %s;", (strength, agility, intelligence, health, mana, role, self.id, name))
             self.db.commit()
