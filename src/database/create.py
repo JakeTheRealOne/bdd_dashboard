@@ -78,7 +78,7 @@ def create_database_and_tables(db, cursor):
         CREATE TABLE IF NOT EXISTS PlayerInventories (
             PlayerID INT,
             ItemName VARCHAR(225),
-            SlotIDX INT CHECK (SlotIDX BETWEEN 5 AND 32),
+            SlotIDX INT CHECK (SlotIDX < 32),
             PRIMARY KEY (PlayerID, SlotIDX),
             FOREIGN KEY (PlayerID) REFERENCES Players(ID) ON DELETE CASCADE,
             FOREIGN KEY (ItemName) REFERENCES Items(Name)
