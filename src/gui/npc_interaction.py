@@ -208,16 +208,36 @@ class NPCInteraction(QWidget):
             self.show_buy_sell_item_widget = None
         
         self.cursor.execute("SELECT * FROM NPCItemInventories WHERE NPCName = %s;", (name,))
-        NPC_result = self.cursor.fetchall()
-        
-        self.cursor.execute("SELECT ItemName, SlotIDX FROM PlayerInventories WHERE PlayerID = %s;", (self.ID,))
-        player_result = self.cursor.fetchall()
-        
+        NPC_result_raw = self.cursor.fetchall()
+
+        NPC_result = []
+        for row in NPC_result_raw:
+            self.cursor.execute("SELECT Price FROM Items WHERE Name = %s;", (row[1],))
+            base_price = self.cursor.fetchone()[0]
+            quantity = row[-1]
+            total_price = base_price * quantity
+            
+            npc_name = row[0]
+            item_name = row[1]
+            
+            NPC_result.append([npc_name, item_name, quantity, total_price])
+
         if not NPC_result:
             NPC_result = [(name, "No items available", "")]
-            
-        if not player_result:
-            player_result = [("No items available",)]
+        
+        self.cursor.execute("SELECT ItemName, SlotIDX FROM PlayerInventories WHERE PlayerID = %s;", (self.ID,))
+        player_result_raw = self.cursor.fetchall()
+
+        if player_result_raw:
+            player_result = []
+            for row in player_result_raw:
+                self.cursor.execute("SELECT Price FROM Items WHERE Name = %s;", (row[0],))
+                price = self.cursor.fetchone()[0]            
+                item_name = row[0]
+                slot_idx = row[1]
+                player_result.append([item_name, price, slot_idx])            
+        else:
+            player_result = [["No items available"]]
         
         back_button = QPushButton("Back")
         back_button.setFixedWidth(500)
@@ -229,16 +249,16 @@ class NPCInteraction(QWidget):
         NPC_table.setWordWrap(True)
         NPC_table.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         NPC_table.setRowCount(len(NPC_result))
-        NPC_table.setColumnCount(4)
-        NPC_table.setHorizontalHeaderLabels(["NPC Name", "Item", "Quantity", "Action"])
+        NPC_table.setColumnCount(5)
+        NPC_table.setHorizontalHeaderLabels(["NPC Name", "Item", "Quantity", "Price", "Action"])
         
         player_table = QTableWidget()
         player_table.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         player_table.setWordWrap(True)
         player_table.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         player_table.setRowCount(len(player_result))
-        player_table.setColumnCount(2)
-        player_table.setHorizontalHeaderLabels(["Item", "Action"])
+        player_table.setColumnCount(3)
+        player_table.setHorizontalHeaderLabels(["Item", "Price", "Action"])
         
         for row_idx, row_data in enumerate(NPC_result):
             for col_idx, value in enumerate(row_data):
@@ -249,26 +269,27 @@ class NPCInteraction(QWidget):
                 NPC_table.setItem(row_idx, col_idx, item)
                 
             buy_button = QPushButton("Buy")
-            buy_button.setFixedWidth(200)
+            buy_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
             buy_button.setAutoDefault(True)
             buy_button.clicked.connect(lambda _, r=row_data: self.buy_item(r[1], r[2], name))
-            NPC_table.setCellWidget(row_idx, 3, buy_button) 
+            NPC_table.setCellWidget(row_idx, 4, buy_button) 
             
         for row_idx, row_data in enumerate(player_result):
             for col_idx, value in enumerate(row_data):
-                item = QTableWidgetItem(str(value))
-                item.setFlags(Qt.ItemIsEnabled)
-                item.setTextAlignment(Qt.AlignCenter)
-                
-                player_table.setItem(row_idx, col_idx, item)
+                if col_idx < 2: # Need only the first two columns, not the slot index
+                    item = QTableWidgetItem(str(value))
+                    item.setFlags(Qt.ItemIsEnabled)
+                    item.setTextAlignment(Qt.AlignCenter)
+                    player_table.setItem(row_idx, col_idx, item)
                 
             sell_button = QPushButton("Sell")
-            sell_button.setFixedWidth(200)
+            buy_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             sell_button.setAutoDefault(True)
-            sell_button.clicked.connect(lambda _, r=row_data: self.sell_item(r[0], name, r[1]))
+            sell_button.clicked.connect(lambda _, r=row_data: self.sell_item(r[0], name, r[2]))
+            
             if row_data[0] == "No items available":
                 sell_button.setEnabled(False)
-            player_table.setCellWidget(row_idx, 1, sell_button)
+            player_table.setCellWidget(row_idx, 2, sell_button)
 
             
         header = NPC_table.horizontalHeader()
@@ -276,6 +297,8 @@ class NPCInteraction(QWidget):
         header.setSectionResizeMode(1, QHeaderView.Stretch)
         header.setSectionResizeMode(2, QHeaderView.ResizeToContents)
         header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(4, QHeaderView.Stretch)
+
         
         header = player_table.horizontalHeader()
         header.setSectionResizeMode(0, QHeaderView.Stretch)
@@ -298,7 +321,15 @@ class NPCInteraction(QWidget):
         self.stacked_widget.setCurrentWidget(self.show_buy_sell_item_widget)
         
     def buy_item(self, item_name, quantity, npc_name):
-        
+        self.cursor.execute("SELECT Price FROM Items WHERE Name = %s;", (item_name,))
+        price = self.cursor.fetchone()
+
+        self.cursor.execute("SELECT Money FROM Players WHERE ID = %s;", (self.ID,))
+        money = self.cursor.fetchone()
+
+        if price is None or money is None or money[0] < price[0] * int(quantity):
+            QMessageBox.warning(self, "Not enough money", "You don't have enough money to buy this item.")
+            return
 
         self.cursor.execute("DELETE FROM NPCItemInventories WHERE NPCName = %s AND ItemName = %s and Quantity = %s;", (npc_name, item_name, quantity))
         
@@ -313,6 +344,8 @@ class NPCInteraction(QWidget):
             self.cursor.execute("INSERT INTO PlayerInventories (PlayerID, ItemName, SlotIDX) VALUES (%s, %s, %s);", (self.ID, item_name, index))
             self.inventory[index] = item_name
             items.append(item_name)
+
+        self.cursor.execute("UPDATE Players SET Money = Money - %s WHERE ID = %s;", (price[0] * int(quantity), self.ID))
         
         self.db.commit()
         self.on_buy_sell_button_clicked()
@@ -320,7 +353,6 @@ class NPCInteraction(QWidget):
         
     
     def sell_item(self, item, npc_name, slot_idx):
-
         self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND ItemName = %s AND SlotIDX = %s;", (self.ID, item, slot_idx))
         
         self.cursor.execute("SELECT * FROM NPCItemInventories WHERE NPCName = %s AND ItemName = %s;", (npc_name, item))
@@ -331,6 +363,15 @@ class NPCInteraction(QWidget):
         else:    
             self.cursor.execute("INSERT INTO NPCItemInventories (NPCName, ItemName, Quantity) VALUES (%s, %s, %s);", (npc_name, item, 1))
             
+        self.cursor.execute("SELECT Price FROM Items WHERE Name = %s;", (item,))
+        price = self.cursor.fetchone()
+        if price is None:
+            QMessageBox.warning(self, "Error", "Item not found in the database.")
+            return
+        
+        self.cursor.execute("UPDATE Players SET Money = Money + %s WHERE ID = %s;", (price[0], self.ID))
+
+
         self.db.commit()
         self.on_buy_sell_button_clicked()
         QMessageBox.information(self, "Item Sold", f"You have sold the item: {item}")
