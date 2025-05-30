@@ -101,7 +101,7 @@ class ManageAccount(QWidget):
     def delete_account(self):
         reply = QMessageBox.question(self, "Quit", "Are you sure you delete your account ?", QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
-            self.cursor.execute("DELETE FROM Characters WHERE Username = %s", (self.name,))
+            self.cursor.execute("DELETE FROM Characters WHERE PlayerID = %s", (self.id,))
             self.cursor.execute("DELETE FROM Players WHERE ID = %s", (self.id,))
             self.db.commit()
             QApplication.quit()
