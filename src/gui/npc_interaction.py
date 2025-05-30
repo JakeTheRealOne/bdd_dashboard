@@ -335,7 +335,7 @@ class NPCInteraction(QWidget):
         
         items = []
         for i in range(int(quantity)):
-            self.getInventory()        
+            self.get_inventory()        
             index = self._next_free_item()
             if index == len(self.inventory):
                 QMessageBox.warning(self, "Inventory Full", "Your inventory is full. Please clear some space.")
@@ -384,11 +384,11 @@ class NPCInteraction(QWidget):
         return len(self.inventory)
     
     
-    def getInventory(self):
+    def get_inventory(self):
         self.cursor.execute("SELECT InventorySlot FROM Players WHERE ID = %s;", (self.id,))
-        inventorySlot = self.cursor.fetchone()[0]
+        inventory_slot = self.cursor.fetchone()[0]
         
-        self.inventory = [None] * inventorySlot
+        self.inventory = [None] * inventory_slot
         self.cursor.execute("SELECT * FROM PlayerInventories;")
         rows = self.cursor.fetchall()
               

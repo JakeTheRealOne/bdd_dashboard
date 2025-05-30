@@ -19,15 +19,15 @@ class ManageInventory(QWidget):
         )
         self.db.start_transaction(isolation_level='READ COMMITTED')
         self.cursor = self.db.cursor()
-        self.getInfoPlyers()
+        self.get_info_players()
         self.setup()
-        self.getInventory()
+        self.get_inventory()
 
     def __del__(self):
         self.cursor.close()
         self.db.close()
     
-    def getInfoPlyers(self):
+    def get_info_players(self):
         self.cursor.execute("SELECT * FROM Players WHERE ID = %s", (self.id,))
         result = self.cursor.fetchone()
         self.name = result[1]
@@ -36,7 +36,7 @@ class ManageInventory(QWidget):
         self.money = result[4]
         self.inventory_slot = result[5]
 
-    def getInventory(self):
+    def get_inventory(self):
       self.inventory = [None] * self.inventory_slot
       self.cursor.execute("SELECT * FROM PlayerInventories")
       rows = self.cursor.fetchall()
@@ -56,11 +56,11 @@ class ManageInventory(QWidget):
               use_button = QPushButton("Equip")
               use_button.setFixedWidth(200)
               use_button.setAutoDefault(True)
-              use_button.clicked.connect(lambda _, r=row[2]: self.on_useItem_clicked(r))
+              use_button.clicked.connect(lambda _, r=row[2]: self.on_use_item_clicked(r))
               del_button = QPushButton("Drop")
               del_button.setFixedWidth(200)
               del_button.setAutoDefault(True)
-              del_button.clicked.connect(lambda _, r=row[2]: self.on_delItem_clicked(r))
+              del_button.clicked.connect(lambda _, r=row[2]: self.on_del_item_clicked(r))
               self.inventory_table.setCellWidget(row[2], 1, use_button)
               self.inventory_table.setCellWidget(row[2], 2, del_button)
               self.occupied_slots += 1
@@ -188,8 +188,8 @@ class ManageInventory(QWidget):
         self.db.commit() 
 
     def showEvent(self, event: QShowEvent):
-        self.getInfoPlyers()
-        self.getInventory()
+        self.get_info_players()
+        self.get_inventory()
         self.name_label.setText(f"Hello <u>{self.name}</u>, with a level of {self.level}, you get {self.inventory_slot} slots")
         super().showEvent(event)
 
@@ -209,11 +209,11 @@ class ManageInventory(QWidget):
             use_button = QPushButton("Equip")
             use_button.setFixedWidth(200)
             use_button.setAutoDefault(True)
-            use_button.clicked.connect(lambda _, r=index: self.on_useItem_clicked(r))
+            use_button.clicked.connect(lambda _, r=index: self.on_use_item_clicked(r))
             del_button = QPushButton("Drop")
             del_button.setFixedWidth(200)
             del_button.setAutoDefault(True)
-            del_button.clicked.connect(lambda _, r=index: self.on_delItem_clicked(r))
+            del_button.clicked.connect(lambda _, r=index: self.on_del_item_clicked(r))
             self.inventory_table.setCellWidget(index, 1, use_button)
             self.inventory_table.setCellWidget(index, 2, del_button)
             self.occupied_slots += 1
@@ -223,7 +223,7 @@ class ManageInventory(QWidget):
             self.db.commit()
             self.hide_item_selector()
 
-    def on_delItem_clicked(self, row):
+    def on_del_item_clicked(self, row):
         slot = self.inventory_table.item(row, 0)
         if slot:
             index = row
@@ -237,7 +237,7 @@ class ManageInventory(QWidget):
             self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND SlotIDX = %s", (self.id, index))
             self.db.commit()
 
-    def on_useItem_clicked(self, row):
+    def on_use_item_clicked(self, row):
         slot = self.inventory_table.item(row, 0)
         if not slot:
             return        

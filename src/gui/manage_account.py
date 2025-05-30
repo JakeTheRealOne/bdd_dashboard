@@ -17,14 +17,14 @@ class ManageAccount(QWidget):
             database="rpg"
         )
         self.cursor = self.db.cursor()
-        self.getInfoPlyers()
+        self.get_info_players()
         self.setup()
 
     def __del__(self):
         self.cursor.close()
         self.db.close()
     
-    def getInfoPlyers(self):
+    def get_info_players(self):
         self.cursor.execute("SELECT * FROM Players WHERE ID = %s", (self.id,))
         result = self.cursor.fetchone()
         self.name = result[1]
@@ -131,6 +131,6 @@ class ManageAccount(QWidget):
         self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND SlotIDX >= %s", (self.id, self.inventory_slot))
         self.db.commit()
 
-        self.getInfoPlyers()
+        self.get_info_players()
         self.name_label.setText(f"Hello <u>{self.name}</u> with the ID <u>{self.id}<u/> !")
         self.inventory_label.setText(f"Inventory Slot : <u>{self.inventory_slot}</u>")

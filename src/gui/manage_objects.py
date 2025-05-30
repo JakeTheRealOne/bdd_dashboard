@@ -33,10 +33,10 @@ class ManageObjects(QWidget):
         self.db.start_transaction(isolation_level="READ COMMITTED")
         self.cursor = self.db.cursor()
         self.setup()
-        self.getWeapons()
-        self.getArmors()
-        self.getPotions()
-        self.getArtefacts()
+        self.get_weapons()
+        self.get_armors()
+        self.get_potions()
+        self.get_artefacts()
 
     def __del__(self):
         self.cursor.close()
@@ -49,7 +49,7 @@ class ManageObjects(QWidget):
         self.cursor.execute("SELECT Price FROM Items WHERE Name = %s;", (item,))
         return self.cursor.fetchone()[0] or 0
 
-    def getWeapons(self):
+    def get_weapons(self):
         self.weapons_table.cellChanged.disconnect()
         self.cursor.execute("SELECT * FROM Weapons")
         self.weapons = [list(e) for e in self.cursor.fetchall()]
@@ -74,7 +74,7 @@ class ManageObjects(QWidget):
         self.weapons_table.resizeRowsToContents()
         self.weapons_table.cellChanged.connect(self.on_weapon_cell_changed)
 
-    def getArmors(self):
+    def get_armors(self):
         self.armors_table.cellChanged.disconnect()
         self.cursor.execute("SELECT * FROM Armors")
         self.armors = [list(e) for e in self.cursor.fetchall()]
@@ -99,7 +99,7 @@ class ManageObjects(QWidget):
         self.armors_table.resizeRowsToContents()
         self.armors_table.cellChanged.connect(self.on_armor_cell_changed)
 
-    def getPotions(self):
+    def get_potions(self):
         self.cursor.execute("SELECT * FROM Potions")
         self.potions = [list(e) for e in self.cursor.fetchall()]
 
@@ -122,7 +122,7 @@ class ManageObjects(QWidget):
         self.potions_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.potions_table.resizeRowsToContents()
 
-    def getArtefacts(self):
+    def get_artefacts(self):
         self.cursor.execute("SELECT * FROM Artefacts")
         self.artefacts = [list(e) for e in self.cursor.fetchall()]
 
@@ -184,11 +184,11 @@ class ManageObjects(QWidget):
         self.potions_table = QTableWidget()
         self.potions_table.horizontalHeader().setStretchLastSection(False)
         self.potions_table.setMinimumWidth(400)
-        self.potions_table.cellChanged.connect(self.on_potionCell_changed)
+        self.potions_table.cellChanged.connect(self.on_potion_cell_changed)
         self.artefacts_table = QTableWidget()
         self.artefacts_table.horizontalHeader().setStretchLastSection(False)
         self.artefacts_table.setMinimumWidth(400)
-        self.artefacts_table.cellChanged.connect(self.on_artefactCell_changed)
+        self.artefacts_table.cellChanged.connect(self.on_artefact_cell_changed)
 
         main_layout = QVBoxLayout()
         main_layout.addItem(
@@ -320,7 +320,7 @@ class ManageObjects(QWidget):
                 )
                 self.db.commit()
 
-    def on_potionCell_changed(self, row, col):
+    def on_potion_cell_changed(self, row, col):
         if col == 2:
           name = self.potions[row][0]
           item = self.potions_table.item(row, col)
@@ -349,7 +349,7 @@ class ManageObjects(QWidget):
             self.db.commit()
 
 
-    def on_artefactCell_changed(self, row, col):
+    def on_artefact_cell_changed(self, row, col):
         if col == 2:
           name = self.artefacts[row][0]
           item = self.artefacts_table.item(row, col)
@@ -414,10 +414,10 @@ class ManageObjects(QWidget):
         self.item_selector_widget.setVisible(False)
 
     def showEvent(self, event: QShowEvent):
-        self.getWeapons()
-        self.getArmors()
-        self.getPotions()
-        self.getArtefacts()
+        self.get_weapons()
+        self.get_armors()
+        self.get_potions()
+        self.get_artefacts()
         super().showEvent(event)
 
     def _next_free_item(self):

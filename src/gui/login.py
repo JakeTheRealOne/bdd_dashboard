@@ -126,11 +126,11 @@ class Login(QWidget):
         self.stacked_widget.setCurrentWidget(self.register_page)
 
     def on_back_button_login_clicked(self):
-        self.clearInputs()
+        self.clear_inputs()
         self.stacked_widget.setCurrentWidget(self.main_page)
 
     def on_back_button_register_clicked(self):
-        self.clearInputs()
+        self.clear_inputs()
         self.stacked_widget.setCurrentWidget(self.main_page)
 
     def on_send_button_register_clicked(self):
@@ -157,7 +157,7 @@ class Login(QWidget):
                 self.stacked_widget.setCurrentWidget(self.login_page)
                 self.username_input_login.setFocus()
 
-        self.clearInputs()
+        self.clear_inputs()
 
     def on_send_button_login_clicked(self):
         username = self.username_input_login.text()
@@ -171,17 +171,17 @@ class Login(QWidget):
         result = self.cursor.fetchone()
         if result:
             self.db.commit()
-            self.clearInputs()
+            self.clear_inputs()
             QMessageBox.information(self, "Login successful", "You have successfully logged in.")
             mainMenu = main_menu.MainMenu(result[0], self)
             self.stacked_widget.addWidget(mainMenu)
             self.stacked_widget.setCurrentWidget(mainMenu) # show the main menu
 
         else:
-            self.clearInputs()
+            self.clear_inputs()
             QMessageBox.warning(self, "Login failed", "Username does not exist.")
             self.username_input_login.setFocus()
 
-    def clearInputs(self):
+    def clear_inputs(self):
         self.username_input_register.clear()
         self.username_input_login.clear()

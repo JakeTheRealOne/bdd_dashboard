@@ -168,7 +168,7 @@ class ManageQuests(QWidget):
                     self.cursor.execute("UPDATE Players SET Money = Money + 1 WHERE ID = %s;", (self.id,))
                     Or += 1
                 else:
-                    self.getInventory()        
+                    self.get_inventory()        
                     index = self._next_free_item()
                     if index == len(self.inventory):
                         QMessageBox.warning(self, "Inventory Full", "Your inventory is full. Please clear some space.")
@@ -198,7 +198,7 @@ class ManageQuests(QWidget):
         self.show_accepted_quests()
             
             
-    def getInventory(self):
+    def get_inventory(self):
         self.cursor.execute("SELECT InventorySlot FROM Players WHERE ID = %s;", (self.id,))
         inventory_slot = self.cursor.fetchone()[0]
         
