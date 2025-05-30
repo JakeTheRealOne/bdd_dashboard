@@ -60,7 +60,7 @@ class ManageAccount(QWidget):
 
         self.input_money = QSpinBox()
         self.input_money.setMinimum(0)
-        self.inputMoney.setMaximum(100000000)
+        self.input_money.setMaximum(100000000)
         self.input_money.setValue(self.money)
 
         self.name_label = QLabel(f"Hello <u>{self.name}</u> with the ID <u>{self.id}</u> !")
