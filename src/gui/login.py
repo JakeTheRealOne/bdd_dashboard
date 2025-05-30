@@ -149,7 +149,7 @@ class Login(QWidget):
             
 
         else:
-            self.cursor.execute("INSERT INTO Players (Name) VALUES ('"+ username +"');")
+            self.cursor.execute("INSERT INTO Players (Name) VALUES (%s);", (username,))
             result = self.cursor.fetchone()
             if not result:
                 self.db.commit()
@@ -173,9 +173,9 @@ class Login(QWidget):
             self.db.commit()
             self.clear_inputs()
             QMessageBox.information(self, "Login successful", "You have successfully logged in.")
-            mainMenu = main_menu.MainMenu(result[0], self)
-            self.stacked_widget.addWidget(mainMenu)
-            self.stacked_widget.setCurrentWidget(mainMenu) # show the main menu
+            menu = main_menu.MainMenu(result[0], self)
+            self.stacked_widget.addWidget(menu)
+            self.stacked_widget.setCurrentWidget(menu) # show the main menu
 
         else:
             self.clear_inputs()
