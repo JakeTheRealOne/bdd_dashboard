@@ -69,7 +69,7 @@ python3 -m src.database.delete
 python3 -m src.database.insert
 ```
 
-This script will populate the database using data from files in the `data/` folder.
+This script will populate the database using data from files in the `data/` folder at the root of the project.
 
 ## Create Your Own MySQL Database to Run This Project
 
