@@ -174,7 +174,7 @@ class ManageCharacters(QWidget):
         classe = self.class_input.text()
 
         if not name and not classe:
-                QMessageBox.warning(self, "Error", "Please fill in all fields!")
+            QMessageBox.warning(self, "Error", "Please fill in all fields!")
 
         # Insert the new character into the database
         else:
