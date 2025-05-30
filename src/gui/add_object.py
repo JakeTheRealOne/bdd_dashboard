@@ -158,9 +158,9 @@ class AddObject(QWidget):
         try:
             if tp == "Arme" or tp == "Armure":
                 property_value = int(prop)
-                if property_value < 0:
+                if property_value < 0 or property_value > 100:
                     is_property_valid = False
-                    property_error_msg = "can't be negative"
+                    property_error_msg = "can't be negative or greater than 100"
             else:
                 property_value = prop
         except:
@@ -169,12 +169,11 @@ class AddObject(QWidget):
 
         try:
             price_value = int(price)
+            if price_value <= 0:
+                raise ValueError("must be > 0")
         except:
             is_price_valid = False
-            price_error_msg = "invalid format"
-        if price_value <= 0:
-            is_price_valid = False
-            price_error_msg = "can't be negative"
+            price_error_msg = "must be a positive number"
 
         # 3. If valid: update in db and leave, else show error message
         try:

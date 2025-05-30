@@ -302,21 +302,21 @@ class ManageObjects(QWidget):
             string = item.text()
             try:
                 value = int(string)
-                if value < 0:
-                    raise TypeError("Cannot convert to positive integer")
-            except:
+                if not (0 <= value <= 100):
+                    raise ValueError("Defence must be between 0 and 100.")
+            except Exception:
                 item.setForeground(QBrush(QColor("red")))
                 font = QFont()
                 font.setBold(True)
                 item.setFont(font)
             else:
-                item.setForeground(QBrush(QColor("Black")))
+                item.setForeground(QBrush(QColor("black")))
                 font = QFont()
                 item.setFont(font)
                 self.armors[row][1] = value
                 self.cursor.execute(
                     "UPDATE Armors SET Defence = %s WHERE Name = %s",
-                    self.armors[row][::-1],
+                    (value, self.armors[row][0])
                 )
                 self.db.commit()
 
