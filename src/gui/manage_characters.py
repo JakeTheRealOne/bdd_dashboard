@@ -248,20 +248,24 @@ class ManageCharacters(QWidget):
 
         self.table_characters = QTableWidget()
         self.table_characters.setRowCount(len(result))
-        self.table_characters.setColumnCount(7)
-        self.table_characters.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class"])
+        self.table_characters.setColumnCount(8)
+        self.table_characters.setHorizontalHeaderLabels(["Name", "Strength", "Agility", "Intelligence", "Health", "Mana", "Class", "Username"])
         self.table_characters.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         for row_idx, row_data in enumerate(result):
             for col_idx, value in enumerate(row_data):
-                if col_idx >= 7:
-                  continue
+                if col_idx == 7:
+                  self.cursor.execute("SELECT Name FROM Players WHERE ID = %s;", (value,))
+                  player_name = self.cursor.fetchone()[0] or "Unknown Player"
+                  item = QTableWidgetItem(player_name)
+                  item.setTextAlignment(Qt.AlignCenter)
 
-                item = QTableWidgetItem(str(value))
-                item.setTextAlignment(Qt.AlignCenter)
+                else:
+                    item = QTableWidgetItem(str(value))
+                    item.setTextAlignment(Qt.AlignCenter)
 
                 # Username and name column is non-editable
-                if col_idx == 0:
+                if col_idx == 0 or col_idx == 7:
                     item.setFlags(item.flags() & ~Qt.ItemIsEditable)
 
                 self.table_characters.setItem(row_idx, col_idx, item)
@@ -308,6 +312,15 @@ class ManageCharacters(QWidget):
         health = self.table_characters.item(row, 4).text()
         mana = self.table_characters.item(row, 5).text()
         role = self.table_characters.item(row, 6).text()
+        player_name = self.table_characters.item(row, 7).text()
+
+        self.cursor.execute("SELECT ID FROM Players WHERE Name = %s;", (player_name,))
+        player_id = self.cursor.fetchone()
+        if player_id:
+            player_id = player_id[0]
+        else:
+            QMessageBox.warning(self, "Error", "Player not found!")
+            return
 
         if not (name and strength and agility and intelligence and health and mana and role):
             QMessageBox.warning(self, "Error", "Please fill in all fields!")
@@ -321,6 +334,6 @@ class ManageCharacters(QWidget):
             QMessageBox.warning(self, "Error", "Strength, Agility, Intelligence, Health and Mana must be less than or equal to 100!")
 
         else:
-            self.cursor.execute("UPDATE Characters SET Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s WHERE PlayerID = %s AND Name = %s;", (strength, agility, intelligence, health, mana, role, self.id, name))
+            self.cursor.execute("UPDATE Characters SET Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s WHERE PlayerID = %s AND Name = %s;", (strength, agility, intelligence, health, mana, role, player_id, name))
             self.db.commit()
             QMessageBox.information(self, "Success", "Character updated successfully!")
