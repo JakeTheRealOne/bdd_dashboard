@@ -14,7 +14,7 @@ def player_most_characters_same_class(cursor):
     cursor.execute('''
     SELECT p.Name, c.Class, COUNT(*) AS nbCharacters
     FROM Players p
-    JOIN Characters c ON p.Name = c.Username
+    JOIN Characters c ON p.ID = c.PlayerID
     GROUP BY p.Name, c.Class
     ORDER BY nbCharacters DESC LIMIT 1;
     ''')
