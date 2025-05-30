@@ -21,17 +21,21 @@
   breaklines=true,
   frame=single
 }
+\usepackage{booktabs}
+\usepackage{epigraph}
+\usepackage{soul}
 
 \title{INFOH303 - Projet de Système d’Inventaire pour un
-RPG - Partie 2}
+RPG - Partie 1}
+\author{Bilal Vandenberge}
 \date{Mars 2025}
 
 \begin{document}
 
-\begin{center}
-    {\LARGE\textbf{INFOH303 - Projet de Système d’Inventaire pour un RPG - Partie 2 - Rapport}}\\[0.5em]
-    \rule{0.9\textwidth}{1pt}
-\end{center}
+{\LARGE{\raggedright\textbf{INFOH303 - Projet de Système d’Inventaire pour un
+RPG}}}
+\rule{\textwidth}{1pt}
+
 
 \vspace{5pt}
 \begin{center}
@@ -47,7 +51,8 @@ Rares & Radu-Loghin & 000590079  \\\bottomrule
 \end{center}
 \vspace{5pt}
 
-%-------------------------------------------------------------------
+\textbf{\LARGE{\raggedright Rapport: }}\\
+
 
 \section{Méthode d’extraction des données}
 
@@ -193,7 +198,168 @@ ORDER BY Ratio;
 Cette requête implique un groupement par points de vie, puis une comparaison. C'est impossible dans le formalisme de l'algèbre linéaire.
  
 \subsubsection{Calcul tuple}
-Cette requête ne peut pas être exprimée en calcul relationnel tuple, car ce formalisme est basé sur la théorie des ensembles et n'inclut ni ordre, ni classement.
+Cette requête ne peut pas être exprimée en calcul relationnel tuple, car ce formalisme est basé sur la théorie des ensembles et n'inclut ni ordre, ni classement.\\
+
+\vspace{5pt}
+\textbf{\LARGE{\raggedright Diagramme Entité-Association:}}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{v4v4.drawio.pdf}
+    \label{fig:ea}
+\end{figure}
+
+\vspace{5pt}
+
+\textbf{\LARGE{\raggedright Modèle relationnel:}}\\
+
+% ----------------
+
+Players(\ul{ID}, Name, Level, XP, Money, InventorySlot)\\
+
+% ----------------
+
+Characters(\ul{Name, PlayerID}, Strength, Agility, Intelligence, Health, Mana, Class)
+
+\hspace{1cm}PlayerID référence Players.ID\\
+
+% ----------------
+
+Spells(\ul{Name}, ManaCost, ReloadTime, Damage)\\
+
+% ----------------
+
+NPCs(\ul{Name}, Dialog)\\
+
+% ----------------
+
+Quests(\ul{Name}, Description, Difficulty, Experience)
+
+\hspace{1cm}NPCName référence NPCs.Name\\
+
+% ----------------
+
+Rewards(\ul{QuestName, ItemName}, Quantity)
+
+\hspace{1cm}QuestName référence Quests.Name
+\hspace{1cm}ItemName référence Item.Name\\
+
+% ----------------
+
+Items(\ul{Name}, Price, Type)\\
+
+% ----------------
+
+Weapons(\ul{Name}, Power)
+
+\hspace{1cm}Name référence Items.Name\\
+
+% ----------------
+
+Armors(\ul{Name}, Defence)
+
+\hspace{1cm}Name référence Items.Name\\
+
+% ----------------
+
+Potions(\ul{Name}, Boost)
+
+\hspace{1cm}Name référence Items.Name\\
+
+% ----------------
+
+Artefacts(\ul{Name}, Effect)
+
+\hspace{1cm}Name référence Items.Name\\
+
+% ----------------
+
+Monsters(\ul{Name}, Damage, MonsterHealth, Defence)\\
+
+% ----------------
+
+MonsterLoots(\ul{MonsterName, LootName}, DropRate, Quantity)\\
+
+\hspace{1cm}MonsterName référence Monsters.Name
+\hspace{1cm}LootName référence Items.Name\\
+
+% ----------------
+
+NPCItemInventories(\ul{NPCName, ItemName}, Quantity)
+
+\hspace{1cm}NPCName référence NPCs.Name
+\hspace{1cm}ItemName référence Items.Name\\
+
+% ----------------
+
+NPCQuests(\ul{NPCName, QuestName})
+
+\hspace{1cm}NPCName référence NPCs.Name
+\hspace{1cm}QuestName référence Quests.Name\\
+
+% ----------------
+
+PlayerArmors(\ul{PlayerID}, ArmorName)
+
+\hspace{1cm}PlayerID référence Players.ID
+\hspace{1cm}ArmorName référence Armors.Name\\
+
+
+% ----------------
+
+PlayerInventories(\ul{PlayerID, SlotIDX}, ItemName)
+
+\hspace{1cm}PlayerID référence Players.ID
+\hspace{1cm}ItemName référence Items.Name\\
+
+% ----------------
+
+PlayerQuests (\ul{PlayerID, QuestName})
+
+\hspace{1cm}PlayerID référence Players.ID
+\hspace{1cm}QuestName référence Quests.Name\\
+
+% ----------------
+
+PlayerWeapons(\ul{PlayerID}, WeaponName)
+
+\hspace{1cm}PlayerID référence Players.ID
+\hspace{1cm}WeaponName référence Weapons.Name\\
+
+% ----------------
+% ----------------
+
+\section*{Contraintes}
+
+\begin{itemize}
+\item Une table des récompenses (Looting Table) d'un monstre peut être vide.
+\item Un joueur ne peut pas collecter d'objet (Item) si son inventaire (Inventory) est rempli.
+\item Un joueur ne peut jeter/utiliser/vendre que les objets (Item) qu'il possède dans son inventaire (Inventory).
+\item Le nom d'un joueur est unique.
+\item Un joueur s'équipe d'une armure à la fois.
+\item Un joueur s'équipe d'une arme à la fois.
+\item 0 $<$= Characters.Intelligence $<$= 100
+\item 0 $<$ Characters.Health $<$= 100
+\item 0 $<$ Monsters.MonsterHealth $<=$ 1000
+\item 0 $<$= Weapons.Damage
+\item 0 $<$= Monsters.Damage
+\item 0 $<$= Characters.Mana
+\item 0 $<$= Armors.Defence $<$= 100
+\item 0 $<$= Monsters.Defence $<$= 100
+\item 1\% $<=$ MonsterLoots.DropRate $<$= 100\%
+\item 0 $<$ Rewards.Quantity
+\item 0 $<$ NPCItemInventories.Quantity
+\item 0 $<$ Rewards.Quantity
+\item 0 $<$= Items.Price
+\item 0 $<$= Players.Money
+\item 0 $<=$ Spells.ManaCost
+\item 0s $<=$ Spells.Reloadtime
+\item 0 $<$= Players.XP
+\item 0 $<$= Players.Level
+\item 0 $<$= Characters.Strength $<$= 100
+\item 0 $<$= Characters.Agility $<$= 100
+\item PlayerInventories.SlotIDX $<$ 5 + min(27, 2 * Players.Level) où Players.Level correspond au niveau du joueur possédant l'inventaire.
+\end{itemize}
 
 
 \end{document}

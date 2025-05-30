@@ -27,10 +27,10 @@ def create_database_and_tables(db, cursor):
     """)
 
     # Create the table Monsters if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT DEFAULT 0 CHECK (Damage >= 0), MonsterHealth INT DEFAULT 0 CHECK (MonsterHealth BETWEEN 0 AND 1000), Defence INT DEFAULT 0 CHECK (Defence BETWEEN 0 AND 100));")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Monsters (Name VARCHAR (255) PRIMARY KEY, Damage INT DEFAULT 0 CHECK (Damage >= 0), MonsterHealth INT DEFAULT 1 CHECK (MonsterHealth BETWEEN 1 AND 1000), Defence INT DEFAULT 0 CHECK (Defence BETWEEN 0 AND 100));")
 
     # Create the table Spells if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Spells (Name VARCHAR (255) PRIMARY KEY, ManaCost INT DEFAULT 0 CHECK (ManaCost >=0), ReloadTime INT DEFAULT 0 CHECK (ReloadTime > 0), Damage INT DEFAULT 0 CHECK (Damage >=0));")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Spells (Name VARCHAR (255) PRIMARY KEY, ManaCost INT DEFAULT 0 CHECK (ManaCost >=0), ReloadTime INT DEFAULT 0 CHECK (ReloadTime >= 0), Damage INT DEFAULT 0 CHECK (Damage >=0));")
     
     # Create the table Quests if it doesn't exist
     cursor.execute("CREATE TABLE IF NOT EXISTS Quests (Name VARCHAR (255) PRIMARY KEY, Description VARCHAR (255), Difficulty INT DEFAULT 0, Experience INT DEFAULT 0);")
@@ -54,7 +54,7 @@ def create_database_and_tables(db, cursor):
     cursor.execute("CREATE TABLE IF NOT EXISTS NPCs (Name VARCHAR (225) PRIMARY KEY, Dialog TEXT);")
 
     # Create the table NPCItemInventories if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS NPCItemInventories (NPCName VARCHAR (225), ItemName VARCHAR (225), Quantity INT DEFAULT 1 CHECK (Quantity >= 0)," \
+    cursor.execute("CREATE TABLE IF NOT EXISTS NPCItemInventories (NPCName VARCHAR (225), ItemName VARCHAR (225), Quantity INT DEFAULT 1 CHECK (Quantity > 0)," \
     "PRIMARY KEY (NPCName, ItemName), FOREIGN KEY (NPCName) REFERENCES NPCs(Name), FOREIGN KEY (ItemName) REFERENCES Items(Name)) ;")
 
     # Create the table NPCQuests if it doesn't exist
@@ -66,11 +66,11 @@ def create_database_and_tables(db, cursor):
     "PRIMARY KEY (PlayerID, QuestName), FOREIGN KEY (PlayerID) REFERENCES Players(ID), FOREIGN KEY (QuestName) REFERENCES Quests(Name));")
 
     # Create the table MonsterLoots if it doesen't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS MonsterLoots (MonsterName VARCHAR (255), LootName VARCHAR (255), DropRate INT DEFAULT 100 CHECK (DropRate BETWEEN 0 AND 100), Quantity INT DEFAULT 1 CHECK (Quantity > 0)," \
+    cursor.execute("CREATE TABLE IF NOT EXISTS MonsterLoots (MonsterName VARCHAR (255), LootName VARCHAR (255), DropRate INT DEFAULT 100 CHECK (DropRate BETWEEN 1 AND 100), Quantity INT DEFAULT 1 CHECK (Quantity > 0)," \
     "PRIMARY KEY (MonsterName, LootName), FOREIGN KEY (MonsterName) REFERENCES Monsters(Name), FOREIGN KEY (LootName) REFERENCES Items(Name));")
 
     # Create the table Rewards if it doesen't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS Rewards (QuestName VARCHAR (255), ItemName VARCHAR (255), Quantity INT DEFAULT 1 CHECK (Quantity >= 1)," \
+    cursor.execute("CREATE TABLE IF NOT EXISTS Rewards (QuestName VARCHAR (255), ItemName VARCHAR (255), Quantity INT DEFAULT 1 CHECK (Quantity > 0)," \
     "PRIMARY KEY (QuestName, ItemName), FOREIGN KEY (QuestName) REFERENCES Quests(Name), FOREIGN KEY (ItemName) REFERENCES Items(Name));")
 
     # Create the table PlayerInventories if it doesn't exist
