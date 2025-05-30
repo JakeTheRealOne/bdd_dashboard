@@ -225,7 +225,7 @@ class NPCInteraction(QWidget):
         if not NPC_result:
             NPC_result = [(name, "No items available", "")]
         
-        self.cursor.execute("SELECT ItemName, SlotIDX FROM PlayerInventories WHERE PlayerID = %s;", (self.ID,))
+        self.cursor.execute("SELECT ItemName, SlotIDX FROM PlayerInventories WHERE PlayerID = %s;", (self.id,))
         player_result_raw = self.cursor.fetchall()
 
         if player_result_raw:
@@ -324,7 +324,7 @@ class NPCInteraction(QWidget):
         self.cursor.execute("SELECT Price FROM Items WHERE Name = %s;", (item_name,))
         price = self.cursor.fetchone()
 
-        self.cursor.execute("SELECT Money FROM Players WHERE ID = %s;", (self.ID,))
+        self.cursor.execute("SELECT Money FROM Players WHERE ID = %s;", (self.id,))
         money = self.cursor.fetchone()
 
         if price is None or money is None or money[0] < price[0] * int(quantity):
@@ -345,7 +345,7 @@ class NPCInteraction(QWidget):
             self.inventory[index] = item_name
             items.append(item_name)
 
-        self.cursor.execute("UPDATE Players SET Money = Money - %s WHERE ID = %s;", (price[0] * int(quantity), self.ID))
+        self.cursor.execute("UPDATE Players SET Money = Money - %s WHERE ID = %s;", (price[0] * int(quantity), self.id))
         
         self.db.commit()
         self.on_buy_sell_button_clicked()
@@ -369,7 +369,7 @@ class NPCInteraction(QWidget):
             QMessageBox.warning(self, "Error", "Item not found in the database.")
             return
         
-        self.cursor.execute("UPDATE Players SET Money = Money + %s WHERE ID = %s;", (price[0], self.ID))
+        self.cursor.execute("UPDATE Players SET Money = Money + %s WHERE ID = %s;", (price[0], self.id))
 
 
         self.db.commit()

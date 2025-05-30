@@ -178,7 +178,7 @@ class ManageCharacters(QWidget):
 
         # Insert the new character into the database
         else:
-            self.cursor.execute("SELECT c.Name FROM Characters c WHERE c.PlayerID = %s AND c.Name = %s;", (self.ID, name))
+            self.cursor.execute("SELECT c.Name FROM Characters c WHERE c.PlayerID = %s AND c.Name = %s;", (self.id, name))
             result = self.cursor.fetchone()
             if result:
                 QMessageBox.warning(self, "Error", "You have already a Character with this name !")
@@ -186,7 +186,7 @@ class ManageCharacters(QWidget):
 
             self.cursor.execute(
                 "INSERT INTO Characters (Name, Strength, Agility, Intelligence, Health, Mana, Class, PlayerID) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);",
-                (name, strength, agility, intelligence, health, mana, classe, self.ID)
+                (name, strength, agility, intelligence, health, mana, classe, self.id)
             )
             self.db.commit()
             QMessageBox.information(self, "Success", "Character added successfully!")
@@ -216,7 +216,7 @@ class ManageCharacters(QWidget):
                     """UPDATE Characters SET 
                         Strength = %s, Agility = %s, Intelligence = %s, Health = %s, Mana = %s, Class = %s 
                         WHERE PlayerID = %s AND Name = %s;""",
-                    (strength, agility, intelligence, health, mana, classe, self.ID, name)
+                    (strength, agility, intelligence, health, mana, classe, self.id, name)
                 )
                 self.db.commit()
                 QMessageBox.information(self, "Success", "Character updated successfully!")

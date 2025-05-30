@@ -128,7 +128,7 @@ class ManageAccount(QWidget):
         except: 
           pass
 
-        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND SlotIDX >= %s", (self.ID, self.inventorySlot))
+        self.cursor.execute("DELETE FROM PlayerInventories WHERE PlayerID = %s AND SlotIDX >= %s", (self.id, self.inventory_slot))
         self.db.commit()
 
         self.getInfoPlyers()
