@@ -269,7 +269,6 @@ class ManageCharacters(QWidget):
         header.setSectionResizeMode(4, QHeaderView.ResizeToContents)
         header.setSectionResizeMode(5, QHeaderView.ResizeToContents)
         header.setSectionResizeMode(6, QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(7, QHeaderView.ResizeToContents)
         
         back_button = QPushButton("Back")
         back_button.setFixedWidth(500)
