@@ -38,35 +38,34 @@ class ManageInventory(QWidget):
 
     def get_inventory(self):
       self.inventory = [None] * self.inventory_slot
-      self.cursor.execute("SELECT * FROM PlayerInventories")
+      self.cursor.execute("SELECT * FROM PlayerInventories WHERE PlayerID = %s", (self.id,))
       rows = self.cursor.fetchall()
       
       self.inventory_table.setRowCount(self.inventory_slot)
       self.inventory_table.setColumnCount(3)
       self.inventory_table.setHorizontalHeaderLabels(["Object Name", "Equip", "Drop"])
+      self.inventory_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+      self.inventory_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+      self.inventory_table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
       self.occupied_slots = 0
 
       for row in rows:
-          if row[0] == self.id:
-              self.inventory[row[2]] = row[1]
-              item = QTableWidgetItem(row[1])
-              item.setTextAlignment(Qt.AlignCenter)
-              self.inventory_table.setItem(row[2], 0, item)
-              use_button = QPushButton("Equip")
-              use_button.setFixedWidth(200)
-              use_button.setAutoDefault(True)
-              use_button.clicked.connect(lambda _, r=row[2]: self.on_use_item_clicked(r))
-              del_button = QPushButton("Drop")
-              del_button.setFixedWidth(200)
-              del_button.setAutoDefault(True)
-              del_button.clicked.connect(lambda _, r=row[2]: self.on_del_item_clicked(r))
-              self.inventory_table.setCellWidget(row[2], 1, use_button)
-              self.inventory_table.setCellWidget(row[2], 2, del_button)
-              self.occupied_slots += 1
+        self.inventory[row[2]] = row[1]
+        item = QTableWidgetItem(row[1])
+        item.setTextAlignment(Qt.AlignCenter)
+        self.inventory_table.setItem(row[2], 0, item)
+        use_button = QPushButton("Equip")
+        use_button.setEnabled(self._is_equipable(row[1]))
+        use_button.setAutoDefault(True)
+        use_button.clicked.connect(lambda _, r=row[2]: self.on_use_item_clicked(r))
+        del_button = QPushButton("Drop")
+        del_button.setAutoDefault(True)
+        del_button.clicked.connect(lambda _, r=row[2]: self.on_del_item_clicked(r))
+        self.inventory_table.setCellWidget(row[2], 1, use_button)
+        self.inventory_table.setCellWidget(row[2], 2, del_button)
+        self.occupied_slots += 1
 
-      self.inventory_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-      self.inventory_table.resizeRowsToContents()
       self.add_item_button.setEnabled(self.occupied_slots != self.inventory_slot)
       self.clear_button.setEnabled(self.occupied_slots)
 
@@ -111,15 +110,21 @@ class ManageInventory(QWidget):
         self.equip_table.setRowCount(2)
         self.equip_table.setColumnCount(1)
         self.equip_table.setVerticalHeaderLabels(["Armor on body", "Weapon in hand"])
-        self.equip_table.resizeRowsToContents()
+        self.equip_table.setHorizontalHeaderLabels([""])
+        self.equip_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.equip_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        self.equip_table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         self.inventory_table = QTableWidget()
         self.inventory_table.setEditTriggers(QTableWidget.NoEditTriggers)
         self.inventory_table.setMinimumWidth(400)
+        self.inventory_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.inventory_table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         self.item_table = QTableWidget()
         self.item_table.cellPressed.connect(self.on_select_item) 
         self.item_table.setEditTriggers(QTableWidget.NoEditTriggers)
+
         self.item_table.setMinimumWidth(400)
 
         self.item_select_cancel_button = QPushButton("Cancel")
@@ -166,13 +171,13 @@ class ManageInventory(QWidget):
       self.item_table.setRowCount(len(rows))
       self.item_table.setColumnCount(1)
       self.item_table.setHorizontalHeaderLabels(["Object Name"])
+      self.item_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+      self.item_table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
       for index in range(len(rows)):
           item = QTableWidgetItem(rows[index][0])
           item.setTextAlignment(Qt.AlignCenter)
           self.item_table.setItem(index, 0, item)
 
-      self.item_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-      self.item_table.resizeRowsToContents()
       self.item_selector_widget.setVisible(True)
 
     def hide_item_selector(self):
@@ -207,11 +212,10 @@ class ManageInventory(QWidget):
             item_widget.setTextAlignment(Qt.AlignCenter)
             self.inventory_table.setItem(index, 0, item_widget)
             use_button = QPushButton("Equip")
-            use_button.setFixedWidth(200)
+            use_button.setEnabled(self._is_equipable(name))
             use_button.setAutoDefault(True)
             use_button.clicked.connect(lambda _, r=index: self.on_use_item_clicked(r))
             del_button = QPushButton("Drop")
-            del_button.setFixedWidth(200)
             del_button.setAutoDefault(True)
             del_button.clicked.connect(lambda _, r=index: self.on_del_item_clicked(r))
             self.inventory_table.setCellWidget(index, 1, use_button)
@@ -315,6 +319,15 @@ class ManageInventory(QWidget):
         return result
 
     def _is_weapon(self, object: str) -> bool:
+        """
+        Return if the object can be equiped
+        """
         self.cursor.execute("SELECT * FROM Weapons WHERE Name = %s", (object,))
         result = bool(self.cursor.fetchall())
         return result
+    
+    def _is_equipable(self, object: str) -> bool:
+        """
+        Return if the object can be equiped
+        """
+        return self._is_armor(object) or self._is_weapon(object)
