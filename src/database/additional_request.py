@@ -65,7 +65,7 @@ def most_rewarded_item_type(cursor):
         )
     )
     GROUP BY item.Type
-    ORDER BY apparitions desc LIMIT 1;
+    ORDER BY apparitions DESC LIMIT 1;
     ''')
 
 
@@ -87,7 +87,7 @@ def most_rewarding_monster(cursor):
         GROUP BY MonsterName
     ) as monsterHealthAndPrice
     JOIN Monsters monsters on monsters.Name = MonsterName
-    ORDER BY Ratio desc;
+    ORDER BY Ratio DESC;
     ''')
 
 
