@@ -22,20 +22,23 @@ def player_most_characters_same_class(cursor):
 
 def quest_biggest_reward_by_level(cursor):
     cursor.execute('''
-    WITH QuestGold AS (
-    SELECT q.Name AS QuestName, q.Difficulty, SUM(i.Price * r.Quantity) AS TotalGold
+    SELECT QuestName, Difficulty, TotalGold
+    FROM (
+    SELECT 
+        q.Name AS QuestName,
+        q.Difficulty,
+        SUM(i.Price * r.Quantity) AS TotalGold,
+        ROW_NUMBER() OVER (
+        PARTITION BY q.Difficulty 
+        ORDER BY SUM(i.Price * r.Quantity) DESC
+        ) AS rank
     FROM Quests q
     JOIN Rewards r ON q.Name = r.QuestName
     JOIN Items i ON r.ItemName = i.Name
     GROUP BY q.Name, q.Difficulty
-    ),
-    RankedQuests AS (
-        SELECT *, ROW_NUMBER() OVER (PARTITION BY Difficulty ORDER BY TotalGold DESC) AS `rank`
-        FROM QuestGold
-    )
-    SELECT QuestName, Difficulty, TotalGold
-    FROM RankedQuests
-    WHERE `rank` = 1;
+    ) AS Ranked
+    WHERE rank = 1
+    ORDER BY Difficulty;
     ''')
 
 
