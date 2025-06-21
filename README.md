@@ -85,4 +85,11 @@ To run the project, you'll need to set up your own MySQL (or MariaDB) database a
     sudo mysql -e "FLUSH PRIVILEGES;"
     ```
 
+    **For windows**
+    ```sh
+    mysql -u root -p -e "CREATE USER 'rootuser'@'localhost' IDENTIFIED BY 'rootuser';"
+    mysql -u root -p -e "GRANT ALL PRIVILEGES ON *.* TO 'rootuser'@'localhost' WITH GRANT OPTION;"
+    mysql -u root -p -e "FLUSH PRIVILEGES;"
+    ```
+
 This will create a user `rootuser` with the password `rootuser` and grant it full privileges on your MySQL instance. This user (`rootuser`) will be used throughout the project for database interaction.
